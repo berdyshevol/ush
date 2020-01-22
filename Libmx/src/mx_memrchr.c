@@ -1,13 +1,17 @@
 #include "libmx.h"
 
 void *mx_memrchr(const void *s, int c, size_t n) {
-    byte *src = (byte *)s;
-    byte chr = (byte)c;
+    size_t i = 0;
     
-    for (int i = n - 1; i >= 0; i--) {
-        if(src[i] == chr)
-            return src + i;
+    if (!s)
+        return NULL;
+    s = (unsigned char *)s + n;
+    while (*((unsigned char *)s) != c && i < n) {
+        s = (unsigned char *)s - 1;
+        n--;
     }
-    return NULL;
+    if (*((unsigned char *)s) == c)
+        return (unsigned char *)s;
+    else
+        return NULL;
 }
-

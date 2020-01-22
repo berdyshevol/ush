@@ -1,28 +1,15 @@
 #include "libmx.h"
 
-static int my_strncmp(const char *s1, const char *s2, int n);
-
-char *mx_strstr(const char *s1, const char *s2) {
-    char *s = (char *) s1;
-    int l = mx_strlen(s2);
-
-    while (*s) {
-        if (my_strncmp(s, s2, l) == 0) {
-            return s;
-        }
-        s++;
+char *mx_strstr(const char *haystack, const char *needle) {
+    if (*haystack == '\0' && *needle != '\0')
+        return NULL;
+    if ((*haystack == '\0' || *haystack) && *needle == '\0')
+        return (char*) haystack;
+    while (*haystack) {
+        if (mx_strncmp(haystack, needle, mx_strlen(needle)) == 0)
+            return (char*) haystack;
+        haystack++;
     }
     return NULL;
-}
-
-static int my_strncmp(const char *s1, const char *s2, int n) {
-    int i = 0;
-    
-    while ((s1[i] == s2[i]) && s1[i] && s2[i] && i < n) {
-        i++;
-    }
-    if (i == n)
-        return 0;
-    return s1[i] - s2[i];
 }
 

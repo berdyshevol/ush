@@ -1,13 +1,6 @@
 #include "libmx.h"
 
-void mx_printchar(char c);
-
-static void print_posnum(int n) {
-    if (n > 9){
-        print_posnum(n / 10);
-    }
-    mx_printchar(n % 10 + '0');
-}
+static void print_posnum(int n);
 
 void mx_printint(int n) {
     if (n == -2147483648) {
@@ -19,5 +12,11 @@ void mx_printint(int n) {
         n = -n;
     }
     print_posnum(n);
+}
+
+static void print_posnum(int n) {
+    if (n > 9)
+        print_posnum(n / 10);
+    mx_printchar(n % 10 + '0');
 }
 

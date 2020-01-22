@@ -1,56 +1,53 @@
 #include "libmx.h"
 
-static int comparator(char *s1, char *s2);
-static void swap(char **s1, char **s2, int *count);
+static void find_breaker(int *k, int *j, char **arr, char *pivot);
+static int swap_elemets(char **str1, char **str2);
+static void iter_index(int *k, int *j);
 
-int mx_quicksort(char **arr, int low, int high) {
-    //implimantaion https://www.programcreek.com/2012/11/quicksort-array-in-java/
-    if (arr == NULL || *arr == NULL) return -1;
-    if (low >= high)
-        return 0;
-    int count = 0;
-    // pick the pivot
-    int middle = low + (high - low) / 2;
-    char *pivot = arr[middle];
+int mx_quicksort(char **arr, int left, int right) {
+    int counter = 0;
 
-    // make left < pivot and right > pivot
-    int i = low;
-    int j = high;
-    while (i <= j) {
-        while (comparator(arr[i], pivot) < 0) {
-            i++;
+    if (!arr)
+        return -1;
+    if (left < right) {
+        int k = left;
+        int j = right;
+        char *pivot = arr[(j + k) / 2];
+
+        while (k <= j) {
+            find_breaker(&k, &j, arr, pivot);
+            if (k <= j) {
+                counter += swap_elemets(&arr[k], &arr[j]);
+                iter_index(&k, &j);
+            }
         }
-
-        while (comparator(arr[j], pivot) > 0) {
-            j--;
-        }
-
-        if (i <= j) {
-            swap(&arr[i], &arr[j], &count);
-            i++;
-            j--;
-        }
-    }
-
-    // recursively sort two sub parts
-    if (low < j)
-        count += mx_quicksort(arr, low, j);
-
-    if (high > i)
-        count += mx_quicksort(arr, i, high);
-    
-    return count;
+        counter += mx_quicksort(arr, left, j);
+        counter += mx_quicksort(arr, k, right);
+    }    
+    return counter;
 }
 
-static int comparator(char *s1, char *s2) {
-    return mx_strlen(s1) - mx_strlen(s2);
+static void iter_index(int *k, int *j) {
+    (*k)++;
+    (*j)--;
 }
 
-static void swap(char **s1, char **s2, int *count) {
-    if (comparator(*s1, *s2) == 0) return; // added this
-    char *t = *s1; 
-    *s1 = *s2;
-    *s2 = t;
-    (*count)++;                              // for counting shifts
+static int swap_elemets(char **str1, char **str2) {
+    char *temp = (*str1);
+
+    if (mx_strlen((*str1)) \
+        != mx_strlen((*str2)))
+        (*str1) = (*str2);
+        (*str2) = temp;
+        return 1;
+    return 0;
 }
 
+static void find_breaker(int *k, int *j, char **arr, char *pivot) {
+    while (mx_strlen(arr[(*k)]) \
+        < mx_strlen(pivot))
+        (*k)++;
+    while (mx_strlen(arr[(*j)]) \
+        > mx_strlen(pivot))
+        (*j)--;
+}

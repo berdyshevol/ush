@@ -1,43 +1,25 @@
 #include "libmx.h"
 
-static bool my_isspace(char c) {
-    return c == '\t'
-        || c == '\n'
-        || c == '\v'
-        || c == '\f'
-        || c == '\r'
-        || c == ' ';
-}
-
-static void add_char_in_string(char *s, char c, int *j) {
-    s[*j] = c;
-    (*j)++;
-}
-
 char *mx_del_extra_spaces(const char *str) {
-    if (str == NULL) 
-        return NULL;
-    char *s = mx_strtrim(str);
-    char *new_str = mx_strnew(mx_strlen(s));
-    bool flag = false;
-    int j = 0;
+    int k = 0;
+    char *temp = NULL;
+    char *trimed = NULL;
 
-    for (int i = 0; s[i] != '\0'; i++) {
-        if (my_isspace(s[i])) {
-            if (flag) {
-                add_char_in_string(new_str, ' ', &j);
-            }
-            flag = false;
+    if (str == NULL)
+        return NULL;
+    temp = mx_strnew(mx_strlen(str));
+    for (int i = 0; str[i]; i++) {
+        if (mx_isspace(str[i])
+            && !mx_isspace(str[i - 1])) {
+            temp[k] = ' ';
         }
-        else {
-            add_char_in_string(new_str, s[i], &j);
-            flag = true;
-        }
-        
+        else if (!mx_isspace(str[i]))
+            temp[k] = str[i];
+        k++;
     }
-    char *ss = mx_strndup(new_str, mx_strlen(new_str));
-    free(new_str);
-    free(s);
-    return ss;
+    trimed = mx_strtrim(temp);
+    mx_strdel(&temp);
+    return trimed;
 }
+
 

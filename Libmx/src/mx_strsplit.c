@@ -1,58 +1,38 @@
 #include "libmx.h"
 
-static bool is_next_word(int *start, int *end, char *s, char c);
-static void delete_arr(char **p , int count_words);
+static char **split_words(int arr_len, const char *s, char c);
 
-char **mx_strsplit(char const *s, char c) {
-    if (s == NULL)
+char **mx_strsplit(const char *s, char c) {
+    int arr_len = 0;
+    char **sarr = NULL;
+    int index = 0;
+
+    if (!s)
         return NULL;
-
-    int count_words = mx_count_words(s, c);
-    char **p = (char **) malloc(count_words * sizeof(char *) + 1);
-    if (p == NULL)
-        return NULL;
-
-    int start = -1;
-    int end = -1;
-    int i = 0;
-    while (is_next_word(&start, &end, (char *)s, c)) {
-        char *str = mx_strnew(end - start + 1);
-        if (str == NULL)
-            delete_arr(p, count_words);
-        mx_strncpy(str, &s[start], end - start + 1);
-        str[end - start + 1 + 1] = '\0';
-        p[i] = str;
-        i++;
-    }
-    p[i] = NULL;
-    return p;
+    arr_len = mx_count_words(s, c);
+    sarr = split_words(arr_len, s, c);
+    *sarr = NULL;
+    sarr -= arr_len;
+    return sarr;
 }
 
-static bool is_next_word(int *start, int *end, char *s, char c) {
-    *start = *end + 1;
+static char **split_words(int arr_len, const char *s, char c) {
+    char **sarr = malloc(sizeof(char *) * arr_len + 1);
+    int index = 0;
 
-    while (s[*start] == c && s[*start]) {
-        (*start)++;
+    for (int i = 0; i < arr_len; i++) {
+        while (*s == c)
+            s++;
+        index = mx_get_char_index(s, c);
+        if (i != arr_len - 1)
+            *sarr = mx_strndup(s, index);
+        else if (mx_get_char_index(s, c) != -1)
+            *sarr = mx_strndup(s, index);
+        else
+            *sarr = mx_strdup(s);
+        s += index;
+        sarr++;
     }
-    if (s[*start] == '\0')
-        return false;
-    
-    *end = *start;
-    while (s[*end] != c && s[*end]) {
-        (*end)++;
-    }
-    (*end)--;
-    return true;
-}
-
-static void delete_arr(char **p , int count_words) {
-    if (p == NULL)
-        return;
-    for (int i = 0; i < count_words; i++) {
-        if (p[i] != NULL)
-            free(p[i]);
-    }
-    free(p);
-    p = NULL;
+    return sarr;
 }
 

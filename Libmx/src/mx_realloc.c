@@ -1,29 +1,25 @@
 #include "libmx.h"
 
-static int my_min(int a, int b);
-
 void *mx_realloc(void *ptr, size_t size) {
-    int sz;
-    void *p;
+    void *new = NULL;
 
-    if (ptr == NULL && size != 0)
-        return malloc(size);
-    if (size == 0) {
-        free(ptr);
-        ptr = NULL;
-        return malloc(malloc_size(0));
+    if (!ptr && size) {
+        new = malloc(size);
+        if (!new)
+            return NULL;
     }
-    sz = my_min(size, malloc_size(ptr));
-    p = malloc(size);
-    if (p == NULL)
-        return NULL;
-    mx_memmove(p, ptr, sz);
-    free(ptr);
-    ptr = NULL;
-    return p;
-}
-
-static int my_min(int a, int b) {
-    return a < b ? a : b;
+    else {
+        if (malloc_size(ptr) < size) {
+            new = malloc(size);
+            if (!new)
+                return NULL;
+            mx_memcpy(new, ptr, \
+                malloc_size(ptr));
+            free(ptr);
+        }
+        else
+            new = ptr;
+    }
+    return new;
 }
 

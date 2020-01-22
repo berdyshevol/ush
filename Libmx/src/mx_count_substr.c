@@ -1,21 +1,20 @@
 #include "libmx.h"
 
 int mx_count_substr(const char *str, const char *sub) {
-    if (sub == NULL || str == NULL) 
-    return -1; // here was mistake
     int count = 0;
-    int l = mx_strlen(sub);
 
-    if (l == 0) return -1;
-
+    if (str == NULL || sub == NULL)
+        return -1;
+    if (*str == '\0' || *sub == '\0')
+        return 0;
     while (*str) {
-        char *p = mx_strstr(str, sub);
-        if(p) {
+        if (mx_strncmp(str, sub, mx_strlen(sub)) == 0) {
             count++;
-            str = p + l - 1;
+            str += mx_strlen(sub) - 1;
         }
         str++;
     }
     return count;
 }
+
 

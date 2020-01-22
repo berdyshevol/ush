@@ -1,28 +1,19 @@
 #include "libmx.h"
 
-static bool my_isspace(char c);
-
 char *mx_strtrim(const char *str) {
-    if (str == NULL) return NULL;
-    // remember where to start and finish
-    int start = 0;
-    while (my_isspace(str[start]))
-        start++;
-    int end = mx_strlen(str) - 1;
-    // empty string case
-    if (end == -1)
-       return mx_strnew(0);
-    while (my_isspace(str[end]))
-        end--;
-    return mx_strndup(&str[start], end - start + 1);
-}
+    int left = 0;
+    int right = 0;
 
-static bool my_isspace(char c) {
-    return c == '\t'
-        || c == '\n'
-        || c == '\v'
-        || c == '\f'
-        || c == '\r'
-        || c == ' ';
+    if (str == NULL)
+        return NULL;
+    right = mx_strlen(str) - 1;
+    while (mx_isspace(str[left]))
+        left++;
+    while (mx_isspace(str[right]))
+        right--;
+    if (right < left)
+        return mx_strdup("\0");
+    for (int i = 0; i < left; i++)
+        str++;
+    return mx_strndup(str, right - (left - 1));
 }
-
