@@ -1,10 +1,13 @@
-#ifndef ULH_H
-#define ULH_H
+#ifndef USH_H
+#define USH_H
 
 #include <stdio.h>
 #include <unistd.h>
 #include <stdlib.h>
 #include <string.h>
+#include <fcntl.h>
+#include <sys/types.h>
+#include <sys/wait.h>
 
 #include "libmx.h"
 

@@ -5,6 +5,6 @@
 #include "ush.h"
 
 void mx_print_prompt(void) {
-    char *prompt_msg = "u$s ";
+    char *prompt_msg = "u$h ";
     mx_printstr(prompt_msg);
 }
