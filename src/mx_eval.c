@@ -9,6 +9,7 @@ int avsize;
 char *infile;
 char *outfile;
 char *errfile;
+char *outcmd;
 
 void avreserve (int n) {
     int oldavsize = avsize;
@@ -22,17 +23,20 @@ void avreserve (int n) {
         av[oldavsize++] = NULL;
 }
 /**
- * can parse only:
- * <
- * >
- * 2>
+ * can do only one operetion:
+ * either can parse:
+ *     <
+ *     >
+ *     2>
+ * or can do pipe:
+ *     |
  * @param line
  */
 void parseline (char *line) {
     char *a;
     int n;
 
-    infile = outfile = errfile = NULL;
+    outcmd = infile = outfile = errfile = NULL;
     for (n = 0; n < avsize; n++)
         av[n] = NULL;
 
@@ -42,6 +46,16 @@ void parseline (char *line) {
             infile = a[1] ? a + 1 : strtok (NULL, " \t\r\n");
         else if (a[0] == '>')
             outfile = a[1] ? a + 1 : strtok (NULL, " \t\r\n");
+        else if (a[0] == '|') {
+            if (!a[1])
+                outcmd = strtok (NULL, "");
+            else {
+                outcmd = a + 1;
+                a = strtok (NULL, "");
+                while (a > outcmd && !a[-1])
+                    *--a = ' ';
+            }
+        }
         else if (a[0] == '2' && a[1] == '>')
             errfile = a[2] ? a + 2 : strtok (NULL, " \t\r\n");
         else {
@@ -54,7 +68,49 @@ void parseline (char *line) {
 
 void doexec (void) {
     int fd;
-    // process redirections
+    int pipefds[2];
+    // do pipeline
+    while (outcmd) {
+        if (outfile) {
+            fprintf (stderr, "syntax error: > in pipe writer\n");
+            exit (1);
+        }
+
+        if (pipe (pipefds) < 0) {
+            perror ("pipe");
+            exit (0);
+        }
+
+        switch (fork ()) {
+
+            case -1:
+                perror ("fork");
+                exit (1);
+
+            case 0: // child (left)
+                if (pipefds[1] != 1) {
+                    dup2 (pipefds[1], 1);
+                    close (pipefds[1]);
+                }
+                close (pipefds[0]);
+                outcmd = NULL;
+                break;
+
+            default: // parent (right)
+                if (pipefds[0] != 0) {
+                    dup2 (pipefds[0], 0);
+                    close (pipefds[0]);
+                }
+                close (pipefds[1]);
+                parseline (outcmd);
+                if (infile) {
+                    fprintf (stderr, "syntax error: < in pipe reader\n");
+                    exit (1);
+                }
+                break;
+        }
+    }
+    // do redirections
     if (infile) {
         if ((fd = open (infile, O_RDONLY)) < 0) {
             perror (infile);
@@ -79,7 +135,7 @@ void doexec (void) {
 
     if (errfile) {
         if ((fd = open (errfile, O_WRONLY|O_CREAT|O_TRUNC, 0666)) < 0) {
-            perror (outfile);
+            perror (errfile);
             exit (1);
         }
         if (fd != 2) {
@@ -87,7 +143,7 @@ void doexec (void) {
             close (fd);
         }
     }
-    // process bin file
+    // exec bin
     execvp (av[0], av);
     perror (av[0]);
     exit (1);
