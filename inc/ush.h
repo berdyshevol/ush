@@ -26,15 +26,14 @@ typedef struct global_environment {
 } t_global_environment;
 
 typedef struct config {
-    char *agv;
-    char *value;
-    t_environment *env;
+    char **agv;
+    int agvsize;
     t_global_environment *gv;
 } t_config;
 
 typedef struct builtInCommands {
 	char *command;
-	int (*func)(t_config *gv);
+	void (*func)(t_config *);
 } t_pair_cmd_name;
 
 void mx_init_shell(t_global_environment *gv);

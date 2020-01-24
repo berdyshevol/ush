@@ -1,3 +1,6 @@
+#ifndef LISTSTR_H
+#define LISTSTR_H
+
 #include <stdlib.h>
 
 // --------------------------- list
@@ -14,3 +17,4 @@ void mx_liststr_pop_front(t_liststr **head);
 void mx_liststr_delete(t_liststr **head);
 //----------------------------------
 
+#endif

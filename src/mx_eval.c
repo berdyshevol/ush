@@ -149,9 +149,9 @@ void doexec (void) {
     exit (1);
 }
 
-int try_builtin(t_global_environment *gv, char *cmd) {
+bool try_builtin(t_config *cnf, char *cmd) {
     int i = 0;
-	t_pair_cmd_name getBuiltIns[] = {
+	t_pair_cmd_name builtin[] = {
 		{"export", mx_builtin_export},
 		{"unset", mx_builtin_unset},
 		{"exit", mx_builtin_exit},
@@ -164,28 +164,30 @@ int try_builtin(t_global_environment *gv, char *cmd) {
 		{NULL, NULL}
 	};
 
-    while (getBuiltIns[i].command)
+    while (builtin[i].command)
 	{
-		if (_strcmp(build->args[0], getBuiltIns[i].command) == 0)
-		{
-			getBuiltIns[i].func(build);
-			freeArgsAndBuffer(build);
-			return (true);
+		if (strcmp(cmd, builtin[i].command) == 0) {
+			builtin[i].func(cnf);
+			//freeArgsAndBuffer(build);
+			return true;
 		}
 		i++;
 	}
-	return (false);
-
-
+	return false;
 }
 
 void mx_eval(t_global_environment *gv, char *line) {
     int pid;
+    t_config *cnf = NULL;
 
     // TODO: delete. This is for compiler
     avsize = 0;
     parseline(line);
-    if (!try_builtin(gv, av[0])) {
+    cnf = malloc(sizeof(t_config));
+    cnf->agv = av;
+    cnf->agvsize = avsize;
+    cnf->gv = gv;
+    if (!try_builtin(cnf, av[0])) {
         if (av[0] == NULL)
             return;
         switch (pid = fork ()) {
@@ -200,4 +202,5 @@ void mx_eval(t_global_environment *gv, char *line) {
                 break;
         }
     }
+    free(cnf);
 }

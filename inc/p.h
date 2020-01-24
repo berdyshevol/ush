@@ -1,11 +1,12 @@
 //
 // Created by Oleg Berdyshev on 1/22/20.
 //
+#include "ush.h"
 
 #ifndef P_H
 #define P_H
 
-#include "ush.h"
+
 // TODO: эти все функции лежат в mx_builtins.c. их позже можно разбить на разные файлы
 void mx_builtin_export(t_config *cf);
 void mx_builtin_unset(t_config *cf);
