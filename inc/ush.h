@@ -10,10 +10,32 @@
 #include <sys/wait.h>
 
 #include "libmx.h"
+#include "liststr.h"
+#include "environment.h"
 
 typedef struct global_environment {
-    int a; // TODO: delete
+    t_environment *env;
+	char **envList;
+	char **args;
+	char *buffer;
+	char *path;
+	char *fullPath;
+	char *shellName;
+	unsigned int lineCounter;
+	int errorStatus;
 } t_global_environment;
+
+typedef struct config {
+    char *agv;
+    char *value;
+    t_environment *env;
+    t_global_environment *gv;
+} t_config;
+
+typedef struct builtInCommands {
+	char *command;
+	int (*func)(t_config *gv);
+} t_pair_cmd_name;
 
 void mx_init_shell(t_global_environment *gv);
 void mx_driver_loop(t_global_environment *gv);
