@@ -149,23 +149,57 @@ void doexec (void) {
     exit (1);
 }
 
+bool try_builtin(t_config *cnf, char *cmd) {
+    int i = 0;
+	t_pair_cmd_name builtin[] = {
+		{"export", mx_builtin_export},
+		{"unset", mx_builtin_unset},
+		{"exit", mx_builtin_exit},
+		{"env", mx_builtin_env},
+		{"cd", mx_builtin_cd},
+		{"pwd", mx_builtin_pwd},
+		{"which", mx_builtin_which},
+        {"echo", mx_builtin_echo},
+        {"alias", mx_alias},
+		{NULL, NULL}
+	};
+
+    while (builtin[i].command)
+	{
+		if (strcmp(cmd, builtin[i].command) == 0) {
+			builtin[i].func(cnf);
+			//freeArgsAndBuffer(build);
+			return true;
+		}
+		i++;
+	}
+	return false;
+}
+
 void mx_eval(t_global_environment *gv, char *line) {
     int pid;
+    t_config *cnf = NULL;
 
-    gv->a = 1; // TODO: delete. This is for compiler
     avsize = 0;
     parseline(line);
-    if (av[0] == NULL)
-        return;
-    switch (pid = fork ()) {
-        case -1:
-            mx_printerr("fork");
-            break;
-        case 0:
-            doexec();
-            break;
-        default:
-            waitpid(pid, NULL, 0);
-            break;
+    cnf = malloc(sizeof(t_config));
+    cnf->agv = av;
+    cnf->agvsize = avsize;
+    cnf->gv = gv;
+    if (!try_builtin(cnf, av[0])) {
+        if (av[0] == NULL)
+            return;
+        switch (pid = fork ()) {
+            case -1:
+                mx_printerr("fork");
+                break;
+            case 0:
+                doexec();
+                break;
+            default:
+                waitpid(pid, NULL, 0);
+                break;
+        }
     }
+    free(cnf);
 }

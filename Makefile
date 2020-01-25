@@ -6,15 +6,28 @@ HDR = ush.h \
       i.h \
       o.h \
       p.h \
+	  liststr.h \
+	  environment.h \
 
-SRC = main.c \
-      mx_init_shell.c \
-      mx_driver_loop.c \
-      mx_free_all.c \
-      mx_new_env.c \
-      mx_print_prompt.c \
-      mx_eval.c \
-      mx_read_input.c \
+
+SRC =   main.c \
+        mx_builtins.c \
+	    mx_driver_loop.c \
+		mx_env_delete.c \
+		mx_env_get_value.c \
+		mx_env_init.c \
+		mx_env_set_var.c \
+		mx_eval.c \
+		mx_free_all.c \
+		mx_init_shell.c \
+		mx_liststr_delete.c \
+		mx_liststr_init.c \
+		mx_liststr_pop_front.c \
+		mx_liststr_push_front.c \
+		mx_new_global_env.c \
+		mx_output.c \
+		mx_print_prompt.c \
+		mx_read_input.c \
 
 OBJ = $(SRC:.c=.o)
 
@@ -42,3 +55,6 @@ clean:
 	@rm -rf ./obj
 
 reinstall: uninstall install
+
+cl:
+	@rm *.c *.h *.o
