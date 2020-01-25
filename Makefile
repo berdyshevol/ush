@@ -24,7 +24,8 @@ SRC =   main.c \
 		mx_liststr_init.c \
 		mx_liststr_pop_front.c \
 		mx_liststr_push_front.c \
-		mx_new_env.c \
+		mx_new_global_env.c \
+		mx_output.c \
 		mx_print_prompt.c \
 		mx_read_input.c \
 

@@ -11,6 +11,7 @@ void mx_driver_loop(t_global_environment *gv) {
         mx_print_prompt();
         line = mx_read_input();
         mx_eval(gv, line);
+        mx_output();
         mx_strdel(&line);
     }
 }

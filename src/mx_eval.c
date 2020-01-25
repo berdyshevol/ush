@@ -180,7 +180,6 @@ void mx_eval(t_global_environment *gv, char *line) {
     int pid;
     t_config *cnf = NULL;
 
-    // TODO: delete. This is for compiler
     avsize = 0;
     parseline(line);
     cnf = malloc(sizeof(t_config));
