@@ -28,6 +28,8 @@ SRC =   main.c \
 		mx_output.c \
 		mx_print_prompt.c \
 		mx_read_input.c \
+		mx_is_closed_expression.c \
+		
 
 OBJ = $(SRC:.c=.o)
 
