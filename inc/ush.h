@@ -23,6 +23,11 @@ typedef struct global_environment {
 	char *shellName;
 	unsigned int lineCounter;
 	int errorStatus;
+
+	char *str;
+	char buff[5];
+	unsigned int cursor;
+	
 } t_global_environment;
 
 typedef struct config {
