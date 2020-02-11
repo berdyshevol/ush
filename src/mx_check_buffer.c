@@ -13,23 +13,25 @@ static void signal_ctr_d() {
 }
 
 static void backspace(t_global_environment *g) {
-    if (g->cursor == 0)
+    if (g->cursor == 0) {
         printf("\ru$h> ");
-    else if (g->cursor == 1) {
-        g->str[g->cursor] = '\0';
-        printf("\ru$h> %s", g->str);
-        write(1, " \b", strlen(" \b"));
-        g->cursor = 0;
+        memset(g->str, '\0', strlen(g->str));
     }
-    else if (g->cursor > 1) {
-        g->str[g->cursor - 1] = '\0';
+    else if (g->cursor == 1) {
         printf("\ru$h> %s", g->str);
         write(1, "\b \b", strlen("\b \b"));
-        g->cursor =  g->cursor - 2;
+        memset(g->str, '\0', (strlen(g->str) - 1));
+        g->cursor--;
+    }
+    else if (g->cursor > 1) {
+        printf("\ru$h> %s", g->str);
+        write(1, "\b \b", strlen("\b \b"));
+        g->str[g->cursor - 1] = '\0';
+        g->cursor =  g->cursor - 1;
     }
 }
 
-void mx_ckeck_buffer(t_global_environment *g) {
+bool mx_ckeck_buffer(t_global_environment *g) {
     int len = strlen(g->buff);
 
     if (len == 1 && g->buff[0] == 3)
@@ -40,6 +42,9 @@ void mx_ckeck_buffer(t_global_environment *g) {
         write(1, &g->buff[0], 1);
         g->str[g->cursor] = g->buff[0];
     }
-    else if (len == 1 && g->buff[0] == 127)
+    else if (g->buff[0] == 127) {
         backspace(g);   
+        return false;
+    }
+    return true;
 }

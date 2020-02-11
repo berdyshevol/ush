@@ -25,7 +25,7 @@
 static struct termios stored_settings;
 
 void mx_read_input(t_global_environment *g);
-void mx_ckeck_buffer(t_global_environment *g);
+bool mx_ckeck_buffer(t_global_environment *g);
 void mx_reset_input_mode(void);
 
 #endif //USH_I_H
