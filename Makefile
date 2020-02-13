@@ -34,6 +34,7 @@ SRC =   main.c \
 		mx_is_closed_expression.c \
 		mx_sort_arr.c \
 		mx_check_buffer.c \
+		mx_builtin_echo.c \
 
 
 OBJ = $(SRC:.c=.o)

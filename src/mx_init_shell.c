@@ -19,7 +19,6 @@ void mx_init_shell(t_global_environment *gv) {
     set_input_mode();
     setvbuf(stdout, NULL, _IONBF, 0);
     gv->shellName = "brothers' shell"; // TODO: удалить
-    // настройка сигналов
 }
 
 // static void sig_int() {

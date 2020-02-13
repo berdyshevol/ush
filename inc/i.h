@@ -22,6 +22,12 @@
 #define MX_MOVE_CURSOR_LEFT "\033[1C"
 #define MX_MOVE_CURSOR_RIGHT "\033[1D"
 
+typedef enum {
+    minus_e,
+    minus_E,
+    minus_n,
+} e_echo;
+
 static struct termios stored_settings;
 
 void mx_read_input(t_global_environment *g);
