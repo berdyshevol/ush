@@ -12,6 +12,9 @@ HDR = ush.h \
 
 SRC =   main.c \
         mx_builtins.c \
+		mx_builtin_export.c \
+		mx_builtin_cd.c \
+		mx_builtin_pwd.c \
 	    mx_driver_loop.c \
 		mx_env_delete.c \
 		mx_env_get_value.c \
@@ -30,11 +33,11 @@ SRC =   main.c \
 		mx_read_input.c \
 		mx_is_closed_expression.c \
 		mx_sort_arr.c \
-		
+
 
 OBJ = $(SRC:.c=.o)
 
-CFLAG = -std=c11 -Wall -Wextra -Wpedantic -Werror
+CFLAG = -std=c11 -Wall -Wextra -Wpedantic -Werror 
 
 all: install clean
 

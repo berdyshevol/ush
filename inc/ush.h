@@ -13,27 +13,30 @@
 #include "liststr.h"
 #include "environment.h"
 
-typedef struct global_environment {
-    t_environment *env;
-	char **envList;
-	char **args;
-	char *buffer;
-	char *path;
-	char *fullPath;
-	char *shellName;
-	unsigned int lineCounter;
-	int errorStatus;
-} t_global_environment;
-
 typedef struct config {
     char **agv;
     int agvsize;
-    t_global_environment *gv;
 } t_config;
+
+typedef struct global_environment {
+    t_environment *env;
+    char **envList;
+    char **args;
+    char *buffer;
+    char *path;
+    char *fullPath;
+    char *shellName;
+    unsigned int lineCounter;
+    int errorStatus;
+    char *pwd;
+    char *oldpwd;
+    t_config *cnf;
+
+} t_global_environment;
 
 typedef struct builtInCommands {
 	char *command;
-	void (*func)(t_config *);
+	int (*func)(t_global_environment *);
 } t_pair_cmd_name;
 
 void mx_init_shell(t_global_environment *gv);
