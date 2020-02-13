@@ -149,7 +149,7 @@ void doexec (void) {
     exit (1);
 }
 
-bool try_builtin(t_config *cnf, char *cmd) {
+bool try_builtin(t_global_environment *gv, char *cmd) {
     int i = 0;
 	t_pair_cmd_name builtin[] = {
 		{"export", mx_builtin_export},
@@ -164,16 +164,22 @@ bool try_builtin(t_config *cnf, char *cmd) {
 		{NULL, NULL}
 	};
 
-    while (builtin[i].command)
-	{
+    while (builtin[i].command) {
 		if (strcmp(cmd, builtin[i].command) == 0) {
-			builtin[i].func(cnf);
+			builtin[i].func(gv);
 			//freeArgsAndBuffer(build);
 			return true;
 		}
 		i++;
 	}
 	return false;
+}
+
+static int arr_length(char **agv){
+    int i;
+
+    for (i = 0; agv[i] != NULL; i++);
+    return i;
 }
 
 void mx_eval(t_global_environment *gv, char *line) {
@@ -184,9 +190,9 @@ void mx_eval(t_global_environment *gv, char *line) {
     parseline(line);
     cnf = malloc(sizeof(t_config));
     cnf->agv = av;
-    cnf->agvsize = avsize;
-    cnf->gv = gv;
-    if (!try_builtin(cnf, av[0])) {
+    cnf->agvsize = arr_length(cnf->agv);
+    gv->cnf = cnf;
+    if (!try_builtin(gv, av[0])) {
         if (av[0] == NULL)
             return;
         switch (pid = fork ()) {
@@ -201,5 +207,5 @@ void mx_eval(t_global_environment *gv, char *line) {
                 break;
         }
     }
-    free(cnf);
+    free(gv->cnf); // TODO: здесь будет ликю Нужно чистить но там есть глобальная переменная
 }
