@@ -9,5 +9,6 @@ t_global_environment *mx_new_global_env(void) {
     gv->shellName = "brothers' shell";
     gv->pwd = mx_strdup(getenv("PWD"));
     gv->oldpwd = mx_strdup(getenv("OLDPWD"));
+    gv->his_point = 0;
     return gv;
 }
