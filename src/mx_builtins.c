@@ -34,13 +34,6 @@ int mx_builtin_env(t_global_environment *gv) {
     return EXIT_SUCCESS;
 }
 
-int mx_builtin_which(t_global_environment *gv) {
-    mx_printstr("which: ");
-    mx_printstr(gv->shellName);
-    mx_printstr("\n");
-    return EXIT_SUCCESS;
-}
-
 int mx_builtin_echo(t_global_environment *gv) {
     mx_printstr("echo: ");
     mx_printstr(gv->shellName);

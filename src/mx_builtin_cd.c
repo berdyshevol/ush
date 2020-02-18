@@ -4,7 +4,6 @@
 
 #include "ush.h"
 
-static bool *flags_map();
 static char *flags_handler_cd(char **argv, bool **is_flag);
 static int open_or_not_catalog(char *dir, bool old);
 static int open_oldpwd_catalog(t_global_environment *gv, char *str);
@@ -16,16 +15,18 @@ static char *dotdot_cancat(char **arr, int i);
 static char *dot_cancat(char **arr, int i);
 
 int mx_builtin_cd(t_global_environment *gv) {
-    bool *flags = flags_map();
+    bool *flags = flags_map(3);
     int status;
     char *dir_to_check = NULL;
     char *dir = NULL;
 
-    if(!(dir_to_check = flags_handler_cd(gv->cnf->agv, &flags)))
+    if(!(dir_to_check = flags_handler_cd(gv->cnf->agv, &flags))) {
+        free(flags);
         return EXIT_FAILURE;
+    }
     dir = path_finding(gv, dir_to_check);
-    if (flags[FLAG_s]) {
-        if (flags[FLAG_minus])
+    if (flags[CD_s]) {
+        if (flags[CD_minus])
             if (open_or_not_catalog(gv->oldpwd, true) == EXIT_SUCCESS)
                 status = open_oldpwd_catalog(gv, gv->oldpwd);
             else
@@ -36,13 +37,13 @@ int mx_builtin_cd(t_global_environment *gv) {
             else
                 status = EXIT_FAILURE;
     }
-    else if (flags[FLAG_P]) {
-        if (flags[FLAG_minus])
+    else if (flags[CD_P]) {
+        if (flags[CD_minus])
             status = open_oldpwd_catalog(gv, open_link_markup(gv->oldpwd));
         else
             status = open_incoming_catalog(gv, open_link_markup(dir));
     }
-    else if (flags[FLAG_minus])
+    else if (flags[CD_minus])
         status = open_oldpwd_catalog(gv, gv->oldpwd);
     else
         status = open_incoming_catalog(gv, dir);
@@ -56,10 +57,10 @@ int mx_builtin_cd(t_global_environment *gv) {
 
 // ----------- CD builtin functions -----------
 
-static bool *flags_map() {
-    bool *res = (bool *) malloc(sizeof (bool) * 3);
+bool *flags_map(int flags_num) {
+    bool *res = (bool *) malloc(sizeof (bool) * flags_num);
 
-    for (int i = 0; i < 3; i++)
+    for (int i = 0; i < flags_num; i++)
         res[i] = false;
     return res;
 }
@@ -71,13 +72,13 @@ static char *flags_handler_cd(char **argv, bool **is_flag) {
                 return argv[i + 1] == NULL ? mx_strdup(getenv("HOME"))
                                            : mx_strdup(argv[i + 1]);
             else if (argv[i][1] == '\0')
-                (*is_flag)[FLAG_minus] = true;
+                (*is_flag)[CD_minus] = true;
             else
                 for (int j = 1; argv[i][j]; j++) {
                     if (argv[i][j] == 's')
-                        (*is_flag)[FLAG_s] = true;
+                        (*is_flag)[CD_s] = true;
                     else if (argv[i][j] == 'P')
-                        (*is_flag)[FLAG_P] = true;
+                        (*is_flag)[CD_P] = true;
                     else {
                         fprintf(stderr, "u$h: cd: -%c: invalid option\n",
                                 argv[i][j]);
