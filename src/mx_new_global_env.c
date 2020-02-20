@@ -1,6 +1,3 @@
-//
-// Created by Oleg Berdyshev on 1/22/20.
-//
 #include "ush.h"
 
 t_global_environment *mx_new_global_env(void) {
@@ -10,5 +7,10 @@ t_global_environment *mx_new_global_env(void) {
     gv->pwd = mx_strdup(getenv("PWD"));
     gv->oldpwd = mx_strdup(getenv("OLDPWD"));
     gv->his_point = 0;
+    gv->show_his = 0;
+    gv->bufsize = 128;
+    gv->backcpase_his = false;
+    for (int i = 0; i < 500; i++)
+        gv->history[i] = NULL;
     return gv;
 }

@@ -32,13 +32,15 @@ typedef struct global_environment {
     char *oldpwd;
     t_config *cnf;
     
-    char *str;   //reading line
+    char *str;
 	char buff[5];
 	unsigned int cursor;
+    unsigned int bufsize;
 	
 	char *history[500];
 	unsigned int his_point;
 	unsigned int show_his;
+    bool backcpase_his;
 } t_global_environment;
 
 typedef struct builtInCommands {

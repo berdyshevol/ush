@@ -35,7 +35,7 @@ SRC =   main.c \
 		mx_sort_arr.c \
 		mx_check_buffer.c \
 		mx_builtin_echo.c \
-
+		mx_history.c \
 
 OBJ = $(SRC:.c=.o)
 

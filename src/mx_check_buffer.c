@@ -1,9 +1,10 @@
 #include "ush.h"
 
-static void signal_ctr_c() {
-    printf("\nCTR + C\nExit.\n");
-    mx_reset_input_mode();
-    exit(130);
+static void signal_ctr_c(t_global_environment *g) {
+    printf("\nHISTORY:\n");
+    for (int i = 0; g->history[i] != NULL; i++)
+        printf("#%i -> \"%s\"\n", i, g->history[i]);
+    mx_print_prompt();
 }
 
 static void signal_ctr_d() {
@@ -18,14 +19,12 @@ static void backspace(t_global_environment *g) {
         memset(g->str, '\0', strlen(g->str));
     }
     else if (g->cursor == 1) {
-        printf("\ru$h> %s", g->str);
-        write(1, "\b \b", strlen("\b \b"));
+        printf("\b\x1b[0K");
         memset(g->str, '\0', (strlen(g->str) - 1));
         g->cursor--;
     }
     else if (g->cursor > 1) {
-        printf("\ru$h> %s", g->str);
-        write(1, "\b \b", strlen("\b \b"));
+        printf("\b\x1b[0K");
         g->str[g->cursor - 1] = '\0';
         g->cursor =  g->cursor - 1;
     }
@@ -35,10 +34,10 @@ bool mx_ckeck_buffer(t_global_environment *g) {
     int len = strlen(g->buff);
 
     if (len == 1 && g->buff[0] == 3)
-        signal_ctr_c();
+        signal_ctr_c(g);
     else if (len == 1 && g->buff[0] == 4)
         signal_ctr_d();
-    else if (len == 1 && (g->buff[0] > 8 && g->buff[0] < 127)) {
+    else if (len == 1 && (g->buff[0] >= 0 && g->buff[0] < 127)) {
         write(1, &g->buff[0], 1);
         g->str[g->cursor] = g->buff[0];
     }
