@@ -26,10 +26,15 @@ static void add_history(t_global_environment *g) {
     }
     else
         return;
-    g->show_his = g->his_point;
-    g->his_point++;
-    if (g->his_point > 500)
-        g->his_point = 0;
+    g->show_his = g->his_point + 1;
+    if (g->his_point < 499)
+        g->his_point++;
+    else {
+        mx_strdel(&g->history[0]);
+        for (int i = 0; i < 500; i++)
+            g->history[i] = g->history[i + 1];
+        mx_strdel(&g->history[499]);
+    }
 }
 
 void mx_read_input(t_global_environment *g) {
@@ -49,6 +54,8 @@ void mx_read_input(t_global_environment *g) {
             write(1, ">", 1);
         else if (mx_is_closed_expression(g->str) && g->str[g->cursor] == '\n') {
             g->str[g->cursor] = '\0';
+            mx_strdel(&g->tmp_str);
+            g->full_tmp_str = false;
             add_history(g);
             return;
         }

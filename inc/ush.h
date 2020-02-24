@@ -33,13 +33,15 @@ typedef struct global_environment {
     t_config *cnf;
     
     char *str;
+    char *tmp_str;
 	char buff[5];
 	unsigned int cursor;
     unsigned int bufsize;
 	
 	char *history[500];
 	unsigned int his_point;
-	unsigned int show_his;
+    unsigned int show_his;
+    bool full_tmp_str;
     bool backcpase_his;
 } t_global_environment;
 
