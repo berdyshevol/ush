@@ -68,8 +68,10 @@ int mx_history(t_global_environment *g) {
             down_arrow(g);
             return true;
         }
-        else 
+        else {
             show_tmp_str(g);
+            return true;
+        }
         g->backcpase_his = true;
     }
     return false;
