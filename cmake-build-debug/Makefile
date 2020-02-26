@@ -39,19 +39,19 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /Users/ihumeniuk/Desktop/CLion.app/Contents/bin/cmake/mac/bin/cmake
+CMAKE_COMMAND = /private/var/folders/zz/zyxvpxvq6csfxvn_n0003yyh000zqm/T/AppTranslocation/039BE5B8-D433-44F0-805B-9D5781230079/d/CLion.app/Contents/bin/cmake/mac/bin/cmake
 
 # The command to remove a file.
-RM = /Users/ihumeniuk/Desktop/CLion.app/Contents/bin/cmake/mac/bin/cmake -E remove -f
+RM = /private/var/folders/zz/zyxvpxvq6csfxvn_n0003yyh000zqm/T/AppTranslocation/039BE5B8-D433-44F0-805B-9D5781230079/d/CLion.app/Contents/bin/cmake/mac/bin/cmake -E remove -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/ihumeniuk/Desktop/work
+CMAKE_SOURCE_DIR = /Users/oberdyshev/ush-ol
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/ihumeniuk/Desktop/work/cmake-build-debug
+CMAKE_BINARY_DIR = /Users/oberdyshev/ush-ol/cmake-build-debug
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -59,7 +59,7 @@ CMAKE_BINARY_DIR = /Users/ihumeniuk/Desktop/work/cmake-build-debug
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/Users/ihumeniuk/Desktop/CLion.app/Contents/bin/cmake/mac/bin/cmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	/private/var/folders/zz/zyxvpxvq6csfxvn_n0003yyh000zqm/T/AppTranslocation/039BE5B8-D433-44F0-805B-9D5781230079/d/CLion.app/Contents/bin/cmake/mac/bin/cmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : rebuild_cache
 
 # Special rule for the target rebuild_cache
@@ -70,7 +70,7 @@ rebuild_cache/fast: rebuild_cache
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
-	/Users/ihumeniuk/Desktop/CLion.app/Contents/bin/cmake/mac/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+	/private/var/folders/zz/zyxvpxvq6csfxvn_n0003yyh000zqm/T/AppTranslocation/039BE5B8-D433-44F0-805B-9D5781230079/d/CLion.app/Contents/bin/cmake/mac/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
 .PHONY : edit_cache
 
 # Special rule for the target edit_cache
@@ -80,9 +80,9 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/ihumeniuk/Desktop/work/cmake-build-debug/CMakeFiles /Users/ihumeniuk/Desktop/work/cmake-build-debug/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/oberdyshev/ush-ol/cmake-build-debug/CMakeFiles /Users/oberdyshev/ush-ol/cmake-build-debug/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/ihumeniuk/Desktop/work/cmake-build-debug/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/oberdyshev/ush-ol/cmake-build-debug/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -1945,33 +1945,6 @@ src/mx_driver_loop.c.s:
 	$(MAKE) -f CMakeFiles/ush.dir/build.make CMakeFiles/ush.dir/src/mx_driver_loop.c.s
 .PHONY : src/mx_driver_loop.c.s
 
-src/mx_env_delete.o: src/mx_env_delete.c.o
-
-.PHONY : src/mx_env_delete.o
-
-# target to build an object file
-src/mx_env_delete.c.o:
-	$(MAKE) -f CMakeFiles/ush.dir/build.make CMakeFiles/ush.dir/src/mx_env_delete.c.o
-.PHONY : src/mx_env_delete.c.o
-
-src/mx_env_delete.i: src/mx_env_delete.c.i
-
-.PHONY : src/mx_env_delete.i
-
-# target to preprocess a source file
-src/mx_env_delete.c.i:
-	$(MAKE) -f CMakeFiles/ush.dir/build.make CMakeFiles/ush.dir/src/mx_env_delete.c.i
-.PHONY : src/mx_env_delete.c.i
-
-src/mx_env_delete.s: src/mx_env_delete.c.s
-
-.PHONY : src/mx_env_delete.s
-
-# target to generate assembly for a file
-src/mx_env_delete.c.s:
-	$(MAKE) -f CMakeFiles/ush.dir/build.make CMakeFiles/ush.dir/src/mx_env_delete.c.s
-.PHONY : src/mx_env_delete.c.s
-
 src/mx_env_get_value.o: src/mx_env_get_value.c.o
 
 .PHONY : src/mx_env_get_value.o
@@ -2025,6 +1998,33 @@ src/mx_env_init.s: src/mx_env_init.c.s
 src/mx_env_init.c.s:
 	$(MAKE) -f CMakeFiles/ush.dir/build.make CMakeFiles/ush.dir/src/mx_env_init.c.s
 .PHONY : src/mx_env_init.c.s
+
+src/mx_env_new_delete.o: src/mx_env_new_delete.c.o
+
+.PHONY : src/mx_env_new_delete.o
+
+# target to build an object file
+src/mx_env_new_delete.c.o:
+	$(MAKE) -f CMakeFiles/ush.dir/build.make CMakeFiles/ush.dir/src/mx_env_new_delete.c.o
+.PHONY : src/mx_env_new_delete.c.o
+
+src/mx_env_new_delete.i: src/mx_env_new_delete.c.i
+
+.PHONY : src/mx_env_new_delete.i
+
+# target to preprocess a source file
+src/mx_env_new_delete.c.i:
+	$(MAKE) -f CMakeFiles/ush.dir/build.make CMakeFiles/ush.dir/src/mx_env_new_delete.c.i
+.PHONY : src/mx_env_new_delete.c.i
+
+src/mx_env_new_delete.s: src/mx_env_new_delete.c.s
+
+.PHONY : src/mx_env_new_delete.s
+
+# target to generate assembly for a file
+src/mx_env_new_delete.c.s:
+	$(MAKE) -f CMakeFiles/ush.dir/build.make CMakeFiles/ush.dir/src/mx_env_new_delete.c.s
+.PHONY : src/mx_env_new_delete.c.s
 
 src/mx_env_set_var.o: src/mx_env_set_var.c.o
 
@@ -2080,6 +2080,114 @@ src/mx_eval.c.s:
 	$(MAKE) -f CMakeFiles/ush.dir/build.make CMakeFiles/ush.dir/src/mx_eval.c.s
 .PHONY : src/mx_eval.c.s
 
+src/mx_eval_parameter_expansion.o: src/mx_eval_parameter_expansion.c.o
+
+.PHONY : src/mx_eval_parameter_expansion.o
+
+# target to build an object file
+src/mx_eval_parameter_expansion.c.o:
+	$(MAKE) -f CMakeFiles/ush.dir/build.make CMakeFiles/ush.dir/src/mx_eval_parameter_expansion.c.o
+.PHONY : src/mx_eval_parameter_expansion.c.o
+
+src/mx_eval_parameter_expansion.i: src/mx_eval_parameter_expansion.c.i
+
+.PHONY : src/mx_eval_parameter_expansion.i
+
+# target to preprocess a source file
+src/mx_eval_parameter_expansion.c.i:
+	$(MAKE) -f CMakeFiles/ush.dir/build.make CMakeFiles/ush.dir/src/mx_eval_parameter_expansion.c.i
+.PHONY : src/mx_eval_parameter_expansion.c.i
+
+src/mx_eval_parameter_expansion.s: src/mx_eval_parameter_expansion.c.s
+
+.PHONY : src/mx_eval_parameter_expansion.s
+
+# target to generate assembly for a file
+src/mx_eval_parameter_expansion.c.s:
+	$(MAKE) -f CMakeFiles/ush.dir/build.make CMakeFiles/ush.dir/src/mx_eval_parameter_expansion.c.s
+.PHONY : src/mx_eval_parameter_expansion.c.s
+
+src/mx_eval_redirections.o: src/mx_eval_redirections.c.o
+
+.PHONY : src/mx_eval_redirections.o
+
+# target to build an object file
+src/mx_eval_redirections.c.o:
+	$(MAKE) -f CMakeFiles/ush.dir/build.make CMakeFiles/ush.dir/src/mx_eval_redirections.c.o
+.PHONY : src/mx_eval_redirections.c.o
+
+src/mx_eval_redirections.i: src/mx_eval_redirections.c.i
+
+.PHONY : src/mx_eval_redirections.i
+
+# target to preprocess a source file
+src/mx_eval_redirections.c.i:
+	$(MAKE) -f CMakeFiles/ush.dir/build.make CMakeFiles/ush.dir/src/mx_eval_redirections.c.i
+.PHONY : src/mx_eval_redirections.c.i
+
+src/mx_eval_redirections.s: src/mx_eval_redirections.c.s
+
+.PHONY : src/mx_eval_redirections.s
+
+# target to generate assembly for a file
+src/mx_eval_redirections.c.s:
+	$(MAKE) -f CMakeFiles/ush.dir/build.make CMakeFiles/ush.dir/src/mx_eval_redirections.c.s
+.PHONY : src/mx_eval_redirections.c.s
+
+src/mx_exec_try_bin.o: src/mx_exec_try_bin.c.o
+
+.PHONY : src/mx_exec_try_bin.o
+
+# target to build an object file
+src/mx_exec_try_bin.c.o:
+	$(MAKE) -f CMakeFiles/ush.dir/build.make CMakeFiles/ush.dir/src/mx_exec_try_bin.c.o
+.PHONY : src/mx_exec_try_bin.c.o
+
+src/mx_exec_try_bin.i: src/mx_exec_try_bin.c.i
+
+.PHONY : src/mx_exec_try_bin.i
+
+# target to preprocess a source file
+src/mx_exec_try_bin.c.i:
+	$(MAKE) -f CMakeFiles/ush.dir/build.make CMakeFiles/ush.dir/src/mx_exec_try_bin.c.i
+.PHONY : src/mx_exec_try_bin.c.i
+
+src/mx_exec_try_bin.s: src/mx_exec_try_bin.c.s
+
+.PHONY : src/mx_exec_try_bin.s
+
+# target to generate assembly for a file
+src/mx_exec_try_bin.c.s:
+	$(MAKE) -f CMakeFiles/ush.dir/build.make CMakeFiles/ush.dir/src/mx_exec_try_bin.c.s
+.PHONY : src/mx_exec_try_bin.c.s
+
+src/mx_execute.o: src/mx_execute.c.o
+
+.PHONY : src/mx_execute.o
+
+# target to build an object file
+src/mx_execute.c.o:
+	$(MAKE) -f CMakeFiles/ush.dir/build.make CMakeFiles/ush.dir/src/mx_execute.c.o
+.PHONY : src/mx_execute.c.o
+
+src/mx_execute.i: src/mx_execute.c.i
+
+.PHONY : src/mx_execute.i
+
+# target to preprocess a source file
+src/mx_execute.c.i:
+	$(MAKE) -f CMakeFiles/ush.dir/build.make CMakeFiles/ush.dir/src/mx_execute.c.i
+.PHONY : src/mx_execute.c.i
+
+src/mx_execute.s: src/mx_execute.c.s
+
+.PHONY : src/mx_execute.s
+
+# target to generate assembly for a file
+src/mx_execute.c.s:
+	$(MAKE) -f CMakeFiles/ush.dir/build.make CMakeFiles/ush.dir/src/mx_execute.c.s
+.PHONY : src/mx_execute.c.s
+
 src/mx_free_all.o: src/mx_free_all.c.o
 
 .PHONY : src/mx_free_all.o
@@ -2106,6 +2214,33 @@ src/mx_free_all.s: src/mx_free_all.c.s
 src/mx_free_all.c.s:
 	$(MAKE) -f CMakeFiles/ush.dir/build.make CMakeFiles/ush.dir/src/mx_free_all.c.s
 .PHONY : src/mx_free_all.c.s
+
+src/mx_global_env_new_delete.o: src/mx_global_env_new_delete.c.o
+
+.PHONY : src/mx_global_env_new_delete.o
+
+# target to build an object file
+src/mx_global_env_new_delete.c.o:
+	$(MAKE) -f CMakeFiles/ush.dir/build.make CMakeFiles/ush.dir/src/mx_global_env_new_delete.c.o
+.PHONY : src/mx_global_env_new_delete.c.o
+
+src/mx_global_env_new_delete.i: src/mx_global_env_new_delete.c.i
+
+.PHONY : src/mx_global_env_new_delete.i
+
+# target to preprocess a source file
+src/mx_global_env_new_delete.c.i:
+	$(MAKE) -f CMakeFiles/ush.dir/build.make CMakeFiles/ush.dir/src/mx_global_env_new_delete.c.i
+.PHONY : src/mx_global_env_new_delete.c.i
+
+src/mx_global_env_new_delete.s: src/mx_global_env_new_delete.c.s
+
+.PHONY : src/mx_global_env_new_delete.s
+
+# target to generate assembly for a file
+src/mx_global_env_new_delete.c.s:
+	$(MAKE) -f CMakeFiles/ush.dir/build.make CMakeFiles/ush.dir/src/mx_global_env_new_delete.c.s
+.PHONY : src/mx_global_env_new_delete.c.s
 
 src/mx_history.o: src/mx_history.c.o
 
@@ -2161,32 +2296,32 @@ src/mx_init_shell.c.s:
 	$(MAKE) -f CMakeFiles/ush.dir/build.make CMakeFiles/ush.dir/src/mx_init_shell.c.s
 .PHONY : src/mx_init_shell.c.s
 
-src/mx_is_closed_expression.o: src/mx_is_closed_expression.c.o
+src/mx_liststr_convert_argv.o: src/mx_liststr_convert_argv.c.o
 
-.PHONY : src/mx_is_closed_expression.o
+.PHONY : src/mx_liststr_convert_argv.o
 
 # target to build an object file
-src/mx_is_closed_expression.c.o:
-	$(MAKE) -f CMakeFiles/ush.dir/build.make CMakeFiles/ush.dir/src/mx_is_closed_expression.c.o
-.PHONY : src/mx_is_closed_expression.c.o
+src/mx_liststr_convert_argv.c.o:
+	$(MAKE) -f CMakeFiles/ush.dir/build.make CMakeFiles/ush.dir/src/mx_liststr_convert_argv.c.o
+.PHONY : src/mx_liststr_convert_argv.c.o
 
-src/mx_is_closed_expression.i: src/mx_is_closed_expression.c.i
+src/mx_liststr_convert_argv.i: src/mx_liststr_convert_argv.c.i
 
-.PHONY : src/mx_is_closed_expression.i
+.PHONY : src/mx_liststr_convert_argv.i
 
 # target to preprocess a source file
-src/mx_is_closed_expression.c.i:
-	$(MAKE) -f CMakeFiles/ush.dir/build.make CMakeFiles/ush.dir/src/mx_is_closed_expression.c.i
-.PHONY : src/mx_is_closed_expression.c.i
+src/mx_liststr_convert_argv.c.i:
+	$(MAKE) -f CMakeFiles/ush.dir/build.make CMakeFiles/ush.dir/src/mx_liststr_convert_argv.c.i
+.PHONY : src/mx_liststr_convert_argv.c.i
 
-src/mx_is_closed_expression.s: src/mx_is_closed_expression.c.s
+src/mx_liststr_convert_argv.s: src/mx_liststr_convert_argv.c.s
 
-.PHONY : src/mx_is_closed_expression.s
+.PHONY : src/mx_liststr_convert_argv.s
 
 # target to generate assembly for a file
-src/mx_is_closed_expression.c.s:
-	$(MAKE) -f CMakeFiles/ush.dir/build.make CMakeFiles/ush.dir/src/mx_is_closed_expression.c.s
-.PHONY : src/mx_is_closed_expression.c.s
+src/mx_liststr_convert_argv.c.s:
+	$(MAKE) -f CMakeFiles/ush.dir/build.make CMakeFiles/ush.dir/src/mx_liststr_convert_argv.c.s
+.PHONY : src/mx_liststr_convert_argv.c.s
 
 src/mx_liststr_delete.o: src/mx_liststr_delete.c.o
 
@@ -2242,6 +2377,33 @@ src/mx_liststr_init.c.s:
 	$(MAKE) -f CMakeFiles/ush.dir/build.make CMakeFiles/ush.dir/src/mx_liststr_init.c.s
 .PHONY : src/mx_liststr_init.c.s
 
+src/mx_liststr_length.o: src/mx_liststr_length.c.o
+
+.PHONY : src/mx_liststr_length.o
+
+# target to build an object file
+src/mx_liststr_length.c.o:
+	$(MAKE) -f CMakeFiles/ush.dir/build.make CMakeFiles/ush.dir/src/mx_liststr_length.c.o
+.PHONY : src/mx_liststr_length.c.o
+
+src/mx_liststr_length.i: src/mx_liststr_length.c.i
+
+.PHONY : src/mx_liststr_length.i
+
+# target to preprocess a source file
+src/mx_liststr_length.c.i:
+	$(MAKE) -f CMakeFiles/ush.dir/build.make CMakeFiles/ush.dir/src/mx_liststr_length.c.i
+.PHONY : src/mx_liststr_length.c.i
+
+src/mx_liststr_length.s: src/mx_liststr_length.c.s
+
+.PHONY : src/mx_liststr_length.s
+
+# target to generate assembly for a file
+src/mx_liststr_length.c.s:
+	$(MAKE) -f CMakeFiles/ush.dir/build.make CMakeFiles/ush.dir/src/mx_liststr_length.c.s
+.PHONY : src/mx_liststr_length.c.s
+
 src/mx_liststr_pop_front.o: src/mx_liststr_pop_front.c.o
 
 .PHONY : src/mx_liststr_pop_front.o
@@ -2268,6 +2430,33 @@ src/mx_liststr_pop_front.s: src/mx_liststr_pop_front.c.s
 src/mx_liststr_pop_front.c.s:
 	$(MAKE) -f CMakeFiles/ush.dir/build.make CMakeFiles/ush.dir/src/mx_liststr_pop_front.c.s
 .PHONY : src/mx_liststr_pop_front.c.s
+
+src/mx_liststr_push_back.o: src/mx_liststr_push_back.c.o
+
+.PHONY : src/mx_liststr_push_back.o
+
+# target to build an object file
+src/mx_liststr_push_back.c.o:
+	$(MAKE) -f CMakeFiles/ush.dir/build.make CMakeFiles/ush.dir/src/mx_liststr_push_back.c.o
+.PHONY : src/mx_liststr_push_back.c.o
+
+src/mx_liststr_push_back.i: src/mx_liststr_push_back.c.i
+
+.PHONY : src/mx_liststr_push_back.i
+
+# target to preprocess a source file
+src/mx_liststr_push_back.c.i:
+	$(MAKE) -f CMakeFiles/ush.dir/build.make CMakeFiles/ush.dir/src/mx_liststr_push_back.c.i
+.PHONY : src/mx_liststr_push_back.c.i
+
+src/mx_liststr_push_back.s: src/mx_liststr_push_back.c.s
+
+.PHONY : src/mx_liststr_push_back.s
+
+# target to generate assembly for a file
+src/mx_liststr_push_back.c.s:
+	$(MAKE) -f CMakeFiles/ush.dir/build.make CMakeFiles/ush.dir/src/mx_liststr_push_back.c.s
+.PHONY : src/mx_liststr_push_back.c.s
 
 src/mx_liststr_push_front.o: src/mx_liststr_push_front.c.o
 
@@ -2296,32 +2485,59 @@ src/mx_liststr_push_front.c.s:
 	$(MAKE) -f CMakeFiles/ush.dir/build.make CMakeFiles/ush.dir/src/mx_liststr_push_front.c.s
 .PHONY : src/mx_liststr_push_front.c.s
 
-src/mx_new_global_env.o: src/mx_new_global_env.c.o
+src/mx_new_delete_config.o: src/mx_new_delete_config.c.o
 
-.PHONY : src/mx_new_global_env.o
+.PHONY : src/mx_new_delete_config.o
 
 # target to build an object file
-src/mx_new_global_env.c.o:
-	$(MAKE) -f CMakeFiles/ush.dir/build.make CMakeFiles/ush.dir/src/mx_new_global_env.c.o
-.PHONY : src/mx_new_global_env.c.o
+src/mx_new_delete_config.c.o:
+	$(MAKE) -f CMakeFiles/ush.dir/build.make CMakeFiles/ush.dir/src/mx_new_delete_config.c.o
+.PHONY : src/mx_new_delete_config.c.o
 
-src/mx_new_global_env.i: src/mx_new_global_env.c.i
+src/mx_new_delete_config.i: src/mx_new_delete_config.c.i
 
-.PHONY : src/mx_new_global_env.i
+.PHONY : src/mx_new_delete_config.i
 
 # target to preprocess a source file
-src/mx_new_global_env.c.i:
-	$(MAKE) -f CMakeFiles/ush.dir/build.make CMakeFiles/ush.dir/src/mx_new_global_env.c.i
-.PHONY : src/mx_new_global_env.c.i
+src/mx_new_delete_config.c.i:
+	$(MAKE) -f CMakeFiles/ush.dir/build.make CMakeFiles/ush.dir/src/mx_new_delete_config.c.i
+.PHONY : src/mx_new_delete_config.c.i
 
-src/mx_new_global_env.s: src/mx_new_global_env.c.s
+src/mx_new_delete_config.s: src/mx_new_delete_config.c.s
 
-.PHONY : src/mx_new_global_env.s
+.PHONY : src/mx_new_delete_config.s
 
 # target to generate assembly for a file
-src/mx_new_global_env.c.s:
-	$(MAKE) -f CMakeFiles/ush.dir/build.make CMakeFiles/ush.dir/src/mx_new_global_env.c.s
-.PHONY : src/mx_new_global_env.c.s
+src/mx_new_delete_config.c.s:
+	$(MAKE) -f CMakeFiles/ush.dir/build.make CMakeFiles/ush.dir/src/mx_new_delete_config.c.s
+.PHONY : src/mx_new_delete_config.c.s
+
+src/mx_new_evalresult.o: src/mx_new_evalresult.c.o
+
+.PHONY : src/mx_new_evalresult.o
+
+# target to build an object file
+src/mx_new_evalresult.c.o:
+	$(MAKE) -f CMakeFiles/ush.dir/build.make CMakeFiles/ush.dir/src/mx_new_evalresult.c.o
+.PHONY : src/mx_new_evalresult.c.o
+
+src/mx_new_evalresult.i: src/mx_new_evalresult.c.i
+
+.PHONY : src/mx_new_evalresult.i
+
+# target to preprocess a source file
+src/mx_new_evalresult.c.i:
+	$(MAKE) -f CMakeFiles/ush.dir/build.make CMakeFiles/ush.dir/src/mx_new_evalresult.c.i
+.PHONY : src/mx_new_evalresult.c.i
+
+src/mx_new_evalresult.s: src/mx_new_evalresult.c.s
+
+.PHONY : src/mx_new_evalresult.s
+
+# target to generate assembly for a file
+src/mx_new_evalresult.c.s:
+	$(MAKE) -f CMakeFiles/ush.dir/build.make CMakeFiles/ush.dir/src/mx_new_evalresult.c.s
+.PHONY : src/mx_new_evalresult.c.s
 
 src/mx_output.o: src/mx_output.c.o
 
@@ -2349,6 +2565,438 @@ src/mx_output.s: src/mx_output.c.s
 src/mx_output.c.s:
 	$(MAKE) -f CMakeFiles/ush.dir/build.make CMakeFiles/ush.dir/src/mx_output.c.s
 .PHONY : src/mx_output.c.s
+
+src/mx_parse_words_sequence.o: src/mx_parse_words_sequence.c.o
+
+.PHONY : src/mx_parse_words_sequence.o
+
+# target to build an object file
+src/mx_parse_words_sequence.c.o:
+	$(MAKE) -f CMakeFiles/ush.dir/build.make CMakeFiles/ush.dir/src/mx_parse_words_sequence.c.o
+.PHONY : src/mx_parse_words_sequence.c.o
+
+src/mx_parse_words_sequence.i: src/mx_parse_words_sequence.c.i
+
+.PHONY : src/mx_parse_words_sequence.i
+
+# target to preprocess a source file
+src/mx_parse_words_sequence.c.i:
+	$(MAKE) -f CMakeFiles/ush.dir/build.make CMakeFiles/ush.dir/src/mx_parse_words_sequence.c.i
+.PHONY : src/mx_parse_words_sequence.c.i
+
+src/mx_parse_words_sequence.s: src/mx_parse_words_sequence.c.s
+
+.PHONY : src/mx_parse_words_sequence.s
+
+# target to generate assembly for a file
+src/mx_parse_words_sequence.c.s:
+	$(MAKE) -f CMakeFiles/ush.dir/build.make CMakeFiles/ush.dir/src/mx_parse_words_sequence.c.s
+.PHONY : src/mx_parse_words_sequence.c.s
+
+src/mx_parser_assignment.o: src/mx_parser_assignment.c.o
+
+.PHONY : src/mx_parser_assignment.o
+
+# target to build an object file
+src/mx_parser_assignment.c.o:
+	$(MAKE) -f CMakeFiles/ush.dir/build.make CMakeFiles/ush.dir/src/mx_parser_assignment.c.o
+.PHONY : src/mx_parser_assignment.c.o
+
+src/mx_parser_assignment.i: src/mx_parser_assignment.c.i
+
+.PHONY : src/mx_parser_assignment.i
+
+# target to preprocess a source file
+src/mx_parser_assignment.c.i:
+	$(MAKE) -f CMakeFiles/ush.dir/build.make CMakeFiles/ush.dir/src/mx_parser_assignment.c.i
+.PHONY : src/mx_parser_assignment.c.i
+
+src/mx_parser_assignment.s: src/mx_parser_assignment.c.s
+
+.PHONY : src/mx_parser_assignment.s
+
+# target to generate assembly for a file
+src/mx_parser_assignment.c.s:
+	$(MAKE) -f CMakeFiles/ush.dir/build.make CMakeFiles/ush.dir/src/mx_parser_assignment.c.s
+.PHONY : src/mx_parser_assignment.c.s
+
+src/mx_parser_find_param.o: src/mx_parser_find_param.c.o
+
+.PHONY : src/mx_parser_find_param.o
+
+# target to build an object file
+src/mx_parser_find_param.c.o:
+	$(MAKE) -f CMakeFiles/ush.dir/build.make CMakeFiles/ush.dir/src/mx_parser_find_param.c.o
+.PHONY : src/mx_parser_find_param.c.o
+
+src/mx_parser_find_param.i: src/mx_parser_find_param.c.i
+
+.PHONY : src/mx_parser_find_param.i
+
+# target to preprocess a source file
+src/mx_parser_find_param.c.i:
+	$(MAKE) -f CMakeFiles/ush.dir/build.make CMakeFiles/ush.dir/src/mx_parser_find_param.c.i
+.PHONY : src/mx_parser_find_param.c.i
+
+src/mx_parser_find_param.s: src/mx_parser_find_param.c.s
+
+.PHONY : src/mx_parser_find_param.s
+
+# target to generate assembly for a file
+src/mx_parser_find_param.c.s:
+	$(MAKE) -f CMakeFiles/ush.dir/build.make CMakeFiles/ush.dir/src/mx_parser_find_param.c.s
+.PHONY : src/mx_parser_find_param.c.s
+
+src/mx_parser_firstword.o: src/mx_parser_firstword.c.o
+
+.PHONY : src/mx_parser_firstword.o
+
+# target to build an object file
+src/mx_parser_firstword.c.o:
+	$(MAKE) -f CMakeFiles/ush.dir/build.make CMakeFiles/ush.dir/src/mx_parser_firstword.c.o
+.PHONY : src/mx_parser_firstword.c.o
+
+src/mx_parser_firstword.i: src/mx_parser_firstword.c.i
+
+.PHONY : src/mx_parser_firstword.i
+
+# target to preprocess a source file
+src/mx_parser_firstword.c.i:
+	$(MAKE) -f CMakeFiles/ush.dir/build.make CMakeFiles/ush.dir/src/mx_parser_firstword.c.i
+.PHONY : src/mx_parser_firstword.c.i
+
+src/mx_parser_firstword.s: src/mx_parser_firstword.c.s
+
+.PHONY : src/mx_parser_firstword.s
+
+# target to generate assembly for a file
+src/mx_parser_firstword.c.s:
+	$(MAKE) -f CMakeFiles/ush.dir/build.make CMakeFiles/ush.dir/src/mx_parser_firstword.c.s
+.PHONY : src/mx_parser_firstword.c.s
+
+src/mx_parser_get_binary_opid.o: src/mx_parser_get_binary_opid.c.o
+
+.PHONY : src/mx_parser_get_binary_opid.o
+
+# target to build an object file
+src/mx_parser_get_binary_opid.c.o:
+	$(MAKE) -f CMakeFiles/ush.dir/build.make CMakeFiles/ush.dir/src/mx_parser_get_binary_opid.c.o
+.PHONY : src/mx_parser_get_binary_opid.c.o
+
+src/mx_parser_get_binary_opid.i: src/mx_parser_get_binary_opid.c.i
+
+.PHONY : src/mx_parser_get_binary_opid.i
+
+# target to preprocess a source file
+src/mx_parser_get_binary_opid.c.i:
+	$(MAKE) -f CMakeFiles/ush.dir/build.make CMakeFiles/ush.dir/src/mx_parser_get_binary_opid.c.i
+.PHONY : src/mx_parser_get_binary_opid.c.i
+
+src/mx_parser_get_binary_opid.s: src/mx_parser_get_binary_opid.c.s
+
+.PHONY : src/mx_parser_get_binary_opid.s
+
+# target to generate assembly for a file
+src/mx_parser_get_binary_opid.c.s:
+	$(MAKE) -f CMakeFiles/ush.dir/build.make CMakeFiles/ush.dir/src/mx_parser_get_binary_opid.c.s
+.PHONY : src/mx_parser_get_binary_opid.c.s
+
+src/mx_parser_get_op_id.o: src/mx_parser_get_op_id.c.o
+
+.PHONY : src/mx_parser_get_op_id.o
+
+# target to build an object file
+src/mx_parser_get_op_id.c.o:
+	$(MAKE) -f CMakeFiles/ush.dir/build.make CMakeFiles/ush.dir/src/mx_parser_get_op_id.c.o
+.PHONY : src/mx_parser_get_op_id.c.o
+
+src/mx_parser_get_op_id.i: src/mx_parser_get_op_id.c.i
+
+.PHONY : src/mx_parser_get_op_id.i
+
+# target to preprocess a source file
+src/mx_parser_get_op_id.c.i:
+	$(MAKE) -f CMakeFiles/ush.dir/build.make CMakeFiles/ush.dir/src/mx_parser_get_op_id.c.i
+.PHONY : src/mx_parser_get_op_id.c.i
+
+src/mx_parser_get_op_id.s: src/mx_parser_get_op_id.c.s
+
+.PHONY : src/mx_parser_get_op_id.s
+
+# target to generate assembly for a file
+src/mx_parser_get_op_id.c.s:
+	$(MAKE) -f CMakeFiles/ush.dir/build.make CMakeFiles/ush.dir/src/mx_parser_get_op_id.c.s
+.PHONY : src/mx_parser_get_op_id.c.s
+
+src/mx_parser_get_op_name.o: src/mx_parser_get_op_name.c.o
+
+.PHONY : src/mx_parser_get_op_name.o
+
+# target to build an object file
+src/mx_parser_get_op_name.c.o:
+	$(MAKE) -f CMakeFiles/ush.dir/build.make CMakeFiles/ush.dir/src/mx_parser_get_op_name.c.o
+.PHONY : src/mx_parser_get_op_name.c.o
+
+src/mx_parser_get_op_name.i: src/mx_parser_get_op_name.c.i
+
+.PHONY : src/mx_parser_get_op_name.i
+
+# target to preprocess a source file
+src/mx_parser_get_op_name.c.i:
+	$(MAKE) -f CMakeFiles/ush.dir/build.make CMakeFiles/ush.dir/src/mx_parser_get_op_name.c.i
+.PHONY : src/mx_parser_get_op_name.c.i
+
+src/mx_parser_get_op_name.s: src/mx_parser_get_op_name.c.s
+
+.PHONY : src/mx_parser_get_op_name.s
+
+# target to generate assembly for a file
+src/mx_parser_get_op_name.c.s:
+	$(MAKE) -f CMakeFiles/ush.dir/build.make CMakeFiles/ush.dir/src/mx_parser_get_op_name.c.s
+.PHONY : src/mx_parser_get_op_name.c.s
+
+src/mx_parser_get_operator_info_byid.o: src/mx_parser_get_operator_info_byid.c.o
+
+.PHONY : src/mx_parser_get_operator_info_byid.o
+
+# target to build an object file
+src/mx_parser_get_operator_info_byid.c.o:
+	$(MAKE) -f CMakeFiles/ush.dir/build.make CMakeFiles/ush.dir/src/mx_parser_get_operator_info_byid.c.o
+.PHONY : src/mx_parser_get_operator_info_byid.c.o
+
+src/mx_parser_get_operator_info_byid.i: src/mx_parser_get_operator_info_byid.c.i
+
+.PHONY : src/mx_parser_get_operator_info_byid.i
+
+# target to preprocess a source file
+src/mx_parser_get_operator_info_byid.c.i:
+	$(MAKE) -f CMakeFiles/ush.dir/build.make CMakeFiles/ush.dir/src/mx_parser_get_operator_info_byid.c.i
+.PHONY : src/mx_parser_get_operator_info_byid.c.i
+
+src/mx_parser_get_operator_info_byid.s: src/mx_parser_get_operator_info_byid.c.s
+
+.PHONY : src/mx_parser_get_operator_info_byid.s
+
+# target to generate assembly for a file
+src/mx_parser_get_operator_info_byid.c.s:
+	$(MAKE) -f CMakeFiles/ush.dir/build.make CMakeFiles/ush.dir/src/mx_parser_get_operator_info_byid.c.s
+.PHONY : src/mx_parser_get_operator_info_byid.c.s
+
+src/mx_parser_get_unary_opid.o: src/mx_parser_get_unary_opid.c.o
+
+.PHONY : src/mx_parser_get_unary_opid.o
+
+# target to build an object file
+src/mx_parser_get_unary_opid.c.o:
+	$(MAKE) -f CMakeFiles/ush.dir/build.make CMakeFiles/ush.dir/src/mx_parser_get_unary_opid.c.o
+.PHONY : src/mx_parser_get_unary_opid.c.o
+
+src/mx_parser_get_unary_opid.i: src/mx_parser_get_unary_opid.c.i
+
+.PHONY : src/mx_parser_get_unary_opid.i
+
+# target to preprocess a source file
+src/mx_parser_get_unary_opid.c.i:
+	$(MAKE) -f CMakeFiles/ush.dir/build.make CMakeFiles/ush.dir/src/mx_parser_get_unary_opid.c.i
+.PHONY : src/mx_parser_get_unary_opid.c.i
+
+src/mx_parser_get_unary_opid.s: src/mx_parser_get_unary_opid.c.s
+
+.PHONY : src/mx_parser_get_unary_opid.s
+
+# target to generate assembly for a file
+src/mx_parser_get_unary_opid.c.s:
+	$(MAKE) -f CMakeFiles/ush.dir/build.make CMakeFiles/ush.dir/src/mx_parser_get_unary_opid.c.s
+.PHONY : src/mx_parser_get_unary_opid.c.s
+
+src/mx_parser_has_expression_operator.o: src/mx_parser_has_expression_operator.c.o
+
+.PHONY : src/mx_parser_has_expression_operator.o
+
+# target to build an object file
+src/mx_parser_has_expression_operator.c.o:
+	$(MAKE) -f CMakeFiles/ush.dir/build.make CMakeFiles/ush.dir/src/mx_parser_has_expression_operator.c.o
+.PHONY : src/mx_parser_has_expression_operator.c.o
+
+src/mx_parser_has_expression_operator.i: src/mx_parser_has_expression_operator.c.i
+
+.PHONY : src/mx_parser_has_expression_operator.i
+
+# target to preprocess a source file
+src/mx_parser_has_expression_operator.c.i:
+	$(MAKE) -f CMakeFiles/ush.dir/build.make CMakeFiles/ush.dir/src/mx_parser_has_expression_operator.c.i
+.PHONY : src/mx_parser_has_expression_operator.c.i
+
+src/mx_parser_has_expression_operator.s: src/mx_parser_has_expression_operator.c.s
+
+.PHONY : src/mx_parser_has_expression_operator.s
+
+# target to generate assembly for a file
+src/mx_parser_has_expression_operator.c.s:
+	$(MAKE) -f CMakeFiles/ush.dir/build.make CMakeFiles/ush.dir/src/mx_parser_has_expression_operator.c.s
+.PHONY : src/mx_parser_has_expression_operator.c.s
+
+src/mx_parser_is_closed_expression.o: src/mx_parser_is_closed_expression.c.o
+
+.PHONY : src/mx_parser_is_closed_expression.o
+
+# target to build an object file
+src/mx_parser_is_closed_expression.c.o:
+	$(MAKE) -f CMakeFiles/ush.dir/build.make CMakeFiles/ush.dir/src/mx_parser_is_closed_expression.c.o
+.PHONY : src/mx_parser_is_closed_expression.c.o
+
+src/mx_parser_is_closed_expression.i: src/mx_parser_is_closed_expression.c.i
+
+.PHONY : src/mx_parser_is_closed_expression.i
+
+# target to preprocess a source file
+src/mx_parser_is_closed_expression.c.i:
+	$(MAKE) -f CMakeFiles/ush.dir/build.make CMakeFiles/ush.dir/src/mx_parser_is_closed_expression.c.i
+.PHONY : src/mx_parser_is_closed_expression.c.i
+
+src/mx_parser_is_closed_expression.s: src/mx_parser_is_closed_expression.c.s
+
+.PHONY : src/mx_parser_is_closed_expression.s
+
+# target to generate assembly for a file
+src/mx_parser_is_closed_expression.c.s:
+	$(MAKE) -f CMakeFiles/ush.dir/build.make CMakeFiles/ush.dir/src/mx_parser_is_closed_expression.c.s
+.PHONY : src/mx_parser_is_closed_expression.c.s
+
+src/mx_parser_smart_find.o: src/mx_parser_smart_find.c.o
+
+.PHONY : src/mx_parser_smart_find.o
+
+# target to build an object file
+src/mx_parser_smart_find.c.o:
+	$(MAKE) -f CMakeFiles/ush.dir/build.make CMakeFiles/ush.dir/src/mx_parser_smart_find.c.o
+.PHONY : src/mx_parser_smart_find.c.o
+
+src/mx_parser_smart_find.i: src/mx_parser_smart_find.c.i
+
+.PHONY : src/mx_parser_smart_find.i
+
+# target to preprocess a source file
+src/mx_parser_smart_find.c.i:
+	$(MAKE) -f CMakeFiles/ush.dir/build.make CMakeFiles/ush.dir/src/mx_parser_smart_find.c.i
+.PHONY : src/mx_parser_smart_find.c.i
+
+src/mx_parser_smart_find.s: src/mx_parser_smart_find.c.s
+
+.PHONY : src/mx_parser_smart_find.s
+
+# target to generate assembly for a file
+src/mx_parser_smart_find.c.s:
+	$(MAKE) -f CMakeFiles/ush.dir/build.make CMakeFiles/ush.dir/src/mx_parser_smart_find.c.s
+.PHONY : src/mx_parser_smart_find.c.s
+
+src/mx_parser_split_two_str.o: src/mx_parser_split_two_str.c.o
+
+.PHONY : src/mx_parser_split_two_str.o
+
+# target to build an object file
+src/mx_parser_split_two_str.c.o:
+	$(MAKE) -f CMakeFiles/ush.dir/build.make CMakeFiles/ush.dir/src/mx_parser_split_two_str.c.o
+.PHONY : src/mx_parser_split_two_str.c.o
+
+src/mx_parser_split_two_str.i: src/mx_parser_split_two_str.c.i
+
+.PHONY : src/mx_parser_split_two_str.i
+
+# target to preprocess a source file
+src/mx_parser_split_two_str.c.i:
+	$(MAKE) -f CMakeFiles/ush.dir/build.make CMakeFiles/ush.dir/src/mx_parser_split_two_str.c.i
+.PHONY : src/mx_parser_split_two_str.c.i
+
+src/mx_parser_split_two_str.s: src/mx_parser_split_two_str.c.s
+
+.PHONY : src/mx_parser_split_two_str.s
+
+# target to generate assembly for a file
+src/mx_parser_split_two_str.c.s:
+	$(MAKE) -f CMakeFiles/ush.dir/build.make CMakeFiles/ush.dir/src/mx_parser_split_two_str.c.s
+.PHONY : src/mx_parser_split_two_str.c.s
+
+src/mx_parser_strstr_esc.o: src/mx_parser_strstr_esc.c.o
+
+.PHONY : src/mx_parser_strstr_esc.o
+
+# target to build an object file
+src/mx_parser_strstr_esc.c.o:
+	$(MAKE) -f CMakeFiles/ush.dir/build.make CMakeFiles/ush.dir/src/mx_parser_strstr_esc.c.o
+.PHONY : src/mx_parser_strstr_esc.c.o
+
+src/mx_parser_strstr_esc.i: src/mx_parser_strstr_esc.c.i
+
+.PHONY : src/mx_parser_strstr_esc.i
+
+# target to preprocess a source file
+src/mx_parser_strstr_esc.c.i:
+	$(MAKE) -f CMakeFiles/ush.dir/build.make CMakeFiles/ush.dir/src/mx_parser_strstr_esc.c.i
+.PHONY : src/mx_parser_strstr_esc.c.i
+
+src/mx_parser_strstr_esc.s: src/mx_parser_strstr_esc.c.s
+
+.PHONY : src/mx_parser_strstr_esc.s
+
+# target to generate assembly for a file
+src/mx_parser_strstr_esc.c.s:
+	$(MAKE) -f CMakeFiles/ush.dir/build.make CMakeFiles/ush.dir/src/mx_parser_strstr_esc.c.s
+.PHONY : src/mx_parser_strstr_esc.c.s
+
+src/mx_parser_trim.o: src/mx_parser_trim.c.o
+
+.PHONY : src/mx_parser_trim.o
+
+# target to build an object file
+src/mx_parser_trim.c.o:
+	$(MAKE) -f CMakeFiles/ush.dir/build.make CMakeFiles/ush.dir/src/mx_parser_trim.c.o
+.PHONY : src/mx_parser_trim.c.o
+
+src/mx_parser_trim.i: src/mx_parser_trim.c.i
+
+.PHONY : src/mx_parser_trim.i
+
+# target to preprocess a source file
+src/mx_parser_trim.c.i:
+	$(MAKE) -f CMakeFiles/ush.dir/build.make CMakeFiles/ush.dir/src/mx_parser_trim.c.i
+.PHONY : src/mx_parser_trim.c.i
+
+src/mx_parser_trim.s: src/mx_parser_trim.c.s
+
+.PHONY : src/mx_parser_trim.s
+
+# target to generate assembly for a file
+src/mx_parser_trim.c.s:
+	$(MAKE) -f CMakeFiles/ush.dir/build.make CMakeFiles/ush.dir/src/mx_parser_trim.c.s
+.PHONY : src/mx_parser_trim.c.s
+
+src/mx_parser_wordchain.o: src/mx_parser_wordchain.c.o
+
+.PHONY : src/mx_parser_wordchain.o
+
+# target to build an object file
+src/mx_parser_wordchain.c.o:
+	$(MAKE) -f CMakeFiles/ush.dir/build.make CMakeFiles/ush.dir/src/mx_parser_wordchain.c.o
+.PHONY : src/mx_parser_wordchain.c.o
+
+src/mx_parser_wordchain.i: src/mx_parser_wordchain.c.i
+
+.PHONY : src/mx_parser_wordchain.i
+
+# target to preprocess a source file
+src/mx_parser_wordchain.c.i:
+	$(MAKE) -f CMakeFiles/ush.dir/build.make CMakeFiles/ush.dir/src/mx_parser_wordchain.c.i
+.PHONY : src/mx_parser_wordchain.c.i
+
+src/mx_parser_wordchain.s: src/mx_parser_wordchain.c.s
+
+.PHONY : src/mx_parser_wordchain.s
+
+# target to generate assembly for a file
+src/mx_parser_wordchain.c.s:
+	$(MAKE) -f CMakeFiles/ush.dir/build.make CMakeFiles/ush.dir/src/mx_parser_wordchain.c.s
+.PHONY : src/mx_parser_wordchain.c.s
 
 src/mx_print_prompt.o: src/mx_print_prompt.c.o
 
@@ -2430,6 +3078,33 @@ src/mx_sort_arr.s: src/mx_sort_arr.c.s
 src/mx_sort_arr.c.s:
 	$(MAKE) -f CMakeFiles/ush.dir/build.make CMakeFiles/ush.dir/src/mx_sort_arr.c.s
 .PHONY : src/mx_sort_arr.c.s
+
+src/mx_strjoin_with_space.o: src/mx_strjoin_with_space.c.o
+
+.PHONY : src/mx_strjoin_with_space.o
+
+# target to build an object file
+src/mx_strjoin_with_space.c.o:
+	$(MAKE) -f CMakeFiles/ush.dir/build.make CMakeFiles/ush.dir/src/mx_strjoin_with_space.c.o
+.PHONY : src/mx_strjoin_with_space.c.o
+
+src/mx_strjoin_with_space.i: src/mx_strjoin_with_space.c.i
+
+.PHONY : src/mx_strjoin_with_space.i
+
+# target to preprocess a source file
+src/mx_strjoin_with_space.c.i:
+	$(MAKE) -f CMakeFiles/ush.dir/build.make CMakeFiles/ush.dir/src/mx_strjoin_with_space.c.i
+.PHONY : src/mx_strjoin_with_space.c.i
+
+src/mx_strjoin_with_space.s: src/mx_strjoin_with_space.c.s
+
+.PHONY : src/mx_strjoin_with_space.s
+
+# target to generate assembly for a file
+src/mx_strjoin_with_space.c.s:
+	$(MAKE) -f CMakeFiles/ush.dir/build.make CMakeFiles/ush.dir/src/mx_strjoin_with_space.c.s
+.PHONY : src/mx_strjoin_with_space.c.s
 
 # Help Target
 help:
@@ -2642,51 +3317,123 @@ help:
 	@echo "... src/mx_driver_loop.o"
 	@echo "... src/mx_driver_loop.i"
 	@echo "... src/mx_driver_loop.s"
-	@echo "... src/mx_env_delete.o"
-	@echo "... src/mx_env_delete.i"
-	@echo "... src/mx_env_delete.s"
 	@echo "... src/mx_env_get_value.o"
 	@echo "... src/mx_env_get_value.i"
 	@echo "... src/mx_env_get_value.s"
 	@echo "... src/mx_env_init.o"
 	@echo "... src/mx_env_init.i"
 	@echo "... src/mx_env_init.s"
+	@echo "... src/mx_env_new_delete.o"
+	@echo "... src/mx_env_new_delete.i"
+	@echo "... src/mx_env_new_delete.s"
 	@echo "... src/mx_env_set_var.o"
 	@echo "... src/mx_env_set_var.i"
 	@echo "... src/mx_env_set_var.s"
 	@echo "... src/mx_eval.o"
 	@echo "... src/mx_eval.i"
 	@echo "... src/mx_eval.s"
+	@echo "... src/mx_eval_parameter_expansion.o"
+	@echo "... src/mx_eval_parameter_expansion.i"
+	@echo "... src/mx_eval_parameter_expansion.s"
+	@echo "... src/mx_eval_redirections.o"
+	@echo "... src/mx_eval_redirections.i"
+	@echo "... src/mx_eval_redirections.s"
+	@echo "... src/mx_exec_try_bin.o"
+	@echo "... src/mx_exec_try_bin.i"
+	@echo "... src/mx_exec_try_bin.s"
+	@echo "... src/mx_execute.o"
+	@echo "... src/mx_execute.i"
+	@echo "... src/mx_execute.s"
 	@echo "... src/mx_free_all.o"
 	@echo "... src/mx_free_all.i"
 	@echo "... src/mx_free_all.s"
+	@echo "... src/mx_global_env_new_delete.o"
+	@echo "... src/mx_global_env_new_delete.i"
+	@echo "... src/mx_global_env_new_delete.s"
 	@echo "... src/mx_history.o"
 	@echo "... src/mx_history.i"
 	@echo "... src/mx_history.s"
 	@echo "... src/mx_init_shell.o"
 	@echo "... src/mx_init_shell.i"
 	@echo "... src/mx_init_shell.s"
-	@echo "... src/mx_is_closed_expression.o"
-	@echo "... src/mx_is_closed_expression.i"
-	@echo "... src/mx_is_closed_expression.s"
+	@echo "... src/mx_liststr_convert_argv.o"
+	@echo "... src/mx_liststr_convert_argv.i"
+	@echo "... src/mx_liststr_convert_argv.s"
 	@echo "... src/mx_liststr_delete.o"
 	@echo "... src/mx_liststr_delete.i"
 	@echo "... src/mx_liststr_delete.s"
 	@echo "... src/mx_liststr_init.o"
 	@echo "... src/mx_liststr_init.i"
 	@echo "... src/mx_liststr_init.s"
+	@echo "... src/mx_liststr_length.o"
+	@echo "... src/mx_liststr_length.i"
+	@echo "... src/mx_liststr_length.s"
 	@echo "... src/mx_liststr_pop_front.o"
 	@echo "... src/mx_liststr_pop_front.i"
 	@echo "... src/mx_liststr_pop_front.s"
+	@echo "... src/mx_liststr_push_back.o"
+	@echo "... src/mx_liststr_push_back.i"
+	@echo "... src/mx_liststr_push_back.s"
 	@echo "... src/mx_liststr_push_front.o"
 	@echo "... src/mx_liststr_push_front.i"
 	@echo "... src/mx_liststr_push_front.s"
-	@echo "... src/mx_new_global_env.o"
-	@echo "... src/mx_new_global_env.i"
-	@echo "... src/mx_new_global_env.s"
+	@echo "... src/mx_new_delete_config.o"
+	@echo "... src/mx_new_delete_config.i"
+	@echo "... src/mx_new_delete_config.s"
+	@echo "... src/mx_new_evalresult.o"
+	@echo "... src/mx_new_evalresult.i"
+	@echo "... src/mx_new_evalresult.s"
 	@echo "... src/mx_output.o"
 	@echo "... src/mx_output.i"
 	@echo "... src/mx_output.s"
+	@echo "... src/mx_parse_words_sequence.o"
+	@echo "... src/mx_parse_words_sequence.i"
+	@echo "... src/mx_parse_words_sequence.s"
+	@echo "... src/mx_parser_assignment.o"
+	@echo "... src/mx_parser_assignment.i"
+	@echo "... src/mx_parser_assignment.s"
+	@echo "... src/mx_parser_find_param.o"
+	@echo "... src/mx_parser_find_param.i"
+	@echo "... src/mx_parser_find_param.s"
+	@echo "... src/mx_parser_firstword.o"
+	@echo "... src/mx_parser_firstword.i"
+	@echo "... src/mx_parser_firstword.s"
+	@echo "... src/mx_parser_get_binary_opid.o"
+	@echo "... src/mx_parser_get_binary_opid.i"
+	@echo "... src/mx_parser_get_binary_opid.s"
+	@echo "... src/mx_parser_get_op_id.o"
+	@echo "... src/mx_parser_get_op_id.i"
+	@echo "... src/mx_parser_get_op_id.s"
+	@echo "... src/mx_parser_get_op_name.o"
+	@echo "... src/mx_parser_get_op_name.i"
+	@echo "... src/mx_parser_get_op_name.s"
+	@echo "... src/mx_parser_get_operator_info_byid.o"
+	@echo "... src/mx_parser_get_operator_info_byid.i"
+	@echo "... src/mx_parser_get_operator_info_byid.s"
+	@echo "... src/mx_parser_get_unary_opid.o"
+	@echo "... src/mx_parser_get_unary_opid.i"
+	@echo "... src/mx_parser_get_unary_opid.s"
+	@echo "... src/mx_parser_has_expression_operator.o"
+	@echo "... src/mx_parser_has_expression_operator.i"
+	@echo "... src/mx_parser_has_expression_operator.s"
+	@echo "... src/mx_parser_is_closed_expression.o"
+	@echo "... src/mx_parser_is_closed_expression.i"
+	@echo "... src/mx_parser_is_closed_expression.s"
+	@echo "... src/mx_parser_smart_find.o"
+	@echo "... src/mx_parser_smart_find.i"
+	@echo "... src/mx_parser_smart_find.s"
+	@echo "... src/mx_parser_split_two_str.o"
+	@echo "... src/mx_parser_split_two_str.i"
+	@echo "... src/mx_parser_split_two_str.s"
+	@echo "... src/mx_parser_strstr_esc.o"
+	@echo "... src/mx_parser_strstr_esc.i"
+	@echo "... src/mx_parser_strstr_esc.s"
+	@echo "... src/mx_parser_trim.o"
+	@echo "... src/mx_parser_trim.i"
+	@echo "... src/mx_parser_trim.s"
+	@echo "... src/mx_parser_wordchain.o"
+	@echo "... src/mx_parser_wordchain.i"
+	@echo "... src/mx_parser_wordchain.s"
 	@echo "... src/mx_print_prompt.o"
 	@echo "... src/mx_print_prompt.i"
 	@echo "... src/mx_print_prompt.s"
@@ -2696,6 +3443,9 @@ help:
 	@echo "... src/mx_sort_arr.o"
 	@echo "... src/mx_sort_arr.i"
 	@echo "... src/mx_sort_arr.s"
+	@echo "... src/mx_strjoin_with_space.o"
+	@echo "... src/mx_strjoin_with_space.i"
+	@echo "... src/mx_strjoin_with_space.s"
 .PHONY : help
 
 

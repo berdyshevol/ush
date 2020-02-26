@@ -10,10 +10,12 @@ void mx_env_set_var(char *key, char *value, t_environment **env) {
         free(tmp);
     }
     else
-        mx_liststr_push_front(env, strdup(key), strdup(value)); // TODO: make sure to change _strdup
+        mx_liststr_push_front(env, key, value); // TODO: make sure to change _strdup
 }
 
 static t_environment *mx_env_lookup_key(char *key, t_environment *env) {
+    if (key == NULL)
+        return NULL;
     for (t_environment *cur = env; cur != NULL; cur = cur->next) {
         if (strcmp(cur->key, key) == 0)
             return cur;
