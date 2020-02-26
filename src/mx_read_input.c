@@ -47,8 +47,8 @@ void mx_read_input(t_global_environment *g) {
             g->cursor--;
             g->backcpase_his = false;
         }
-        read(0, &g->buff, 4);    // !!!!!!!!!!!!
-//        read(0, &g->buff, 1);
+//        read(0, &g->buff, 4);    // !!!!!!!!!!!!
+        read(0, &g->buff, 1);
         if (!mx_history(g))
             add_cursor = mx_ckeck_buffer(g);
         if (!mx_is_closed_expression(g->str) && g->str[g->cursor] == '\n')

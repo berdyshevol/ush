@@ -5,6 +5,6 @@
 #include "ush.h"
 
 void mx_output(void) {
-    mx_printstr("");
+    //mx_printstr("");
 }
 
