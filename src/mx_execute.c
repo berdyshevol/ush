@@ -32,6 +32,7 @@ static int _find_builtin(char *cmd) {
 bool try_builtin(char *cmd, t_eval_result result, t_global_environment *gv) {
     int id = _find_builtin(cmd);
     int pid;
+    int exit_status;
 
     if (id >= 0) {
 //        if (gv->cnf->for_process) {
@@ -48,7 +49,9 @@ bool try_builtin(char *cmd, t_eval_result result, t_global_environment *gv) {
 //            }
 //        }
 //        else
-        return result->status = (builtin[id].cmd(gv) == EXIT_SUCCESS);
+        exit_status = builtin[id].cmd(gv);
+        mx_env_set_var("?", mx_itoa(exit_status), &(gv->vars));
+        result->status = (exit_status == EXIT_SUCCESS);
         return true;
     }
     else  // no builtin found

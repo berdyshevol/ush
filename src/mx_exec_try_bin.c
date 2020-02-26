@@ -4,9 +4,7 @@
 
 #include "ush.h"
 
-
-
-bool mx_wexitstatud(int x) {
+int mx_wexitstatud(int x) {
     return x >> 8;
 }
 
@@ -31,6 +29,7 @@ bool mx_try_bin(char *cmd, t_eval_result result, t_global_environment *gv,
         default:
             waitpid (pid, &status, 0);
             //printf("ls -> %d", mx_wexitstatud(status));
+            mx_env_set_var("?", mx_itoa(mx_wexitstatud(status)), &(gv->vars));
             result->status = mx_wexitstatud(status) == 0 ? true : false;
             break;
     }

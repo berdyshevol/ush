@@ -75,7 +75,7 @@ typedef struct {
 
 #include "evaluator.h"
 
-void mx_init_shell(t_global_environment *gv);
+void mx_init_shell(t_global_environment **gv);
 void mx_driver_loop(t_global_environment *gv);
 void mx_free_all(t_global_environment *gv);
 void mx_print_prompt(void);
@@ -114,6 +114,9 @@ mx_execute(char *command, t_global_environment *gv, t_redirect *redir);
 bool mx_try_bin(char *cmd, t_eval_result result, t_global_environment *gv,
                 t_redirect *redir);
 bool try_builtin(char *cmd, t_eval_result result, t_global_environment *gv);
+
+//
+int mx_wexitstatud(int x);
 
 #endif
 

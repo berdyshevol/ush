@@ -268,9 +268,9 @@ t_eval_result mx_eval_if(t_exp exp, t_global_environment *gv) {
         // пайпа это тру и фолс
 
         t_exp if_consequent = mx_if_consequent(exp);
-        if (if_consequent != NULL) {
-            mx_printstr("\n");
-        }
+//        if (if_consequent != NULL) {
+//            mx_printstr("\n");
+//        }
         res = mx_eval(if_consequent, gv);
         mx_strdel(&if_consequent);
     }
@@ -305,8 +305,8 @@ mx_eval_sequence(t_exp exps, char *delim, t_global_environment *gv) {
         char *first_exp = mx_first_exp(exps, delim);
         t_eval_result eval_fe = mx_eval(first_exp, gv);
 
-        if (mx_get_expressiontype_by_id(mx_get_binary_opid(exps)) == list)
-            mx_printstr("\n");
+//        if (mx_get_expressiontype_by_id(mx_get_binary_opid(exps)) == list)
+//            mx_printstr("\n");
 
         char *rest_exps = mx_rest_exps(exps, delim);
         result = mx_eval_sequence(rest_exps, delim, gv);

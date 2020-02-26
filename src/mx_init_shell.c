@@ -15,10 +15,11 @@ static void set_input_mode (void) {
 	tcsetattr(0, TCSAFLUSH, &new_settings);
 }
 
-void mx_init_shell(t_global_environment *gv) {
+void mx_init_shell(t_global_environment **gv) {
     set_input_mode();
     setvbuf(stdout, NULL, _IONBF, 0);
-    gv->shellName = "brothers' shell"; // TODO: удалить
+    *gv = mx_new_global_env();
+
 }
 
 // static void sig_int() {
