@@ -138,7 +138,7 @@ i.h
 o.h
 ../inc/o.h
 
-/Users/oberdyshev/ush-ol/src/mx_output.c
-ush.h
-/Users/oberdyshev/ush-ol/src/ush.h
+/Users/oberdyshev/ush-ol/src/mx_eval_redirections.c
+evaluator.h
+/Users/oberdyshev/ush-ol/src/evaluator.h
 

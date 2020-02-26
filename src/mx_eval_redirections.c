@@ -4,6 +4,18 @@
 
 #include "evaluator.h"
 
+void mx_reset_redirections(t_redirect *redir) {
+    if (redir->prev_input_fd != 0) {
+        dup2(redir->prev_input_fd, 0);
+    }
+    if (redir->prev_output_fd != 1) {
+        dup2(redir->prev_output_fd, 1);
+    }
+    if (redir->prev_error_fd != 2) {
+        dup2(redir->prev_error_fd, 2);
+    }
+}
+
 void mx_apply_redirect(t_redirect *redir) {
     if (redir == NULL)
         return ;
@@ -14,6 +26,7 @@ void mx_apply_redirect(t_redirect *redir) {
                 exit(1);
             }
             if (redir->input_fd != 0) {
+                redir->prev_input_fd = dup(0);
                 dup2(redir->input_fd, 0);
                 close(redir->input_fd);
             }
@@ -27,6 +40,7 @@ void mx_apply_redirect(t_redirect *redir) {
                 exit (1);
             }
             if (redir->output_fd != 1) {
+                redir->prev_output_fd = dup(1);
                 dup2(redir->output_fd, 1);
                 close(redir->output_fd);
             }
@@ -38,6 +52,7 @@ void mx_apply_redirect(t_redirect *redir) {
                 exit (1);
             }
             if (redir->output_fd != 1) {
+                redir->prev_output_fd = dup(1);
                 dup2(redir->output_fd, 1);
                 close(redir->output_fd);
             }
@@ -51,6 +66,7 @@ void mx_apply_redirect(t_redirect *redir) {
             exit (1);
         }
         if (redir->error_fd != 2) {
+            redir->prev_error_fd = dup(2);
             dup2 (redir->error_fd, 2);
             close (redir->error_fd);
         }
@@ -243,6 +259,12 @@ t_redirect *mx_new_redirect(char **exp, bool *error) {
     redirect->error = NULL;
     redirect->input = NULL;
     redirect->output = NULL;
+    redirect->input_fd = 0;
+    redirect->prev_input_fd = 0;
+    redirect->output_fd = 1;
+    redirect->prev_output_fd = 1;
+    redirect->error_fd = 2;
+    redirect->prev_error_fd = 2;
     extract_error(exp, &redirect, &er);
     if (er == false) {
         mx_print_error_nearnewline();

@@ -66,11 +66,16 @@ typedef struct {
     char *input;
     int input_fd;
     bool input_append;  // for << is true. If < then false
+    int prev_input_fd;
+
     char *output;
     int output_fd;
     bool output_append; // for >> is true. If > then false
+    int prev_output_fd;
+
     char *error;
     int error_fd;
+    int prev_error_fd;
 } t_redirect;
 
 #include "evaluator.h"
@@ -113,7 +118,9 @@ mx_execute(char *command, t_global_environment *gv, t_redirect *redir);
 
 bool mx_try_bin(char *cmd, t_eval_result result, t_global_environment *gv,
                 t_redirect *redir);
-bool try_builtin(char *cmd, t_eval_result result, t_global_environment *gv);
+
+bool try_builtin(char *cmd, t_eval_result result, t_global_environment *gv,
+                 t_redirect *redir);
 
 //
 int mx_wexitstatud(int x);

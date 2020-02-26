@@ -106,5 +106,6 @@ t_redirect *mx_new_redirect(char **exp, bool *error);
 void mx_delete_redirect(t_redirect **redirect);
 bool mx_extract_redirections(t_exp *exp, t_redirect **redirections);
 void mx_apply_redirect(t_redirect *redir);
+void mx_reset_redirections(t_redirect *redir);
 
 #endif //USH_UTILS_EVALUATOR_H

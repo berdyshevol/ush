@@ -29,7 +29,8 @@ static int _find_builtin(char *cmd) {
     return -1;
 }
 
-bool try_builtin(char *cmd, t_eval_result result, t_global_environment *gv) {
+bool try_builtin(char *cmd, t_eval_result result, t_global_environment *gv,
+                 t_redirect *redir) {
     int id = _find_builtin(cmd);
     int pid;
     int exit_status;
@@ -49,7 +50,9 @@ bool try_builtin(char *cmd, t_eval_result result, t_global_environment *gv) {
 //            }
 //        }
 //        else
+        mx_apply_redirect(redir);
         exit_status = builtin[id].cmd(gv);
+        mx_reset_redirections(redir);
         mx_env_set_var("?", mx_itoa(exit_status), &(gv->vars));
         result->status = (exit_status == EXIT_SUCCESS);
         return true;
@@ -62,7 +65,7 @@ t_eval_result
 mx_execute(char *command, t_global_environment *gv, t_redirect *redir) {
     t_eval_result result = mx_new_evalresult();
 
-    if (try_builtin(command, result, gv)) {
+    if (try_builtin(command, result, gv, redir)) {
 
     }
     else if (mx_try_bin(command, result, gv, redir)) {

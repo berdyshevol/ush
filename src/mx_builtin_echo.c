@@ -54,9 +54,11 @@ static unsigned int init_flags(char **arg, int *flags) {
 
 static void print_newline(bool minus_n) {
     if (minus_n)
-        printf("\x1b[0;47;30m%%\x1b[0m\n");
+        //printf("\x1b[0;47;30m%%\x1b[0m\n");
+        mx_printstr("\x1b[0;47;30m%%\x1b[0m\n");
     else
-        printf("\n");
+        //printf("\n");
+        mx_printstr("\n");
 }
 
 int mx_builtin_echo(t_global_environment *gv) {
@@ -70,11 +72,13 @@ int mx_builtin_echo(t_global_environment *gv) {
             output = replace_escapes(gv->cnf->agv[index]);
         else
             output = strdup(gv->cnf->agv[index]);
-        printf("%s", output);
+        //printf("%s", output);
+        mx_printstr(output);
         mx_strdel(&output);
         index++;
         if (gv->cnf->agv[index])
-            printf(" ");
+            //printf(" ");
+            mx_printstr(" ");
     }
     print_newline(flags[minus_n]);
     return EXIT_SUCCESS;

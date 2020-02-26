@@ -18,7 +18,7 @@ bool mx_try_bin(char *cmd, t_eval_result result, t_global_environment *gv,
             perror ("fork");
             break;
         case 0:
-            //mx_apply_redirect(redir);
+            mx_apply_redirect(redir);
             execvp(cmd, gv->cnf->agv);
             mx_printerr(gv->prompt);
             mx_printerr("command not found: ");
