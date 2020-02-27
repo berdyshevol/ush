@@ -47,13 +47,9 @@ void mx_read_input(t_global_environment *g) {
             g->cursor--;
             g->backcpase_his = false;
         }
-        read(0, &g->buff, 4);    // !!!!!!!!!!!!
-//        read(0, &g->buff, 1);
+        read(0, &g->buff, sizeof(&g->buff));
         if (!mx_history(g))
             add_cursor = mx_ckeck_buffer(g);
-//        if (!mx_is_closed_expression(g->str) && g->str[g->cursor] == '\n')
-//            write(1, ">", 1);
-//   else if (mx_is_closed_expression(g->str) && g->str[g->cursor] == '\n') {
         if (g->str[g->cursor] == '\n') {
             g->str[g->cursor] = '\0';
             mx_strdel(&g->tmp_str);
@@ -66,3 +62,4 @@ void mx_read_input(t_global_environment *g) {
         memset(g->buff, '\0', 5);
     }
 }
+
