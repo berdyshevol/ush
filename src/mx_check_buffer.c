@@ -1,14 +1,18 @@
 #include "ush.h"
 
-static void signal_ctr_c(t_global_environment *g) {
-    printf("\nHISTORY:\n");
-    for (int i = 0; g->history[i] != NULL; i++)
-        printf("#%i -> \"%s\"\n", i, g->history[i]);
-    mx_print_prompt();
+static bool signal_ctr_c(t_global_environment *g) {
+    mx_strdel(&g->str);
+    g->str = mx_strnew(128);
+    g->cursor = 0;
+    g->backcpase_his = true;
+    printf("\nu$h> ");
+    // установить %? = 130
+    mx_env_set_var("?", "130", &(g->vars));
+    return false;
 }
 
 static void signal_ctr_d() {
-    printf("\nCTR + D\nExit.\n");
+    printf("\n\n[Process completed]\n\n");
     mx_reset_input_mode();
     exit(0);
 }
