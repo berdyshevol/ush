@@ -16,7 +16,7 @@ int mx_wexitstatud(int x) {
 
 void mx_exec_child(char *cmd, t_eval_result result, t_global_environment *gv,
                     t_redirect *redir) {
-    // printf("\nWORK!\n");
+    //MAKprintf("\nWORK!\n");
     // int pid = getpid();
     // setgid(pid);
     // printf("\nPID is %n\nGID is %n\n", pid, getgid);
@@ -24,9 +24,16 @@ void mx_exec_child(char *cmd, t_eval_result result, t_global_environment *gv,
     mx_apply_redirect(redir);
     execvp(cmd, gv->cnf->agv);
     mx_printerr(gv->prompt);
-    mx_printerr("command not found: ");
-    mx_printerr(cmd);
-    mx_printerr("\n");
+    if (strlen(cmd) < 257) {
+        mx_printerr("command not found: ");
+        mx_printerr(cmd);
+        mx_printerr("\n");
+    }
+    else {
+        mx_printerr("file name too long: ");
+        mx_printerr(cmd);
+        mx_printerr("\n");
+    }
     exit(127);
 }
 
