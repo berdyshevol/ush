@@ -51,9 +51,10 @@ void mx_read_input(t_global_environment *g) {
 //        read(0, &g->buff, 1);
         if (!mx_history(g))
             add_cursor = mx_ckeck_buffer(g);
-        if (!mx_is_closed_expression(g->str) && g->str[g->cursor] == '\n')
-            write(1, ">", 1);
-        else if (mx_is_closed_expression(g->str) && g->str[g->cursor] == '\n') {
+//        if (!mx_is_closed_expression(g->str) && g->str[g->cursor] == '\n')
+//            write(1, ">", 1);
+//   else if (mx_is_closed_expression(g->str) && g->str[g->cursor] == '\n') {
+        if (g->str[g->cursor] == '\n') {
             g->str[g->cursor] = '\0';
             mx_strdel(&g->tmp_str);
             g->full_tmp_str = false;

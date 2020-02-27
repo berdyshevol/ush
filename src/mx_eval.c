@@ -325,9 +325,6 @@ mx_eval_seq_pipeline(t_exp exps, t_global_environment *gv) {
         char *first_exp = mx_first_exp(exps, delim);
         t_eval_result eval_fe = mx_eval(first_exp, gv);
 
-//        if (mx_get_expressiontype_by_id(mx_get_binary_opid(exps)) == list)
-//            mx_printstr("\n");
-
         char *rest_exps = mx_rest_exps(exps, delim);
         result = mx_eval_seq_pipeline(rest_exps, gv);
 
@@ -476,6 +473,7 @@ t_eval_result mx_simple_command(t_exp expression, t_global_environment *gv) {
     bool fork_process = false;
 
     mx_alias_expansion(&exp, gv);
+    printf("we are in sc. '%s'\n", expression);
     mx_parameter_expansion(&exp, gv);
     //mx_command_substitution(&exp, gv, &fork_process);
     //mx_file_expansion(&exp, gv);
@@ -559,7 +557,7 @@ mx_apply(char *command, t_list_of_values *arguments, t_redirect *redirections,
 //}
 
 t_eval_result mx_eval(t_exp exp, t_global_environment *gv) { // TODO:  передавать по ссылке
-    if (exp == NULL)
+    if (exp == NULL || exp[0] == '\0' || exp[0] == '\n')
         return NULL;
 
     t_eval_result result = NULL;
@@ -567,6 +565,8 @@ t_eval_result mx_eval(t_exp exp, t_global_environment *gv) { // TODO:  пере�
     e_exp_type exp_type = mx_get_expressiontype_by_id(mx_get_binary_opid(exp));
     // проверка по бинарным операциям
 
+
+    printf("we are in EVAL!!!!  '%s'\n", exp);
     switch (exp_type) {
         case variable_assignment:
             result = mx_eval_assignment(exp, gv);

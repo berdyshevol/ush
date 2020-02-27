@@ -34,5 +34,7 @@ void mx_read_input(t_global_environment *g);
 bool mx_ckeck_buffer(t_global_environment *g);
 void mx_reset_input_mode(void);
 int mx_history(t_global_environment *g);
+void mx_set_input_mode (void);
+void mx_set_default_signals();
 
 #endif

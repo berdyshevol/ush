@@ -21,6 +21,8 @@ char *mx_get_value(char *varname, t_global_environment *gv) {
     char *local_var_value = NULL;
     char *value = NULL;
 
+    if (varname == NULL)
+        return NULL;
     env_var_value = getenv(varname);
     if (env_var_value == NULL) {
         local_var_value = mx_env_get_value(varname, gv->vars);
@@ -40,6 +42,7 @@ void mx_parameter_expansion(t_exp *exp, t_global_environment *gv) {
     bool find_result;
 
     find_result = mx_find_param(*exp, &start, &end, &name);
+    printf("we are in pe. '%s'\n", *exp);
     while (find_result) {
         value = mx_get_value(name, gv);
         mx_insert(exp, start, end, value);

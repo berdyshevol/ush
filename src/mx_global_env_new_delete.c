@@ -8,7 +8,7 @@ t_global_environment *mx_new_global_env(void) {
     gv->shellName = "brothers' shell";
     gv->prompt = "u$h> ";
     gv->vars = mx_env_new();
-    mx_env_set_var("?", "", &(gv->vars));
+    mx_env_set_var("?", "0", &(gv->vars));
     gv->functions = mx_env_new();
     gv->alias = mx_env_new();
     gv->cnf = NULL;
