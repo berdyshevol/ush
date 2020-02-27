@@ -138,6 +138,17 @@ CMakeFiles/ush.dir/src/mx_eval_redirections.c.o: ../inc/parser.h
 CMakeFiles/ush.dir/src/mx_eval_redirections.c.o: ../inc/ush.h
 CMakeFiles/ush.dir/src/mx_eval_redirections.c.o: ../src/mx_eval_redirections.c
 
+CMakeFiles/ush.dir/src/mx_exec_apply_pipe.c.o: ../Libmx/inc/libmx.h
+CMakeFiles/ush.dir/src/mx_exec_apply_pipe.c.o: ../inc/environment.h
+CMakeFiles/ush.dir/src/mx_exec_apply_pipe.c.o: ../inc/evaluator.h
+CMakeFiles/ush.dir/src/mx_exec_apply_pipe.c.o: ../inc/i.h
+CMakeFiles/ush.dir/src/mx_exec_apply_pipe.c.o: ../inc/liststr.h
+CMakeFiles/ush.dir/src/mx_exec_apply_pipe.c.o: ../inc/o.h
+CMakeFiles/ush.dir/src/mx_exec_apply_pipe.c.o: ../inc/p.h
+CMakeFiles/ush.dir/src/mx_exec_apply_pipe.c.o: ../inc/parser.h
+CMakeFiles/ush.dir/src/mx_exec_apply_pipe.c.o: ../inc/ush.h
+CMakeFiles/ush.dir/src/mx_exec_apply_pipe.c.o: ../src/mx_exec_apply_pipe.c
+
 CMakeFiles/ush.dir/src/mx_exec_try_bin.c.o: ../Libmx/inc/libmx.h
 CMakeFiles/ush.dir/src/mx_exec_try_bin.c.o: ../inc/environment.h
 CMakeFiles/ush.dir/src/mx_exec_try_bin.c.o: ../inc/evaluator.h

@@ -14,6 +14,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/ush.dir/src/mx_eval.c.o"
   "CMakeFiles/ush.dir/src/mx_eval_parameter_expansion.c.o"
   "CMakeFiles/ush.dir/src/mx_eval_redirections.c.o"
+  "CMakeFiles/ush.dir/src/mx_exec_apply_pipe.c.o"
   "CMakeFiles/ush.dir/src/mx_exec_try_bin.c.o"
   "CMakeFiles/ush.dir/src/mx_execute.c.o"
   "CMakeFiles/ush.dir/src/mx_free_all.c.o"

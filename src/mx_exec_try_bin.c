@@ -16,33 +16,59 @@ void mx_set_default_signals() {
      signal(SIGTTIN, SIG_DFL);
      signal(SIGTTOU, SIG_DFL);
      signal(SIGCHLD, SIG_DFL);
- }
+}
 
-void mx_exec_child(char *cmd, t_eval_result result, t_global_environment *gv,
-              t_redirect *redir) {
+
+
+void mx_exec_child(char *cmd, t_eval_result result, t_global_environment *gv) {
     int pid = getpid();
     setgid(pid);
     mx_set_default_signals();
-    mx_apply_redirect(redir);
-    execvp(cmd, gv->cnf->agv);
-    mx_printerr(gv->prompt);
-    mx_printerr("command not found: ");
-    mx_printerr(cmd);
-    mx_printerr("\n");
-    exit(127);
+    printf("in child cmd=%s [0]=%d "
+           "[1]=%d [2]=%d [3]=%d\n", cmd, gv->cnf->pipe_fd[0],
+           gv->cnf->pipe_fd[1], gv->cnf->pipe_fd[2], gv->cnf->pipe_fd[3]);
+    if (mx_apply_pipe(gv->cnf->pipe_fd)) {
+        printf("after apply pipe cmd=%s [0]=%d "
+               "[1]=%d [2]=%d [3]=%d\n", cmd, gv->cnf->pipe_fd[0],
+               gv->cnf->pipe_fd[1], gv->cnf->pipe_fd[2], gv->cnf->pipe_fd[3]);
+        int pid = fork();
+        switch (pid) {
+            case -1:
+                perror ("fork");
+                break;
+            case 0:
+                printf("forked again cmd=%s\n", cmd);
+                execvp(cmd, gv->cnf->agv);
+                break;
+            default:
+                mx_reset_pipefd(gv->cnf->pipe_fd);
+                break;
+        }
+    }
+    else if (mx_apply_redirect(gv->cnf->redirections)) {
+        printf("in child in apply redir \n");
+        execvp(cmd, gv->cnf->agv);
+    }
+    else if (execvp(cmd, gv->cnf->agv) == -1) {
+        mx_printerr(gv->prompt);
+        mx_printerr("command not found: ");
+        mx_printerr(cmd);
+        mx_printerr("\n");
+        exit(127);
+    }
 }
 
 bool mx_try_bin(char *cmd, t_eval_result result, t_global_environment *gv,
                 t_redirect *redir) {
     int pid;
     int status;
-
+    printf("in shell cmd=%s\n", cmd);
     switch (pid = fork()) {
         case -1:
             perror ("fork");
             break;
         case 0:
-            mx_exec_child(cmd, result, gv, redir);
+            mx_exec_child(cmd, result, gv);
             break;
         default:
             waitpid (pid, &status, 0);

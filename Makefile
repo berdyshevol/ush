@@ -63,6 +63,7 @@ SRC =   main.c \
         mx_read_input.c \
         mx_sort_arr.c \
         mx_strjoin_with_space.c \
+        mx_exec_apply_pipe.c \
 
 OBJ = $(SRC:.c=.o)
 

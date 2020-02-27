@@ -34,10 +34,10 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /private/var/folders/zz/zyxvpxvq6csfxvn_n0003yyh000zqm/T/AppTranslocation/47741ECC-F752-47C9-A596-29A2D1B572BF/d/CLion.app/Contents/bin/cmake/mac/bin/cmake
+CMAKE_COMMAND = /private/var/folders/zz/zyxvpxvq6csfxvn_n0003yyh000zqm/T/AppTranslocation/98DFADF8-3BC6-46EE-84C8-DDA1564C4CB9/d/CLion.app/Contents/bin/cmake/mac/bin/cmake
 
 # The command to remove a file.
-RM = /private/var/folders/zz/zyxvpxvq6csfxvn_n0003yyh000zqm/T/AppTranslocation/47741ECC-F752-47C9-A596-29A2D1B572BF/d/CLion.app/Contents/bin/cmake/mac/bin/cmake -E remove -f
+RM = /private/var/folders/zz/zyxvpxvq6csfxvn_n0003yyh000zqm/T/AppTranslocation/98DFADF8-3BC6-46EE-84C8-DDA1564C4CB9/d/CLion.app/Contents/bin/cmake/mac/bin/cmake -E remove -f
 
 # Escaping for special characters.
 EQUALS = =
@@ -252,9 +252,22 @@ CMakeFiles/ush.dir/src/mx_eval_redirections.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/ush.dir/src/mx_eval_redirections.c.s"
 	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/oberdyshev/ush-ol/src/mx_eval_redirections.c -o CMakeFiles/ush.dir/src/mx_eval_redirections.c.s
 
+CMakeFiles/ush.dir/src/mx_exec_apply_pipe.c.o: CMakeFiles/ush.dir/flags.make
+CMakeFiles/ush.dir/src/mx_exec_apply_pipe.c.o: ../src/mx_exec_apply_pipe.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/oberdyshev/ush-ol/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building C object CMakeFiles/ush.dir/src/mx_exec_apply_pipe.c.o"
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ush.dir/src/mx_exec_apply_pipe.c.o   -c /Users/oberdyshev/ush-ol/src/mx_exec_apply_pipe.c
+
+CMakeFiles/ush.dir/src/mx_exec_apply_pipe.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/ush.dir/src/mx_exec_apply_pipe.c.i"
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/oberdyshev/ush-ol/src/mx_exec_apply_pipe.c > CMakeFiles/ush.dir/src/mx_exec_apply_pipe.c.i
+
+CMakeFiles/ush.dir/src/mx_exec_apply_pipe.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/ush.dir/src/mx_exec_apply_pipe.c.s"
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/oberdyshev/ush-ol/src/mx_exec_apply_pipe.c -o CMakeFiles/ush.dir/src/mx_exec_apply_pipe.c.s
+
 CMakeFiles/ush.dir/src/mx_exec_try_bin.c.o: CMakeFiles/ush.dir/flags.make
 CMakeFiles/ush.dir/src/mx_exec_try_bin.c.o: ../src/mx_exec_try_bin.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/oberdyshev/ush-ol/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building C object CMakeFiles/ush.dir/src/mx_exec_try_bin.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/oberdyshev/ush-ol/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Building C object CMakeFiles/ush.dir/src/mx_exec_try_bin.c.o"
 	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ush.dir/src/mx_exec_try_bin.c.o   -c /Users/oberdyshev/ush-ol/src/mx_exec_try_bin.c
 
 CMakeFiles/ush.dir/src/mx_exec_try_bin.c.i: cmake_force
@@ -267,7 +280,7 @@ CMakeFiles/ush.dir/src/mx_exec_try_bin.c.s: cmake_force
 
 CMakeFiles/ush.dir/src/mx_execute.c.o: CMakeFiles/ush.dir/flags.make
 CMakeFiles/ush.dir/src/mx_execute.c.o: ../src/mx_execute.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/oberdyshev/ush-ol/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Building C object CMakeFiles/ush.dir/src/mx_execute.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/oberdyshev/ush-ol/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Building C object CMakeFiles/ush.dir/src/mx_execute.c.o"
 	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ush.dir/src/mx_execute.c.o   -c /Users/oberdyshev/ush-ol/src/mx_execute.c
 
 CMakeFiles/ush.dir/src/mx_execute.c.i: cmake_force
@@ -280,7 +293,7 @@ CMakeFiles/ush.dir/src/mx_execute.c.s: cmake_force
 
 CMakeFiles/ush.dir/src/mx_free_all.c.o: CMakeFiles/ush.dir/flags.make
 CMakeFiles/ush.dir/src/mx_free_all.c.o: ../src/mx_free_all.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/oberdyshev/ush-ol/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Building C object CMakeFiles/ush.dir/src/mx_free_all.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/oberdyshev/ush-ol/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_19) "Building C object CMakeFiles/ush.dir/src/mx_free_all.c.o"
 	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ush.dir/src/mx_free_all.c.o   -c /Users/oberdyshev/ush-ol/src/mx_free_all.c
 
 CMakeFiles/ush.dir/src/mx_free_all.c.i: cmake_force
@@ -293,7 +306,7 @@ CMakeFiles/ush.dir/src/mx_free_all.c.s: cmake_force
 
 CMakeFiles/ush.dir/src/mx_global_env_new_delete.c.o: CMakeFiles/ush.dir/flags.make
 CMakeFiles/ush.dir/src/mx_global_env_new_delete.c.o: ../src/mx_global_env_new_delete.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/oberdyshev/ush-ol/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_19) "Building C object CMakeFiles/ush.dir/src/mx_global_env_new_delete.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/oberdyshev/ush-ol/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_20) "Building C object CMakeFiles/ush.dir/src/mx_global_env_new_delete.c.o"
 	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ush.dir/src/mx_global_env_new_delete.c.o   -c /Users/oberdyshev/ush-ol/src/mx_global_env_new_delete.c
 
 CMakeFiles/ush.dir/src/mx_global_env_new_delete.c.i: cmake_force
@@ -306,7 +319,7 @@ CMakeFiles/ush.dir/src/mx_global_env_new_delete.c.s: cmake_force
 
 CMakeFiles/ush.dir/src/mx_history.c.o: CMakeFiles/ush.dir/flags.make
 CMakeFiles/ush.dir/src/mx_history.c.o: ../src/mx_history.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/oberdyshev/ush-ol/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_20) "Building C object CMakeFiles/ush.dir/src/mx_history.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/oberdyshev/ush-ol/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_21) "Building C object CMakeFiles/ush.dir/src/mx_history.c.o"
 	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ush.dir/src/mx_history.c.o   -c /Users/oberdyshev/ush-ol/src/mx_history.c
 
 CMakeFiles/ush.dir/src/mx_history.c.i: cmake_force
@@ -319,7 +332,7 @@ CMakeFiles/ush.dir/src/mx_history.c.s: cmake_force
 
 CMakeFiles/ush.dir/src/mx_init_shell.c.o: CMakeFiles/ush.dir/flags.make
 CMakeFiles/ush.dir/src/mx_init_shell.c.o: ../src/mx_init_shell.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/oberdyshev/ush-ol/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_21) "Building C object CMakeFiles/ush.dir/src/mx_init_shell.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/oberdyshev/ush-ol/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_22) "Building C object CMakeFiles/ush.dir/src/mx_init_shell.c.o"
 	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ush.dir/src/mx_init_shell.c.o   -c /Users/oberdyshev/ush-ol/src/mx_init_shell.c
 
 CMakeFiles/ush.dir/src/mx_init_shell.c.i: cmake_force
@@ -332,7 +345,7 @@ CMakeFiles/ush.dir/src/mx_init_shell.c.s: cmake_force
 
 CMakeFiles/ush.dir/src/mx_liststr_convert_argv.c.o: CMakeFiles/ush.dir/flags.make
 CMakeFiles/ush.dir/src/mx_liststr_convert_argv.c.o: ../src/mx_liststr_convert_argv.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/oberdyshev/ush-ol/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_22) "Building C object CMakeFiles/ush.dir/src/mx_liststr_convert_argv.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/oberdyshev/ush-ol/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_23) "Building C object CMakeFiles/ush.dir/src/mx_liststr_convert_argv.c.o"
 	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ush.dir/src/mx_liststr_convert_argv.c.o   -c /Users/oberdyshev/ush-ol/src/mx_liststr_convert_argv.c
 
 CMakeFiles/ush.dir/src/mx_liststr_convert_argv.c.i: cmake_force
@@ -345,7 +358,7 @@ CMakeFiles/ush.dir/src/mx_liststr_convert_argv.c.s: cmake_force
 
 CMakeFiles/ush.dir/src/mx_liststr_delete.c.o: CMakeFiles/ush.dir/flags.make
 CMakeFiles/ush.dir/src/mx_liststr_delete.c.o: ../src/mx_liststr_delete.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/oberdyshev/ush-ol/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_23) "Building C object CMakeFiles/ush.dir/src/mx_liststr_delete.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/oberdyshev/ush-ol/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_24) "Building C object CMakeFiles/ush.dir/src/mx_liststr_delete.c.o"
 	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ush.dir/src/mx_liststr_delete.c.o   -c /Users/oberdyshev/ush-ol/src/mx_liststr_delete.c
 
 CMakeFiles/ush.dir/src/mx_liststr_delete.c.i: cmake_force
@@ -358,7 +371,7 @@ CMakeFiles/ush.dir/src/mx_liststr_delete.c.s: cmake_force
 
 CMakeFiles/ush.dir/src/mx_liststr_init.c.o: CMakeFiles/ush.dir/flags.make
 CMakeFiles/ush.dir/src/mx_liststr_init.c.o: ../src/mx_liststr_init.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/oberdyshev/ush-ol/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_24) "Building C object CMakeFiles/ush.dir/src/mx_liststr_init.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/oberdyshev/ush-ol/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_25) "Building C object CMakeFiles/ush.dir/src/mx_liststr_init.c.o"
 	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ush.dir/src/mx_liststr_init.c.o   -c /Users/oberdyshev/ush-ol/src/mx_liststr_init.c
 
 CMakeFiles/ush.dir/src/mx_liststr_init.c.i: cmake_force
@@ -371,7 +384,7 @@ CMakeFiles/ush.dir/src/mx_liststr_init.c.s: cmake_force
 
 CMakeFiles/ush.dir/src/mx_liststr_length.c.o: CMakeFiles/ush.dir/flags.make
 CMakeFiles/ush.dir/src/mx_liststr_length.c.o: ../src/mx_liststr_length.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/oberdyshev/ush-ol/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_25) "Building C object CMakeFiles/ush.dir/src/mx_liststr_length.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/oberdyshev/ush-ol/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_26) "Building C object CMakeFiles/ush.dir/src/mx_liststr_length.c.o"
 	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ush.dir/src/mx_liststr_length.c.o   -c /Users/oberdyshev/ush-ol/src/mx_liststr_length.c
 
 CMakeFiles/ush.dir/src/mx_liststr_length.c.i: cmake_force
@@ -384,7 +397,7 @@ CMakeFiles/ush.dir/src/mx_liststr_length.c.s: cmake_force
 
 CMakeFiles/ush.dir/src/mx_liststr_pop_front.c.o: CMakeFiles/ush.dir/flags.make
 CMakeFiles/ush.dir/src/mx_liststr_pop_front.c.o: ../src/mx_liststr_pop_front.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/oberdyshev/ush-ol/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_26) "Building C object CMakeFiles/ush.dir/src/mx_liststr_pop_front.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/oberdyshev/ush-ol/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_27) "Building C object CMakeFiles/ush.dir/src/mx_liststr_pop_front.c.o"
 	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ush.dir/src/mx_liststr_pop_front.c.o   -c /Users/oberdyshev/ush-ol/src/mx_liststr_pop_front.c
 
 CMakeFiles/ush.dir/src/mx_liststr_pop_front.c.i: cmake_force
@@ -397,7 +410,7 @@ CMakeFiles/ush.dir/src/mx_liststr_pop_front.c.s: cmake_force
 
 CMakeFiles/ush.dir/src/mx_liststr_push_back.c.o: CMakeFiles/ush.dir/flags.make
 CMakeFiles/ush.dir/src/mx_liststr_push_back.c.o: ../src/mx_liststr_push_back.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/oberdyshev/ush-ol/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_27) "Building C object CMakeFiles/ush.dir/src/mx_liststr_push_back.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/oberdyshev/ush-ol/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_28) "Building C object CMakeFiles/ush.dir/src/mx_liststr_push_back.c.o"
 	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ush.dir/src/mx_liststr_push_back.c.o   -c /Users/oberdyshev/ush-ol/src/mx_liststr_push_back.c
 
 CMakeFiles/ush.dir/src/mx_liststr_push_back.c.i: cmake_force
@@ -410,7 +423,7 @@ CMakeFiles/ush.dir/src/mx_liststr_push_back.c.s: cmake_force
 
 CMakeFiles/ush.dir/src/mx_liststr_push_front.c.o: CMakeFiles/ush.dir/flags.make
 CMakeFiles/ush.dir/src/mx_liststr_push_front.c.o: ../src/mx_liststr_push_front.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/oberdyshev/ush-ol/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_28) "Building C object CMakeFiles/ush.dir/src/mx_liststr_push_front.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/oberdyshev/ush-ol/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_29) "Building C object CMakeFiles/ush.dir/src/mx_liststr_push_front.c.o"
 	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ush.dir/src/mx_liststr_push_front.c.o   -c /Users/oberdyshev/ush-ol/src/mx_liststr_push_front.c
 
 CMakeFiles/ush.dir/src/mx_liststr_push_front.c.i: cmake_force
@@ -423,7 +436,7 @@ CMakeFiles/ush.dir/src/mx_liststr_push_front.c.s: cmake_force
 
 CMakeFiles/ush.dir/src/mx_new_delete_config.c.o: CMakeFiles/ush.dir/flags.make
 CMakeFiles/ush.dir/src/mx_new_delete_config.c.o: ../src/mx_new_delete_config.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/oberdyshev/ush-ol/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_29) "Building C object CMakeFiles/ush.dir/src/mx_new_delete_config.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/oberdyshev/ush-ol/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_30) "Building C object CMakeFiles/ush.dir/src/mx_new_delete_config.c.o"
 	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ush.dir/src/mx_new_delete_config.c.o   -c /Users/oberdyshev/ush-ol/src/mx_new_delete_config.c
 
 CMakeFiles/ush.dir/src/mx_new_delete_config.c.i: cmake_force
@@ -436,7 +449,7 @@ CMakeFiles/ush.dir/src/mx_new_delete_config.c.s: cmake_force
 
 CMakeFiles/ush.dir/src/mx_new_evalresult.c.o: CMakeFiles/ush.dir/flags.make
 CMakeFiles/ush.dir/src/mx_new_evalresult.c.o: ../src/mx_new_evalresult.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/oberdyshev/ush-ol/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_30) "Building C object CMakeFiles/ush.dir/src/mx_new_evalresult.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/oberdyshev/ush-ol/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_31) "Building C object CMakeFiles/ush.dir/src/mx_new_evalresult.c.o"
 	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ush.dir/src/mx_new_evalresult.c.o   -c /Users/oberdyshev/ush-ol/src/mx_new_evalresult.c
 
 CMakeFiles/ush.dir/src/mx_new_evalresult.c.i: cmake_force
@@ -449,7 +462,7 @@ CMakeFiles/ush.dir/src/mx_new_evalresult.c.s: cmake_force
 
 CMakeFiles/ush.dir/src/mx_output.c.o: CMakeFiles/ush.dir/flags.make
 CMakeFiles/ush.dir/src/mx_output.c.o: ../src/mx_output.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/oberdyshev/ush-ol/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_31) "Building C object CMakeFiles/ush.dir/src/mx_output.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/oberdyshev/ush-ol/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_32) "Building C object CMakeFiles/ush.dir/src/mx_output.c.o"
 	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ush.dir/src/mx_output.c.o   -c /Users/oberdyshev/ush-ol/src/mx_output.c
 
 CMakeFiles/ush.dir/src/mx_output.c.i: cmake_force
@@ -462,7 +475,7 @@ CMakeFiles/ush.dir/src/mx_output.c.s: cmake_force
 
 CMakeFiles/ush.dir/src/mx_parse_words_sequence.c.o: CMakeFiles/ush.dir/flags.make
 CMakeFiles/ush.dir/src/mx_parse_words_sequence.c.o: ../src/mx_parse_words_sequence.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/oberdyshev/ush-ol/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_32) "Building C object CMakeFiles/ush.dir/src/mx_parse_words_sequence.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/oberdyshev/ush-ol/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_33) "Building C object CMakeFiles/ush.dir/src/mx_parse_words_sequence.c.o"
 	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ush.dir/src/mx_parse_words_sequence.c.o   -c /Users/oberdyshev/ush-ol/src/mx_parse_words_sequence.c
 
 CMakeFiles/ush.dir/src/mx_parse_words_sequence.c.i: cmake_force
@@ -475,7 +488,7 @@ CMakeFiles/ush.dir/src/mx_parse_words_sequence.c.s: cmake_force
 
 CMakeFiles/ush.dir/src/mx_parser_assignment.c.o: CMakeFiles/ush.dir/flags.make
 CMakeFiles/ush.dir/src/mx_parser_assignment.c.o: ../src/mx_parser_assignment.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/oberdyshev/ush-ol/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_33) "Building C object CMakeFiles/ush.dir/src/mx_parser_assignment.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/oberdyshev/ush-ol/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_34) "Building C object CMakeFiles/ush.dir/src/mx_parser_assignment.c.o"
 	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ush.dir/src/mx_parser_assignment.c.o   -c /Users/oberdyshev/ush-ol/src/mx_parser_assignment.c
 
 CMakeFiles/ush.dir/src/mx_parser_assignment.c.i: cmake_force
@@ -488,7 +501,7 @@ CMakeFiles/ush.dir/src/mx_parser_assignment.c.s: cmake_force
 
 CMakeFiles/ush.dir/src/mx_parser_find_param.c.o: CMakeFiles/ush.dir/flags.make
 CMakeFiles/ush.dir/src/mx_parser_find_param.c.o: ../src/mx_parser_find_param.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/oberdyshev/ush-ol/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_34) "Building C object CMakeFiles/ush.dir/src/mx_parser_find_param.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/oberdyshev/ush-ol/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_35) "Building C object CMakeFiles/ush.dir/src/mx_parser_find_param.c.o"
 	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ush.dir/src/mx_parser_find_param.c.o   -c /Users/oberdyshev/ush-ol/src/mx_parser_find_param.c
 
 CMakeFiles/ush.dir/src/mx_parser_find_param.c.i: cmake_force
@@ -501,7 +514,7 @@ CMakeFiles/ush.dir/src/mx_parser_find_param.c.s: cmake_force
 
 CMakeFiles/ush.dir/src/mx_parser_firstword.c.o: CMakeFiles/ush.dir/flags.make
 CMakeFiles/ush.dir/src/mx_parser_firstword.c.o: ../src/mx_parser_firstword.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/oberdyshev/ush-ol/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_35) "Building C object CMakeFiles/ush.dir/src/mx_parser_firstword.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/oberdyshev/ush-ol/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_36) "Building C object CMakeFiles/ush.dir/src/mx_parser_firstword.c.o"
 	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ush.dir/src/mx_parser_firstword.c.o   -c /Users/oberdyshev/ush-ol/src/mx_parser_firstword.c
 
 CMakeFiles/ush.dir/src/mx_parser_firstword.c.i: cmake_force
@@ -514,7 +527,7 @@ CMakeFiles/ush.dir/src/mx_parser_firstword.c.s: cmake_force
 
 CMakeFiles/ush.dir/src/mx_parser_get_binary_opid.c.o: CMakeFiles/ush.dir/flags.make
 CMakeFiles/ush.dir/src/mx_parser_get_binary_opid.c.o: ../src/mx_parser_get_binary_opid.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/oberdyshev/ush-ol/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_36) "Building C object CMakeFiles/ush.dir/src/mx_parser_get_binary_opid.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/oberdyshev/ush-ol/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_37) "Building C object CMakeFiles/ush.dir/src/mx_parser_get_binary_opid.c.o"
 	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ush.dir/src/mx_parser_get_binary_opid.c.o   -c /Users/oberdyshev/ush-ol/src/mx_parser_get_binary_opid.c
 
 CMakeFiles/ush.dir/src/mx_parser_get_binary_opid.c.i: cmake_force
@@ -527,7 +540,7 @@ CMakeFiles/ush.dir/src/mx_parser_get_binary_opid.c.s: cmake_force
 
 CMakeFiles/ush.dir/src/mx_parser_get_op_id.c.o: CMakeFiles/ush.dir/flags.make
 CMakeFiles/ush.dir/src/mx_parser_get_op_id.c.o: ../src/mx_parser_get_op_id.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/oberdyshev/ush-ol/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_37) "Building C object CMakeFiles/ush.dir/src/mx_parser_get_op_id.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/oberdyshev/ush-ol/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_38) "Building C object CMakeFiles/ush.dir/src/mx_parser_get_op_id.c.o"
 	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ush.dir/src/mx_parser_get_op_id.c.o   -c /Users/oberdyshev/ush-ol/src/mx_parser_get_op_id.c
 
 CMakeFiles/ush.dir/src/mx_parser_get_op_id.c.i: cmake_force
@@ -540,7 +553,7 @@ CMakeFiles/ush.dir/src/mx_parser_get_op_id.c.s: cmake_force
 
 CMakeFiles/ush.dir/src/mx_parser_get_op_name.c.o: CMakeFiles/ush.dir/flags.make
 CMakeFiles/ush.dir/src/mx_parser_get_op_name.c.o: ../src/mx_parser_get_op_name.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/oberdyshev/ush-ol/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_38) "Building C object CMakeFiles/ush.dir/src/mx_parser_get_op_name.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/oberdyshev/ush-ol/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_39) "Building C object CMakeFiles/ush.dir/src/mx_parser_get_op_name.c.o"
 	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ush.dir/src/mx_parser_get_op_name.c.o   -c /Users/oberdyshev/ush-ol/src/mx_parser_get_op_name.c
 
 CMakeFiles/ush.dir/src/mx_parser_get_op_name.c.i: cmake_force
@@ -553,7 +566,7 @@ CMakeFiles/ush.dir/src/mx_parser_get_op_name.c.s: cmake_force
 
 CMakeFiles/ush.dir/src/mx_parser_get_operator_info_byid.c.o: CMakeFiles/ush.dir/flags.make
 CMakeFiles/ush.dir/src/mx_parser_get_operator_info_byid.c.o: ../src/mx_parser_get_operator_info_byid.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/oberdyshev/ush-ol/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_39) "Building C object CMakeFiles/ush.dir/src/mx_parser_get_operator_info_byid.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/oberdyshev/ush-ol/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_40) "Building C object CMakeFiles/ush.dir/src/mx_parser_get_operator_info_byid.c.o"
 	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ush.dir/src/mx_parser_get_operator_info_byid.c.o   -c /Users/oberdyshev/ush-ol/src/mx_parser_get_operator_info_byid.c
 
 CMakeFiles/ush.dir/src/mx_parser_get_operator_info_byid.c.i: cmake_force
@@ -566,7 +579,7 @@ CMakeFiles/ush.dir/src/mx_parser_get_operator_info_byid.c.s: cmake_force
 
 CMakeFiles/ush.dir/src/mx_parser_get_unary_opid.c.o: CMakeFiles/ush.dir/flags.make
 CMakeFiles/ush.dir/src/mx_parser_get_unary_opid.c.o: ../src/mx_parser_get_unary_opid.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/oberdyshev/ush-ol/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_40) "Building C object CMakeFiles/ush.dir/src/mx_parser_get_unary_opid.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/oberdyshev/ush-ol/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_41) "Building C object CMakeFiles/ush.dir/src/mx_parser_get_unary_opid.c.o"
 	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ush.dir/src/mx_parser_get_unary_opid.c.o   -c /Users/oberdyshev/ush-ol/src/mx_parser_get_unary_opid.c
 
 CMakeFiles/ush.dir/src/mx_parser_get_unary_opid.c.i: cmake_force
@@ -579,7 +592,7 @@ CMakeFiles/ush.dir/src/mx_parser_get_unary_opid.c.s: cmake_force
 
 CMakeFiles/ush.dir/src/mx_parser_has_expression_operator.c.o: CMakeFiles/ush.dir/flags.make
 CMakeFiles/ush.dir/src/mx_parser_has_expression_operator.c.o: ../src/mx_parser_has_expression_operator.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/oberdyshev/ush-ol/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_41) "Building C object CMakeFiles/ush.dir/src/mx_parser_has_expression_operator.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/oberdyshev/ush-ol/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_42) "Building C object CMakeFiles/ush.dir/src/mx_parser_has_expression_operator.c.o"
 	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ush.dir/src/mx_parser_has_expression_operator.c.o   -c /Users/oberdyshev/ush-ol/src/mx_parser_has_expression_operator.c
 
 CMakeFiles/ush.dir/src/mx_parser_has_expression_operator.c.i: cmake_force
@@ -592,7 +605,7 @@ CMakeFiles/ush.dir/src/mx_parser_has_expression_operator.c.s: cmake_force
 
 CMakeFiles/ush.dir/src/mx_parser_is_closed_expression.c.o: CMakeFiles/ush.dir/flags.make
 CMakeFiles/ush.dir/src/mx_parser_is_closed_expression.c.o: ../src/mx_parser_is_closed_expression.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/oberdyshev/ush-ol/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_42) "Building C object CMakeFiles/ush.dir/src/mx_parser_is_closed_expression.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/oberdyshev/ush-ol/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_43) "Building C object CMakeFiles/ush.dir/src/mx_parser_is_closed_expression.c.o"
 	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ush.dir/src/mx_parser_is_closed_expression.c.o   -c /Users/oberdyshev/ush-ol/src/mx_parser_is_closed_expression.c
 
 CMakeFiles/ush.dir/src/mx_parser_is_closed_expression.c.i: cmake_force
@@ -605,7 +618,7 @@ CMakeFiles/ush.dir/src/mx_parser_is_closed_expression.c.s: cmake_force
 
 CMakeFiles/ush.dir/src/mx_parser_smart_find.c.o: CMakeFiles/ush.dir/flags.make
 CMakeFiles/ush.dir/src/mx_parser_smart_find.c.o: ../src/mx_parser_smart_find.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/oberdyshev/ush-ol/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_43) "Building C object CMakeFiles/ush.dir/src/mx_parser_smart_find.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/oberdyshev/ush-ol/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_44) "Building C object CMakeFiles/ush.dir/src/mx_parser_smart_find.c.o"
 	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ush.dir/src/mx_parser_smart_find.c.o   -c /Users/oberdyshev/ush-ol/src/mx_parser_smart_find.c
 
 CMakeFiles/ush.dir/src/mx_parser_smart_find.c.i: cmake_force
@@ -618,7 +631,7 @@ CMakeFiles/ush.dir/src/mx_parser_smart_find.c.s: cmake_force
 
 CMakeFiles/ush.dir/src/mx_parser_split_two_str.c.o: CMakeFiles/ush.dir/flags.make
 CMakeFiles/ush.dir/src/mx_parser_split_two_str.c.o: ../src/mx_parser_split_two_str.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/oberdyshev/ush-ol/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_44) "Building C object CMakeFiles/ush.dir/src/mx_parser_split_two_str.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/oberdyshev/ush-ol/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_45) "Building C object CMakeFiles/ush.dir/src/mx_parser_split_two_str.c.o"
 	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ush.dir/src/mx_parser_split_two_str.c.o   -c /Users/oberdyshev/ush-ol/src/mx_parser_split_two_str.c
 
 CMakeFiles/ush.dir/src/mx_parser_split_two_str.c.i: cmake_force
@@ -631,7 +644,7 @@ CMakeFiles/ush.dir/src/mx_parser_split_two_str.c.s: cmake_force
 
 CMakeFiles/ush.dir/src/mx_parser_strstr_esc.c.o: CMakeFiles/ush.dir/flags.make
 CMakeFiles/ush.dir/src/mx_parser_strstr_esc.c.o: ../src/mx_parser_strstr_esc.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/oberdyshev/ush-ol/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_45) "Building C object CMakeFiles/ush.dir/src/mx_parser_strstr_esc.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/oberdyshev/ush-ol/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_46) "Building C object CMakeFiles/ush.dir/src/mx_parser_strstr_esc.c.o"
 	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ush.dir/src/mx_parser_strstr_esc.c.o   -c /Users/oberdyshev/ush-ol/src/mx_parser_strstr_esc.c
 
 CMakeFiles/ush.dir/src/mx_parser_strstr_esc.c.i: cmake_force
@@ -644,7 +657,7 @@ CMakeFiles/ush.dir/src/mx_parser_strstr_esc.c.s: cmake_force
 
 CMakeFiles/ush.dir/src/mx_parser_trim.c.o: CMakeFiles/ush.dir/flags.make
 CMakeFiles/ush.dir/src/mx_parser_trim.c.o: ../src/mx_parser_trim.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/oberdyshev/ush-ol/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_46) "Building C object CMakeFiles/ush.dir/src/mx_parser_trim.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/oberdyshev/ush-ol/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_47) "Building C object CMakeFiles/ush.dir/src/mx_parser_trim.c.o"
 	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ush.dir/src/mx_parser_trim.c.o   -c /Users/oberdyshev/ush-ol/src/mx_parser_trim.c
 
 CMakeFiles/ush.dir/src/mx_parser_trim.c.i: cmake_force
@@ -657,7 +670,7 @@ CMakeFiles/ush.dir/src/mx_parser_trim.c.s: cmake_force
 
 CMakeFiles/ush.dir/src/mx_parser_wordchain.c.o: CMakeFiles/ush.dir/flags.make
 CMakeFiles/ush.dir/src/mx_parser_wordchain.c.o: ../src/mx_parser_wordchain.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/oberdyshev/ush-ol/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_47) "Building C object CMakeFiles/ush.dir/src/mx_parser_wordchain.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/oberdyshev/ush-ol/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_48) "Building C object CMakeFiles/ush.dir/src/mx_parser_wordchain.c.o"
 	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ush.dir/src/mx_parser_wordchain.c.o   -c /Users/oberdyshev/ush-ol/src/mx_parser_wordchain.c
 
 CMakeFiles/ush.dir/src/mx_parser_wordchain.c.i: cmake_force
@@ -670,7 +683,7 @@ CMakeFiles/ush.dir/src/mx_parser_wordchain.c.s: cmake_force
 
 CMakeFiles/ush.dir/src/mx_print_prompt.c.o: CMakeFiles/ush.dir/flags.make
 CMakeFiles/ush.dir/src/mx_print_prompt.c.o: ../src/mx_print_prompt.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/oberdyshev/ush-ol/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_48) "Building C object CMakeFiles/ush.dir/src/mx_print_prompt.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/oberdyshev/ush-ol/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_49) "Building C object CMakeFiles/ush.dir/src/mx_print_prompt.c.o"
 	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ush.dir/src/mx_print_prompt.c.o   -c /Users/oberdyshev/ush-ol/src/mx_print_prompt.c
 
 CMakeFiles/ush.dir/src/mx_print_prompt.c.i: cmake_force
@@ -683,7 +696,7 @@ CMakeFiles/ush.dir/src/mx_print_prompt.c.s: cmake_force
 
 CMakeFiles/ush.dir/src/mx_read_input.c.o: CMakeFiles/ush.dir/flags.make
 CMakeFiles/ush.dir/src/mx_read_input.c.o: ../src/mx_read_input.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/oberdyshev/ush-ol/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_49) "Building C object CMakeFiles/ush.dir/src/mx_read_input.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/oberdyshev/ush-ol/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_50) "Building C object CMakeFiles/ush.dir/src/mx_read_input.c.o"
 	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ush.dir/src/mx_read_input.c.o   -c /Users/oberdyshev/ush-ol/src/mx_read_input.c
 
 CMakeFiles/ush.dir/src/mx_read_input.c.i: cmake_force
@@ -696,7 +709,7 @@ CMakeFiles/ush.dir/src/mx_read_input.c.s: cmake_force
 
 CMakeFiles/ush.dir/src/mx_sort_arr.c.o: CMakeFiles/ush.dir/flags.make
 CMakeFiles/ush.dir/src/mx_sort_arr.c.o: ../src/mx_sort_arr.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/oberdyshev/ush-ol/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_50) "Building C object CMakeFiles/ush.dir/src/mx_sort_arr.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/oberdyshev/ush-ol/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_51) "Building C object CMakeFiles/ush.dir/src/mx_sort_arr.c.o"
 	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ush.dir/src/mx_sort_arr.c.o   -c /Users/oberdyshev/ush-ol/src/mx_sort_arr.c
 
 CMakeFiles/ush.dir/src/mx_sort_arr.c.i: cmake_force
@@ -709,7 +722,7 @@ CMakeFiles/ush.dir/src/mx_sort_arr.c.s: cmake_force
 
 CMakeFiles/ush.dir/src/mx_strjoin_with_space.c.o: CMakeFiles/ush.dir/flags.make
 CMakeFiles/ush.dir/src/mx_strjoin_with_space.c.o: ../src/mx_strjoin_with_space.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/oberdyshev/ush-ol/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_51) "Building C object CMakeFiles/ush.dir/src/mx_strjoin_with_space.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/oberdyshev/ush-ol/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_52) "Building C object CMakeFiles/ush.dir/src/mx_strjoin_with_space.c.o"
 	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ush.dir/src/mx_strjoin_with_space.c.o   -c /Users/oberdyshev/ush-ol/src/mx_strjoin_with_space.c
 
 CMakeFiles/ush.dir/src/mx_strjoin_with_space.c.i: cmake_force
@@ -737,6 +750,7 @@ ush_OBJECTS = \
 "CMakeFiles/ush.dir/src/mx_eval.c.o" \
 "CMakeFiles/ush.dir/src/mx_eval_parameter_expansion.c.o" \
 "CMakeFiles/ush.dir/src/mx_eval_redirections.c.o" \
+"CMakeFiles/ush.dir/src/mx_exec_apply_pipe.c.o" \
 "CMakeFiles/ush.dir/src/mx_exec_try_bin.c.o" \
 "CMakeFiles/ush.dir/src/mx_execute.c.o" \
 "CMakeFiles/ush.dir/src/mx_free_all.c.o" \
@@ -792,6 +806,7 @@ ush: CMakeFiles/ush.dir/src/mx_env_set_var.c.o
 ush: CMakeFiles/ush.dir/src/mx_eval.c.o
 ush: CMakeFiles/ush.dir/src/mx_eval_parameter_expansion.c.o
 ush: CMakeFiles/ush.dir/src/mx_eval_redirections.c.o
+ush: CMakeFiles/ush.dir/src/mx_exec_apply_pipe.c.o
 ush: CMakeFiles/ush.dir/src/mx_exec_try_bin.c.o
 ush: CMakeFiles/ush.dir/src/mx_execute.c.o
 ush: CMakeFiles/ush.dir/src/mx_free_all.c.o
@@ -831,7 +846,7 @@ ush: CMakeFiles/ush.dir/src/mx_strjoin_with_space.c.o
 ush: CMakeFiles/ush.dir/build.make
 ush: libmx.a
 ush: CMakeFiles/ush.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/oberdyshev/ush-ol/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_52) "Linking C executable ush"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/oberdyshev/ush-ol/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_53) "Linking C executable ush"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/ush.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

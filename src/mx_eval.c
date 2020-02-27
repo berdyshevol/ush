@@ -156,7 +156,7 @@ t_eval_result mx_file_extension(t_exp exp, t_global_environment *gv) {
 t_eval_result  mx_eval_command_substitution(t_exp exp, t_global_environment *gv) {
     char *seq = mx_extract_unary_operand(exp);
     // TODO: где-то здесь нужно запусть новый процесс и отловить его результат
-    t_eval_result result =  mx_eval(seq, gv);
+    t_eval_result result = mx_eval(seq, gv, NULL, NULL);
     mx_strdel(&seq);
     return result;
 }
@@ -191,7 +191,7 @@ t_eval_result mx_eval_assignment(t_exp exp, t_global_environment *gv) {
     t_eval_result result = NULL;
     t_exp assignment_variable = mx_assignment_variable(exp);
     if (assignment_variable == NULL) { // если есть ошибка в имени переменной
-        result = mx_simple_command(exp, gv);
+        result = mx_simple_command(exp, gv, NULL, NULL);
     }
     else { // обрабатываем присвоение
         t_exp assignment_value = mx_assignment_value(exp);
@@ -200,7 +200,7 @@ t_eval_result mx_eval_assignment(t_exp exp, t_global_environment *gv) {
         // check if other words
         t_exp words_after_assign = mx_words_after_assignment(exp);
         if (words_after_assign != NULL) {
-            result = mx_eval(words_after_assign, gv);
+            result = mx_eval(words_after_assign, gv, NULL, NULL);
         }
         else { // присвоение нормально, и нет слово после
             result = mx_new_evalresult();
@@ -235,7 +235,7 @@ bool mx_result_of_if_predicate(t_exp exp, t_global_environment *gv) {
     bool return_result;
 
     t_exp if_predicate = mx_if_predicate(exp);
-    t_eval_result result_if_predicate = mx_eval(if_predicate, gv);
+    t_eval_result result_if_predicate = mx_eval(if_predicate, gv, NULL, NULL);
     // TODO: здесь надо ввести результат исполнения пайплайна
     if (result_if_predicate == NULL)
         return_result = true;
@@ -264,7 +264,7 @@ t_eval_result mx_eval_if(t_exp exp, t_global_environment *gv) {
 //        if (if_consequent != NULL) {
 //            mx_printstr("\n");
 //        }
-        res = mx_eval(if_consequent, gv);
+        res = mx_eval(if_consequent, gv, NULL, NULL);
         mx_strdel(&if_consequent);
     }
     else {
@@ -272,7 +272,7 @@ t_eval_result mx_eval_if(t_exp exp, t_global_environment *gv) {
         t_exp if_alternative = mx_if_alternative(exp);
 //        if (if_alternative != NULL)
 //            mx_printstr("\n");
-        res = mx_eval(if_alternative, gv);
+        res = mx_eval(if_alternative, gv, NULL, NULL);
         mx_strdel(&if_alternative);
     }
     return res; // TODO: не знаю я прав или нет
@@ -291,12 +291,12 @@ mx_eval_sequence(t_exp exps, t_global_environment *gv) {
     char *delim = ";";
     if (mx_is_last_exp(exps, delim)) {
         char *first_exp = mx_first_exp(exps, delim);
-        result = mx_eval(first_exp, gv);
+        result = mx_eval(first_exp, gv, NULL, NULL);
         mx_strdel(&first_exp);
     }
     else {
         char *first_exp = mx_first_exp(exps, delim);
-        t_eval_result eval_fe = mx_eval(first_exp, gv);
+        t_eval_result eval_fe = mx_eval(first_exp, gv, NULL, NULL);
 
 //        if (mx_get_expressiontype_by_id(mx_get_binary_opid(exps)) == list)
 //            mx_printstr("\n");
@@ -311,27 +311,73 @@ mx_eval_sequence(t_exp exps, t_global_environment *gv) {
     return result; // TODO: не знаю что вернуть
 }
 
+//void print_pipe(char *exp, int *pipe_id, bool new_proc) {
+//    if (pipe_id != NULL)
+//        printf("this is '%s', ->%d ->%d new-proc=%d\n", exp, pipe_id[0],
+//                pipe_id[1], new_proc);
+//    else
+//        printf("this is '%s', ->NULL new-proc=%d\n", exp, new_proc);
+//}
+
 // Piplines word word .. | word word .. | word word .. | word word ..
 t_eval_result
-mx_eval_seq_pipeline(t_exp exps, t_global_environment *gv) {
+mx_eval_seq_pipeline(t_exp exps, t_global_environment *gv, int *pipe_fd) {
     t_eval_result result = NULL;
     char *delim = "|";
-    if (mx_is_last_exp(exps, delim)) {
+    bool *new_proc = malloc(sizeof(bool));
+    *new_proc = false;
+    if (mx_is_last_exp(exps, delim)) {  // last right pipe
         char *first_exp = mx_first_exp(exps, delim);
-        result = mx_eval(first_exp, gv);
+//        if (pipe_fd != NULL) {
+//            mx_smart_close_fd (&pipe_fd[1],1);
+//        }
+        result = mx_eval(first_exp, gv, pipe_fd, new_proc);
+//        print_pipe(first_exp, pipe_fd, false);
         mx_strdel(&first_exp);
     }
     else {
+        int *new_pipe_fd = mx_pipe_fd_new();
+        pipe(new_pipe_fd);
+        int *pipe_fd_forfistrexp = mx_pipe_fd_new();
+        int *pipe_fd_forrestrexp = mx_pipe_fd_new();
+
+        // left pipe
         char *first_exp = mx_first_exp(exps, delim);
-        t_eval_result eval_fe = mx_eval(first_exp, gv);
+//        printf("after: %s, [0]=%d [1]=%d\n", first_exp, new_pipe_fd[0],
+//                new_pipe_fd[1]);
+        if (pipe_fd == NULL) {
+            //mx_smart_close_fd(&new_pipe_fd[0],0);
+            pipe_fd_forfistrexp[0] = 0;
+            pipe_fd_forfistrexp[1] = new_pipe_fd[0];
+            pipe_fd_forrestrexp[0] = new_pipe_fd[1];
+            pipe_fd_forrestrexp[1] = 1;
+        }
+        else {
+//            printf("пришло pipe_fd[0]=%d, pipe_fd[1]=%d\n", pipe_fd[0],
+//                    pipe_fd[1]);
+            pipe_fd_forfistrexp[0] = pipe_fd[0];
+            pipe_fd_forfistrexp[1] = new_pipe_fd[0];
+            pipe_fd_forrestrexp[0] = new_pipe_fd[1];
+            pipe_fd_forrestrexp[1] = 1;
+        }
+        *new_proc = true;
+        t_eval_result eval_fe = mx_eval(first_exp, gv, pipe_fd_forfistrexp,
+                                        new_proc);
+//        print_pipe(first_exp, pipe_fd_forfistrexp, true);
 
+        // right pipe
         char *rest_exps = mx_rest_exps(exps, delim);
-        result = mx_eval_seq_pipeline(rest_exps, gv);
+        result = mx_eval_seq_pipeline(rest_exps, gv, pipe_fd_forrestrexp);
 
+        // free
         mx_strdel(&rest_exps);
         mx_delete_evalresult(&eval_fe);
         mx_strdel(&first_exp);
+        mx_pipe_fd_delete(&pipe_fd_forrestrexp);
+        mx_pipe_fd_delete(&pipe_fd_forfistrexp);
+        mx_pipe_fd_delete(&new_pipe_fd);
     }
+    free(new_proc);
     return result; // TODO: не знаю что вернуть
 }
 
@@ -462,7 +508,9 @@ void mx_list_of_values(t_list_of_values **list,
 
 
 // for eval
-t_eval_result mx_simple_command(t_exp expression, t_global_environment *gv) {
+t_eval_result
+mx_simple_command(t_exp expression, t_global_environment *gv, int *pipe_fd,
+                  bool *new_proc) {
     t_eval_result result = NULL;
     t_list_of_values *list_of_arguments = NULL;
     t_exp command = NULL;
@@ -470,11 +518,16 @@ t_eval_result mx_simple_command(t_exp expression, t_global_environment *gv) {
     t_exp operands = NULL;
     t_redirect *redirections = NULL;
     t_exp exp = strdup(expression);
-    bool fork_process = false;
+//    bool fork_process = false;
+    t_config *cnf;
 
+    cnf = mx_config_new();
+    cnf->pipe_fd = pipe_fd;
+    cnf->new_proc = new_proc;
+    gv->cnf = cnf;
     mx_alias_expansion(&exp, gv);
     mx_parameter_expansion(&exp, gv);
-    //mx_command_substitution(&exp, gv, &fork_process);
+    //mx_command_substitution(&exp, gv, new_proc);
     //mx_file_expansion(&exp, gv);
     if (!mx_extract_redirections(&exp, &redirections)) {
         result = mx_new_evalresult();
@@ -486,8 +539,8 @@ t_eval_result mx_simple_command(t_exp expression, t_global_environment *gv) {
         operands = mx_operands(exp);
         mx_list_of_values(&list_of_arguments, operands, gv);
         // apply
-        result = mx_apply(command, list_of_arguments, redirections, gv,
-                          fork_process);
+        gv->cnf->redirections = redirections;
+        result = mx_apply(command, list_of_arguments, gv);
     }
     mx_strdel(&exp);
     mx_delete_redirect(&redirections);
@@ -495,25 +548,26 @@ t_eval_result mx_simple_command(t_exp expression, t_global_environment *gv) {
     mx_delete_evalresult(&eval_operator);
     mx_strdel(&command);
     mx_liststr_delete(&list_of_arguments);
+    mx_delete_config(&cnf);
     return result;
 }
 
 // -----------------------    apply ------
 
 t_eval_result
-mx_apply(char *command, t_list_of_values *arguments, t_redirect *redirections,
-         t_global_environment *gv, bool fork_process) {
+mx_apply(char *command, t_list_of_values *arguments, t_global_environment *gv) {
     t_eval_result result = NULL;
     int argc;
     char **argv = NULL;
-    t_config *cnf = NULL;
+//    t_config *cnf = NULL;
 
     mx_convert_strlist_strvector(arguments, &argv, &argc);
-    cnf = mx_new_config(argv, argc, fork_process);
-    gv->cnf = cnf;
-    result = mx_execute(command, gv, redirections);
-
-    mx_delete_config(&cnf);
+    gv->cnf->agv = argv;
+    gv->cnf->agvsize = argc;
+//    cnf = mx_config_new();
+//    gv->cnf = cnf;
+    result = mx_execute(command, gv);
+//    mx_delete_config(&cnf);
     mx_delete_strvector(&argv, &argc);
     return result; // TODO: это заглушка
 }
@@ -555,7 +609,8 @@ mx_apply(char *command, t_list_of_values *arguments, t_redirect *redirections,
 //    return result;
 //}
 
-t_eval_result mx_eval(t_exp exp, t_global_environment *gv) { // TODO:  передавать по ссылке
+t_eval_result
+mx_eval(t_exp exp, t_global_environment *gv, int *pipe_fd, bool *new_proc) { // TODO:  передавать по ссылке
     if (exp == NULL || exp[0] == '\0' || exp[0] == '\n')
         return NULL;
 
@@ -569,7 +624,7 @@ t_eval_result mx_eval(t_exp exp, t_global_environment *gv) { // TODO:  пере�
             result = mx_eval_assignment(exp, gv);
             break;
         case pipeline: // simple_command | simple_command | simple_command
-            result = mx_eval_seq_pipeline(exp, gv);
+            result = mx_eval_seq_pipeline(exp, gv, NULL);
             break;
         case sublist: // || &&
             result = mx_eval_if(exp, gv);
@@ -579,7 +634,7 @@ t_eval_result mx_eval(t_exp exp, t_global_environment *gv) { // TODO:  пере�
             result = mx_eval_sequence(exp, gv);
             break;
         case simple_command: //simple_command:
-            result = mx_simple_command(exp, gv);
+            result = mx_simple_command(exp, gv, pipe_fd, new_proc);
             break;
         default:
             result = mx_new_evalresult();

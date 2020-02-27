@@ -62,13 +62,13 @@ bool try_builtin(char *cmd, t_eval_result result, t_global_environment *gv,
 }
 
 t_eval_result
-mx_execute(char *command, t_global_environment *gv, t_redirect *redir) {
+mx_execute(char *command, t_global_environment *gv) {
     t_eval_result result = mx_new_evalresult();
-
-    if (try_builtin(command, result, gv, redir)) {
+    printf("in execute cmd=%s\n", command);
+    if (try_builtin(command, result, gv, gv->cnf->redirections)) {
 
     }
-    else if (mx_try_bin(command, result, gv, redir)) {
+    else if (mx_try_bin(command, result, gv, gv->cnf->redirections)) {
         // TODO: здесь нужно попробовать запусть бинарник
         // TODO: если результат ошибка то надо обработать ошибку
     }

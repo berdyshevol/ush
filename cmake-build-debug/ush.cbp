@@ -352,6 +352,9 @@
 		<Unit filename="/Users/oberdyshev/ush-ol/src/mx_eval_redirections.c">
 			<Option target="ush"/>
 		</Unit>
+		<Unit filename="/Users/oberdyshev/ush-ol/src/mx_exec_apply_pipe.c">
+			<Option target="ush"/>
+		</Unit>
 		<Unit filename="/Users/oberdyshev/ush-ol/src/mx_exec_try_bin.c">
 			<Option target="ush"/>
 		</Unit>

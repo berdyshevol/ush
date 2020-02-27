@@ -138,6 +138,17 @@ CMakeFiles/ush.dir/src/mx_eval_redirections.c.o
  ../inc/parser.h
  ../inc/ush.h
  /Users/oberdyshev/ush-ol/src/mx_eval_redirections.c
+CMakeFiles/ush.dir/src/mx_exec_apply_pipe.c.o
+ ../Libmx/inc/libmx.h
+ ../inc/environment.h
+ ../inc/evaluator.h
+ ../inc/i.h
+ ../inc/liststr.h
+ ../inc/o.h
+ ../inc/p.h
+ ../inc/parser.h
+ ../inc/ush.h
+ /Users/oberdyshev/ush-ol/src/mx_exec_apply_pipe.c
 CMakeFiles/ush.dir/src/mx_exec_try_bin.c.o
  ../Libmx/inc/libmx.h
  ../inc/environment.h

@@ -19,6 +19,7 @@ set(CMAKE_DEPENDS_CHECK_C
   "/Users/oberdyshev/ush-ol/src/mx_eval.c" "/Users/oberdyshev/ush-ol/cmake-build-debug/CMakeFiles/ush.dir/src/mx_eval.c.o"
   "/Users/oberdyshev/ush-ol/src/mx_eval_parameter_expansion.c" "/Users/oberdyshev/ush-ol/cmake-build-debug/CMakeFiles/ush.dir/src/mx_eval_parameter_expansion.c.o"
   "/Users/oberdyshev/ush-ol/src/mx_eval_redirections.c" "/Users/oberdyshev/ush-ol/cmake-build-debug/CMakeFiles/ush.dir/src/mx_eval_redirections.c.o"
+  "/Users/oberdyshev/ush-ol/src/mx_exec_apply_pipe.c" "/Users/oberdyshev/ush-ol/cmake-build-debug/CMakeFiles/ush.dir/src/mx_exec_apply_pipe.c.o"
   "/Users/oberdyshev/ush-ol/src/mx_exec_try_bin.c" "/Users/oberdyshev/ush-ol/cmake-build-debug/CMakeFiles/ush.dir/src/mx_exec_try_bin.c.o"
   "/Users/oberdyshev/ush-ol/src/mx_execute.c" "/Users/oberdyshev/ush-ol/cmake-build-debug/CMakeFiles/ush.dir/src/mx_execute.c.o"
   "/Users/oberdyshev/ush-ol/src/mx_free_all.c" "/Users/oberdyshev/ush-ol/cmake-build-debug/CMakeFiles/ush.dir/src/mx_free_all.c.o"

@@ -7,18 +7,25 @@
 void mx_reset_redirections(t_redirect *redir) {
     if (redir->prev_input_fd != 0) {
         dup2(redir->prev_input_fd, 0);
+        if (mx_fd_is_valid(redir->prev_input_fd))
+            close(redir->prev_input_fd);
     }
     if (redir->prev_output_fd != 1) {
         dup2(redir->prev_output_fd, 1);
+        if (mx_fd_is_valid(redir->prev_output_fd))
+            close(redir->prev_output_fd);
     }
     if (redir->prev_error_fd != 2) {
         dup2(redir->prev_error_fd, 2);
+        if (mx_fd_is_valid(redir->prev_error_fd))
+             close(redir->prev_error_fd);
     }
 }
 
-void mx_apply_redirect(t_redirect *redir) {
+bool mx_apply_redirect(t_redirect *redir) {
+    bool res = false;
     if (redir == NULL)
-        return ;
+        return res;
     if (redir->input != NULL) {
         if (!redir->input_append) {
             if ((redir->input_fd = open (redir->input, O_RDONLY)) < 0) {
@@ -29,6 +36,7 @@ void mx_apply_redirect(t_redirect *redir) {
                 redir->prev_input_fd = dup(0);
                 dup2(redir->input_fd, 0);
                 close(redir->input_fd);
+                res = true;
             }
         }
     }
@@ -43,6 +51,7 @@ void mx_apply_redirect(t_redirect *redir) {
                 redir->prev_output_fd = dup(1);
                 dup2(redir->output_fd, 1);
                 close(redir->output_fd);
+                res = true;
             }
         }
         if (redir->output_append) {
@@ -55,6 +64,7 @@ void mx_apply_redirect(t_redirect *redir) {
                 redir->prev_output_fd = dup(1);
                 dup2(redir->output_fd, 1);
                 close(redir->output_fd);
+                res = true;
             }
         }
     }
@@ -69,8 +79,10 @@ void mx_apply_redirect(t_redirect *redir) {
             redir->prev_error_fd = dup(2);
             dup2 (redir->error_fd, 2);
             close (redir->error_fd);
+            res = true;
         }
     }
+    return res;
 }
 
 void extract_input(char **exp, t_redirect **redirect, bool *er) {
