@@ -37,7 +37,7 @@ t_exp mx_cadddr(t_exp exp);
 // words
 t_eval_result mx_self_evaluating (t_exp exp, t_global_environment *env);
 t_eval_result mx_text_of_quotation(t_exp exp, t_global_environment *gv);
-t_eval_result mx_eval_doublequote(t_exp exp, t_global_environment *gv);
+//t_eval_result mx_eval_doublequote(t_exp exp, t_global_environment *gv);
 
 // Expansions
 t_eval_result mx_lookup_variable_value(t_exp exp, t_global_environment *gv);
@@ -72,17 +72,16 @@ t_exp mx_if_consequent(t_exp exp);
 t_exp mx_if_alternative(t_exp exp);
 bool mx_result_of_if_predicate(t_exp exp, t_global_environment *gv);
 
-// Pipelines
-t_eval_result mx_eval_pipeline(t_exp exp, t_global_environment *gv);
-
 // Conditionals
 t_eval_result mx_eval_if(t_exp exp, t_global_environment *gv);
 
 // Sequences
 t_eval_result
-mx_eval_sequence(t_exp exps, char *delim, t_global_environment *gv);
+mx_eval_sequence(t_exp exps, t_global_environment *gv);
+//t_eval_result
+//mx_eval_sequence_ofwords(t_exp exps, char *delim, t_global_environment *gv);
 t_eval_result
-mx_eval_sequence_ofwords(t_exp exps, char *delim, t_global_environment *gv);
+mx_eval_seq_pipeline(t_exp exps, t_global_environment *gv);
 
 //Procedure arguments
 void mx_list_of_values(t_list_of_values **list,
@@ -91,7 +90,7 @@ void mx_list_of_values(t_list_of_values **list,
 // for eval
 t_eval_result mx_simple_command(t_exp exps, t_global_environment *gv);
 t_eval_result mx_eval(t_exp exp, t_global_environment *gv);
-t_eval_result mx_eval_word(t_exp exp, t_global_environment *gv);
+//t_eval_result mx_eval_word(t_exp exp, t_global_environment *gv);
 
         t_eval_result mx_new_evalresult(void);
 void mx_delete_evalresult(t_eval_result *eval_result);

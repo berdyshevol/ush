@@ -111,14 +111,14 @@ t_eval_result mx_text_of_quotation(t_exp exp, t_global_environment *gv) {
     return result;
 }
 
-t_eval_result mx_eval_doublequote(t_exp exp, t_global_environment *gv) {
-    char *seq = mx_extract_unary_operand(exp);
-    char * delim = " ";
-    t_eval_result result = mx_eval_sequence_ofwords(seq, delim, gv);   //
-    // TODO eval string not sequence_ofwords!!!!!!
-    free(seq);
-    return result;
-}
+//t_eval_result mx_eval_doublequote(t_exp exp, t_global_environment *gv) {
+//    char *seq = mx_extract_unary_operand(exp);
+//    char * delim = " ";
+//    t_eval_result result = mx_eval_sequence_ofwords(seq, delim, gv);   //
+//    // TODO eval string not sequence_ofwords!!!!!!
+//    free(seq);
+//    return result;
+//}
 
 // Expansions
 t_eval_result mx_lookup_variable_value(t_exp exp, t_global_environment *gv) {
@@ -247,13 +247,6 @@ bool mx_result_of_if_predicate(t_exp exp, t_global_environment *gv) {
     return return_result;
 }
 
-// Piplines word word .. | word word .. | word word .. | word word ..
-t_eval_result mx_eval_pipeline(t_exp exp, t_global_environment *gv) {
-    // // TODO: где-то здесь нужно запусть новый процесс и отловить его результат
-    t_eval_result result = mx_eval_sequence(exp, mx_get_op_name(exp), gv);
-    return result;
-}
-
 // Conditionals
 /**
  * a && b, if a ok then exec b
@@ -293,9 +286,9 @@ t_eval_result mx_eval_if(t_exp exp, t_global_environment *gv) {
  * of words (delimiter is space)
  */
 t_eval_result
-mx_eval_sequence(t_exp exps, char *delim, t_global_environment *gv) {
+mx_eval_sequence(t_exp exps, t_global_environment *gv) {
     t_eval_result result = NULL;
-
+    char *delim = ";";
     if (mx_is_last_exp(exps, delim)) {
         char *first_exp = mx_first_exp(exps, delim);
         result = mx_eval(first_exp, gv);
@@ -309,7 +302,7 @@ mx_eval_sequence(t_exp exps, char *delim, t_global_environment *gv) {
 //            mx_printstr("\n");
 
         char *rest_exps = mx_rest_exps(exps, delim);
-        result = mx_eval_sequence(rest_exps, delim, gv);
+        result = mx_eval_sequence(rest_exps, gv);
 
         mx_strdel(&rest_exps);
         mx_delete_evalresult(&eval_fe);
@@ -318,34 +311,61 @@ mx_eval_sequence(t_exp exps, char *delim, t_global_environment *gv) {
     return result; // TODO: не знаю что вернуть
 }
 
-// ее можно переписть передавая в качестве аргумента фунцию eval or eval_word
-// TODO: delete
+// Piplines word word .. | word word .. | word word .. | word word ..
 t_eval_result
-mx_eval_sequence_ofwords(t_exp exps, char *delim, t_global_environment *gv) {
+mx_eval_seq_pipeline(t_exp exps, t_global_environment *gv) {
     t_eval_result result = NULL;
-
+    char *delim = "|";
     if (mx_is_last_exp(exps, delim)) {
         char *first_exp = mx_first_exp(exps, delim);
-        result = mx_eval_word(first_exp, gv);
+        result = mx_eval(first_exp, gv);
         mx_strdel(&first_exp);
     }
     else {
-        result = mx_new_evalresult();
         char *first_exp = mx_first_exp(exps, delim);
-        t_eval_result eval_first_exp = mx_eval_word(first_exp, gv);
-        char *rest_exps = mx_rest_exps(exps, delim);
-        t_eval_result eval_rest_exps = mx_eval_sequence_ofwords(rest_exps,
-                delim, gv);
+        t_eval_result eval_fe = mx_eval(first_exp, gv);
 
-        result->text = mx_strjoin_with_space(eval_first_exp->text,
-                                                  eval_rest_exps->text);
-        mx_delete_evalresult(&eval_rest_exps);
+//        if (mx_get_expressiontype_by_id(mx_get_binary_opid(exps)) == list)
+//            mx_printstr("\n");
+
+        char *rest_exps = mx_rest_exps(exps, delim);
+        result = mx_eval_seq_pipeline(rest_exps, gv);
+
         mx_strdel(&rest_exps);
-        mx_delete_evalresult(&eval_first_exp);
+        mx_delete_evalresult(&eval_fe);
         mx_strdel(&first_exp);
     }
     return result; // TODO: не знаю что вернуть
 }
+
+//// ее можно переписть передавая в качестве аргумента фунцию eval or eval_word
+//// TODO: delete
+//t_eval_result
+//mx_eval_sequence_ofwords(t_exp exps, char *delim, t_global_environment *gv) {
+//    t_eval_result result = NULL;
+//
+//    if (mx_is_last_exp(exps, delim)) {
+//        char *first_exp = mx_first_exp(exps, delim);
+//        result = mx_eval_word(first_exp, gv);
+//        mx_strdel(&first_exp);
+//    }
+//    else {
+//        result = mx_new_evalresult();
+//        char *first_exp = mx_first_exp(exps, delim);
+//        t_eval_result eval_first_exp = mx_eval_word(first_exp, gv);
+//        char *rest_exps = mx_rest_exps(exps, delim);
+//        t_eval_result eval_rest_exps = mx_eval_sequence_ofwords(rest_exps,
+//                delim, gv);
+//
+//        result->text = mx_strjoin_with_space(eval_first_exp->text,
+//                                                  eval_rest_exps->text);
+//        mx_delete_evalresult(&eval_rest_exps);
+//        mx_strdel(&rest_exps);
+//        mx_delete_evalresult(&eval_first_exp);
+//        mx_strdel(&first_exp);
+//    }
+//    return result; // TODO: не знаю что вернуть
+//}
 
 void mx_copy(char c, char *newexp, int *index) {
     newexp[*index] = c;
@@ -503,40 +523,40 @@ mx_apply(char *command, t_list_of_values *arguments, t_redirect *redirections,
 
 // -------   eval
 
-t_eval_result mx_eval_word(t_exp exp, t_global_environment *gv) {
-    if (exp == NULL)
-        return NULL;
-
-    t_eval_result result = NULL;
-    int status;
-    e_exp_type parse = mx_get_expressiontype_by_id(mx_get_word_id(exp));
-
-    switch (parse) {
-        case self_evaluating:
-            result = mx_self_evaluating(exp, gv);
-            break;
-        case quoted_string:
-            result = mx_text_of_quotation(exp, gv);
-            break;
-        case double_quoted_string:
-            result = mx_eval_doublequote(exp, gv);
-            break;
-        case variable_substitution:
-            result = mx_lookup_variable_value(exp, gv);
-            break;
-        case command_substitution:
-            result = mx_eval_command_substitution(exp, gv);
-            break;
-        case file_extension:
-            result = mx_file_extension(exp, gv);
-            break;
-        default:
-            result = mx_new_evalresult();
-            result->text = strdup("Не могу распарсить слово");
-            result->status = false; // ошибка
-    }
-    return result;
-}
+//t_eval_result mx_eval_word(t_exp exp, t_global_environment *gv) {
+//    if (exp == NULL)
+//        return NULL;
+//
+//    t_eval_result result = NULL;
+//    int status;
+//    e_exp_type parse = mx_get_expressiontype_by_id(mx_get_word_id(exp));
+//
+//    switch (parse) {
+//        case self_evaluating:
+//            result = mx_self_evaluating(exp, gv);
+//            break;
+//        case quoted_string:
+//            result = mx_text_of_quotation(exp, gv);
+//            break;
+//        case double_quoted_string:
+//            result = mx_eval_doublequote(exp, gv);
+//            break;
+//        case variable_substitution:
+//            result = mx_lookup_variable_value(exp, gv);
+//            break;
+//        case command_substitution:
+//            result = mx_eval_command_substitution(exp, gv);
+//            break;
+//        case file_extension:
+//            result = mx_file_extension(exp, gv);
+//            break;
+//        default:
+//            result = mx_new_evalresult();
+//            result->text = strdup("Не могу распарсить слово");
+//            result->status = false; // ошибка
+//    }
+//    return result;
+//}
 
 t_eval_result mx_eval(t_exp exp, t_global_environment *gv) { // TODO:  передавать по ссылке
     if (exp == NULL)
@@ -552,14 +572,14 @@ t_eval_result mx_eval(t_exp exp, t_global_environment *gv) { // TODO:  пере�
             result = mx_eval_assignment(exp, gv);
             break;
         case pipeline: // simple_command | simple_command | simple_command
-            result = mx_eval_pipeline(exp, gv);
+            result = mx_eval_seq_pipeline(exp, gv);
             break;
         case sublist: // || &&
             result = mx_eval_if(exp, gv);
             break;
-        case list: // ; &
+        case list: // ;
             //ss = mx_begin_actions(exp); //TODO: не знаю зачем begin_action
-            result = mx_eval_sequence(exp, mx_get_op_name(exp), gv);
+            result = mx_eval_sequence(exp, gv);
             break;
         case simple_command: //simple_command:
             result = mx_simple_command(exp, gv);
