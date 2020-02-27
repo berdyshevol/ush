@@ -3,6 +3,7 @@
 //
 #include "parser.h"
 
+// считает количество слешей слева от posision
 int mx_count_esc(char *exp, int position) {
     int count = 0;
     for (int i = position - 1; i >= 0; i--) {
@@ -14,6 +15,7 @@ int mx_count_esc(char *exp, int position) {
     return count;
 }
 
+// найти подстроку если она не экранируется слешами
 char *mx_strstr_esc(char *exp, char *substr) {
     int len  = strlen(exp);
     char *p = NULL;
@@ -30,6 +32,7 @@ char *mx_strstr_esc(char *exp, char *substr) {
     return NULL;
 }
 
+// меняет режим в зависимотси от экранирования и ' "
 void mx_change_mode(e_mode *mode, char *exp, int pos) {
     switch (*mode) {
         case unquote:

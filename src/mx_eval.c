@@ -473,7 +473,6 @@ t_eval_result mx_simple_command(t_exp expression, t_global_environment *gv) {
     bool fork_process = false;
 
     mx_alias_expansion(&exp, gv);
-    printf("we are in sc. '%s'\n", expression);
     mx_parameter_expansion(&exp, gv);
     //mx_command_substitution(&exp, gv, &fork_process);
     //mx_file_expansion(&exp, gv);
@@ -565,8 +564,6 @@ t_eval_result mx_eval(t_exp exp, t_global_environment *gv) { // TODO:  пере�
     e_exp_type exp_type = mx_get_expressiontype_by_id(mx_get_binary_opid(exp));
     // проверка по бинарным операциям
 
-
-    printf("we are in EVAL!!!!  '%s'\n", exp);
     switch (exp_type) {
         case variable_assignment:
             result = mx_eval_assignment(exp, gv);

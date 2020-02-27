@@ -42,7 +42,6 @@ void mx_parameter_expansion(t_exp *exp, t_global_environment *gv) {
     bool find_result;
 
     find_result = mx_find_param(*exp, &start, &end, &name);
-    printf("we are in pe. '%s'\n", *exp);
     while (find_result) {
         value = mx_get_value(name, gv);
         mx_insert(exp, start, end, value);

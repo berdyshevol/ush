@@ -37,7 +37,6 @@ bool mx_try_bin(char *cmd, t_eval_result result, t_global_environment *gv,
     int pid;
     int status;
 
-
     switch (pid = fork()) {
         case -1:
             perror ("fork");
@@ -48,7 +47,6 @@ bool mx_try_bin(char *cmd, t_eval_result result, t_global_environment *gv,
         default:
             waitpid (pid, &status, 0);
             mx_set_input_mode();
-            //printf("ls -> %d", mx_wexitstatud(status));
             mx_env_set_var("?", mx_itoa(mx_wexitstatud(status)), &(gv->vars));
             result->status = mx_wexitstatud(status) == 0 ? true : false;
             break;

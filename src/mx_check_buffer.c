@@ -4,6 +4,7 @@ static bool signal_ctr_c(t_global_environment *g) {
     mx_strdel(&g->str);
     g->str = mx_strnew(128);
     g->cursor = 0;
+    g->backcpase_his = true;
     printf("\nu$h> ");
     // установить %? = 130
     mx_env_set_var("?", "130", &(g->vars));
