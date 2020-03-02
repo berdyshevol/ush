@@ -128,6 +128,7 @@ void mx_pipe_fd_delete(int **pipe_fd);
 void mx_smart_close_fd(int *fd, int std);
 int mx_fd_is_valid(int fd);
 bool mx_apply_pipe(int *pipe_fd);
+bool mx_has_pipe(int *pipe_fd);
 void mx_reset_pipefd(int *pipe_fd);
 
 //

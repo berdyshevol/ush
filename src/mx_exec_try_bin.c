@@ -18,51 +18,51 @@ void mx_set_default_signals() {
      signal(SIGCHLD, SIG_DFL);
 }
 
-
+void mx_print_nocmd(char *cmd, t_global_environment *gv) {
+    mx_printerr(gv->prompt);
+    mx_printerr("command not found: ");
+    mx_printerr(cmd);
+    mx_printerr("\n");
+    exit(127);
+}
 
 void mx_exec_child(char *cmd, t_eval_result result, t_global_environment *gv) {
     int pid = getpid();
     setgid(pid);
     mx_set_default_signals();
-    printf("in child cmd=%s [0]=%d "
-           "[1]=%d [2]=%d [3]=%d\n", cmd, gv->cnf->pipe_fd[0],
-           gv->cnf->pipe_fd[1], gv->cnf->pipe_fd[2], gv->cnf->pipe_fd[3]);
-    if (mx_apply_pipe(gv->cnf->pipe_fd)) {
-        printf("after apply pipe cmd=%s [0]=%d "
-               "[1]=%d [2]=%d [3]=%d\n", cmd, gv->cnf->pipe_fd[0],
-               gv->cnf->pipe_fd[1], gv->cnf->pipe_fd[2], gv->cnf->pipe_fd[3]);
-        int pid = fork();
-        switch (pid) {
+    if (mx_has_pipe(gv->cnf->pipe_fd)) {
+        int pid;
+        int status;
+        switch (pid = fork()) {
             case -1:
-                perror ("fork");
+                perror("fork");
                 break;
             case 0:
-                printf("forked again cmd=%s\n", cmd);
-                execvp(cmd, gv->cnf->agv);
+                mx_apply_pipe(gv->cnf->pipe_fd);
+                if (execvp(cmd, gv->cnf->agv) < 0) {
+                    mx_print_nocmd(cmd, gv);
+                }
                 break;
             default:
-                mx_reset_pipefd(gv->cnf->pipe_fd);
-                break;
+                waitpid(pid, &status, 0);
         }
     }
     else if (mx_apply_redirect(gv->cnf->redirections)) {
-        printf("in child in apply redir \n");
-        execvp(cmd, gv->cnf->agv);
+        printf("has redir %s\n", cmd);
+        if (execvp(cmd, gv->cnf->agv) <  0) {
+            mx_print_nocmd(cmd, gv);
+        }
     }
-    else if (execvp(cmd, gv->cnf->agv) == -1) {
-        mx_printerr(gv->prompt);
-        mx_printerr("command not found: ");
-        mx_printerr(cmd);
-        mx_printerr("\n");
-        exit(127);
+    else if (execvp(cmd, gv->cnf->agv) < 0) {
+        mx_print_nocmd(cmd, gv);
     }
+    exit(0);
 }
 
 bool mx_try_bin(char *cmd, t_eval_result result, t_global_environment *gv,
                 t_redirect *redir) {
     int pid;
     int status;
-    printf("in shell cmd=%s\n", cmd);
     switch (pid = fork()) {
         case -1:
             perror ("fork");
@@ -73,6 +73,7 @@ bool mx_try_bin(char *cmd, t_eval_result result, t_global_environment *gv,
         default:
             waitpid (pid, &status, 0);
             mx_set_input_mode();
+            int i = mx_wexitstatud(status);
             mx_env_set_var("?", mx_itoa(mx_wexitstatud(status)), &(gv->vars));
             result->status = mx_wexitstatud(status) == 0 ? true : false;
             break;

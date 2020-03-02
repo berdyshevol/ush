@@ -56,12 +56,23 @@ void mx_reset_pipefd(int *pipe_fd) {
     }
 }
 
+bool mx_has_pipe(int *pipe_fd) {
+    bool res = false;
+    if (pipe_fd == NULL)
+        return res;
+    if (pipe_fd[0] != 0) {
+        res = true;
+    }
+    if (pipe_fd[1] != 1) {
+        res = true;
+    }
+    return res;
+}
+
 bool  mx_apply_pipe(int *pipe_fd) {
     bool res = false;
     if (pipe_fd == NULL)
         return res;
-    printf("in apply_pipe [0]=%d [1]=%d [2]=%d [3]=%d\n", pipe_fd[0],
-            pipe_fd[1], pipe_fd[2], pipe_fd[3]);
     if (pipe_fd[0] != 0) {
         pipe_fd[2] = dup(pipe_fd[0]);
         dup2(pipe_fd[0], 0);
@@ -70,15 +81,10 @@ bool  mx_apply_pipe(int *pipe_fd) {
     }
     if (pipe_fd[1] != 1) {
         pipe_fd[3] = dup(pipe_fd[1]);
-        printf("HERE\n");
         dup2(pipe_fd[1], 1);  // !!!!!!!!!!!!!!!!
-        printf("BUT NOT HERE\n");
         close(pipe_fd[1]);
-        printf("4\n");
         res = true;
     }
-    printf("after apply_pipe [0]=%d [1]=%d [2]=%d [3]=%d\n", pipe_fd[0],
-           pipe_fd[1], pipe_fd[2], pipe_fd[3]);
     return res;
 }
 

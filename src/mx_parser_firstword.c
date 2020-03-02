@@ -26,54 +26,54 @@
 //}
 
 
-static int  find_first_nonwhitespace_char(char *s) {
-    if (s == NULL)
-        return -1;
-    int i = 0;
+//static int  find_first_nonwhitespace_char(char *s) {
+//    if (s == NULL)
+//        return -1;
+//    int i = 0;
+//
+//    while (s[i]) {
+//        if (mx_isspace(*s))
+//            i++;
+//        else
+//            return i;
+//    }
+//    return -1;
+//}
 
-    while (s[i]) {
-        if (mx_isspace(*s))
-            i++;
-        else
-            return i;
-    }
-    return -1;
-}
+//static bool is_parameter(char *s) {
+//    if (s == NULL)
+//        return false;
+//    return strlen(s) > 2 // $<<char>>
+//          && s[0] == '$'
+//          && !(s[1] == '{' || s[1] == '(');
+//}
 
-static bool is_parameter(char *s) {
-    if (s == NULL)
-        return false;
-    return strlen(s) > 2 // $<<char>>
-          && s[0] == '$'
-          && !(s[1] == '{' || s[1] == '(');
-}
-
-/**  возвращает 0, если нет параметра, и номер, где заканчивается параметр
- */
-static bool get_parameter(int start, char *s, int *end) {
-    *end = -1;
-    if (s == NULL) {
-        return false;
-    }
-    if (s[start] != '$') { // если не начинается с  $
-        return false;
-    }
-    if (mx_is_single_char(s[start + 1])) { //  односимвольные параметры
-        *end = start + 1;
-        return true;
-    }
-    // начало либо _ либо буква
-    if (!(s[start + 1] == '_' || mx_isalpha(s[start + 1]))) {
-        return false;
-    }
-    for (int i = start + 2; s[i]; i++) {
-        if (!(s[i] == '_' || mx_isalpha(s[i]) || mx_isdigit(s[i]))) {
-            *end = i - 1;
-            return true;
-        }
-    }
-    return false;
-}
+///**  возвращает 0, если нет параметра, и номер, где заканчивается параметр
+// */
+//static bool get_parameter(int start, char *s, int *end) {
+//    *end = -1;
+//    if (s == NULL) {
+//        return false;
+//    }
+//    if (s[start] != '$') { // если не начинается с  $
+//        return false;
+//    }
+//    if (mx_is_single_char(s[start + 1])) { //  односимвольные параметры
+//        *end = start + 1;
+//        return true;
+//    }
+//    // начало либо _ либо буква
+//    if (!(s[start + 1] == '_' || mx_isalpha(s[start + 1]))) {
+//        return false;
+//    }
+//    for (int i = start + 2; s[i]; i++) {
+//        if (!(s[i] == '_' || mx_isalpha(s[i]) || mx_isdigit(s[i]))) {
+//            *end = i - 1;
+//            return true;
+//        }
+//    }
+//    return false;
+//}
 
 /**
  * возвращает первое  слово:

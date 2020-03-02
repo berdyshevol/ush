@@ -10,7 +10,7 @@ bool mx_find_param(char *exp, int *start, int *end, char **name) {
     e_mode mode = unquote;
     char *find_begin = NULL;
 
-    for (int i = 0; i < strlen(exp); i++) {
+    for (unsigned long i = 0; i < strlen(exp); i++) {
         //char *find_begin = strstr(&exp[i], "$");
         mx_change_mode(&mode, exp, i);
         if (exp[i] == '$' && mode != quote) {
@@ -40,8 +40,6 @@ bool mx_find_param(char *exp, int *start, int *end, char **name) {
                     free(temp);
                     if (*start != find_begin - exp + i - 1) {
                         *end = find_begin - exp + i - 1;
-                        char *p = exp + *start + 1;
-                        int n = *end - *start;
                         *name = strndup(exp + *start + 1, *end - *start);
                         return true;
                     }

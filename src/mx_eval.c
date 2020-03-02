@@ -97,19 +97,19 @@ t_exp mx_rest_operands(t_exp ops) {
     return cdr;
 }
 
-// words
-// self_evaluating
-t_eval_result mx_self_evaluating (t_exp exp, t_global_environment *env) {
-    t_eval_result result = mx_new_evalresult();
-    result->text = strdup(exp);
-    return result;
-}
-// text of quotation
-t_eval_result mx_text_of_quotation(t_exp exp, t_global_environment *gv) {
-    t_eval_result result = mx_new_evalresult();
-    result->text = mx_extract_unary_operand(exp);
-    return result;
-}
+//// words
+//// self_evaluating
+//t_eval_result mx_self_evaluating (t_exp exp, t_global_environment *env) {
+//    t_eval_result result = mx_new_evalresult();
+//    result->text = strdup(exp);
+//    return result;
+//}
+//// text of quotation
+//t_eval_result mx_text_of_quotation(t_exp exp, t_global_environment *gv) {
+//    t_eval_result result = mx_new_evalresult();
+//    result->text = mx_extract_unary_operand(exp);
+//    return result;
+//}
 
 //t_eval_result mx_eval_doublequote(t_exp exp, t_global_environment *gv) {
 //    char *seq = mx_extract_unary_operand(exp);
@@ -311,15 +311,6 @@ mx_eval_sequence(t_exp exps, t_global_environment *gv) {
     return result; // TODO: не знаю что вернуть
 }
 
-//void print_pipe(char *exp, int *pipe_id, bool new_proc) {
-//    if (pipe_id != NULL)
-//        printf("this is '%s', ->%d ->%d new-proc=%d\n", exp, pipe_id[0],
-//                pipe_id[1], new_proc);
-//    else
-//        printf("this is '%s', ->NULL new-proc=%d\n", exp, new_proc);
-//}
-
-// Piplines word word .. | word word .. | word word .. | word word ..
 t_eval_result
 mx_eval_seq_pipeline(t_exp exps, t_global_environment *gv, int *pipe_fd) {
     t_eval_result result = NULL;
@@ -329,10 +320,9 @@ mx_eval_seq_pipeline(t_exp exps, t_global_environment *gv, int *pipe_fd) {
     if (mx_is_last_exp(exps, delim)) {  // last right pipe
         char *first_exp = mx_first_exp(exps, delim);
 //        if (pipe_fd != NULL) {
-//            mx_smart_close_fd (&pipe_fd[1],1);
+////            mx_smart_close_fd (&pipe_fd[1],1);
 //        }
         result = mx_eval(first_exp, gv, pipe_fd, new_proc);
-//        print_pipe(first_exp, pipe_fd, false);
         mx_strdel(&first_exp);
     }
     else {
@@ -343,27 +333,22 @@ mx_eval_seq_pipeline(t_exp exps, t_global_environment *gv, int *pipe_fd) {
 
         // left pipe
         char *first_exp = mx_first_exp(exps, delim);
-//        printf("after: %s, [0]=%d [1]=%d\n", first_exp, new_pipe_fd[0],
-//                new_pipe_fd[1]);
         if (pipe_fd == NULL) {
             //mx_smart_close_fd(&new_pipe_fd[0],0);
-            pipe_fd_forfistrexp[0] = 0;
-            pipe_fd_forfistrexp[1] = new_pipe_fd[0];
-            pipe_fd_forrestrexp[0] = new_pipe_fd[1];
-            pipe_fd_forrestrexp[1] = 1;
+            pipe_fd_forfistrexp[0] = 0; // =0
+            pipe_fd_forfistrexp[1] = new_pipe_fd[1]; // = new_pipe_fd[0];
+            pipe_fd_forrestrexp[0] = new_pipe_fd[0]; //  = new_pipe_fd[1];
+            pipe_fd_forrestrexp[1] = 1; // = 1;
         }
         else {
-//            printf("пришло pipe_fd[0]=%d, pipe_fd[1]=%d\n", pipe_fd[0],
-//                    pipe_fd[1]);
-            pipe_fd_forfistrexp[0] = pipe_fd[0];
-            pipe_fd_forfistrexp[1] = new_pipe_fd[0];
-            pipe_fd_forrestrexp[0] = new_pipe_fd[1];
-            pipe_fd_forrestrexp[1] = 1;
+            pipe_fd_forfistrexp[0] = pipe_fd[0]; // = pipe_fd[0];
+            pipe_fd_forfistrexp[1] = new_pipe_fd[1]; // = new_pipe_fd[0];
+            pipe_fd_forrestrexp[0] = new_pipe_fd[0]; // = new_pipe_fd[1];
+            pipe_fd_forrestrexp[1] = 1; //  = 1;
         }
         *new_proc = true;
         t_eval_result eval_fe = mx_eval(first_exp, gv, pipe_fd_forfistrexp,
                                         new_proc);
-//        print_pipe(first_exp, pipe_fd_forfistrexp, true);
 
         // right pipe
         char *rest_exps = mx_rest_exps(exps, delim);
@@ -423,7 +408,6 @@ t_eval_result mx_eval_remove_escquotedquote(t_exp exp) {
     e_mode mode = unquote;
 
     for (int i = 0; exp[i]; i++) {
-        char c = exp[i];
         switch (exp[i]) {
             case '\\':
                 if (mode == unquote) {
@@ -615,10 +599,8 @@ mx_eval(t_exp exp, t_global_environment *gv, int *pipe_fd, bool *new_proc) { // 
         return NULL;
 
     t_eval_result result = NULL;
-    int status;
     e_exp_type exp_type = mx_get_expressiontype_by_id(mx_get_binary_opid(exp));
     // проверка по бинарным операциям
-
     switch (exp_type) {
         case variable_assignment:
             result = mx_eval_assignment(exp, gv);

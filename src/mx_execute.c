@@ -32,7 +32,6 @@ static int _find_builtin(char *cmd) {
 bool try_builtin(char *cmd, t_eval_result result, t_global_environment *gv,
                  t_redirect *redir) {
     int id = _find_builtin(cmd);
-    int pid;
     int exit_status;
 
     if (id >= 0) {
@@ -64,7 +63,6 @@ bool try_builtin(char *cmd, t_eval_result result, t_global_environment *gv,
 t_eval_result
 mx_execute(char *command, t_global_environment *gv) {
     t_eval_result result = mx_new_evalresult();
-    printf("in execute cmd=%s\n", command);
     if (try_builtin(command, result, gv, gv->cnf->redirections)) {
 
     }
@@ -75,31 +73,33 @@ mx_execute(char *command, t_global_environment *gv) {
     return result;
 }
 //
-//int main(void) {
-//    t_global_environment *gv = mx_new_global_env();
-////    char *s = "echo";
-////    char *s = "echo l o ";
-////    char *s = "echo \"hi oleg\"";
-//    //char *s = "echo \'hi oleg\'";
-////    char *s = "oleg=hi";
-////    char *s = strdup("oleg=\"hi\" hi; echo oleg $oleg $HOME; ls -la");
-////    char *s =  "oleg=\"hi\" echoo \"$oleg ++\"; echo oleg $oleg";
-////    char *s =  "oleg=\"hi\" echoo \"$oleg ++\"; echo oleg ${PWD} ${oleg}";
-// //   char *s =  "echo pwd= ${PWD} oleg ${oleg}";
-//// char *s;
-//// s="name=Oleg n=Ilia !; echo \\\"hi\\\" $name \\\"-${n}-\\\" && echo ok $HOME "
-////   "|| "
-////   "echo error && echo more error";
-////    char *s = strdup("oleg=\"hi\" hi; echo oleg $oleg $HOME; ls");
-////    char *s = strdup("ls -l ./ dfgds  && echo ok || echo "
-////                     "bad ; ");
-//
-//    char *s = strdup("name=Oleg; echo $name; echo $name");
-//    t_eval_result result = mx_eval(s, gv);
-//
-//    mx_delete_evalresult(&result);
-//    mx_delete_global_env(&gv); // здесь есть лики
-//
-////    system("leaks -q ush_metacicle_evaluator");
-//    return 0;
-//}
+int main(void) {
+    t_global_environment *gv = mx_new_global_env();
+//    char *s = "echo";
+//    char *s = "echo l o ";
+//    char *s = "echo \"hi oleg\"";
+    //char *s = "echo \'hi oleg\'";
+//    char *s = "oleg=hi";
+//    char *s = strdup("oleg=\"hi\" hi; echo oleg $oleg $HOME; ls -la");
+//    char *s =  "oleg=\"hi\" echoo \"$oleg ++\"; echo oleg $oleg";
+//    char *s =  "oleg=\"hi\" echoo \"$oleg ++\"; echo oleg ${PWD} ${oleg}";
+ //   char *s =  "echo pwd= ${PWD} oleg ${oleg}";
+// char *s;
+// s="name=Oleg n=Ilia !; echo \\\"hi\\\" $name \\\"-${n}-\\\" && echo ok $HOME "
+//   "|| "
+//   "echo error && echo more error";
+//    char *s = strdup("oleg=\"hi\" hi; echo oleg $oleg $HOME; ls");
+//    char *s = strdup("ls -l ./ dfgds  && echo ok || echo "
+//                     "bad ; ");
+
+//    char *s = strdup("ls /bin > test; cat test");
+    char *s = strdup("ls > test | head -2 | wc");
+
+    t_eval_result result = mx_eval(s, gv, NULL, NULL);
+
+    mx_delete_evalresult(&result);
+    mx_delete_global_env(&gv); // здесь есть лики
+
+//    system("leaks -q ush");
+    return 0;
+}

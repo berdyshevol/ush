@@ -8,8 +8,8 @@ int controling_char(char c) {
     return c == '$' || c ==  '\'' || c == '\"' || c == '`' || c == '~';
 }
 
-bool has_string(char *exp, char **firstword, e_word_type *type, char **restwords) {
-    int i = 0;
+bool has_string(char *exp, char **firstword, char **restwords) {
+    unsigned long i = 0;
     bool res = false;
 
     while (!controling_char(exp[i]))
@@ -57,20 +57,20 @@ void _expract_tildaexp(char *exp, char **firstword, e_word_type *type, char **re
     free(rwc);
 }
 
-void _extract_(char *exp, char **firstword, e_word_type *type, char **restwords, char ch) {
-//    char *p = NULL;
-//    *firstword = NULL;
-//    *restwords = NULL;
-//
-//    p = mx_smart_find(exp, ch);
-//    if (p != NULL) {
-//        int n = p - exp;
-//        if (n > 0) {
-//            *firstword = strndup(exp, n);
-//        }
-//    } else
-//        *type = unclosed_exp_type;
-}
+//void _extract_(char *exp, char **firstword, e_word_type *type, char **restwords, char ch) {
+////    char *p = NULL;
+////    *firstword = NULL;
+////    *restwords = NULL;
+////
+////    p = mx_smart_find(exp, ch);
+////    if (p != NULL) {
+////        int n = p - exp;
+////        if (n > 0) {
+////            *firstword = strndup(exp, n);
+////        }
+////    } else
+////        *type = unclosed_exp_type;
+//}
 
 //void mx_parse_wordchain(char *exp, char **firstword, e_word_type *type, char **restwords) {
 //    *firstword = NULL;
