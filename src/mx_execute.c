@@ -15,6 +15,9 @@ static t_pair_cmd_name builtin[] = {
         {"echo", mx_builtin_echo},
         {"fg", mx_builtin_fg},
         {"alias", mx_alias},
+        {"yes", mx_yes},
+        {"true", mx_true},
+        {"false", mx_false},
         {NULL, NULL}
 };
 

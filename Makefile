@@ -17,7 +17,10 @@ SRC =   main.c \
         mx_builtin_echo.c \
         mx_builtin_export.c \
         mx_builtin_pwd.c \
+        mx_builtin_which.c \
+		mx_builtin_env.c \
         mx_builtins.c \
+        mx_environ_copy.c \
         mx_check_buffer.c \
         mx_driver_loop.c \
         mx_env_get_value.c \

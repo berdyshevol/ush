@@ -19,6 +19,13 @@ typedef struct config {
     bool for_process; // нужно форкнуть билтин или нет
 } t_config;
 
+typedef struct s_stoped {
+    int n;
+    char *str;
+    pid_t pid;
+    struct s_stoped *next;
+} t_stoped;
+
 typedef struct global_environment {
     t_environment *vars;
     t_environment *functions;
@@ -26,7 +33,6 @@ typedef struct global_environment {
     char *prompt;
     char **args;
     int argc;
-
     char *buffer;
     char *path;
     char *fullPath;
@@ -36,18 +42,19 @@ typedef struct global_environment {
     char *pwd;
     char *oldpwd;
     t_config *cnf;
-    
     char *str;
     char *tmp_str;
-	char buff[5];
-	unsigned int cursor;
+    char buff[5];
+    unsigned int cursor;
     unsigned int bufsize;
-	
-	char *history[500];
-	unsigned int his_point;
+    char *history[500];
+    unsigned int his_point;
     unsigned int show_his;
     bool full_tmp_str;
     bool backcpase_his;
+    t_stoped *jobs_list;
+    t_stoped *last_stoped;
+    int list_index;
 } t_global_environment;
 
 typedef struct builtInCommands {
