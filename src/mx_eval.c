@@ -311,6 +311,61 @@ mx_eval_sequence(t_exp exps, t_global_environment *gv) {
     return result; // TODO: не знаю что вернуть
 }
 
+//t_eval_result
+//mx_eval_seq_pipeline(t_exp exps, t_global_environment *gv, int *pipe_fd) {
+//    t_eval_result result = NULL;
+//    char *delim = "|";
+//    bool *new_proc = malloc(sizeof(bool));
+//    *new_proc = false;
+//    if (mx_is_last_exp(exps, delim)) {  // last right pipe
+//        char *first_exp = mx_first_exp(exps, delim);
+////        if (pipe_fd != NULL) {
+//////            mx_smart_close_fd (&pipe_fd[1],1);
+////        }
+//        result = mx_eval(first_exp, gv, pipe_fd, new_proc);
+//        mx_strdel(&first_exp);
+//    }
+//    else {
+//        int *new_pipe_fd = mx_pipe_fd_new();
+//        pipe(new_pipe_fd);
+//        int *pipe_fd_forfistrexp = mx_pipe_fd_new();
+//        int *pipe_fd_forrestrexp = mx_pipe_fd_new();
+//
+//        // left pipe
+//        char *first_exp = mx_first_exp(exps, delim);
+//        if (pipe_fd == NULL) {
+//            //mx_smart_close_fd(&new_pipe_fd[0],0);
+//            pipe_fd_forfistrexp[0] = 0; // =0
+//            pipe_fd_forfistrexp[1] = new_pipe_fd[1]; // = new_pipe_fd[0];
+//            pipe_fd_forrestrexp[0] = new_pipe_fd[0]; //  = new_pipe_fd[1];
+//            pipe_fd_forrestrexp[1] = 1; // = 1;
+//        }
+//        else {
+//            pipe_fd_forfistrexp[0] = pipe_fd[0]; // = pipe_fd[0];
+//            pipe_fd_forfistrexp[1] = new_pipe_fd[1]; // = new_pipe_fd[0];
+//            pipe_fd_forrestrexp[0] = new_pipe_fd[0]; // = new_pipe_fd[1];
+//            pipe_fd_forrestrexp[1] = 1; //  = 1;
+//        }
+//        *new_proc = true;
+//        t_eval_result eval_fe = mx_eval(first_exp, gv, pipe_fd_forfistrexp,
+//                                        new_proc);
+//
+//        // right pipe
+//        char *rest_exps = mx_rest_exps(exps, delim);
+//        result = mx_eval_seq_pipeline(rest_exps, gv, pipe_fd_forrestrexp);
+//
+//        // free
+//        mx_strdel(&rest_exps);
+//        mx_delete_evalresult(&eval_fe);
+//        mx_strdel(&first_exp);
+//        mx_pipe_fd_delete(&pipe_fd_forrestrexp);
+//        mx_pipe_fd_delete(&pipe_fd_forfistrexp);
+//        mx_pipe_fd_delete(&new_pipe_fd);
+//    }
+//    free(new_proc);
+//    return result; // TODO: не знаю что вернуть
+//}
+
 t_eval_result
 mx_eval_seq_pipeline(t_exp exps, t_global_environment *gv, int *pipe_fd) {
     t_eval_result result = NULL;
@@ -319,47 +374,32 @@ mx_eval_seq_pipeline(t_exp exps, t_global_environment *gv, int *pipe_fd) {
     *new_proc = false;
     if (mx_is_last_exp(exps, delim)) {  // last right pipe
         char *first_exp = mx_first_exp(exps, delim);
-//        if (pipe_fd != NULL) {
-////            mx_smart_close_fd (&pipe_fd[1],1);
-//        }
         result = mx_eval(first_exp, gv, pipe_fd, new_proc);
         mx_strdel(&first_exp);
     }
     else {
         int *new_pipe_fd = mx_pipe_fd_new();
-        pipe(new_pipe_fd);
-        int *pipe_fd_forfistrexp = mx_pipe_fd_new();
-        int *pipe_fd_forrestrexp = mx_pipe_fd_new();
+        int fd[2];
+        pipe(fd);
 
         // left pipe
         char *first_exp = mx_first_exp(exps, delim);
-        if (pipe_fd == NULL) {
-            //mx_smart_close_fd(&new_pipe_fd[0],0);
-            pipe_fd_forfistrexp[0] = 0; // =0
-            pipe_fd_forfistrexp[1] = new_pipe_fd[1]; // = new_pipe_fd[0];
-            pipe_fd_forrestrexp[0] = new_pipe_fd[0]; //  = new_pipe_fd[1];
-            pipe_fd_forrestrexp[1] = 1; // = 1;
-        }
-        else {
-            pipe_fd_forfistrexp[0] = pipe_fd[0]; // = pipe_fd[0];
-            pipe_fd_forfistrexp[1] = new_pipe_fd[1]; // = new_pipe_fd[0];
-            pipe_fd_forrestrexp[0] = new_pipe_fd[0]; // = new_pipe_fd[1];
-            pipe_fd_forrestrexp[1] = 1; //  = 1;
-        }
+        new_pipe_fd[0] = fd[0];
+        new_pipe_fd[1] = fd[1];
         *new_proc = true;
-        t_eval_result eval_fe = mx_eval(first_exp, gv, pipe_fd_forfistrexp,
+        t_eval_result eval_fe = mx_eval(first_exp, gv, new_pipe_fd,
                                         new_proc);
 
         // right pipe
         char *rest_exps = mx_rest_exps(exps, delim);
-        result = mx_eval_seq_pipeline(rest_exps, gv, pipe_fd_forrestrexp);
+//        new_pipe_fd[0] = fd[0];
+//        new_pipe_fd[1] = fd[1];
+        result = mx_eval_seq_pipeline(rest_exps, gv, new_pipe_fd);
 
         // free
         mx_strdel(&rest_exps);
         mx_delete_evalresult(&eval_fe);
         mx_strdel(&first_exp);
-        mx_pipe_fd_delete(&pipe_fd_forrestrexp);
-        mx_pipe_fd_delete(&pipe_fd_forfistrexp);
         mx_pipe_fd_delete(&new_pipe_fd);
     }
     free(new_proc);

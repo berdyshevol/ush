@@ -7,10 +7,10 @@
 // все внетреннии указатели нужно отдельно free. Мы не free в delete
 t_config *mx_config_new() {
     t_config *cnf = malloc(sizeof (t_config));
-//    cnf->agv = argv;
-//    cnf->agvsize = argc;
-//    cnf->for_process = new_proc;
-//    cnf->pipe_fd = pipe_fd;
+    cnf->agv = NULL;
+    cnf->agvsize = 0;
+    cnf->new_proc = NULL;
+    cnf->pipe_fd = NULL;
     return cnf;
 }
 

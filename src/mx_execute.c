@@ -29,31 +29,79 @@ static int _find_builtin(char *cmd) {
     return -1;
 }
 
-bool try_builtin(char *cmd, t_eval_result result, t_global_environment *gv,
-                 t_redirect *redir) {
-    int id = _find_builtin(cmd);
+void mx_execute_builtin_innewproc(int id, t_eval_result result, t_global_environment *gv) {
+    int pid;
+    int status;
+    switch (pid = fork()) {
+        case -1:
+            perror ("fork");
+            break;
+        case 0:
+            if (mx_has_pipe(gv->cnf->pipe_fd)) {
+                if (gv->cnf->pipe_fd[1] != 1) {
+                    dup2(gv->cnf->pipe_fd[1], 1);
+                    close(gv->cnf->pipe_fd[1]);
+                }
+                close(gv->cnf->pipe_fd[0]);
+            }
+            mx_run_builtin(id, result, gv);
+            exit(result->status ? 0 : 1);
+            break;
+        default:
+            if (mx_has_pipe(gv->cnf->pipe_fd)) {
+                if (gv->cnf->pipe_fd[0] != 0) {
+                    dup2(gv->cnf->pipe_fd[0], 0);
+                    close(gv->cnf->pipe_fd[0]);
+                }
+                close(gv->cnf->pipe_fd[1]);
+            }
+            waitpid (pid, &status, 0);
+            mx_set_input_mode();
+            int i = mx_wexitstatud(status);
+            mx_env_set_var("?", mx_itoa(mx_wexitstatud(status)), &(gv->vars));
+            result->status = mx_wexitstatud(status) == 0 ? true : false;
+            break;
+    }
+}
+
+void mx_run_builtin(int id, t_eval_result result, t_global_environment *gv) {
     int exit_status;
+//    t_redirect *redir = gv->cnf->redirections;
+
+    if (mx_apply_redirect(gv->cnf->redirections)) {
+        exit_status = builtin[id].cmd(gv);
+        mx_reset_redirections(gv->cnf->redirections);
+    }
+    else
+        exit_status = builtin[id].cmd(gv);
+
+    mx_env_set_var("?", mx_itoa(exit_status), &(gv->vars));
+    result->status = (exit_status == EXIT_SUCCESS);
+    // -- old
+//    mx_apply_redirect(redir);
+//    exit_status = builtin[id].cmd(gv);
+//    mx_reset_redirections(redir);
+//    mx_env_set_var("?", mx_itoa(exit_status), &(gv->vars));
+//    result->status = (exit_status == EXIT_SUCCESS);
+}
+
+bool try_builtin(char *cmd, t_eval_result result, t_global_environment *gv) {
+    int id = _find_builtin(cmd);
 
     if (id >= 0) {
-//        if (gv->cnf->for_process) {
-//            switch (pid = fork ()) {
-//                case -1:
-//                    perror("fork");
-//                    break;
-//                case 0: // child TODO: где-то здесь нужно сделать редир 1
-//                    result->status = (builtin[id].cmd(gv) == EXIT_SUCCESS);
-//                    break;
-//                default:
-//                    waitpid(pid, NULL, 0);
-//                    break;
-//            }
-//        }
-//        else
-        mx_apply_redirect(redir);
-        exit_status = builtin[id].cmd(gv);
-        mx_reset_redirections(redir);
-        mx_env_set_var("?", mx_itoa(exit_status), &(gv->vars));
-        result->status = (exit_status == EXIT_SUCCESS);
+        if (gv->cnf->new_proc != NULL && *(gv->cnf->new_proc) == true) {
+            mx_execute_builtin_innewproc(id, result, gv);
+        }
+        else {
+            if (mx_has_pipe(gv->cnf->pipe_fd)) {
+                if (gv->cnf->pipe_fd[0] != 0) {
+                    dup2(gv->cnf->pipe_fd[0], 0);
+                    close(gv->cnf->pipe_fd[0]);
+                }
+                close(gv->cnf->pipe_fd[1]);
+            }
+            mx_run_builtin(id, result, gv);
+        }
         return true;
     }
     else  // no builtin found
@@ -63,10 +111,10 @@ bool try_builtin(char *cmd, t_eval_result result, t_global_environment *gv,
 t_eval_result
 mx_execute(char *command, t_global_environment *gv) {
     t_eval_result result = mx_new_evalresult();
-    if (try_builtin(command, result, gv, gv->cnf->redirections)) {
+    if (try_builtin(command, result, gv)) {
 
     }
-    else if (mx_try_bin(command, result, gv, gv->cnf->redirections)) {
+    else if (mx_try_bin(command, result, gv)) {
         // TODO: здесь нужно попробовать запусть бинарник
         // TODO: если результат ошибка то надо обработать ошибку
     }
@@ -93,7 +141,7 @@ int main(void) {
 //                     "bad ; ");
 
 //    char *s = strdup("ls /bin > test; cat test");
-    char *s = strdup("ls > test | head -2 | wc");
+    char *s = strdup("name=Oleg; ls | echo hi $name| wc");
 
     t_eval_result result = mx_eval(s, gv, NULL, NULL);
 

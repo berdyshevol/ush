@@ -116,11 +116,10 @@ void mx_delete_config(t_config **cnf);
 
 t_eval_result mx_execute(char *command, t_global_environment *gv);
 
-bool mx_try_bin(char *cmd, t_eval_result result, t_global_environment *gv,
-                t_redirect *redir);
+bool mx_try_bin(char *cmd, t_eval_result result, t_global_environment *gv);
 
-bool try_builtin(char *cmd, t_eval_result result, t_global_environment *gv,
-                 t_redirect *redir);
+bool try_builtin(char *cmd, t_eval_result result, t_global_environment *gv);
+void mx_run_builtin(int id, t_eval_result result, t_global_environment *gv);
 
 // pipe
 int *mx_pipe_fd_new();

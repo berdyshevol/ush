@@ -30,28 +30,29 @@ void mx_exec_child(char *cmd, t_eval_result result, t_global_environment *gv) {
     int pid = getpid();
     setgid(pid);
     mx_set_default_signals();
-    if (mx_has_pipe(gv->cnf->pipe_fd)) {
-        int pid;
-        int status;
-        switch (pid = fork()) {
-            case -1:
-                perror("fork");
-                break;
-            case 0:
-                mx_apply_pipe(gv->cnf->pipe_fd);
-                if (execvp(cmd, gv->cnf->agv) < 0) {
-                    mx_print_nocmd(cmd, gv);
-                }
-                break;
-            default:
-                waitpid(pid, &status, 0);
-        }
-    }
-    else if (mx_apply_redirect(gv->cnf->redirections)) {
-        printf("has redir %s\n", cmd);
+//    if (mx_has_pipe(gv->cnf->pipe_fd)) {
+//        int pid;
+//        int status;
+//        switch (pid = fork()) {
+//            case -1:
+//                perror("fork");
+//                break;
+//            case 0:
+//                mx_apply_pipe(gv->cnf->pipe_fd);
+//                if (execvp(cmd, gv->cnf->agv) < 0) {
+//                    mx_print_nocmd(cmd, gv);
+//                }
+//                break;
+//            default:
+//                waitpid(pid, &status, 0);
+//        }
+//    }
+//    else
+    if (mx_apply_redirect(gv->cnf->redirections)) {
         if (execvp(cmd, gv->cnf->agv) <  0) {
             mx_print_nocmd(cmd, gv);
         }
+        mx_reset_redirections(gv->cnf->redirections);
     }
     else if (execvp(cmd, gv->cnf->agv) < 0) {
         mx_print_nocmd(cmd, gv);
@@ -59,18 +60,32 @@ void mx_exec_child(char *cmd, t_eval_result result, t_global_environment *gv) {
     exit(0);
 }
 
-bool mx_try_bin(char *cmd, t_eval_result result, t_global_environment *gv,
-                t_redirect *redir) {
+bool mx_try_bin(char *cmd, t_eval_result result, t_global_environment *gv) {
     int pid;
     int status;
+
     switch (pid = fork()) {
         case -1:
             perror ("fork");
             break;
         case 0:
+            if (mx_has_pipe(gv->cnf->pipe_fd)) {
+                if (gv->cnf->pipe_fd[1] != 1) {
+                    dup2(gv->cnf->pipe_fd[1], 1);
+                    close(gv->cnf->pipe_fd[1]);
+                }
+                close(gv->cnf->pipe_fd[0]);
+            }
             mx_exec_child(cmd, result, gv);
             break;
         default:
+            if (mx_has_pipe(gv->cnf->pipe_fd)) {
+                if (gv->cnf->pipe_fd[0] != 0) {
+                    dup2(gv->cnf->pipe_fd[0], 0);
+                    close(gv->cnf->pipe_fd[0]);
+                }
+                close(gv->cnf->pipe_fd[1]);
+            }
             waitpid (pid, &status, 0);
             mx_set_input_mode();
             int i = mx_wexitstatud(status);
