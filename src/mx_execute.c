@@ -141,8 +141,8 @@ int main(void) {
 //                     "bad ; ");
 
 //    char *s = strdup("ls /bin > test; cat test");
-    char *s = strdup("name=Oleg; ls | echo hi $name| wc");
-
+//    char *s = strdup("name=Oleg; echo hi $name >> test; cat < test");
+    char *s = strdup("name=Oleg; echo Hi $name > test; cat test | wc -w");
     t_eval_result result = mx_eval(s, gv, NULL, NULL);
 
     mx_delete_evalresult(&result);

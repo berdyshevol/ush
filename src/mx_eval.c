@@ -153,6 +153,12 @@ t_eval_result mx_file_extension(t_exp exp, t_global_environment *gv) {
     return result;
 }
 
+
+bool mx_file_expansion(t_exp *epx, t_global_environment *gv) {
+    //int ind = mx_parser_find_fileexpansion(*exp, &type);
+    return true;
+}
+
 t_eval_result  mx_eval_command_substitution(t_exp exp, t_global_environment *gv) {
     char *seq = mx_extract_unary_operand(exp);
     // TODO: где-то здесь нужно запусть новый процесс и отловить его результат
@@ -552,7 +558,7 @@ mx_simple_command(t_exp expression, t_global_environment *gv, int *pipe_fd,
     mx_alias_expansion(&exp, gv);
     mx_parameter_expansion(&exp, gv);
     //mx_command_substitution(&exp, gv, new_proc);
-    //mx_file_expansion(&exp, gv);
+    mx_file_expansion(&exp, gv);
     if (!mx_extract_redirections(&exp, &redirections)) {
         result = mx_new_evalresult();
         result->status = false;
