@@ -1,14 +1,9 @@
 #include "ush.h"
 
-// ----------- UNSET builtin function -----------
-
 int mx_builtin_unset(t_global_environment *gv) { // TODO: Доделать Unset and Export
     unsetenv(gv->cnf->agv[1]);
     return EXIT_SUCCESS;
 }
-
-
-// ----------- EXIT builtin function -----------
 
 int mx_builtin_exit(t_global_environment *gv) {
     system("leaks -q ush");
@@ -25,13 +20,6 @@ int mx_builtin_exit(t_global_environment *gv) {
             exit(255);
         }
     exit(mx_atoi(gv->cnf->agv[1]));
-}
-
-int mx_alias(t_global_environment *gv) {
-    mx_printstr("alias: ");
-    mx_printstr(gv->shellName);
-    mx_printstr("\n");
-    return EXIT_SUCCESS;
 }
 
 int mx_yes(t_global_environment *gv) {

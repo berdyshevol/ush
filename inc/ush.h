@@ -115,7 +115,7 @@ int mx_builtin_cd(t_global_environment *gv);
 int mx_builtin_pwd(t_global_environment *gv);
 int mx_builtin_which(t_global_environment *gv);
 int mx_builtin_echo(t_global_environment *gv);
-int mx_alias(t_global_environment *gv);
+int mx_jobs(t_global_environment *gv);
 
 t_global_environment *mx_new_global_env(void);
 void mx_delete_global_env(t_global_environment **gv);

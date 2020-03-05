@@ -68,6 +68,7 @@ mx_sort_arr.c \
 mx_strjoin_with_space.c \
 mx_builtin_fg.c \
 mx_builtin_fg2.c \
+mx_builtin_jobs.c \
 
 OBJ = $(SRC:.c=.o)
 

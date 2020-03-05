@@ -10,7 +10,7 @@ static t_pair_cmd_name builtin[] = {
         {"which", mx_builtin_which},
         {"echo", mx_builtin_echo},
         {"fg", mx_builtin_fg},
-        {"alias", mx_alias},
+        {"jobs", mx_jobs},
         {"yes", mx_yes},
         {"true", mx_true},
         {"false", mx_false},
