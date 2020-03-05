@@ -114,12 +114,10 @@ bool try_builtin(char *cmd, t_eval_result result, t_global_environment *gv) {
 t_eval_result
 mx_execute(char *command, t_global_environment *gv) {
     t_eval_result result = mx_new_evalresult();
-    if (try_builtin(command, result, gv)) {
 
+    if (try_builtin(command, result, gv)) {
     }
     else if (mx_try_bin(command, result, gv)) {
-        // TODO: здесь нужно попробовать запусть бинарник
-        // TODO: если результат ошибка то надо обработать ошибку
     }
     return result;
 }
@@ -142,17 +140,17 @@ mx_execute(char *command, t_global_environment *gv) {
 // //    char *s = strdup("oleg=\"hi\" hi; echo oleg $oleg $HOME; ls");
 // //    char *s = strdup("ls -l ./ dfgds  && echo ok || echo "
 // //                     "bad ; ");
-
+//
 // //    char *s = strdup("ls /bin > test; cat test");
 // //    char *s = strdup("name=Oleg; echo hi $name >> test; cat < test");
 // //    char *s = strdup("name=Oleg; echo Hi $name > test; cat test | wc -w");
-
-//     char *s = strdup("ls; echo");
+//
+//     char *s = strdup("name=Oleg; echo $name");
 //     t_eval_result result = mx_eval(s, gv, NULL, NULL);
-
+//
 //     mx_delete_evalresult(&result);
 //     mx_delete_global_env(&gv); // здесь есть лики
-
+//
 //     system("leaks -q ush");
 //     return 0;
 // }

@@ -9,10 +9,10 @@ void mx_insert(char **exp, int start, int end, char *word) {
     char *s1 = mx_strjoin(first, word);
     char *s2 = mx_strjoin(s1, last);
 
-    free(s1);
-    free(last);
-    free(first);
-    free(*exp);
+    mx_strdel(&s1);
+    mx_strdel(&last);
+    mx_strdel(&first);
+    mx_strdel(exp);
     *exp = s2;
 }
 
@@ -45,8 +45,8 @@ void mx_parameter_expansion(t_exp *exp, t_global_environment *gv) {
     while (find_result) {
         value = mx_get_value(name, gv);
         mx_insert(exp, start, end, value);
-        free(value);
-        free(name);
+        mx_strdel(&value);
+        mx_strdel(&name);
         find_result = mx_find_param(*exp, &start, &end, &name);
     }
 }

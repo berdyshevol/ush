@@ -578,20 +578,16 @@ mx_simple_command(t_exp expression, t_global_environment *gv, int *pipe_fd,
 
 // -----------------------    apply ------
 
-t_eval_result
-mx_apply(char *command, t_list_of_values *arguments, t_global_environment *gv) {
+t_eval_result mx_apply(char *command, t_list_of_values *arguments,
+                       t_global_environment *gv) {
     t_eval_result result = NULL;
     int argc;
     char **argv = NULL;
-//    t_config *cnf = NULL;
 
     mx_convert_strlist_strvector(arguments, &argv, &argc);
     gv->cnf->agv = argv;
     gv->cnf->agvsize = argc;
-//    cnf = mx_config_new();
-//    gv->cnf = cnf;
     result = mx_execute(command, gv);
-//    mx_delete_config(&cnf);
     mx_delete_strvector(&argv, &argc);
     return result; // TODO: это заглушка
 }

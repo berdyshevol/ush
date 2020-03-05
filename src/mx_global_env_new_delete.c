@@ -71,8 +71,9 @@ void mx_delete_global_env(t_global_environment **gv) {
     mx_env_delete(&((*gv)->vars));
     mx_env_delete(&((*gv)->functions));
     mx_env_delete(&((*gv)->alias));
-//    if ((*gv)->cnf != NULL)
-//        mx_delete_config(&((*gv)->cnf));
+    mx_strdel(&((*gv)->pwd));
+    mx_strdel(&((*gv)->oldpwd));
+
     free(*gv);
     *gv = NULL;
 }

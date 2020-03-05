@@ -13,11 +13,13 @@ char *mx_get_file_substitiution(char *name) {
     else if (strcmp(name, "~+") == 0) {
         tmp = getenv("PWD");
     }
-    if (strcmp(name, "~") == 0) {
+    else if (strcmp(name, "~") == 0) {
         tmp = getenv("HOME");
     }
-    if (tmp != NULL)
+    if (tmp != NULL) {
         value = strdup(tmp);
+        free(tmp);
+    }
     return value;
 }
 
@@ -32,12 +34,12 @@ void mx_file_expansion(t_exp *exp) {
     while (find_result) {
         value = mx_get_file_substitiution(name);
         mx_insert(exp, start, end, value);
-        free(value);
-        free(name);
+        mx_strdel(&value);
+        mx_strdel(&name);
         find_result = mx_find_param(*exp, &start, &end, &name);
     }
 }
-//
+
 //////test mx_parameter_expansion
 //#include <assert.h>
 //int main(void) {
@@ -70,4 +72,4 @@ void mx_file_expansion(t_exp *exp) {
 //    system("leaks -q ush");
 //    return 0;
 //}
-
+//

@@ -25,6 +25,7 @@ void mx_set_default_signals(void) {
 void mx_driver_loop(t_global_environment *gv) {
     t_eval_result res = NULL;
     bool status = 1;
+    int fd = -1;
 
     while(status) {
         if (isatty(0)) {
@@ -37,8 +38,13 @@ void mx_driver_loop(t_global_environment *gv) {
         else {
             read_from_pipe(gv);
             status = 0;
-        } 
+        }
+        fd = dup(0);
         res = mx_eval(gv->str, gv, NULL, NULL);
+        if (!isatty(0) && fd != -1 && fd != 0) {
+            dup2(fd, 0);
+            close(fd);
+        }
         mx_strdel(&gv->str);
         mx_delete_evalresult(&res);
     }

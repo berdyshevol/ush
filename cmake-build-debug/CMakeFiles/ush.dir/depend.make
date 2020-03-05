@@ -6,7 +6,6 @@ CMakeFiles/ush.dir/src/main.c.o: ../inc/environment.h
 CMakeFiles/ush.dir/src/main.c.o: ../inc/evaluator.h
 CMakeFiles/ush.dir/src/main.c.o: ../inc/i.h
 CMakeFiles/ush.dir/src/main.c.o: ../inc/liststr.h
-CMakeFiles/ush.dir/src/main.c.o: ../inc/o.h
 CMakeFiles/ush.dir/src/main.c.o: ../inc/p.h
 CMakeFiles/ush.dir/src/main.c.o: ../inc/parser.h
 CMakeFiles/ush.dir/src/main.c.o: ../inc/ush.h
@@ -17,7 +16,6 @@ CMakeFiles/ush.dir/src/mx_builtin_cd.c.o: ../inc/environment.h
 CMakeFiles/ush.dir/src/mx_builtin_cd.c.o: ../inc/evaluator.h
 CMakeFiles/ush.dir/src/mx_builtin_cd.c.o: ../inc/i.h
 CMakeFiles/ush.dir/src/mx_builtin_cd.c.o: ../inc/liststr.h
-CMakeFiles/ush.dir/src/mx_builtin_cd.c.o: ../inc/o.h
 CMakeFiles/ush.dir/src/mx_builtin_cd.c.o: ../inc/p.h
 CMakeFiles/ush.dir/src/mx_builtin_cd.c.o: ../inc/parser.h
 CMakeFiles/ush.dir/src/mx_builtin_cd.c.o: ../inc/ush.h
@@ -28,40 +26,86 @@ CMakeFiles/ush.dir/src/mx_builtin_echo.c.o: ../inc/environment.h
 CMakeFiles/ush.dir/src/mx_builtin_echo.c.o: ../inc/evaluator.h
 CMakeFiles/ush.dir/src/mx_builtin_echo.c.o: ../inc/i.h
 CMakeFiles/ush.dir/src/mx_builtin_echo.c.o: ../inc/liststr.h
-CMakeFiles/ush.dir/src/mx_builtin_echo.c.o: ../inc/o.h
 CMakeFiles/ush.dir/src/mx_builtin_echo.c.o: ../inc/p.h
 CMakeFiles/ush.dir/src/mx_builtin_echo.c.o: ../inc/parser.h
 CMakeFiles/ush.dir/src/mx_builtin_echo.c.o: ../inc/ush.h
 CMakeFiles/ush.dir/src/mx_builtin_echo.c.o: ../src/mx_builtin_echo.c
+
+CMakeFiles/ush.dir/src/mx_builtin_env.c.o: ../Libmx/inc/libmx.h
+CMakeFiles/ush.dir/src/mx_builtin_env.c.o: ../inc/environment.h
+CMakeFiles/ush.dir/src/mx_builtin_env.c.o: ../inc/evaluator.h
+CMakeFiles/ush.dir/src/mx_builtin_env.c.o: ../inc/i.h
+CMakeFiles/ush.dir/src/mx_builtin_env.c.o: ../inc/liststr.h
+CMakeFiles/ush.dir/src/mx_builtin_env.c.o: ../inc/p.h
+CMakeFiles/ush.dir/src/mx_builtin_env.c.o: ../inc/parser.h
+CMakeFiles/ush.dir/src/mx_builtin_env.c.o: ../inc/ush.h
+CMakeFiles/ush.dir/src/mx_builtin_env.c.o: ../src/mx_builtin_env.c
 
 CMakeFiles/ush.dir/src/mx_builtin_export.c.o: ../Libmx/inc/libmx.h
 CMakeFiles/ush.dir/src/mx_builtin_export.c.o: ../inc/environment.h
 CMakeFiles/ush.dir/src/mx_builtin_export.c.o: ../inc/evaluator.h
 CMakeFiles/ush.dir/src/mx_builtin_export.c.o: ../inc/i.h
 CMakeFiles/ush.dir/src/mx_builtin_export.c.o: ../inc/liststr.h
-CMakeFiles/ush.dir/src/mx_builtin_export.c.o: ../inc/o.h
 CMakeFiles/ush.dir/src/mx_builtin_export.c.o: ../inc/p.h
 CMakeFiles/ush.dir/src/mx_builtin_export.c.o: ../inc/parser.h
 CMakeFiles/ush.dir/src/mx_builtin_export.c.o: ../inc/ush.h
 CMakeFiles/ush.dir/src/mx_builtin_export.c.o: ../src/mx_builtin_export.c
+
+CMakeFiles/ush.dir/src/mx_builtin_fg.c.o: ../Libmx/inc/libmx.h
+CMakeFiles/ush.dir/src/mx_builtin_fg.c.o: ../inc/environment.h
+CMakeFiles/ush.dir/src/mx_builtin_fg.c.o: ../inc/evaluator.h
+CMakeFiles/ush.dir/src/mx_builtin_fg.c.o: ../inc/i.h
+CMakeFiles/ush.dir/src/mx_builtin_fg.c.o: ../inc/liststr.h
+CMakeFiles/ush.dir/src/mx_builtin_fg.c.o: ../inc/p.h
+CMakeFiles/ush.dir/src/mx_builtin_fg.c.o: ../inc/parser.h
+CMakeFiles/ush.dir/src/mx_builtin_fg.c.o: ../inc/ush.h
+CMakeFiles/ush.dir/src/mx_builtin_fg.c.o: ../src/mx_builtin_fg.c
+
+CMakeFiles/ush.dir/src/mx_builtin_fg2.c.o: ../Libmx/inc/libmx.h
+CMakeFiles/ush.dir/src/mx_builtin_fg2.c.o: ../inc/environment.h
+CMakeFiles/ush.dir/src/mx_builtin_fg2.c.o: ../inc/evaluator.h
+CMakeFiles/ush.dir/src/mx_builtin_fg2.c.o: ../inc/i.h
+CMakeFiles/ush.dir/src/mx_builtin_fg2.c.o: ../inc/liststr.h
+CMakeFiles/ush.dir/src/mx_builtin_fg2.c.o: ../inc/p.h
+CMakeFiles/ush.dir/src/mx_builtin_fg2.c.o: ../inc/parser.h
+CMakeFiles/ush.dir/src/mx_builtin_fg2.c.o: ../inc/ush.h
+CMakeFiles/ush.dir/src/mx_builtin_fg2.c.o: ../src/mx_builtin_fg2.c
+
+CMakeFiles/ush.dir/src/mx_builtin_jobs.c.o: ../Libmx/inc/libmx.h
+CMakeFiles/ush.dir/src/mx_builtin_jobs.c.o: ../inc/environment.h
+CMakeFiles/ush.dir/src/mx_builtin_jobs.c.o: ../inc/evaluator.h
+CMakeFiles/ush.dir/src/mx_builtin_jobs.c.o: ../inc/i.h
+CMakeFiles/ush.dir/src/mx_builtin_jobs.c.o: ../inc/liststr.h
+CMakeFiles/ush.dir/src/mx_builtin_jobs.c.o: ../inc/p.h
+CMakeFiles/ush.dir/src/mx_builtin_jobs.c.o: ../inc/parser.h
+CMakeFiles/ush.dir/src/mx_builtin_jobs.c.o: ../inc/ush.h
+CMakeFiles/ush.dir/src/mx_builtin_jobs.c.o: ../src/mx_builtin_jobs.c
 
 CMakeFiles/ush.dir/src/mx_builtin_pwd.c.o: ../Libmx/inc/libmx.h
 CMakeFiles/ush.dir/src/mx_builtin_pwd.c.o: ../inc/environment.h
 CMakeFiles/ush.dir/src/mx_builtin_pwd.c.o: ../inc/evaluator.h
 CMakeFiles/ush.dir/src/mx_builtin_pwd.c.o: ../inc/i.h
 CMakeFiles/ush.dir/src/mx_builtin_pwd.c.o: ../inc/liststr.h
-CMakeFiles/ush.dir/src/mx_builtin_pwd.c.o: ../inc/o.h
 CMakeFiles/ush.dir/src/mx_builtin_pwd.c.o: ../inc/p.h
 CMakeFiles/ush.dir/src/mx_builtin_pwd.c.o: ../inc/parser.h
 CMakeFiles/ush.dir/src/mx_builtin_pwd.c.o: ../inc/ush.h
 CMakeFiles/ush.dir/src/mx_builtin_pwd.c.o: ../src/mx_builtin_pwd.c
+
+CMakeFiles/ush.dir/src/mx_builtin_which.c.o: ../Libmx/inc/libmx.h
+CMakeFiles/ush.dir/src/mx_builtin_which.c.o: ../inc/environment.h
+CMakeFiles/ush.dir/src/mx_builtin_which.c.o: ../inc/evaluator.h
+CMakeFiles/ush.dir/src/mx_builtin_which.c.o: ../inc/i.h
+CMakeFiles/ush.dir/src/mx_builtin_which.c.o: ../inc/liststr.h
+CMakeFiles/ush.dir/src/mx_builtin_which.c.o: ../inc/p.h
+CMakeFiles/ush.dir/src/mx_builtin_which.c.o: ../inc/parser.h
+CMakeFiles/ush.dir/src/mx_builtin_which.c.o: ../inc/ush.h
+CMakeFiles/ush.dir/src/mx_builtin_which.c.o: ../src/mx_builtin_which.c
 
 CMakeFiles/ush.dir/src/mx_builtins.c.o: ../Libmx/inc/libmx.h
 CMakeFiles/ush.dir/src/mx_builtins.c.o: ../inc/environment.h
 CMakeFiles/ush.dir/src/mx_builtins.c.o: ../inc/evaluator.h
 CMakeFiles/ush.dir/src/mx_builtins.c.o: ../inc/i.h
 CMakeFiles/ush.dir/src/mx_builtins.c.o: ../inc/liststr.h
-CMakeFiles/ush.dir/src/mx_builtins.c.o: ../inc/o.h
 CMakeFiles/ush.dir/src/mx_builtins.c.o: ../inc/p.h
 CMakeFiles/ush.dir/src/mx_builtins.c.o: ../inc/parser.h
 CMakeFiles/ush.dir/src/mx_builtins.c.o: ../inc/ush.h
@@ -72,7 +116,6 @@ CMakeFiles/ush.dir/src/mx_check_buffer.c.o: ../inc/environment.h
 CMakeFiles/ush.dir/src/mx_check_buffer.c.o: ../inc/evaluator.h
 CMakeFiles/ush.dir/src/mx_check_buffer.c.o: ../inc/i.h
 CMakeFiles/ush.dir/src/mx_check_buffer.c.o: ../inc/liststr.h
-CMakeFiles/ush.dir/src/mx_check_buffer.c.o: ../inc/o.h
 CMakeFiles/ush.dir/src/mx_check_buffer.c.o: ../inc/p.h
 CMakeFiles/ush.dir/src/mx_check_buffer.c.o: ../inc/parser.h
 CMakeFiles/ush.dir/src/mx_check_buffer.c.o: ../inc/ush.h
@@ -83,7 +126,6 @@ CMakeFiles/ush.dir/src/mx_driver_loop.c.o: ../inc/environment.h
 CMakeFiles/ush.dir/src/mx_driver_loop.c.o: ../inc/evaluator.h
 CMakeFiles/ush.dir/src/mx_driver_loop.c.o: ../inc/i.h
 CMakeFiles/ush.dir/src/mx_driver_loop.c.o: ../inc/liststr.h
-CMakeFiles/ush.dir/src/mx_driver_loop.c.o: ../inc/o.h
 CMakeFiles/ush.dir/src/mx_driver_loop.c.o: ../inc/p.h
 CMakeFiles/ush.dir/src/mx_driver_loop.c.o: ../inc/parser.h
 CMakeFiles/ush.dir/src/mx_driver_loop.c.o: ../inc/ush.h
@@ -93,10 +135,6 @@ CMakeFiles/ush.dir/src/mx_env_get_value.c.o: ../inc/environment.h
 CMakeFiles/ush.dir/src/mx_env_get_value.c.o: ../inc/liststr.h
 CMakeFiles/ush.dir/src/mx_env_get_value.c.o: ../src/mx_env_get_value.c
 
-CMakeFiles/ush.dir/src/mx_env_init.c.o: ../inc/environment.h
-CMakeFiles/ush.dir/src/mx_env_init.c.o: ../inc/liststr.h
-CMakeFiles/ush.dir/src/mx_env_init.c.o: ../src/mx_env_init.c
-
 CMakeFiles/ush.dir/src/mx_env_new_delete.c.o: ../inc/environment.h
 CMakeFiles/ush.dir/src/mx_env_new_delete.c.o: ../inc/liststr.h
 CMakeFiles/ush.dir/src/mx_env_new_delete.c.o: ../src/mx_env_new_delete.c
@@ -105,23 +143,41 @@ CMakeFiles/ush.dir/src/mx_env_set_var.c.o: ../inc/environment.h
 CMakeFiles/ush.dir/src/mx_env_set_var.c.o: ../inc/liststr.h
 CMakeFiles/ush.dir/src/mx_env_set_var.c.o: ../src/mx_env_set_var.c
 
+CMakeFiles/ush.dir/src/mx_environ_copy.c.o: ../Libmx/inc/libmx.h
+CMakeFiles/ush.dir/src/mx_environ_copy.c.o: ../inc/environment.h
+CMakeFiles/ush.dir/src/mx_environ_copy.c.o: ../inc/evaluator.h
+CMakeFiles/ush.dir/src/mx_environ_copy.c.o: ../inc/i.h
+CMakeFiles/ush.dir/src/mx_environ_copy.c.o: ../inc/liststr.h
+CMakeFiles/ush.dir/src/mx_environ_copy.c.o: ../inc/p.h
+CMakeFiles/ush.dir/src/mx_environ_copy.c.o: ../inc/parser.h
+CMakeFiles/ush.dir/src/mx_environ_copy.c.o: ../inc/ush.h
+CMakeFiles/ush.dir/src/mx_environ_copy.c.o: ../src/mx_environ_copy.c
+
 CMakeFiles/ush.dir/src/mx_eval.c.o: ../Libmx/inc/libmx.h
 CMakeFiles/ush.dir/src/mx_eval.c.o: ../inc/environment.h
 CMakeFiles/ush.dir/src/mx_eval.c.o: ../inc/evaluator.h
 CMakeFiles/ush.dir/src/mx_eval.c.o: ../inc/i.h
 CMakeFiles/ush.dir/src/mx_eval.c.o: ../inc/liststr.h
-CMakeFiles/ush.dir/src/mx_eval.c.o: ../inc/o.h
 CMakeFiles/ush.dir/src/mx_eval.c.o: ../inc/p.h
 CMakeFiles/ush.dir/src/mx_eval.c.o: ../inc/parser.h
 CMakeFiles/ush.dir/src/mx_eval.c.o: ../inc/ush.h
 CMakeFiles/ush.dir/src/mx_eval.c.o: ../src/mx_eval.c
+
+CMakeFiles/ush.dir/src/mx_eval_file_expansion.c.o: ../Libmx/inc/libmx.h
+CMakeFiles/ush.dir/src/mx_eval_file_expansion.c.o: ../inc/environment.h
+CMakeFiles/ush.dir/src/mx_eval_file_expansion.c.o: ../inc/evaluator.h
+CMakeFiles/ush.dir/src/mx_eval_file_expansion.c.o: ../inc/i.h
+CMakeFiles/ush.dir/src/mx_eval_file_expansion.c.o: ../inc/liststr.h
+CMakeFiles/ush.dir/src/mx_eval_file_expansion.c.o: ../inc/p.h
+CMakeFiles/ush.dir/src/mx_eval_file_expansion.c.o: ../inc/parser.h
+CMakeFiles/ush.dir/src/mx_eval_file_expansion.c.o: ../inc/ush.h
+CMakeFiles/ush.dir/src/mx_eval_file_expansion.c.o: ../src/mx_eval_file_expansion.c
 
 CMakeFiles/ush.dir/src/mx_eval_parameter_expansion.c.o: ../Libmx/inc/libmx.h
 CMakeFiles/ush.dir/src/mx_eval_parameter_expansion.c.o: ../inc/environment.h
 CMakeFiles/ush.dir/src/mx_eval_parameter_expansion.c.o: ../inc/evaluator.h
 CMakeFiles/ush.dir/src/mx_eval_parameter_expansion.c.o: ../inc/i.h
 CMakeFiles/ush.dir/src/mx_eval_parameter_expansion.c.o: ../inc/liststr.h
-CMakeFiles/ush.dir/src/mx_eval_parameter_expansion.c.o: ../inc/o.h
 CMakeFiles/ush.dir/src/mx_eval_parameter_expansion.c.o: ../inc/p.h
 CMakeFiles/ush.dir/src/mx_eval_parameter_expansion.c.o: ../inc/parser.h
 CMakeFiles/ush.dir/src/mx_eval_parameter_expansion.c.o: ../inc/ush.h
@@ -132,18 +188,26 @@ CMakeFiles/ush.dir/src/mx_eval_redirections.c.o: ../inc/environment.h
 CMakeFiles/ush.dir/src/mx_eval_redirections.c.o: ../inc/evaluator.h
 CMakeFiles/ush.dir/src/mx_eval_redirections.c.o: ../inc/i.h
 CMakeFiles/ush.dir/src/mx_eval_redirections.c.o: ../inc/liststr.h
-CMakeFiles/ush.dir/src/mx_eval_redirections.c.o: ../inc/o.h
 CMakeFiles/ush.dir/src/mx_eval_redirections.c.o: ../inc/p.h
 CMakeFiles/ush.dir/src/mx_eval_redirections.c.o: ../inc/parser.h
 CMakeFiles/ush.dir/src/mx_eval_redirections.c.o: ../inc/ush.h
 CMakeFiles/ush.dir/src/mx_eval_redirections.c.o: ../src/mx_eval_redirections.c
+
+CMakeFiles/ush.dir/src/mx_exec_apply_pipe.c.o: ../Libmx/inc/libmx.h
+CMakeFiles/ush.dir/src/mx_exec_apply_pipe.c.o: ../inc/environment.h
+CMakeFiles/ush.dir/src/mx_exec_apply_pipe.c.o: ../inc/evaluator.h
+CMakeFiles/ush.dir/src/mx_exec_apply_pipe.c.o: ../inc/i.h
+CMakeFiles/ush.dir/src/mx_exec_apply_pipe.c.o: ../inc/liststr.h
+CMakeFiles/ush.dir/src/mx_exec_apply_pipe.c.o: ../inc/p.h
+CMakeFiles/ush.dir/src/mx_exec_apply_pipe.c.o: ../inc/parser.h
+CMakeFiles/ush.dir/src/mx_exec_apply_pipe.c.o: ../inc/ush.h
+CMakeFiles/ush.dir/src/mx_exec_apply_pipe.c.o: ../src/mx_exec_apply_pipe.c
 
 CMakeFiles/ush.dir/src/mx_exec_try_bin.c.o: ../Libmx/inc/libmx.h
 CMakeFiles/ush.dir/src/mx_exec_try_bin.c.o: ../inc/environment.h
 CMakeFiles/ush.dir/src/mx_exec_try_bin.c.o: ../inc/evaluator.h
 CMakeFiles/ush.dir/src/mx_exec_try_bin.c.o: ../inc/i.h
 CMakeFiles/ush.dir/src/mx_exec_try_bin.c.o: ../inc/liststr.h
-CMakeFiles/ush.dir/src/mx_exec_try_bin.c.o: ../inc/o.h
 CMakeFiles/ush.dir/src/mx_exec_try_bin.c.o: ../inc/p.h
 CMakeFiles/ush.dir/src/mx_exec_try_bin.c.o: ../inc/parser.h
 CMakeFiles/ush.dir/src/mx_exec_try_bin.c.o: ../inc/ush.h
@@ -154,7 +218,6 @@ CMakeFiles/ush.dir/src/mx_execute.c.o: ../inc/environment.h
 CMakeFiles/ush.dir/src/mx_execute.c.o: ../inc/evaluator.h
 CMakeFiles/ush.dir/src/mx_execute.c.o: ../inc/i.h
 CMakeFiles/ush.dir/src/mx_execute.c.o: ../inc/liststr.h
-CMakeFiles/ush.dir/src/mx_execute.c.o: ../inc/o.h
 CMakeFiles/ush.dir/src/mx_execute.c.o: ../inc/p.h
 CMakeFiles/ush.dir/src/mx_execute.c.o: ../inc/parser.h
 CMakeFiles/ush.dir/src/mx_execute.c.o: ../inc/ush.h
@@ -165,7 +228,6 @@ CMakeFiles/ush.dir/src/mx_free_all.c.o: ../inc/environment.h
 CMakeFiles/ush.dir/src/mx_free_all.c.o: ../inc/evaluator.h
 CMakeFiles/ush.dir/src/mx_free_all.c.o: ../inc/i.h
 CMakeFiles/ush.dir/src/mx_free_all.c.o: ../inc/liststr.h
-CMakeFiles/ush.dir/src/mx_free_all.c.o: ../inc/o.h
 CMakeFiles/ush.dir/src/mx_free_all.c.o: ../inc/p.h
 CMakeFiles/ush.dir/src/mx_free_all.c.o: ../inc/parser.h
 CMakeFiles/ush.dir/src/mx_free_all.c.o: ../inc/ush.h
@@ -176,7 +238,6 @@ CMakeFiles/ush.dir/src/mx_global_env_new_delete.c.o: ../inc/environment.h
 CMakeFiles/ush.dir/src/mx_global_env_new_delete.c.o: ../inc/evaluator.h
 CMakeFiles/ush.dir/src/mx_global_env_new_delete.c.o: ../inc/i.h
 CMakeFiles/ush.dir/src/mx_global_env_new_delete.c.o: ../inc/liststr.h
-CMakeFiles/ush.dir/src/mx_global_env_new_delete.c.o: ../inc/o.h
 CMakeFiles/ush.dir/src/mx_global_env_new_delete.c.o: ../inc/p.h
 CMakeFiles/ush.dir/src/mx_global_env_new_delete.c.o: ../inc/parser.h
 CMakeFiles/ush.dir/src/mx_global_env_new_delete.c.o: ../inc/ush.h
@@ -187,7 +248,6 @@ CMakeFiles/ush.dir/src/mx_history.c.o: ../inc/environment.h
 CMakeFiles/ush.dir/src/mx_history.c.o: ../inc/evaluator.h
 CMakeFiles/ush.dir/src/mx_history.c.o: ../inc/i.h
 CMakeFiles/ush.dir/src/mx_history.c.o: ../inc/liststr.h
-CMakeFiles/ush.dir/src/mx_history.c.o: ../inc/o.h
 CMakeFiles/ush.dir/src/mx_history.c.o: ../inc/p.h
 CMakeFiles/ush.dir/src/mx_history.c.o: ../inc/parser.h
 CMakeFiles/ush.dir/src/mx_history.c.o: ../inc/ush.h
@@ -198,7 +258,6 @@ CMakeFiles/ush.dir/src/mx_init_shell.c.o: ../inc/environment.h
 CMakeFiles/ush.dir/src/mx_init_shell.c.o: ../inc/evaluator.h
 CMakeFiles/ush.dir/src/mx_init_shell.c.o: ../inc/i.h
 CMakeFiles/ush.dir/src/mx_init_shell.c.o: ../inc/liststr.h
-CMakeFiles/ush.dir/src/mx_init_shell.c.o: ../inc/o.h
 CMakeFiles/ush.dir/src/mx_init_shell.c.o: ../inc/p.h
 CMakeFiles/ush.dir/src/mx_init_shell.c.o: ../inc/parser.h
 CMakeFiles/ush.dir/src/mx_init_shell.c.o: ../inc/ush.h
@@ -230,7 +289,6 @@ CMakeFiles/ush.dir/src/mx_new_delete_config.c.o: ../inc/environment.h
 CMakeFiles/ush.dir/src/mx_new_delete_config.c.o: ../inc/evaluator.h
 CMakeFiles/ush.dir/src/mx_new_delete_config.c.o: ../inc/i.h
 CMakeFiles/ush.dir/src/mx_new_delete_config.c.o: ../inc/liststr.h
-CMakeFiles/ush.dir/src/mx_new_delete_config.c.o: ../inc/o.h
 CMakeFiles/ush.dir/src/mx_new_delete_config.c.o: ../inc/p.h
 CMakeFiles/ush.dir/src/mx_new_delete_config.c.o: ../inc/parser.h
 CMakeFiles/ush.dir/src/mx_new_delete_config.c.o: ../inc/ush.h
@@ -241,22 +299,10 @@ CMakeFiles/ush.dir/src/mx_new_evalresult.c.o: ../inc/environment.h
 CMakeFiles/ush.dir/src/mx_new_evalresult.c.o: ../inc/evaluator.h
 CMakeFiles/ush.dir/src/mx_new_evalresult.c.o: ../inc/i.h
 CMakeFiles/ush.dir/src/mx_new_evalresult.c.o: ../inc/liststr.h
-CMakeFiles/ush.dir/src/mx_new_evalresult.c.o: ../inc/o.h
 CMakeFiles/ush.dir/src/mx_new_evalresult.c.o: ../inc/p.h
 CMakeFiles/ush.dir/src/mx_new_evalresult.c.o: ../inc/parser.h
 CMakeFiles/ush.dir/src/mx_new_evalresult.c.o: ../inc/ush.h
 CMakeFiles/ush.dir/src/mx_new_evalresult.c.o: ../src/mx_new_evalresult.c
-
-CMakeFiles/ush.dir/src/mx_output.c.o: ../Libmx/inc/libmx.h
-CMakeFiles/ush.dir/src/mx_output.c.o: ../inc/environment.h
-CMakeFiles/ush.dir/src/mx_output.c.o: ../inc/evaluator.h
-CMakeFiles/ush.dir/src/mx_output.c.o: ../inc/i.h
-CMakeFiles/ush.dir/src/mx_output.c.o: ../inc/liststr.h
-CMakeFiles/ush.dir/src/mx_output.c.o: ../inc/o.h
-CMakeFiles/ush.dir/src/mx_output.c.o: ../inc/p.h
-CMakeFiles/ush.dir/src/mx_output.c.o: ../inc/parser.h
-CMakeFiles/ush.dir/src/mx_output.c.o: ../inc/ush.h
-CMakeFiles/ush.dir/src/mx_output.c.o: ../src/mx_output.c
 
 CMakeFiles/ush.dir/src/mx_parse_words_sequence.c.o: ../Libmx/inc/libmx.h
 CMakeFiles/ush.dir/src/mx_parse_words_sequence.c.o: ../inc/parser.h
@@ -265,6 +311,10 @@ CMakeFiles/ush.dir/src/mx_parse_words_sequence.c.o: ../src/mx_parse_words_sequen
 CMakeFiles/ush.dir/src/mx_parser_assignment.c.o: ../Libmx/inc/libmx.h
 CMakeFiles/ush.dir/src/mx_parser_assignment.c.o: ../inc/parser.h
 CMakeFiles/ush.dir/src/mx_parser_assignment.c.o: ../src/mx_parser_assignment.c
+
+CMakeFiles/ush.dir/src/mx_parser_find_file_expansion.c.o: ../Libmx/inc/libmx.h
+CMakeFiles/ush.dir/src/mx_parser_find_file_expansion.c.o: ../inc/parser.h
+CMakeFiles/ush.dir/src/mx_parser_find_file_expansion.c.o: ../src/mx_parser_find_file_expansion.c
 
 CMakeFiles/ush.dir/src/mx_parser_find_param.c.o: ../Libmx/inc/libmx.h
 CMakeFiles/ush.dir/src/mx_parser_find_param.c.o: ../inc/parser.h
@@ -327,7 +377,6 @@ CMakeFiles/ush.dir/src/mx_print_prompt.c.o: ../inc/environment.h
 CMakeFiles/ush.dir/src/mx_print_prompt.c.o: ../inc/evaluator.h
 CMakeFiles/ush.dir/src/mx_print_prompt.c.o: ../inc/i.h
 CMakeFiles/ush.dir/src/mx_print_prompt.c.o: ../inc/liststr.h
-CMakeFiles/ush.dir/src/mx_print_prompt.c.o: ../inc/o.h
 CMakeFiles/ush.dir/src/mx_print_prompt.c.o: ../inc/p.h
 CMakeFiles/ush.dir/src/mx_print_prompt.c.o: ../inc/parser.h
 CMakeFiles/ush.dir/src/mx_print_prompt.c.o: ../inc/ush.h
@@ -338,7 +387,6 @@ CMakeFiles/ush.dir/src/mx_read_input.c.o: ../inc/environment.h
 CMakeFiles/ush.dir/src/mx_read_input.c.o: ../inc/evaluator.h
 CMakeFiles/ush.dir/src/mx_read_input.c.o: ../inc/i.h
 CMakeFiles/ush.dir/src/mx_read_input.c.o: ../inc/liststr.h
-CMakeFiles/ush.dir/src/mx_read_input.c.o: ../inc/o.h
 CMakeFiles/ush.dir/src/mx_read_input.c.o: ../inc/p.h
 CMakeFiles/ush.dir/src/mx_read_input.c.o: ../inc/parser.h
 CMakeFiles/ush.dir/src/mx_read_input.c.o: ../inc/ush.h
@@ -349,7 +397,6 @@ CMakeFiles/ush.dir/src/mx_sort_arr.c.o: ../inc/environment.h
 CMakeFiles/ush.dir/src/mx_sort_arr.c.o: ../inc/evaluator.h
 CMakeFiles/ush.dir/src/mx_sort_arr.c.o: ../inc/i.h
 CMakeFiles/ush.dir/src/mx_sort_arr.c.o: ../inc/liststr.h
-CMakeFiles/ush.dir/src/mx_sort_arr.c.o: ../inc/o.h
 CMakeFiles/ush.dir/src/mx_sort_arr.c.o: ../inc/p.h
 CMakeFiles/ush.dir/src/mx_sort_arr.c.o: ../inc/parser.h
 CMakeFiles/ush.dir/src/mx_sort_arr.c.o: ../inc/ush.h
