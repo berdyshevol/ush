@@ -3,7 +3,7 @@
 // should go with is_spacial_symbol
 char mx_whitespace(int i) {
     char spacial_symbol[] = " \n\t"; // trim all these chars without
-    if (i >= 0 && i < strlen(spacial_symbol))
+    if (i >= 0 && i < (int)strlen(spacial_symbol))
         return spacial_symbol[i];
     else
         return '\0';

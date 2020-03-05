@@ -58,6 +58,7 @@ t_exp mx_assignment_value(t_exp exp);
 t_exp mx_words_after_assignment(t_exp exp);
 void mx_parameter_expansion(t_exp *exp, t_global_environment *gv);
 char *mx_get_value(char *varname, t_global_environment *gv);
+void mx_insert(char **exp, int start, int end, char *word);
 
 // A procedure application is simple-command
 t_exp mx_command(t_exp exp);
@@ -81,15 +82,18 @@ mx_eval_sequence(t_exp exps, t_global_environment *gv);
 //t_eval_result
 //mx_eval_sequence_ofwords(t_exp exps, char *delim, t_global_environment *gv);
 t_eval_result
-mx_eval_seq_pipeline(t_exp exps, t_global_environment *gv);
+mx_eval_seq_pipeline(t_exp exps, t_global_environment *gv, int *pipe_fd);
 
 //Procedure arguments
 void mx_list_of_values(t_list_of_values **list,
                        t_exp exps, t_global_environment *gv);
 
 // for eval
-t_eval_result mx_simple_command(t_exp exps, t_global_environment *gv);
-t_eval_result mx_eval(t_exp exp, t_global_environment *gv);
+t_eval_result
+mx_simple_command(t_exp expression, t_global_environment *gv, int *pipe_fd,
+                  bool *new_proc);
+t_eval_result
+mx_eval(t_exp exp, t_global_environment *gv, int *pipe_fd, bool *new_proc);
 //t_eval_result mx_eval_word(t_exp exp, t_global_environment *gv);
 
         t_eval_result mx_new_evalresult(void);
@@ -97,14 +101,18 @@ void mx_delete_evalresult(t_eval_result *eval_result);
 
 // apply
 t_eval_result
-mx_apply(char *command, t_list_of_values *arguments, t_redirect *redirections,
-         t_global_environment *gv, bool fork_process);
+mx_apply(char *command, t_list_of_values *arguments, t_global_environment *gv);
 
 // redirections
 t_redirect *mx_new_redirect(char **exp, bool *error);
 void mx_delete_redirect(t_redirect **redirect);
 bool mx_extract_redirections(t_exp *exp, t_redirect **redirections);
-void mx_apply_redirect(t_redirect *redir);
+bool mx_apply_redirect(t_redirect *redir);
 void mx_reset_redirections(t_redirect *redir);
+
+// file expansion
+void mx_file_expansion(t_exp *exp);
+
+
 
 #endif //USH_UTILS_EVALUATOR_H

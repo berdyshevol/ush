@@ -117,6 +117,9 @@ char *mx_rest_words(char *exp);
 // parameter
 bool mx_find_param(char *exp, int *start, int *end, char **name);
 
+// file expansion
+bool mx_find_file_expansion(char *exp, int *start, int *end, char **name);
+
 char *mx_strstr_esc(char *exp, char *substr);
 int mx_count_esc(char *exp, int position);
 void mx_change_mode(e_mode *mode, char *exp, int pos);

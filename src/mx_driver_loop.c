@@ -27,8 +27,7 @@ void mx_driver_loop(t_global_environment *gv) {
             read_from_pipe(gv);
             status = 0;
         } 
-        res = mx_eval(gv->str, gv);
-        mx_output();
+        res = mx_eval(gv->str, gv, NULL, NULL);
         mx_strdel(&gv->str);
         mx_delete_evalresult(&res);
     }

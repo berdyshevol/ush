@@ -13,10 +13,28 @@
 #include "liststr.h"
 #include "environment.h"
 
+typedef struct {
+    char *input;
+    int input_fd;
+    bool input_append;  // for << is true. If < then false
+    int prev_input_fd;
+
+    char *output;
+    int output_fd;
+    bool output_append; // for >> is true. If > then false
+    int prev_output_fd;
+
+    char *error;
+    int error_fd;
+    int prev_error_fd;
+} t_redirect;
+
 typedef struct config {
     char **agv;
     int agvsize;
-    bool for_process; // нужно форкнуть билтин или нет
+    bool *new_proc; // NULL or false - dont fork builtin
+    int *pipe_fd;
+    t_redirect *redirections;
 } t_config;
 
 typedef struct s_stoped {
@@ -68,23 +86,6 @@ typedef struct {
 }* t_eval_result; // результат выполнения eval что есть статус
 // выполнения pipeline должен быть int но пока что есть
 
-
-typedef struct {
-    char *input;
-    int input_fd;
-    bool input_append;  // for << is true. If < then false
-    int prev_input_fd;
-
-    char *output;
-    int output_fd;
-    bool output_append; // for >> is true. If > then false
-    int prev_output_fd;
-
-    char *error;
-    int error_fd;
-    int prev_error_fd;
-} t_redirect;
-
 #include "evaluator.h"
 
 void mx_init_shell(t_global_environment **gv);
@@ -95,7 +96,6 @@ void mx_print_prompt(void);
 // TODO: delete later
 #include "p.h"
 #include "i.h"
-#include "o.h"
 
 
 // это пашины
@@ -117,17 +117,25 @@ int mx_alias(t_global_environment *gv);
 
 t_global_environment *mx_new_global_env(void);
 void mx_delete_global_env(t_global_environment **gv);
-t_config *mx_new_config(char **argv, int argc, bool fork_process);
+t_config *mx_config_new();
 void mx_delete_config(t_config **cnf);
 
-t_eval_result
-mx_execute(char *command, t_global_environment *gv, t_redirect *redir);
+t_eval_result mx_execute(char *command, t_global_environment *gv);
 
-bool mx_try_bin(char *cmd, t_eval_result result, t_global_environment *gv,
-                t_redirect *redir);
+bool mx_try_bin(char *cmd, t_eval_result result, t_global_environment *gv);
 
-bool try_builtin(char *cmd, t_eval_result result, t_global_environment *gv,
-                 t_redirect *redir);
+bool try_builtin(char *cmd, t_eval_result result, t_global_environment *gv);
+void mx_run_builtin(int id, t_eval_result result, t_global_environment *gv);
+
+
+// pipe
+int *mx_pipe_fd_new();
+void mx_pipe_fd_delete(int **pipe_fd);
+void mx_smart_close_fd(int *fd, int std);
+int mx_fd_is_valid(int fd);
+bool mx_apply_pipe(int *pipe_fd);
+bool mx_has_pipe(int *pipe_fd);
+void mx_reset_pipefd(int *pipe_fd);
 
 //
 int mx_wexitstatud(int x);
