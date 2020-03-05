@@ -11,7 +11,7 @@ CMakeFiles/ush.dir/src/main.c.o
  ../inc/p.h
  ../inc/parser.h
  ../inc/ush.h
- /Users/oleg/ush/src/main.c
+ /Users/oberdyshev/ush-ol/src/main.c
 CMakeFiles/ush.dir/src/mx_builtin_cd.c.o
  ../Libmx/inc/libmx.h
  ../inc/environment.h
@@ -22,7 +22,7 @@ CMakeFiles/ush.dir/src/mx_builtin_cd.c.o
  ../inc/p.h
  ../inc/parser.h
  ../inc/ush.h
- /Users/oleg/ush/src/mx_builtin_cd.c
+ /Users/oberdyshev/ush-ol/src/mx_builtin_cd.c
 CMakeFiles/ush.dir/src/mx_builtin_echo.c.o
  ../Libmx/inc/libmx.h
  ../inc/environment.h
@@ -33,7 +33,7 @@ CMakeFiles/ush.dir/src/mx_builtin_echo.c.o
  ../inc/p.h
  ../inc/parser.h
  ../inc/ush.h
- /Users/oleg/ush/src/mx_builtin_echo.c
+ /Users/oberdyshev/ush-ol/src/mx_builtin_echo.c
 CMakeFiles/ush.dir/src/mx_builtin_export.c.o
  ../Libmx/inc/libmx.h
  ../inc/environment.h
@@ -44,7 +44,7 @@ CMakeFiles/ush.dir/src/mx_builtin_export.c.o
  ../inc/p.h
  ../inc/parser.h
  ../inc/ush.h
- /Users/oleg/ush/src/mx_builtin_export.c
+ /Users/oberdyshev/ush-ol/src/mx_builtin_export.c
 CMakeFiles/ush.dir/src/mx_builtin_pwd.c.o
  ../Libmx/inc/libmx.h
  ../inc/environment.h
@@ -55,7 +55,7 @@ CMakeFiles/ush.dir/src/mx_builtin_pwd.c.o
  ../inc/p.h
  ../inc/parser.h
  ../inc/ush.h
- /Users/oleg/ush/src/mx_builtin_pwd.c
+ /Users/oberdyshev/ush-ol/src/mx_builtin_pwd.c
 CMakeFiles/ush.dir/src/mx_builtins.c.o
  ../Libmx/inc/libmx.h
  ../inc/environment.h
@@ -66,7 +66,7 @@ CMakeFiles/ush.dir/src/mx_builtins.c.o
  ../inc/p.h
  ../inc/parser.h
  ../inc/ush.h
- /Users/oleg/ush/src/mx_builtins.c
+ /Users/oberdyshev/ush-ol/src/mx_builtins.c
 CMakeFiles/ush.dir/src/mx_check_buffer.c.o
  ../Libmx/inc/libmx.h
  ../inc/environment.h
@@ -77,7 +77,7 @@ CMakeFiles/ush.dir/src/mx_check_buffer.c.o
  ../inc/p.h
  ../inc/parser.h
  ../inc/ush.h
- /Users/oleg/ush/src/mx_check_buffer.c
+ /Users/oberdyshev/ush-ol/src/mx_check_buffer.c
 CMakeFiles/ush.dir/src/mx_driver_loop.c.o
  ../Libmx/inc/libmx.h
  ../inc/environment.h
@@ -88,23 +88,23 @@ CMakeFiles/ush.dir/src/mx_driver_loop.c.o
  ../inc/p.h
  ../inc/parser.h
  ../inc/ush.h
- /Users/oleg/ush/src/mx_driver_loop.c
+ /Users/oberdyshev/ush-ol/src/mx_driver_loop.c
 CMakeFiles/ush.dir/src/mx_env_get_value.c.o
  ../inc/environment.h
  ../inc/liststr.h
- /Users/oleg/ush/src/mx_env_get_value.c
+ /Users/oberdyshev/ush-ol/src/mx_env_get_value.c
 CMakeFiles/ush.dir/src/mx_env_init.c.o
  ../inc/environment.h
  ../inc/liststr.h
- /Users/oleg/ush/src/mx_env_init.c
+ /Users/oberdyshev/ush-ol/src/mx_env_init.c
 CMakeFiles/ush.dir/src/mx_env_new_delete.c.o
  ../inc/environment.h
  ../inc/liststr.h
- /Users/oleg/ush/src/mx_env_new_delete.c
+ /Users/oberdyshev/ush-ol/src/mx_env_new_delete.c
 CMakeFiles/ush.dir/src/mx_env_set_var.c.o
  ../inc/environment.h
  ../inc/liststr.h
- /Users/oleg/ush/src/mx_env_set_var.c
+ /Users/oberdyshev/ush-ol/src/mx_env_set_var.c
 CMakeFiles/ush.dir/src/mx_eval.c.o
  ../Libmx/inc/libmx.h
  ../inc/environment.h
@@ -115,7 +115,18 @@ CMakeFiles/ush.dir/src/mx_eval.c.o
  ../inc/p.h
  ../inc/parser.h
  ../inc/ush.h
- /Users/oleg/ush/src/mx_eval.c
+ /Users/oberdyshev/ush-ol/src/mx_eval.c
+CMakeFiles/ush.dir/src/mx_eval_file_expansion.c.o
+ ../Libmx/inc/libmx.h
+ ../inc/environment.h
+ ../inc/evaluator.h
+ ../inc/i.h
+ ../inc/liststr.h
+ ../inc/o.h
+ ../inc/p.h
+ ../inc/parser.h
+ ../inc/ush.h
+ /Users/oberdyshev/ush-ol/src/mx_eval_file_expansion.c
 CMakeFiles/ush.dir/src/mx_eval_parameter_expansion.c.o
  ../Libmx/inc/libmx.h
  ../inc/environment.h
@@ -126,7 +137,7 @@ CMakeFiles/ush.dir/src/mx_eval_parameter_expansion.c.o
  ../inc/p.h
  ../inc/parser.h
  ../inc/ush.h
- /Users/oleg/ush/src/mx_eval_parameter_expansion.c
+ /Users/oberdyshev/ush-ol/src/mx_eval_parameter_expansion.c
 CMakeFiles/ush.dir/src/mx_eval_redirections.c.o
  ../Libmx/inc/libmx.h
  ../inc/environment.h
@@ -137,7 +148,7 @@ CMakeFiles/ush.dir/src/mx_eval_redirections.c.o
  ../inc/p.h
  ../inc/parser.h
  ../inc/ush.h
- /Users/oleg/ush/src/mx_eval_redirections.c
+ /Users/oberdyshev/ush-ol/src/mx_eval_redirections.c
 CMakeFiles/ush.dir/src/mx_exec_apply_pipe.c.o
  ../Libmx/inc/libmx.h
  ../inc/environment.h
@@ -148,7 +159,7 @@ CMakeFiles/ush.dir/src/mx_exec_apply_pipe.c.o
  ../inc/p.h
  ../inc/parser.h
  ../inc/ush.h
- /Users/oleg/ush/src/mx_exec_apply_pipe.c
+ /Users/oberdyshev/ush-ol/src/mx_exec_apply_pipe.c
 CMakeFiles/ush.dir/src/mx_exec_try_bin.c.o
  ../Libmx/inc/libmx.h
  ../inc/environment.h
@@ -159,7 +170,7 @@ CMakeFiles/ush.dir/src/mx_exec_try_bin.c.o
  ../inc/p.h
  ../inc/parser.h
  ../inc/ush.h
- /Users/oleg/ush/src/mx_exec_try_bin.c
+ /Users/oberdyshev/ush-ol/src/mx_exec_try_bin.c
 CMakeFiles/ush.dir/src/mx_execute.c.o
  ../Libmx/inc/libmx.h
  ../inc/environment.h
@@ -170,7 +181,7 @@ CMakeFiles/ush.dir/src/mx_execute.c.o
  ../inc/p.h
  ../inc/parser.h
  ../inc/ush.h
- /Users/oleg/ush/src/mx_execute.c
+ /Users/oberdyshev/ush-ol/src/mx_execute.c
 CMakeFiles/ush.dir/src/mx_free_all.c.o
  ../Libmx/inc/libmx.h
  ../inc/environment.h
@@ -181,7 +192,7 @@ CMakeFiles/ush.dir/src/mx_free_all.c.o
  ../inc/p.h
  ../inc/parser.h
  ../inc/ush.h
- /Users/oleg/ush/src/mx_free_all.c
+ /Users/oberdyshev/ush-ol/src/mx_free_all.c
 CMakeFiles/ush.dir/src/mx_global_env_new_delete.c.o
  ../Libmx/inc/libmx.h
  ../inc/environment.h
@@ -192,7 +203,7 @@ CMakeFiles/ush.dir/src/mx_global_env_new_delete.c.o
  ../inc/p.h
  ../inc/parser.h
  ../inc/ush.h
- /Users/oleg/ush/src/mx_global_env_new_delete.c
+ /Users/oberdyshev/ush-ol/src/mx_global_env_new_delete.c
 CMakeFiles/ush.dir/src/mx_history.c.o
  ../Libmx/inc/libmx.h
  ../inc/environment.h
@@ -203,7 +214,7 @@ CMakeFiles/ush.dir/src/mx_history.c.o
  ../inc/p.h
  ../inc/parser.h
  ../inc/ush.h
- /Users/oleg/ush/src/mx_history.c
+ /Users/oberdyshev/ush-ol/src/mx_history.c
 CMakeFiles/ush.dir/src/mx_init_shell.c.o
  ../Libmx/inc/libmx.h
  ../inc/environment.h
@@ -214,28 +225,28 @@ CMakeFiles/ush.dir/src/mx_init_shell.c.o
  ../inc/p.h
  ../inc/parser.h
  ../inc/ush.h
- /Users/oleg/ush/src/mx_init_shell.c
+ /Users/oberdyshev/ush-ol/src/mx_init_shell.c
 CMakeFiles/ush.dir/src/mx_liststr_convert_argv.c.o
  ../inc/liststr.h
- /Users/oleg/ush/src/mx_liststr_convert_argv.c
+ /Users/oberdyshev/ush-ol/src/mx_liststr_convert_argv.c
 CMakeFiles/ush.dir/src/mx_liststr_delete.c.o
  ../inc/liststr.h
- /Users/oleg/ush/src/mx_liststr_delete.c
+ /Users/oberdyshev/ush-ol/src/mx_liststr_delete.c
 CMakeFiles/ush.dir/src/mx_liststr_init.c.o
  ../inc/liststr.h
- /Users/oleg/ush/src/mx_liststr_init.c
+ /Users/oberdyshev/ush-ol/src/mx_liststr_init.c
 CMakeFiles/ush.dir/src/mx_liststr_length.c.o
  ../inc/liststr.h
- /Users/oleg/ush/src/mx_liststr_length.c
+ /Users/oberdyshev/ush-ol/src/mx_liststr_length.c
 CMakeFiles/ush.dir/src/mx_liststr_pop_front.c.o
  ../inc/liststr.h
- /Users/oleg/ush/src/mx_liststr_pop_front.c
+ /Users/oberdyshev/ush-ol/src/mx_liststr_pop_front.c
 CMakeFiles/ush.dir/src/mx_liststr_push_back.c.o
  ../inc/liststr.h
- /Users/oleg/ush/src/mx_liststr_push_back.c
+ /Users/oberdyshev/ush-ol/src/mx_liststr_push_back.c
 CMakeFiles/ush.dir/src/mx_liststr_push_front.c.o
  ../inc/liststr.h
- /Users/oleg/ush/src/mx_liststr_push_front.c
+ /Users/oberdyshev/ush-ol/src/mx_liststr_push_front.c
 CMakeFiles/ush.dir/src/mx_new_delete_config.c.o
  ../Libmx/inc/libmx.h
  ../inc/environment.h
@@ -246,7 +257,7 @@ CMakeFiles/ush.dir/src/mx_new_delete_config.c.o
  ../inc/p.h
  ../inc/parser.h
  ../inc/ush.h
- /Users/oleg/ush/src/mx_new_delete_config.c
+ /Users/oberdyshev/ush-ol/src/mx_new_delete_config.c
 CMakeFiles/ush.dir/src/mx_new_evalresult.c.o
  ../Libmx/inc/libmx.h
  ../inc/environment.h
@@ -257,7 +268,7 @@ CMakeFiles/ush.dir/src/mx_new_evalresult.c.o
  ../inc/p.h
  ../inc/parser.h
  ../inc/ush.h
- /Users/oleg/ush/src/mx_new_evalresult.c
+ /Users/oberdyshev/ush-ol/src/mx_new_evalresult.c
 CMakeFiles/ush.dir/src/mx_output.c.o
  ../Libmx/inc/libmx.h
  ../inc/environment.h
@@ -268,71 +279,75 @@ CMakeFiles/ush.dir/src/mx_output.c.o
  ../inc/p.h
  ../inc/parser.h
  ../inc/ush.h
- /Users/oleg/ush/src/mx_output.c
+ /Users/oberdyshev/ush-ol/src/mx_output.c
 CMakeFiles/ush.dir/src/mx_parse_words_sequence.c.o
  ../Libmx/inc/libmx.h
  ../inc/parser.h
- /Users/oleg/ush/src/mx_parse_words_sequence.c
+ /Users/oberdyshev/ush-ol/src/mx_parse_words_sequence.c
 CMakeFiles/ush.dir/src/mx_parser_assignment.c.o
  ../Libmx/inc/libmx.h
  ../inc/parser.h
- /Users/oleg/ush/src/mx_parser_assignment.c
+ /Users/oberdyshev/ush-ol/src/mx_parser_assignment.c
+CMakeFiles/ush.dir/src/mx_parser_find_file_expansion.c.o
+ ../Libmx/inc/libmx.h
+ ../inc/parser.h
+ /Users/oberdyshev/ush-ol/src/mx_parser_find_file_expansion.c
 CMakeFiles/ush.dir/src/mx_parser_find_param.c.o
  ../Libmx/inc/libmx.h
  ../inc/parser.h
- /Users/oleg/ush/src/mx_parser_find_param.c
+ /Users/oberdyshev/ush-ol/src/mx_parser_find_param.c
 CMakeFiles/ush.dir/src/mx_parser_firstword.c.o
  ../Libmx/inc/libmx.h
  ../inc/parser.h
- /Users/oleg/ush/src/mx_parser_firstword.c
+ /Users/oberdyshev/ush-ol/src/mx_parser_firstword.c
 CMakeFiles/ush.dir/src/mx_parser_get_binary_opid.c.o
  ../Libmx/inc/libmx.h
  ../inc/parser.h
- /Users/oleg/ush/src/mx_parser_get_binary_opid.c
+ /Users/oberdyshev/ush-ol/src/mx_parser_get_binary_opid.c
 CMakeFiles/ush.dir/src/mx_parser_get_op_id.c.o
  ../Libmx/inc/libmx.h
  ../inc/parser.h
- /Users/oleg/ush/src/mx_parser_get_op_id.c
+ /Users/oberdyshev/ush-ol/src/mx_parser_get_op_id.c
 CMakeFiles/ush.dir/src/mx_parser_get_op_name.c.o
  ../Libmx/inc/libmx.h
  ../inc/parser.h
- /Users/oleg/ush/src/mx_parser_get_op_name.c
+ /Users/oberdyshev/ush-ol/src/mx_parser_get_op_name.c
 CMakeFiles/ush.dir/src/mx_parser_get_operator_info_byid.c.o
  ../Libmx/inc/libmx.h
  ../inc/parser.h
- /Users/oleg/ush/src/mx_parser_get_operator_info_byid.c
+ /Users/oberdyshev/ush-ol/src/mx_parser_get_operator_info_byid.c
 CMakeFiles/ush.dir/src/mx_parser_get_unary_opid.c.o
  ../Libmx/inc/libmx.h
  ../inc/parser.h
- /Users/oleg/ush/src/mx_parser_get_unary_opid.c
+ /Users/oberdyshev/ush-ol/src/mx_parser_get_unary_opid.c
 CMakeFiles/ush.dir/src/mx_parser_has_expression_operator.c.o
  ../Libmx/inc/libmx.h
  ../inc/parser.h
- /Users/oleg/ush/src/mx_parser_has_expression_operator.c
+ /Users/oberdyshev/ush-ol/src/mx_parser_has_expression_operator.c
 CMakeFiles/ush.dir/src/mx_parser_is_closed_expression.c.o
  ../Libmx/inc/libmx.h
  ../inc/parser.h
- /Users/oleg/ush/src/mx_parser_is_closed_expression.c
+ /Users/oberdyshev/ush-ol/src/mx_parser_is_closed_expression.c
 CMakeFiles/ush.dir/src/mx_parser_smart_find.c.o
  ../Libmx/inc/libmx.h
  ../inc/parser.h
- /Users/oleg/ush/src/mx_parser_smart_find.c
+ /Users/oberdyshev/ush-ol/src/mx_parser_smart_find.c
 CMakeFiles/ush.dir/src/mx_parser_split_two_str.c.o
  ../Libmx/inc/libmx.h
  ../inc/parser.h
- /Users/oleg/ush/src/mx_parser_split_two_str.c
+ /Users/oberdyshev/ush-ol/src/mx_parser_split_two_str.c
 CMakeFiles/ush.dir/src/mx_parser_strstr_esc.c.o
  ../Libmx/inc/libmx.h
  ../inc/parser.h
- /Users/oleg/ush/src/mx_parser_strstr_esc.c
+ /Users/oberdyshev/ush-ol/src/mx_parser_strstr_esc.c
 CMakeFiles/ush.dir/src/mx_parser_trim.c.o
  ../Libmx/inc/libmx.h
  ../inc/parser.h
- /Users/oleg/ush/src/mx_parser_trim.c
+ /Users/oberdyshev/ush-ol/src/mx_parser_trim.c
 CMakeFiles/ush.dir/src/mx_parser_wordchain.c.o
  ../Libmx/inc/libmx.h
  ../inc/parser.h
- /Users/oleg/ush/src/mx_parser_wordchain.c
+ /Users/oberdyshev/ush-ol/src/mx_parser_wordchain.c
 CMakeFiles/ush.dir/src/mx_print_prompt.c.o
  ../Libmx/inc/libmx.h
  ../inc/environment.h
@@ -343,7 +358,7 @@ CMakeFiles/ush.dir/src/mx_print_prompt.c.o
  ../inc/p.h
  ../inc/parser.h
  ../inc/ush.h
- /Users/oleg/ush/src/mx_print_prompt.c
+ /Users/oberdyshev/ush-ol/src/mx_print_prompt.c
 CMakeFiles/ush.dir/src/mx_read_input.c.o
  ../Libmx/inc/libmx.h
  ../inc/environment.h
@@ -354,7 +369,7 @@ CMakeFiles/ush.dir/src/mx_read_input.c.o
  ../inc/p.h
  ../inc/parser.h
  ../inc/ush.h
- /Users/oleg/ush/src/mx_read_input.c
+ /Users/oberdyshev/ush-ol/src/mx_read_input.c
 CMakeFiles/ush.dir/src/mx_sort_arr.c.o
  ../Libmx/inc/libmx.h
  ../inc/environment.h
@@ -365,7 +380,7 @@ CMakeFiles/ush.dir/src/mx_sort_arr.c.o
  ../inc/p.h
  ../inc/parser.h
  ../inc/ush.h
- /Users/oleg/ush/src/mx_sort_arr.c
+ /Users/oberdyshev/ush-ol/src/mx_sort_arr.c
 CMakeFiles/ush.dir/src/mx_strjoin_with_space.c.o
  ../Libmx/inc/libmx.h
- /Users/oleg/ush/src/mx_strjoin_with_space.c
+ /Users/oberdyshev/ush-ol/src/mx_strjoin_with_space.c

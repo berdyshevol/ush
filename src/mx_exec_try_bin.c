@@ -89,8 +89,10 @@ bool mx_try_bin(char *cmd, t_eval_result result, t_global_environment *gv) {
             waitpid (pid, &status, 0);
             mx_set_input_mode();
             int i = mx_wexitstatud(status);
-            mx_env_set_var("?", mx_itoa(mx_wexitstatud(status)), &(gv->vars));
+            char *itoa = mx_itoa(mx_wexitstatud(status));
+            mx_env_set_var("?", itoa, &(gv->vars));
             result->status = mx_wexitstatud(status) == 0 ? true : false;
+            mx_strdel(&itoa);
             break;
     }
     return true;

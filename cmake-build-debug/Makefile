@@ -39,19 +39,19 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake
+CMAKE_COMMAND = /private/var/folders/zz/zyxvpxvq6csfxvn_n0003yyh000zqm/T/AppTranslocation/B4938245-159A-4B3D-8033-06697D8C1B8C/d/CLion.app/Contents/bin/cmake/mac/bin/cmake
 
 # The command to remove a file.
-RM = /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -E remove -f
+RM = /private/var/folders/zz/zyxvpxvq6csfxvn_n0003yyh000zqm/T/AppTranslocation/B4938245-159A-4B3D-8033-06697D8C1B8C/d/CLion.app/Contents/bin/cmake/mac/bin/cmake -E remove -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/oleg/ush
+CMAKE_SOURCE_DIR = /Users/oberdyshev/ush-ol
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/oleg/ush/cmake-build-debug
+CMAKE_BINARY_DIR = /Users/oberdyshev/ush-ol/cmake-build-debug
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -59,7 +59,7 @@ CMAKE_BINARY_DIR = /Users/oleg/ush/cmake-build-debug
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	/private/var/folders/zz/zyxvpxvq6csfxvn_n0003yyh000zqm/T/AppTranslocation/B4938245-159A-4B3D-8033-06697D8C1B8C/d/CLion.app/Contents/bin/cmake/mac/bin/cmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : rebuild_cache
 
 # Special rule for the target rebuild_cache
@@ -70,7 +70,7 @@ rebuild_cache/fast: rebuild_cache
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
-	/Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+	/private/var/folders/zz/zyxvpxvq6csfxvn_n0003yyh000zqm/T/AppTranslocation/B4938245-159A-4B3D-8033-06697D8C1B8C/d/CLion.app/Contents/bin/cmake/mac/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
 .PHONY : edit_cache
 
 # Special rule for the target edit_cache
@@ -80,9 +80,9 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/oleg/ush/cmake-build-debug/CMakeFiles /Users/oleg/ush/cmake-build-debug/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/oberdyshev/ush-ol/cmake-build-debug/CMakeFiles /Users/oberdyshev/ush-ol/cmake-build-debug/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/oleg/ush/cmake-build-debug/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/oberdyshev/ush-ol/cmake-build-debug/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -2080,6 +2080,33 @@ src/mx_eval.c.s:
 	$(MAKE) -f CMakeFiles/ush.dir/build.make CMakeFiles/ush.dir/src/mx_eval.c.s
 .PHONY : src/mx_eval.c.s
 
+src/mx_eval_file_expansion.o: src/mx_eval_file_expansion.c.o
+
+.PHONY : src/mx_eval_file_expansion.o
+
+# target to build an object file
+src/mx_eval_file_expansion.c.o:
+	$(MAKE) -f CMakeFiles/ush.dir/build.make CMakeFiles/ush.dir/src/mx_eval_file_expansion.c.o
+.PHONY : src/mx_eval_file_expansion.c.o
+
+src/mx_eval_file_expansion.i: src/mx_eval_file_expansion.c.i
+
+.PHONY : src/mx_eval_file_expansion.i
+
+# target to preprocess a source file
+src/mx_eval_file_expansion.c.i:
+	$(MAKE) -f CMakeFiles/ush.dir/build.make CMakeFiles/ush.dir/src/mx_eval_file_expansion.c.i
+.PHONY : src/mx_eval_file_expansion.c.i
+
+src/mx_eval_file_expansion.s: src/mx_eval_file_expansion.c.s
+
+.PHONY : src/mx_eval_file_expansion.s
+
+# target to generate assembly for a file
+src/mx_eval_file_expansion.c.s:
+	$(MAKE) -f CMakeFiles/ush.dir/build.make CMakeFiles/ush.dir/src/mx_eval_file_expansion.c.s
+.PHONY : src/mx_eval_file_expansion.c.s
+
 src/mx_eval_parameter_expansion.o: src/mx_eval_parameter_expansion.c.o
 
 .PHONY : src/mx_eval_parameter_expansion.o
@@ -2646,6 +2673,33 @@ src/mx_parser_assignment.s: src/mx_parser_assignment.c.s
 src/mx_parser_assignment.c.s:
 	$(MAKE) -f CMakeFiles/ush.dir/build.make CMakeFiles/ush.dir/src/mx_parser_assignment.c.s
 .PHONY : src/mx_parser_assignment.c.s
+
+src/mx_parser_find_file_expansion.o: src/mx_parser_find_file_expansion.c.o
+
+.PHONY : src/mx_parser_find_file_expansion.o
+
+# target to build an object file
+src/mx_parser_find_file_expansion.c.o:
+	$(MAKE) -f CMakeFiles/ush.dir/build.make CMakeFiles/ush.dir/src/mx_parser_find_file_expansion.c.o
+.PHONY : src/mx_parser_find_file_expansion.c.o
+
+src/mx_parser_find_file_expansion.i: src/mx_parser_find_file_expansion.c.i
+
+.PHONY : src/mx_parser_find_file_expansion.i
+
+# target to preprocess a source file
+src/mx_parser_find_file_expansion.c.i:
+	$(MAKE) -f CMakeFiles/ush.dir/build.make CMakeFiles/ush.dir/src/mx_parser_find_file_expansion.c.i
+.PHONY : src/mx_parser_find_file_expansion.c.i
+
+src/mx_parser_find_file_expansion.s: src/mx_parser_find_file_expansion.c.s
+
+.PHONY : src/mx_parser_find_file_expansion.s
+
+# target to generate assembly for a file
+src/mx_parser_find_file_expansion.c.s:
+	$(MAKE) -f CMakeFiles/ush.dir/build.make CMakeFiles/ush.dir/src/mx_parser_find_file_expansion.c.s
+.PHONY : src/mx_parser_find_file_expansion.c.s
 
 src/mx_parser_find_param.o: src/mx_parser_find_param.c.o
 
@@ -3359,6 +3413,9 @@ help:
 	@echo "... src/mx_eval.o"
 	@echo "... src/mx_eval.i"
 	@echo "... src/mx_eval.s"
+	@echo "... src/mx_eval_file_expansion.o"
+	@echo "... src/mx_eval_file_expansion.i"
+	@echo "... src/mx_eval_file_expansion.s"
 	@echo "... src/mx_eval_parameter_expansion.o"
 	@echo "... src/mx_eval_parameter_expansion.i"
 	@echo "... src/mx_eval_parameter_expansion.s"
@@ -3422,6 +3479,9 @@ help:
 	@echo "... src/mx_parser_assignment.o"
 	@echo "... src/mx_parser_assignment.i"
 	@echo "... src/mx_parser_assignment.s"
+	@echo "... src/mx_parser_find_file_expansion.o"
+	@echo "... src/mx_parser_find_file_expansion.i"
+	@echo "... src/mx_parser_find_file_expansion.s"
 	@echo "... src/mx_parser_find_param.o"
 	@echo "... src/mx_parser_find_param.i"
 	@echo "... src/mx_parser_find_param.s"

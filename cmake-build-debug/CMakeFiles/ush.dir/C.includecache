@@ -138,9 +138,7 @@ i.h
 o.h
 ../inc/o.h
 
-/Users/oleg/ush/src/mx_eval.c
+/Users/oberdyshev/ush-ol/src/mx_execute.c
 ush.h
-/Users/oleg/ush/src/ush.h
-evaluator.h
-/Users/oleg/ush/src/evaluator.h
+/Users/oberdyshev/ush-ol/src/ush.h
 

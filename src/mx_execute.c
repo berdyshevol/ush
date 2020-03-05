@@ -58,8 +58,10 @@ void mx_execute_builtin_innewproc(int id, t_eval_result result, t_global_environ
             waitpid (pid, &status, 0);
             mx_set_input_mode();
             int i = mx_wexitstatud(status);
-            mx_env_set_var("?", mx_itoa(mx_wexitstatud(status)), &(gv->vars));
+            char *itoa =  mx_itoa(mx_wexitstatud(status));
+            mx_env_set_var("?", itoa, &(gv->vars));
             result->status = mx_wexitstatud(status) == 0 ? true : false;
+            mx_strdel(&itoa);
             break;
     }
 }
@@ -75,8 +77,10 @@ void mx_run_builtin(int id, t_eval_result result, t_global_environment *gv) {
     else
         exit_status = builtin[id].cmd(gv);
 
-    mx_env_set_var("?", mx_itoa(exit_status), &(gv->vars));
+    char *itoa = mx_itoa(exit_status);
+    mx_env_set_var("?", itoa, &(gv->vars));
     result->status = (exit_status == EXIT_SUCCESS);
+    mx_strdel(&itoa);
     // -- old
 //    mx_apply_redirect(redir);
 //    exit_status = builtin[id].cmd(gv);
@@ -142,12 +146,14 @@ int main(void) {
 
 //    char *s = strdup("ls /bin > test; cat test");
 //    char *s = strdup("name=Oleg; echo hi $name >> test; cat < test");
-    char *s = strdup("name=Oleg; echo Hi $name > test; cat test | wc -w");
+//    char *s = strdup("name=Oleg; echo Hi $name > test; cat test | wc -w");
+
+    char *s = strdup("ls; echo");
     t_eval_result result = mx_eval(s, gv, NULL, NULL);
 
     mx_delete_evalresult(&result);
     mx_delete_global_env(&gv); // здесь есть лики
 
-//    system("leaks -q ush");
+    system("leaks -q ush");
     return 0;
 }

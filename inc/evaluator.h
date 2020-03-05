@@ -58,6 +58,7 @@ t_exp mx_assignment_value(t_exp exp);
 t_exp mx_words_after_assignment(t_exp exp);
 void mx_parameter_expansion(t_exp *exp, t_global_environment *gv);
 char *mx_get_value(char *varname, t_global_environment *gv);
+void mx_insert(char **exp, int start, int end, char *word);
 
 // A procedure application is simple-command
 t_exp mx_command(t_exp exp);
@@ -108,6 +109,9 @@ void mx_delete_redirect(t_redirect **redirect);
 bool mx_extract_redirections(t_exp *exp, t_redirect **redirections);
 bool mx_apply_redirect(t_redirect *redir);
 void mx_reset_redirections(t_redirect *redir);
+
+// file expansion
+void mx_file_expansion(t_exp *exp);
 
 
 
