@@ -66,7 +66,8 @@ mx_print_prompt.c \
 mx_read_input.c \
 mx_sort_arr.c \
 mx_strjoin_with_space.c \
-
+mx_builtin_fg.c \
+mx_builtin_fg2.c \
 
 OBJ = $(SRC:.c=.o)
 

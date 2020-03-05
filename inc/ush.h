@@ -73,6 +73,8 @@ typedef struct global_environment {
     t_stoped *jobs_list;
     t_stoped *last_stoped;
     int list_index;
+    unsigned int count_jobs;
+    bool ctr_d;
 } t_global_environment;
 
 typedef struct builtInCommands {

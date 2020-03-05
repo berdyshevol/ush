@@ -14,14 +14,25 @@ static void read_from_pipe(t_global_environment *gv) {
     }
 }
 
+void mx_set_default_signals(void) {
+    signal(SIGINT, SIG_DFL);
+    signal(SIGQUIT, SIG_DFL);
+    signal(SIGTSTP, SIG_DFL);
+    signal(SIGTTIN, SIG_IGN);
+    signal(SIGTTOU, SIG_IGN);
+}
+
 void mx_driver_loop(t_global_environment *gv) {
     t_eval_result res = NULL;
     bool status = 1;
 
     while(status) {
         if (isatty(0)) {
+            mx_set_input_mode();
             mx_print_prompt();
             mx_read_input(gv);
+            mx_reset_input_mode();
+            mx_set_default_signals();
         }
         else {
             read_from_pipe(gv);

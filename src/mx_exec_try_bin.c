@@ -20,7 +20,12 @@ void mx_print_nocmd(char *cmd, t_global_environment *gv) {
 }
 
 static void exec_child(char *cmd, t_global_environment *gv) {
-
+    if (isatty(STDIN_FILENO)){
+        setegid(getpid());
+        setpgid(getpid(), 0);
+        tcsetpgrp(STDIN_FILENO, getpgrp());
+        tcsetpgrp(STDOUT_FILENO, getpgrp());
+    }
     if (mx_apply_redirect(gv->cnf->redirections)) {
         if (execvp(cmd, gv->cnf->agv) <  0) {
             mx_print_nocmd(cmd, gv);
@@ -31,6 +36,28 @@ static void exec_child(char *cmd, t_global_environment *gv) {
         mx_print_nocmd(cmd, gv);
     }
     exit(0);    
+}
+
+static void add_process_list(t_global_environment *gv, pid_t pid) {
+    t_stoped *tmp = gv->jobs_list;
+
+    while (tmp->next != NULL) {
+        if (tmp->str == NULL) {
+            tmp->pid = pid;
+            tmp->str = strdup(gv->str);
+            gv->last_stoped = tmp;
+            printf("\n\r\x1b[2K[%d] %d suspended %s\n", tmp->n, pid, gv->str);
+            return;
+        }
+        tmp = tmp->next;
+    }
+    if (tmp->next == NULL) {
+        tmp->next = mx_add_empty_job(gv);
+        tmp->pid = pid;
+        tmp->str = strdup(gv->str);
+        gv->last_stoped = tmp;
+        printf("\n\r\x1b[2K[%d] %d suspended %s\n", tmp->n, pid, gv->str);
+    }
 }
 
 bool mx_try_bin(char *cmd, t_eval_result result, t_global_environment *gv) {
@@ -59,12 +86,16 @@ bool mx_try_bin(char *cmd, t_eval_result result, t_global_environment *gv) {
                 }
                 close(gv->cnf->pipe_fd[1]);
             }
-            waitpid (pid, &status, 0);
-            mx_set_input_mode();
-            //int i = mx_wexitstatud(status);
+            waitpid (pid, &status, WUNTRACED);
+            if (MX_WIFSTOPPED(status)) {
+                add_process_list(gv, pid);
+                gv->count_jobs++;
+            }
             char *itoa = mx_itoa(mx_wexitstatud(status));
             mx_env_set_var("?", itoa, &(gv->vars));
             result->status = mx_wexitstatud(status) == 0 ? true : false;
+            tcsetpgrp(STDIN_FILENO, getpgrp());
+            tcsetpgrp(STDOUT_FILENO, getpgrp());
             mx_strdel(&itoa);
             break;
     }

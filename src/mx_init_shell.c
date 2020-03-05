@@ -5,9 +5,6 @@ void mx_reset_input_mode(void) {
 }
 
 void mx_set_input_mode (void) {
-	struct termios new_settings;
-
-	tcgetattr(0, &stored_settings);
 	new_settings = stored_settings;
 	new_settings.c_lflag &= ~(ICANON|ECHO|ISIG);
 	new_settings.c_cc[VTIME] = 0;
@@ -16,28 +13,7 @@ void mx_set_input_mode (void) {
 }
 
 void mx_init_shell(t_global_environment **gv) {
-    mx_set_input_mode();
+    tcgetattr(0, &stored_settings);
     setvbuf(stdout, NULL, _IONBF, 0);
     *gv = mx_new_global_env();
 }
-
-// static void sig_int() {
-//     exit(130);
-// }
-
-// static void mx_set_default_signals() {
-//     signal(SIGINT, sig_int);
-//     signal(SIGQUIT, SIG_DFL);
-//     signal(SIGTSTP, SIG_DFL);
-//     signal(SIGTTIN, SIG_IGN);
-//     signal(SIGTTOU, SIG_IGN);
-//     signal(SIGCHLD, SIG_IGN);
-// }
-
-// void mx_init_shell(t_global_environment *gv) {
-//     //if (gv->shellName != NULL) free(gv->shellName);
-//     gv->shellName = "brothers' shell"; // TODO: удалить
-//     // do somthing
-//     mx_set_default_signals();
-//     // настройка сигналов
-// }

@@ -7,14 +7,6 @@ int mx_builtin_unset(t_global_environment *gv) { // TODO: Доделать Unset
     return EXIT_SUCCESS;
 }
 
-// ----------- FG builtin function ----------- Not done
-
-int mx_builtin_fg(t_global_environment *gv) {
-    mx_printstr("fg: ");
-    mx_printstr(gv->shellName);
-    mx_printstr("\n");
-    return EXIT_SUCCESS;
-}
 
 // ----------- EXIT builtin function -----------
 
