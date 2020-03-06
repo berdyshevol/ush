@@ -132,11 +132,9 @@ p.h
 i.h
 ../inc/i.h
 
-/Users/oberdyshev/ush/src/main.c
+/Users/oleg/ush/src/mx_eval_command_substitution.c
 ush.h
-/Users/oberdyshev/ush/src/ush.h
-
-/Users/oberdyshev/ush/src/mx_execute.c
-ush.h
-/Users/oberdyshev/ush/src/ush.h
+/Users/oleg/ush/src/ush.h
+evaluator.h
+/Users/oleg/ush/src/evaluator.h
 

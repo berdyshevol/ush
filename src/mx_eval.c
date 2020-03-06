@@ -549,22 +549,23 @@ mx_simple_command(t_exp expression, t_global_environment *gv, int *pipe_fd,
     cnf->pipe_fd = pipe_fd;
     cnf->new_proc = new_proc;
     gv->cnf = cnf;
+
+    result = mx_new_evalresult();
     // mx_alias_expansion(&exp, gv);
     mx_parameter_expansion(&exp, gv);
-    //mx_command_substitution(&exp, gv, new_proc);
-    mx_file_expansion(&exp);
-    if (!mx_extract_redirections(&exp, &redirections)) {
-        result = mx_new_evalresult();
-        result->status = false;
-    }
-    else {
-        command = mx_command(exp);
-        //eval_operator = mx_eval_word(operator, gv);
-        operands = mx_operands(exp);
-        mx_list_of_values(&list_of_arguments, operands, gv);
-        // apply
-        gv->cnf->redirections = redirections;
-        result = mx_apply(command, list_of_arguments, gv);
+    mx_command_substitution(&exp, result, gv);
+    if (result->status == true) {
+        mx_file_expansion(&exp);
+        if (!mx_extract_redirections(&exp, &redirections)) {
+            result->status = false;
+        } else {
+            command = mx_command(exp);
+            operands = mx_operands(exp);
+            mx_list_of_values(&list_of_arguments, operands, gv);
+            // apply
+            gv->cnf->redirections = redirections;
+            result = mx_apply(command, list_of_arguments, gv);
+        }
     }
     mx_strdel(&exp);
     mx_delete_redirect(&redirections);

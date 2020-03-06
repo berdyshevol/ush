@@ -163,6 +163,16 @@ CMakeFiles/ush.dir/src/mx_eval.c.o: ../inc/parser.h
 CMakeFiles/ush.dir/src/mx_eval.c.o: ../inc/ush.h
 CMakeFiles/ush.dir/src/mx_eval.c.o: ../src/mx_eval.c
 
+CMakeFiles/ush.dir/src/mx_eval_command_substitution.c.o: ../Libmx/inc/libmx.h
+CMakeFiles/ush.dir/src/mx_eval_command_substitution.c.o: ../inc/environment.h
+CMakeFiles/ush.dir/src/mx_eval_command_substitution.c.o: ../inc/evaluator.h
+CMakeFiles/ush.dir/src/mx_eval_command_substitution.c.o: ../inc/i.h
+CMakeFiles/ush.dir/src/mx_eval_command_substitution.c.o: ../inc/liststr.h
+CMakeFiles/ush.dir/src/mx_eval_command_substitution.c.o: ../inc/p.h
+CMakeFiles/ush.dir/src/mx_eval_command_substitution.c.o: ../inc/parser.h
+CMakeFiles/ush.dir/src/mx_eval_command_substitution.c.o: ../inc/ush.h
+CMakeFiles/ush.dir/src/mx_eval_command_substitution.c.o: ../src/mx_eval_command_substitution.c
+
 CMakeFiles/ush.dir/src/mx_eval_file_expansion.c.o: ../Libmx/inc/libmx.h
 CMakeFiles/ush.dir/src/mx_eval_file_expansion.c.o: ../inc/environment.h
 CMakeFiles/ush.dir/src/mx_eval_file_expansion.c.o: ../inc/evaluator.h
@@ -311,6 +321,10 @@ CMakeFiles/ush.dir/src/mx_parse_words_sequence.c.o: ../src/mx_parse_words_sequen
 CMakeFiles/ush.dir/src/mx_parser_assignment.c.o: ../Libmx/inc/libmx.h
 CMakeFiles/ush.dir/src/mx_parser_assignment.c.o: ../inc/parser.h
 CMakeFiles/ush.dir/src/mx_parser_assignment.c.o: ../src/mx_parser_assignment.c
+
+CMakeFiles/ush.dir/src/mx_parser_find_command_substitution.c.o: ../Libmx/inc/libmx.h
+CMakeFiles/ush.dir/src/mx_parser_find_command_substitution.c.o: ../inc/parser.h
+CMakeFiles/ush.dir/src/mx_parser_find_command_substitution.c.o: ../src/mx_parser_find_command_substitution.c
 
 CMakeFiles/ush.dir/src/mx_parser_find_file_expansion.c.o: ../Libmx/inc/libmx.h
 CMakeFiles/ush.dir/src/mx_parser_find_file_expansion.c.o: ../inc/parser.h

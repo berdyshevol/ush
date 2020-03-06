@@ -85,6 +85,7 @@ typedef struct builtInCommands {
 typedef struct {
     char *text;
     bool status;
+    int exit_no;
 }* t_eval_result; // результат выполнения eval что есть статус
 // выполнения pipeline должен быть int но пока что есть
 
@@ -125,7 +126,7 @@ void mx_delete_config(t_config **cnf);
 t_eval_result mx_execute(char *command, t_global_environment *gv);
 
 bool mx_try_bin(char *cmd, t_eval_result result, t_global_environment *gv);
-
+void mx_smart_wait(int pid, t_eval_result result, t_global_environment *gv);
 bool try_builtin(char *cmd, t_eval_result result, t_global_environment *gv);
 void mx_run_builtin(int id, t_eval_result result, t_global_environment *gv);
 
