@@ -18,9 +18,9 @@ static void signal_ctr_d(t_global_environment *g) {
         return;
     }
     if (g->ctr_d || !g->count_jobs) {
-    printf("\n\n\r\x1b[2K[Process completed]\n\n");
-    mx_reset_input_mode();
-    exit(0);
+        printf("\n\n\r\x1b[2K[Process completed]\n\n");
+        mx_reset_input_mode();
+        exit(0);
     }
 }
 

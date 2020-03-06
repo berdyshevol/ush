@@ -11,7 +11,7 @@ static void up_arrow(t_global_environment *g) {
     g->cursor = strlen(g->str);
 }
 
-static void down_arrow(t_global_environment *g) {
+static bool down_arrow(t_global_environment *g) {
     int leng = strlen(g->str);
     
     for(int i = 0; i < leng; i++)
@@ -20,9 +20,10 @@ static void down_arrow(t_global_environment *g) {
     g->str = strdup(g->history[g->show_his]);
     printf("\ru$h> %s", g->str);
     g->cursor = strlen(g->str);
+    return true;
 }
 
-static void show_tmp_str(t_global_environment *g) {
+static bool show_tmp_str(t_global_environment *g) {
     int leng = strlen(g->str);
 
     for(int i = 0; i < leng; i++)
@@ -33,6 +34,7 @@ static void show_tmp_str(t_global_environment *g) {
     g->cursor = strlen(g->str);
     mx_strdel(&g->tmp_str);
     g->full_tmp_str = false;
+    return true;
 }
 
 static bool go_up_arrow(t_global_environment *g) {
@@ -64,14 +66,10 @@ int mx_history(t_global_environment *g) {
         }
         if (g->show_his < 500 && g->history[g->show_his] != NULL)
             g->show_his++;
-        if (g->history[g->show_his] != NULL) {
-            down_arrow(g);
-            return true;
-        }
-        else {
-            show_tmp_str(g);
-            return true;
-        }
+        if (g->history[g->show_his] != NULL)
+            return down_arrow(g);
+        else 
+            return show_tmp_str(g);
         g->backcpase_his = true;
     }
     return false;

@@ -139,6 +139,8 @@ bool mx_apply_pipe(int *pipe_fd);
 bool mx_has_pipe(int *pipe_fd);
 void mx_reset_pipefd(int *pipe_fd);
 
+void mx_print_nocmd(char *cmd, t_global_environment *gv);
+
 //
 int mx_wexitstatud(int x);
 

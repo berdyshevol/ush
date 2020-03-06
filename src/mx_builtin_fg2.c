@@ -12,7 +12,7 @@ void mx_continue_process(int *st, t_stoped *ps, t_global_environment *g) {
     tcsetpgrp(STDIN_FILENO, pid);
     tcsetpgrp(STDOUT_FILENO, pid);
     waitpid(pid, st, WUNTRACED);
-    if (WIFSTOPPED(*st))
+    if (MX_WIFSTOPPED(*st))
         printf("\x1b[1K\r\x1b[2K[%d] %d suspended  %s\n", n, pid, str);
     else {
         mx_strdel(&ps->str);
@@ -21,4 +21,26 @@ void mx_continue_process(int *st, t_stoped *ps, t_global_environment *g) {
     }
     tcsetpgrp(STDIN_FILENO, ppid);
     tcsetpgrp(STDOUT_FILENO, ppid);
+}
+
+void mx_add_process_list(t_global_environment *gv, pid_t pid) {
+    t_stoped *tmp = gv->jobs_list;
+
+    while (tmp->next != NULL) {
+        if (tmp->str == NULL) {
+            tmp->pid = pid;
+            tmp->str = strdup(gv->str);
+            gv->last_stoped = tmp;
+            printf("\n\r\x1b[2K[%d] %d suspended %s\n", tmp->n, pid, gv->str);
+            return;
+        }
+        tmp = tmp->next;
+    }
+    if (tmp->next == NULL) {
+        tmp->next = mx_add_empty_job(gv);
+        tmp->pid = pid;
+        tmp->str = strdup(gv->str);
+        gv->last_stoped = tmp;
+        printf("\n\r\x1b[2K[%d] %d suspended %s\n", tmp->n, pid, gv->str);
+    }
 }

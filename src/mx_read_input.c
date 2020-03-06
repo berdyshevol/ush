@@ -1,17 +1,10 @@
 #include "ush.h"
 
-static void check_malloc(char *str) {
-    if (!str) {
-        fprintf(stderr, "ush: allocation error\n");
-        exit(1);
-    }
-}
-
 static void check_realloc(t_global_environment *g) {
     if (g->cursor >= g->bufsize) {
-        g->bufsize += 128; //If we have exceeded the str, reallocate.
+        g->bufsize += 128;
         g->str = realloc(g->str, g->bufsize);
-        check_malloc(g->str);
+        mx_check_malloc(g->str);
     }
 }
 
@@ -37,11 +30,18 @@ static void add_history(t_global_environment *g) {
     }
 }
 
+static void finish_reading(t_global_environment *g) {
+    g->str[g->cursor] = '\0';
+    mx_strdel(&g->tmp_str);
+    g->full_tmp_str = false;
+    add_history(g);
+}
+
 void mx_read_input(t_global_environment *g) {
     bool add_cursor = false;
 
     g->str = mx_strnew(g->bufsize);
-    check_malloc(g->str);
+    mx_check_malloc(g->str);
     for (g->cursor = 0;; g->cursor++) {
         if (g->backcpase_his == true) {
             g->cursor--;
@@ -50,16 +50,12 @@ void mx_read_input(t_global_environment *g) {
         read(0, &g->buff, sizeof(&g->buff));
         if (!mx_history(g))
             add_cursor = mx_ckeck_buffer(g);
-        if (g->str[g->cursor] == '\n') {
-            g->str[g->cursor] = '\0';
-            mx_strdel(&g->tmp_str);
-            g->full_tmp_str = false;
-            add_history(g);
-            return;
-        }
+        if (g->str[g->cursor] == '\n')
+            break;
         check_realloc(g);
         g->cursor = (!add_cursor) ? g->cursor - 1 : g->cursor;
         memset(g->buff, '\0', 5);
     }
+    finish_reading(g);
 }
 
