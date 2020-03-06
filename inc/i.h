@@ -53,5 +53,8 @@ void mx_set_default_signals();
 t_stoped *mx_add_empty_job(t_global_environment *g);
 void mx_set_default_signals(void);
 void mx_continue_process(int *st, t_stoped *ps, t_global_environment *g);
+void mx_get_str_spase(char *str, char repl, char **tmp);
+void mx_more_escapes(char **tmp);
+bool mx_check_sound(char *out);
 
 #endif

@@ -1,43 +1,35 @@
 #include "libmx.h"
 
-static char *make_rep_str(int count, const char *s, const char *r, char *str);
-static void return_begin(char **rep_str, char **begin);
+char *mx_replace_substr(const char *str, const char *sub, const char *replace) {
+    if (str == NULL || sub == NULL || replace == NULL)
+        return NULL;
+    char *res,                                // the return string
+        *ins = (char *)str,                   // the next insert point
+            *temp = (char *)str,              // str rewrite
+                *entry = mx_strstr(str, sub); // changing variable
+    if (entry == NULL)
+        return temp;
+    int strLen = mx_strlen(str), subLen = mx_strlen(sub),
+        repLen = mx_strlen(replace), count, distLen;
 
-char *mx_replace_substr(const char *str, const char *sub, \
-    const char *replace) {
-    int sub_count = mx_count_substr(str, sub);
-    char *rep_str = NULL;
-    char *begin = NULL;
-    int sub_index = 0;
+    // count the number of replacements needed
+    for (count = 0; (entry = mx_strstr(ins, sub)); ++count)
+        ins = entry + subLen;
+    // allocate memory for new string
+    entry = res = mx_strnew(strLen + (repLen - subLen) * count);
+    if (res == NULL)
+        return NULL;
 
-    if (sub_count <= 0)
-        return mx_strdup(str);
-    rep_str = make_rep_str(sub_count, sub, replace, (char *)str);
-    begin = rep_str;
-    while (sub_count--) {
-        sub_index = mx_get_substr_index(str, sub);
-        rep_str = mx_strncpy(rep_str, str, sub_index);
-        rep_str += sub_index;
-        rep_str = mx_strcpy(rep_str, replace);
-        rep_str += mx_strlen(replace);
-        str += sub_index + mx_strlen(sub);
+    // entry points to the end of the res string
+    // ins points to the occurrence of sub in str
+    // temp points to the remainder of str after "end of sub"
+    while (count--) {
+        ins = mx_strstr(temp, sub);
+        distLen = ins - temp;
+        entry = mx_strncpy(entry, temp, distLen) + distLen;
+        entry = mx_strcpy(entry, replace) + repLen;
+        temp += distLen + subLen;
     }
-    rep_str = mx_strcpy(rep_str, str);
-    return_begin(&rep_str, &begin);
-    return rep_str;
+    mx_strcpy(entry, temp);
+    return res;
 }
-
-static void return_begin(char **rep_str, char **begin) {
-    *rep_str = *begin;
-    mx_strdel(&(*begin));
-}
-
-static char *make_rep_str(int count, const char *s, const char *r, char *str) {
-    int sub_len = count * mx_strlen(s);
-    int rep_len = count * mx_strlen(r);
-    int rep_str_len = mx_strlen(str) - sub_len + rep_len;
-    char *rep_str = mx_strnew(rep_str_len);
-
-    return rep_str;
-}
-

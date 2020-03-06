@@ -1,24 +1,19 @@
 #include "ush.h"
 
 static char *replace_escapes(char *str) {
-    char *replace = mx_replace_substr(str, "\x0a", "\\n");
-    char *result = mx_strnew(ARG_MAX);
+    char *tmp = mx_strdup(str);
 
-    strcpy(result, replace);
-    mx_strdel(&replace);
-    replace = mx_replace_substr(result, "\x09", "\\t");
-    strcpy(result, replace);
-    mx_strdel(&replace);
-    replace = mx_replace_substr(result, "\x0b", "\\v");
-    strcpy(result, replace);
-    mx_strdel(&replace);
-    replace = mx_replace_substr(result, "\x07", "\\a");
-    strcpy(result, replace);
-    mx_strdel(&replace);
-    replace = mx_replace_substr(result, "\x09", "\\t");
-    strcpy(result, replace);
-    mx_strdel(&replace);
-    return result;
+    mx_get_str_spase("\\n", '\n', &tmp);
+    mx_get_str_spase("\\t", '\t', &tmp);
+    mx_get_str_spase("\\v", '\v', &tmp);
+    mx_get_str_spase("\\r", '\r', &tmp);
+    mx_get_str_spase("\\b", '\b', &tmp);
+    mx_get_str_spase("\\a", '\a', &tmp);
+    mx_get_str_spase("\\f", '\f', &tmp);
+    mx_get_str_spase("\\e", '\033', &tmp);
+    mx_get_str_spase("\\t", '\t', &tmp);
+    mx_more_escapes(&tmp);
+    return tmp;
 }
 
 static int check_flags(char *src, char *regex) {
@@ -52,34 +47,37 @@ static unsigned int init_flags(char **arg, int *flags) {
     return index;
 }
 
-static void print_newline(bool minus_n) {
-    if (minus_n)
-        //printf("\x1b[0;47;30m%%\x1b[0m\n");
-        mx_printstr("\x1b[0;47;30m%%\x1b[0m\n");
+static void print_newline(bool no_new_line, bool only_sound) {
+    if (no_new_line) {
+        if (only_sound)
+            return;
+        else
+            printf("\x1b[0;47;30m%%\x1b[0m\n");
+    }
     else
-        //printf("\n");
-        mx_printstr("\n");
+        printf("\n");
 }
 
 int mx_builtin_echo(t_global_environment *gv) {
-    int flags[3] = {0};
+    int flags[5] = {0};
     unsigned int index = 0;
     char *output = NULL;
-
+    
     index = init_flags(gv->cnf->agv, flags);
     while (gv->cnf->agv[index]) {
         if (flags[minus_E])
+            mx_printstr(gv->cnf->agv[index]);
+        else {
             output = replace_escapes(gv->cnf->agv[index]);
-        else
-            output = strdup(gv->cnf->agv[index]);
-        //printf("%s", output);
-        mx_printstr(output);
-        mx_strdel(&output);
+            flags[4] = mx_check_sound(output);
+            mx_printstr(output);
+            mx_strdel(&output);
+        }
         index++;
         if (gv->cnf->agv[index])
-            //printf(" ");
-            mx_printstr(" ");
+            printf(" ");
     }
-    print_newline(flags[minus_n]);
+    print_newline(flags[minus_n], flags[4]);
     return EXIT_SUCCESS;
 }
+

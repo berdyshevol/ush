@@ -14,7 +14,11 @@ static void read_from_pipe(t_global_environment *gv) {
     }
 }
 
-void mx_set_default_signals(void) {
+static void read_from_stdin(t_global_environment *gv) {
+    mx_set_input_mode();
+    mx_print_prompt();
+    mx_read_input(gv);
+    mx_reset_input_mode();
     signal(SIGINT, SIG_DFL);
     signal(SIGQUIT, SIG_DFL);
     signal(SIGTSTP, SIG_DFL);
@@ -28,13 +32,8 @@ void mx_driver_loop(t_global_environment *gv) {
     int fd = -1;
 
     while(status) {
-        if (isatty(0)) {
-            mx_set_input_mode();
-            mx_print_prompt();
-            mx_read_input(gv);
-            mx_reset_input_mode();
-            mx_set_default_signals();
-        }
+        if (isatty(0))
+            read_from_stdin(gv);
         else {
             read_from_pipe(gv);
             status = 0;
@@ -49,3 +48,4 @@ void mx_driver_loop(t_global_environment *gv) {
         mx_delete_evalresult(&res);
     }
 }
+        //system("leaks -q ush");

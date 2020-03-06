@@ -1,6 +1,3 @@
-//
-// Created by Oleg Berdyshev on 1/22/20.
-//
 #include "ush.h"
 
 static void free_jobs_list(t_global_environment *gv) {

@@ -14,6 +14,7 @@ HDR = environment.h \
 SRC =   main.c \
 mx_builtin_cd.c \
 mx_builtin_echo.c \
+mx_builtin_echo2.c \
 mx_builtin_env.c \
 mx_builtin_export.c \
 mx_builtin_pwd.c \

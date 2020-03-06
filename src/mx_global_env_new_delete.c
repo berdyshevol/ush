@@ -1,6 +1,3 @@
-//
-// Created by Oleg Berdyshev on 1/22/20.
-//
 #include "ush.h"
 
 t_stoped *mx_add_empty_job(t_global_environment *g) {
@@ -54,12 +51,12 @@ t_global_environment *mx_new_global_env(void) {
     gv->backcpase_his = false; // History flag
     for (int i = 0; i < 500; i++)
         gv->history[i] = NULL; // History NULL array
-    gv->tmp_str = NULL; // Str for history
+    gv->tmp_str = mx_strnew(128); // Str for history
     gv->list_index = 1; // Jobs index
     jobs_list(gv, &gv->jobs_list); // Stoped process list
     gv->last_stoped = NULL; // Last stoped process
-    gv->count_jobs = 0;
-    gv->ctr_d = false;
+    gv->count_jobs = 0; // Jobs counter
+    gv->ctr_d = false;  // Safety latch for Ctr + D
     return gv;
 }
 
