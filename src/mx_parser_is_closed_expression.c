@@ -52,9 +52,9 @@ bool mx_is_closed_expression(char *s) {
             count_slash = 0;
         }
     }
-    if (!flag) {
-        mx_printstr("Odd number of quotes.\n");
-    }
+//    if (!flag) {
+//        mx_printstr("Odd number of quotes.\n");
+//    }
     return flag;
 }
 

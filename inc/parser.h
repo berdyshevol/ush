@@ -131,4 +131,7 @@ char *mx_strstr_esc_rev(char *exp, char *substr);
 int mx_count_esc(char *exp, int position);
 void mx_change_mode(e_mode *mode, char *exp, int pos);
 
+// print error messages
+void mx_print_oddnumberofquotes();
+
 #endif

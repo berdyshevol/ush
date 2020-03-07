@@ -2,15 +2,30 @@
 // Created by Олег on 3/6/20.
 //
 
-#include "ush.h"
 #include "evaluator.h"
+
+void mx_LOG(char *str) {
+    static int count = 0;
+    char *count_str = mx_itoa(count);
+    int fd = open("log.txt", O_CREAT | O_WRONLY |O_APPEND, 0666);
+    write(fd, count_str, strlen(count_str));
+    write(fd, "\n", 1);
+    if (str == NULL)
+        write(fd, "(NULL)", strlen("(NULL)"));
+    else
+        write(fd, str, strlen(str));
+    write(fd, "\n", 1);
+    mx_strdel(&count_str);
+    count++;
+    close(fd);
+}
 
 char *mx_readpipe(int fd) {
     int size = 1024;
     char buf[size];
     int res;
     if ((res = read(fd, buf, size)) > 0) {
-        return strndup(buf, res);
+        return strndup(buf, res-1); // to delete last char which is \n
     }
     else return NULL;
 }
@@ -40,14 +55,17 @@ char *mx_get_command_substitution(char *exp, t_eval_result result, t_global_envi
             break;
         default:
             mx_smart_wait(pid, result, gv);
-            res = mx_readpipe(fd[0]);
+            if (result->status) {
+                res = mx_readpipe(fd[0]);
+            }
             mx_smart_close_fd(&fd[0], 0);
             mx_smart_close_fd(&fd[1], 1);
             break;
     }
-
     return res;
 }
+
+
 
 void mx_command_substitution(t_exp *exp, t_eval_result result, t_global_environment *gv) {
     int start = 0;
@@ -55,14 +73,21 @@ void mx_command_substitution(t_exp *exp, t_eval_result result, t_global_environm
     char *name = NULL;
     char *value = NULL;
     bool find_result;
-
     find_result = mx_find_command_substitution(*exp, &start, &end, &name);
+    mx_LOG(name);
     while (find_result) {
         value = mx_get_command_substitution(name, result, gv);
+        mx_LOG(value);
         mx_insert(exp, start, end, value);
+        mx_LOG(*exp);
         mx_strdel(&value);
         mx_strdel(&name);
-        find_result = mx_find_param(*exp, &start, &end, &name);
+        find_result = mx_find_command_substitution(*exp, &start, &end, &name);
+        if (find_result)
+            mx_LOG("true");
+        else
+            mx_LOG("false");
+        mx_LOG(*exp);
     }
 }
 

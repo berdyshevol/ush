@@ -396,6 +396,16 @@ CMakeFiles/ush.dir/src/mx_parser_wordchain.c.o
  ../Libmx/inc/libmx.h
  ../inc/parser.h
  /Users/oberdyshev/ush-master/src/mx_parser_wordchain.c
+CMakeFiles/ush.dir/src/mx_print_error_messages.c.o
+ ../Libmx/inc/libmx.h
+ ../inc/environment.h
+ ../inc/evaluator.h
+ ../inc/i.h
+ ../inc/liststr.h
+ ../inc/p.h
+ ../inc/parser.h
+ ../inc/ush.h
+ /Users/oberdyshev/ush-master/src/mx_print_error_messages.c
 CMakeFiles/ush.dir/src/mx_print_prompt.c.o
  ../Libmx/inc/libmx.h
  ../inc/environment.h

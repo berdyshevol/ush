@@ -69,6 +69,7 @@ mx_parser_strstr_esc.c \
 mx_parser_trim.c \
 mx_parser_wordchain.c \
 mx_print_prompt.c \
+mx_print_error_messages.c \
 mx_read_input.c \
 mx_sort_arr.c \
 mx_strjoin_with_space.c \

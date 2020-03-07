@@ -396,6 +396,16 @@ CMakeFiles/ush.dir/src/mx_parser_wordchain.c.o: ../Libmx/inc/libmx.h
 CMakeFiles/ush.dir/src/mx_parser_wordchain.c.o: ../inc/parser.h
 CMakeFiles/ush.dir/src/mx_parser_wordchain.c.o: ../src/mx_parser_wordchain.c
 
+CMakeFiles/ush.dir/src/mx_print_error_messages.c.o: ../Libmx/inc/libmx.h
+CMakeFiles/ush.dir/src/mx_print_error_messages.c.o: ../inc/environment.h
+CMakeFiles/ush.dir/src/mx_print_error_messages.c.o: ../inc/evaluator.h
+CMakeFiles/ush.dir/src/mx_print_error_messages.c.o: ../inc/i.h
+CMakeFiles/ush.dir/src/mx_print_error_messages.c.o: ../inc/liststr.h
+CMakeFiles/ush.dir/src/mx_print_error_messages.c.o: ../inc/p.h
+CMakeFiles/ush.dir/src/mx_print_error_messages.c.o: ../inc/parser.h
+CMakeFiles/ush.dir/src/mx_print_error_messages.c.o: ../inc/ush.h
+CMakeFiles/ush.dir/src/mx_print_error_messages.c.o: ../src/mx_print_error_messages.c
+
 CMakeFiles/ush.dir/src/mx_print_prompt.c.o: ../Libmx/inc/libmx.h
 CMakeFiles/ush.dir/src/mx_print_prompt.c.o: ../inc/environment.h
 CMakeFiles/ush.dir/src/mx_print_prompt.c.o: ../inc/evaluator.h

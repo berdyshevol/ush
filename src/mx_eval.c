@@ -502,6 +502,7 @@ t_eval_result mx_eval_remove_escquotedquote(t_exp exp) {
         result->status = false;
         mx_strdel(&new_exp);
         result->text = NULL;
+        mx_print_oddnumberofquotes();
     }
     else
         result->text = new_exp;
@@ -573,6 +574,7 @@ mx_simple_command(t_exp expression, t_global_environment *gv, int *pipe_fd,
             mx_delete_evalresult(&apply_result);
         }
     }
+
     mx_strdel(&exp);
     mx_delete_redirect(&redirections);
     mx_strdel(&operands);
@@ -601,41 +603,6 @@ t_eval_result mx_apply(char *command, t_list_of_values *arguments,
 
 // -------   eval
 
-//t_eval_result mx_eval_word(t_exp exp, t_global_environment *gv) {
-//    if (exp == NULL)
-//        return NULL;
-//
-//    t_eval_result result = NULL;
-//    int status;
-//    e_exp_type parse = mx_get_expressiontype_by_id(mx_get_word_id(exp));
-//
-//    switch (parse) {
-//        case self_evaluating:
-//            result = mx_self_evaluating(exp, gv);
-//            break;
-//        case quoted_string:
-//            result = mx_text_of_quotation(exp, gv);
-//            break;
-//        case double_quoted_string:
-//            result = mx_eval_doublequote(exp, gv);
-//            break;
-//        case variable_substitution:
-//            result = mx_lookup_variable_value(exp, gv);
-//            break;
-//        case command_substitution:
-//            result = mx_eval_command_substitution(exp, gv);
-//            break;
-//        case file_extension:
-//            result = mx_file_extension(exp, gv);
-//            break;
-//        default:
-//            result = mx_new_evalresult();
-//            result->text = strdup("Не могу распарсить слово");
-//            result->status = false; // ошибка
-//    }
-//    return result;
-//}
-
 t_eval_result
 mx_eval(t_exp exp, t_global_environment *gv, int *pipe_fd, bool *new_proc) { // TODO:  передавать по ссылке
     if (exp == NULL || exp[0] == '\0' || exp[0] == '\n')
@@ -645,16 +612,16 @@ mx_eval(t_exp exp, t_global_environment *gv, int *pipe_fd, bool *new_proc) { // 
     e_exp_type exp_type = mx_get_expressiontype_by_id(mx_get_binary_opid(exp));
     // проверка по бинарным операциям
     switch (exp_type) {
-        case variable_assignment:
+        case variable_assignment: // name=Value
             result = mx_eval_assignment(exp, gv);
             break;
         case pipeline: // simple_command | simple_command | simple_command
             result = mx_eval_seq_pipeline(exp, gv, NULL);
             break;
-        case sublist: // || &&
+        case sublist: // pipeline || pipeline && pipeline
             result = mx_eval_if(exp, gv);
             break;
-        case list: // ;
+        case list: // sublist ; sublist ; sublist ;
             //ss = mx_begin_actions(exp); //TODO: не знаю зачем begin_action
             result = mx_eval_sequence(exp, gv);
             break;
@@ -663,8 +630,9 @@ mx_eval(t_exp exp, t_global_environment *gv, int *pipe_fd, bool *new_proc) { // 
             break;
         default:
             result = mx_new_evalresult();
-            result->text = strdup("Не могу распарсить");
+            result->text = NULL;
             result->status = false; // ошибка
+            mx_print_oddnumberofquotes();
     }
     return result;
 }

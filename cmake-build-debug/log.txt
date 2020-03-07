@@ -1,1 +1,44 @@
-  2
+0
+echo -n "Ave, Caesar"
+1
+(NULL)
+1
+Ave, Caesar[0;47;30m%[0m
+2
+echo "Ave, Caesar[0;47;30m%[0m, $(echo -n "morituri te salutant"\!)"
+3
+true
+4
+echo "Ave, Caesar[0;47;30m%[0m, $(echo -n "morituri te salutant"\!)"
+5
+(NULL)
+5
+morituri te salutant![0;47;30m%[0m
+6
+echo "Ave, Caesar[0;47;30m%[0m, morituri te salutant![0;47;30m%[0m"
+7
+false
+8
+echo "Ave, Caesar[0;47;30m%[0m, morituri te salutant![0;47;30m%[0m"
+0
+echo "Ave, Caesar"
+1
+(NULL)
+1
+Ave, Caesar
+2
+echo "Ave, Caesar, $(echo "morituri te salutant"\!)"
+3
+true
+4
+echo "Ave, Caesar, $(echo "morituri te salutant"\!)"
+5
+(NULL)
+5
+morituri te salutant!
+6
+echo "Ave, Caesar, morituri te salutant!"
+7
+false
+8
+echo "Ave, Caesar, morituri te salutant!"

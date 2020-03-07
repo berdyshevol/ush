@@ -61,6 +61,7 @@ set(CMAKE_DEPENDS_CHECK_C
   "/Users/oberdyshev/ush-master/src/mx_parser_strstr_esc.c" "/Users/oberdyshev/ush-master/cmake-build-debug/CMakeFiles/ush.dir/src/mx_parser_strstr_esc.c.o"
   "/Users/oberdyshev/ush-master/src/mx_parser_trim.c" "/Users/oberdyshev/ush-master/cmake-build-debug/CMakeFiles/ush.dir/src/mx_parser_trim.c.o"
   "/Users/oberdyshev/ush-master/src/mx_parser_wordchain.c" "/Users/oberdyshev/ush-master/cmake-build-debug/CMakeFiles/ush.dir/src/mx_parser_wordchain.c.o"
+  "/Users/oberdyshev/ush-master/src/mx_print_error_messages.c" "/Users/oberdyshev/ush-master/cmake-build-debug/CMakeFiles/ush.dir/src/mx_print_error_messages.c.o"
   "/Users/oberdyshev/ush-master/src/mx_print_prompt.c" "/Users/oberdyshev/ush-master/cmake-build-debug/CMakeFiles/ush.dir/src/mx_print_prompt.c.o"
   "/Users/oberdyshev/ush-master/src/mx_read_input.c" "/Users/oberdyshev/ush-master/cmake-build-debug/CMakeFiles/ush.dir/src/mx_read_input.c.o"
   "/Users/oberdyshev/ush-master/src/mx_sort_arr.c" "/Users/oberdyshev/ush-master/cmake-build-debug/CMakeFiles/ush.dir/src/mx_sort_arr.c.o"

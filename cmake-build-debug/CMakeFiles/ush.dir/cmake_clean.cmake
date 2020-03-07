@@ -56,6 +56,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/ush.dir/src/mx_parser_strstr_esc.c.o"
   "CMakeFiles/ush.dir/src/mx_parser_trim.c.o"
   "CMakeFiles/ush.dir/src/mx_parser_wordchain.c.o"
+  "CMakeFiles/ush.dir/src/mx_print_error_messages.c.o"
   "CMakeFiles/ush.dir/src/mx_print_prompt.c.o"
   "CMakeFiles/ush.dir/src/mx_read_input.c.o"
   "CMakeFiles/ush.dir/src/mx_sort_arr.c.o"

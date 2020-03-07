@@ -18,7 +18,7 @@ char *mx_get_file_substitiution(char *name) {
     }
     if (tmp != NULL) {
         value = strdup(tmp);
-        free(tmp);
+        //free(tmp);
     }
     return value;
 }

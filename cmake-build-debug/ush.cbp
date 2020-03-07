@@ -478,6 +478,9 @@
 		<Unit filename="/Users/oberdyshev/ush-master/src/mx_parser_wordchain.c">
 			<Option target="ush"/>
 		</Unit>
+		<Unit filename="/Users/oberdyshev/ush-master/src/mx_print_error_messages.c">
+			<Option target="ush"/>
+		</Unit>
 		<Unit filename="/Users/oberdyshev/ush-master/src/mx_print_prompt.c">
 			<Option target="ush"/>
 		</Unit>

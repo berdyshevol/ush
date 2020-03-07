@@ -24,14 +24,17 @@ bool mx_find_command_substitution(char *exp, int *start, int *end, char **name) 
                 continue;
             if (find_begin[1] == '(') {
                 *start = find_begin - exp;
-                char *find_end = mx_strstr_esc_rev(find_begin, ")");
-                if (find_end == NULL)
-                    *end = strlen(exp) - 1;
-                else {
+                char *find_end = mx_strstr_esc(find_begin, ")");
+                if (find_end == NULL) {
+                    mx_print_oddnumberofquotes();
+                    break;
+//                    *end = strlen(exp) - 1;
+                }
+//                else {
                     *end = find_end - exp;
                     *name = strndup(exp + *start + 2, *end - *start - 2);
                     return true;
-                }
+//                }
             }
         }
         else if (exp[i] == '`' && mode != quote) {
@@ -39,13 +42,18 @@ bool mx_find_command_substitution(char *exp, int *start, int *end, char **name) 
             if (mx_count_esc(exp, find_begin - exp) % 2 != 0)
                 continue;
             *start = find_begin - exp;
-            char *find_end = mx_strstr_esc_rev(find_begin + 1, "`");
+            char *find_end = mx_strstr_esc(find_begin + 1, "`");
             // if find_end == NULL no error handle
+            if (find_end == NULL) {
+                mx_print_oddnumberofquotes();
+                break;
+            }
             *end = find_end - exp;
             *name = strndup(exp + *start + 1, *end - *start - 1);
             return true;
         }
     }
+    *start = 0;
     *end = 0;
     return false;
 }

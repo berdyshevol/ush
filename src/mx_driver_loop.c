@@ -27,25 +27,34 @@ static void read_from_stdin(t_global_environment *gv) {
 }
 
 void mx_driver_loop(t_global_environment *gv) {
-    t_eval_result res = NULL;
+    t_eval_result result = NULL;
     bool status = 1;
     int fd = -1;
 
     while(status) {
+        // reading
         if (isatty(0))
             read_from_stdin(gv);
         else {
             read_from_pipe(gv);
             status = 0;
         }
+
+        // evaluation
         fd = dup(0);
-        res = mx_eval(gv->str, gv, NULL, NULL);
+        //----------------
+//        char *str = strdup("echo \"$(echo \"Ave, Caesar\"), $(echo \"morituri te salutant\"\\!)\"");
+////        char *str = strdup("echo \"Ave, Caesar, $(echo \"morituri te salutant\"\\!)\"");
+//        result = mx_eval(str, gv, NULL, NULL);
+//        mx_strdel(&str);
+        //--------------------
+        result = mx_eval(gv->str, gv, NULL, NULL);
         if (!isatty(0) && fd != -1 && fd != 0) {
             dup2(fd, 0);
             close(fd);
         }
         mx_strdel(&gv->str);
-        mx_delete_evalresult(&res);
+        mx_delete_evalresult(&result);
     }
 }
         //system("leaks -q ush");
