@@ -97,9 +97,6 @@ bool mx_is_whitespace(char c) {
 
 bool mx_can_trim(int i, char *s) {
     if (mx_is_whitespace(s[i])) {
-//        if (mx_can_skip(s[i]) && i > 0 && s[i-1] == '\\')
-//            return false;
-//        else
             return true;
     }
     return false;    

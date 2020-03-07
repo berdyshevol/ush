@@ -48,6 +48,7 @@ void mx_read_input(t_global_environment *g) {
             g->backcpase_his = false;
         }
         read(0, &g->buff, sizeof(&g->buff));
+//        read(0, &g->buff, 1); // for debug in clion
         if (!mx_history(g))
             add_cursor = mx_ckeck_buffer(g);
         if (g->str[g->cursor] == '\n')

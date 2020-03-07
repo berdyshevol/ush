@@ -30,7 +30,7 @@ static int _find_builtin(char *cmd) {
 
 void mx_execute_builtin_innewproc(int id, t_eval_result result, t_global_environment *gv) {
     int pid;
-    int status;
+
     switch (pid = fork()) {
         case -1:
             perror ("fork");
@@ -44,7 +44,7 @@ void mx_execute_builtin_innewproc(int id, t_eval_result result, t_global_environ
                 close(gv->cnf->pipe_fd[0]);
             }
             mx_run_builtin(id, result, gv);
-            exit(result->status ? 0 : 1);
+            exit(result->exit_no);
             break;
         default:
             if (mx_has_pipe(gv->cnf->pipe_fd)) {
@@ -54,13 +54,7 @@ void mx_execute_builtin_innewproc(int id, t_eval_result result, t_global_environ
                 }
                 close(gv->cnf->pipe_fd[1]);
             }
-            waitpid (pid, &status, 0);
-            mx_set_input_mode();
-            //int i = mx_wexitstatud(status);
-            char *itoa =  mx_itoa(mx_wexitstatud(status));
-            mx_env_set_var("?", itoa, &(gv->vars));
-            result->status = mx_wexitstatud(status) == 0 ? true : false;
-            mx_strdel(&itoa);
+            mx_smart_wait(pid, result, gv);
             break;
     }
 }
@@ -78,14 +72,9 @@ void mx_run_builtin(int id, t_eval_result result, t_global_environment *gv) {
 
     char *itoa = mx_itoa(exit_status);
     mx_env_set_var("?", itoa, &(gv->vars));
+    result->exit_no = exit_status;
     result->status = (exit_status == EXIT_SUCCESS);
     mx_strdel(&itoa);
-    // -- old
-//    mx_apply_redirect(redir);
-//    exit_status = builtin[id].cmd(gv);
-//    mx_reset_redirections(redir);
-//    mx_env_set_var("?", mx_itoa(exit_status), &(gv->vars));
-//    result->status = (exit_status == EXIT_SUCCESS);
 }
 
 bool try_builtin(char *cmd, t_eval_result result, t_global_environment *gv) {

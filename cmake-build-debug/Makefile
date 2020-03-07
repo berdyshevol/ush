@@ -39,19 +39,19 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /private/var/folders/zz/zyxvpxvq6csfxvn_n0003yyh000zqm/T/AppTranslocation/1867BF41-D1AB-4B9D-8CBA-727D6706F0C2/d/CLion.app/Contents/bin/cmake/mac/bin/cmake
+CMAKE_COMMAND = /private/var/folders/zz/zyxvpxvq6csfxvn_n0003yyh000zqm/T/AppTranslocation/C4D763F3-209C-4C9B-9EDC-2047C35E8A56/d/CLion.app/Contents/bin/cmake/mac/bin/cmake
 
 # The command to remove a file.
-RM = /private/var/folders/zz/zyxvpxvq6csfxvn_n0003yyh000zqm/T/AppTranslocation/1867BF41-D1AB-4B9D-8CBA-727D6706F0C2/d/CLion.app/Contents/bin/cmake/mac/bin/cmake -E remove -f
+RM = /private/var/folders/zz/zyxvpxvq6csfxvn_n0003yyh000zqm/T/AppTranslocation/C4D763F3-209C-4C9B-9EDC-2047C35E8A56/d/CLion.app/Contents/bin/cmake/mac/bin/cmake -E remove -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/oberdyshev/ush
+CMAKE_SOURCE_DIR = /Users/oberdyshev/ush-master
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/oberdyshev/ush/cmake-build-debug
+CMAKE_BINARY_DIR = /Users/oberdyshev/ush-master/cmake-build-debug
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -59,7 +59,7 @@ CMAKE_BINARY_DIR = /Users/oberdyshev/ush/cmake-build-debug
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/private/var/folders/zz/zyxvpxvq6csfxvn_n0003yyh000zqm/T/AppTranslocation/1867BF41-D1AB-4B9D-8CBA-727D6706F0C2/d/CLion.app/Contents/bin/cmake/mac/bin/cmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	/private/var/folders/zz/zyxvpxvq6csfxvn_n0003yyh000zqm/T/AppTranslocation/C4D763F3-209C-4C9B-9EDC-2047C35E8A56/d/CLion.app/Contents/bin/cmake/mac/bin/cmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : rebuild_cache
 
 # Special rule for the target rebuild_cache
@@ -70,7 +70,7 @@ rebuild_cache/fast: rebuild_cache
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
-	/private/var/folders/zz/zyxvpxvq6csfxvn_n0003yyh000zqm/T/AppTranslocation/1867BF41-D1AB-4B9D-8CBA-727D6706F0C2/d/CLion.app/Contents/bin/cmake/mac/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+	/private/var/folders/zz/zyxvpxvq6csfxvn_n0003yyh000zqm/T/AppTranslocation/C4D763F3-209C-4C9B-9EDC-2047C35E8A56/d/CLion.app/Contents/bin/cmake/mac/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
 .PHONY : edit_cache
 
 # Special rule for the target edit_cache
@@ -80,9 +80,9 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/oberdyshev/ush/cmake-build-debug/CMakeFiles /Users/oberdyshev/ush/cmake-build-debug/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/oberdyshev/ush-master/cmake-build-debug/CMakeFiles /Users/oberdyshev/ush-master/cmake-build-debug/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/oberdyshev/ush/cmake-build-debug/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/oberdyshev/ush-master/cmake-build-debug/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -1810,6 +1810,33 @@ src/mx_builtin_echo.c.s:
 	$(MAKE) -f CMakeFiles/ush.dir/build.make CMakeFiles/ush.dir/src/mx_builtin_echo.c.s
 .PHONY : src/mx_builtin_echo.c.s
 
+src/mx_builtin_echo2.o: src/mx_builtin_echo2.c.o
+
+.PHONY : src/mx_builtin_echo2.o
+
+# target to build an object file
+src/mx_builtin_echo2.c.o:
+	$(MAKE) -f CMakeFiles/ush.dir/build.make CMakeFiles/ush.dir/src/mx_builtin_echo2.c.o
+.PHONY : src/mx_builtin_echo2.c.o
+
+src/mx_builtin_echo2.i: src/mx_builtin_echo2.c.i
+
+.PHONY : src/mx_builtin_echo2.i
+
+# target to preprocess a source file
+src/mx_builtin_echo2.c.i:
+	$(MAKE) -f CMakeFiles/ush.dir/build.make CMakeFiles/ush.dir/src/mx_builtin_echo2.c.i
+.PHONY : src/mx_builtin_echo2.c.i
+
+src/mx_builtin_echo2.s: src/mx_builtin_echo2.c.s
+
+.PHONY : src/mx_builtin_echo2.s
+
+# target to generate assembly for a file
+src/mx_builtin_echo2.c.s:
+	$(MAKE) -f CMakeFiles/ush.dir/build.make CMakeFiles/ush.dir/src/mx_builtin_echo2.c.s
+.PHONY : src/mx_builtin_echo2.c.s
+
 src/mx_builtin_env.o: src/mx_builtin_env.c.o
 
 .PHONY : src/mx_builtin_env.o
@@ -2214,6 +2241,33 @@ src/mx_eval.s: src/mx_eval.c.s
 src/mx_eval.c.s:
 	$(MAKE) -f CMakeFiles/ush.dir/build.make CMakeFiles/ush.dir/src/mx_eval.c.s
 .PHONY : src/mx_eval.c.s
+
+src/mx_eval_command_substitution.o: src/mx_eval_command_substitution.c.o
+
+.PHONY : src/mx_eval_command_substitution.o
+
+# target to build an object file
+src/mx_eval_command_substitution.c.o:
+	$(MAKE) -f CMakeFiles/ush.dir/build.make CMakeFiles/ush.dir/src/mx_eval_command_substitution.c.o
+.PHONY : src/mx_eval_command_substitution.c.o
+
+src/mx_eval_command_substitution.i: src/mx_eval_command_substitution.c.i
+
+.PHONY : src/mx_eval_command_substitution.i
+
+# target to preprocess a source file
+src/mx_eval_command_substitution.c.i:
+	$(MAKE) -f CMakeFiles/ush.dir/build.make CMakeFiles/ush.dir/src/mx_eval_command_substitution.c.i
+.PHONY : src/mx_eval_command_substitution.c.i
+
+src/mx_eval_command_substitution.s: src/mx_eval_command_substitution.c.s
+
+.PHONY : src/mx_eval_command_substitution.s
+
+# target to generate assembly for a file
+src/mx_eval_command_substitution.c.s:
+	$(MAKE) -f CMakeFiles/ush.dir/build.make CMakeFiles/ush.dir/src/mx_eval_command_substitution.c.s
+.PHONY : src/mx_eval_command_substitution.c.s
 
 src/mx_eval_file_expansion.o: src/mx_eval_file_expansion.c.o
 
@@ -2781,6 +2835,33 @@ src/mx_parser_assignment.s: src/mx_parser_assignment.c.s
 src/mx_parser_assignment.c.s:
 	$(MAKE) -f CMakeFiles/ush.dir/build.make CMakeFiles/ush.dir/src/mx_parser_assignment.c.s
 .PHONY : src/mx_parser_assignment.c.s
+
+src/mx_parser_find_command_substitution.o: src/mx_parser_find_command_substitution.c.o
+
+.PHONY : src/mx_parser_find_command_substitution.o
+
+# target to build an object file
+src/mx_parser_find_command_substitution.c.o:
+	$(MAKE) -f CMakeFiles/ush.dir/build.make CMakeFiles/ush.dir/src/mx_parser_find_command_substitution.c.o
+.PHONY : src/mx_parser_find_command_substitution.c.o
+
+src/mx_parser_find_command_substitution.i: src/mx_parser_find_command_substitution.c.i
+
+.PHONY : src/mx_parser_find_command_substitution.i
+
+# target to preprocess a source file
+src/mx_parser_find_command_substitution.c.i:
+	$(MAKE) -f CMakeFiles/ush.dir/build.make CMakeFiles/ush.dir/src/mx_parser_find_command_substitution.c.i
+.PHONY : src/mx_parser_find_command_substitution.c.i
+
+src/mx_parser_find_command_substitution.s: src/mx_parser_find_command_substitution.c.s
+
+.PHONY : src/mx_parser_find_command_substitution.s
+
+# target to generate assembly for a file
+src/mx_parser_find_command_substitution.c.s:
+	$(MAKE) -f CMakeFiles/ush.dir/build.make CMakeFiles/ush.dir/src/mx_parser_find_command_substitution.c.s
+.PHONY : src/mx_parser_find_command_substitution.c.s
 
 src/mx_parser_find_file_expansion.o: src/mx_parser_find_file_expansion.c.o
 
@@ -3491,6 +3572,9 @@ help:
 	@echo "... src/mx_builtin_echo.o"
 	@echo "... src/mx_builtin_echo.i"
 	@echo "... src/mx_builtin_echo.s"
+	@echo "... src/mx_builtin_echo2.o"
+	@echo "... src/mx_builtin_echo2.i"
+	@echo "... src/mx_builtin_echo2.s"
 	@echo "... src/mx_builtin_env.o"
 	@echo "... src/mx_builtin_env.i"
 	@echo "... src/mx_builtin_env.s"
@@ -3536,6 +3620,9 @@ help:
 	@echo "... src/mx_eval.o"
 	@echo "... src/mx_eval.i"
 	@echo "... src/mx_eval.s"
+	@echo "... src/mx_eval_command_substitution.o"
+	@echo "... src/mx_eval_command_substitution.i"
+	@echo "... src/mx_eval_command_substitution.s"
 	@echo "... src/mx_eval_file_expansion.o"
 	@echo "... src/mx_eval_file_expansion.i"
 	@echo "... src/mx_eval_file_expansion.s"
@@ -3599,6 +3686,9 @@ help:
 	@echo "... src/mx_parser_assignment.o"
 	@echo "... src/mx_parser_assignment.i"
 	@echo "... src/mx_parser_assignment.s"
+	@echo "... src/mx_parser_find_command_substitution.o"
+	@echo "... src/mx_parser_find_command_substitution.i"
+	@echo "... src/mx_parser_find_command_substitution.s"
 	@echo "... src/mx_parser_find_file_expansion.o"
 	@echo "... src/mx_parser_find_file_expansion.i"
 	@echo "... src/mx_parser_find_file_expansion.s"

@@ -113,6 +113,8 @@ void mx_reset_redirections(t_redirect *redir);
 // file expansion
 void mx_file_expansion(t_exp *exp);
 
+// command substitution
+void mx_command_substitution(t_exp *exp, t_eval_result result, t_global_environment *gv);
 
 
 #endif //USH_UTILS_EVALUATOR_H

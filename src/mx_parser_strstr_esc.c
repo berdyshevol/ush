@@ -32,6 +32,23 @@ char *mx_strstr_esc(char *exp, char *substr) {
     return NULL;
 }
 
+// найти подстроку если она не экранируется слешами from right
+char *mx_strstr_esc_rev(char *exp, char *substr) {
+    int len  = strlen(exp);
+    char *p = NULL;
+    int count = 0;
+
+    for (int i = len - 1; i >= 0; i--) {
+        p = strstr(exp + i, substr);
+        if (p) {
+            if (mx_count_esc(exp, p - exp) % 2 == 0)
+                return p;
+        }
+        count = 0;
+    }
+    return NULL;
+}
+
 // меняет режим в зависимотси от экранирования и ' "
 void mx_change_mode(e_mode *mode, char *exp, int pos) {
     switch (*mode) {

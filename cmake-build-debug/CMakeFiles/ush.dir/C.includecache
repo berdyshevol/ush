@@ -132,11 +132,7 @@ p.h
 i.h
 ../inc/i.h
 
-/Users/oberdyshev/ush/src/main.c
-ush.h
-/Users/oberdyshev/ush/src/ush.h
-
-/Users/oberdyshev/ush/src/mx_execute.c
-ush.h
-/Users/oberdyshev/ush/src/ush.h
+/Users/oberdyshev/ush-master/src/mx_eval.c
+evaluator.h
+/Users/oberdyshev/ush-master/src/evaluator.h
 

@@ -17,13 +17,13 @@ void mx_parse_words_sequence(char *exp, char **f_wordchain, char **splitter, cha
     *r_wordchains = NULL;
     if (exp == NULL)
         return ;
-    if (!mx_is_closed_expression(exp))     // TODO: we do not need it
-        return ;
+//    if (!mx_is_closed_expression(exp))     // TODO: we do not need it
+//        return ;
     str = strdup(exp);
     _extract_first_wordchain(&str, f_wordchain);
     _extract_splitter(&str, splitter);
     _extract_rest_wordchains(&str, r_wordchains);
-    free(str);
+    mx_strdel(&str);
 }
 
 char *mx_first_word(char *exp) {
@@ -75,6 +75,27 @@ static void _extract_first_wordchain(char **str, char **f_wordchain) {
         *str = strndup(*str + i, strlen(*str) - i);
         free(temp);
     }
+}
+
+void mx_trimleft(char **str) {
+    int i;
+    e_mode mode = unquote;
+    char *newstr = NULL;
+
+    if (str == NULL || *str == NULL)
+        return;
+
+    for (i = 0; (*str)[i] != '\0'; i++) {
+        mx_change_mode(&mode, *str, i);
+        if (mode == unquote
+            && mx_is_whitespace((*str)[i]))
+            continue;
+        else
+            break;
+    }
+    newstr = strndup(*str + i, strlen(*str) - i);
+    mx_strdel(str);
+    *str = newstr;
 }
 //static void _extract_first_wordchain(char **str, char **f_wordchain) {
 //    int count_slashes = 0;
@@ -180,3 +201,35 @@ static void _extract_rest_wordchains(char **str, char **r_wordchains) {
 //    system("leaks -q ush_metacicle_evaluator");
 //    return 0;
 //}
+
+//#include <assert.h>
+//void assert2str (char *s1, char *s2){
+//    if (s1 == NULL || s2 == NULL)
+//        assert(s1 == s2);
+//    else
+//        assert(strcmp(s1, s2) == 0);
+//}
+//
+//int main(void) {
+//
+//
+//    char *s[] =        {"  210 ", "210 ", "\t123 ",
+//                        NULL};
+//    char *test_str[] = { "210 " , "210 ", "123 "
+//                         };
+//
+//
+//    for (int i = 0;s[i]; i++) {
+//        char *str = strdup(s[i]);
+//        mx_trimleft(&str);
+//        printf("%d) '%s'->'%s'\n", i+1, s[i], str);
+//        assert2str(test_str[i], str);
+//        mx_strdel(&str);
+//    }
+//
+//    printf("\nSUCCESS\n----\n");
+//    system("leaks -q ush");
+//    return 0;
+//}
+
+

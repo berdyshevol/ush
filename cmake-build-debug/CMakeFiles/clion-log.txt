@@ -1,4 +1,4 @@
-/private/var/folders/zz/zyxvpxvq6csfxvn_n0003yyh000zqm/T/AppTranslocation/1867BF41-D1AB-4B9D-8CBA-727D6706F0C2/d/CLion.app/Contents/bin/cmake/mac/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /Users/oberdyshev/ush
+/private/var/folders/zz/zyxvpxvq6csfxvn_n0003yyh000zqm/T/AppTranslocation/C4D763F3-209C-4C9B-9EDC-2047C35E8A56/d/CLion.app/Contents/bin/cmake/mac/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /Users/oberdyshev/ush-master
 -- The C compiler identification is AppleClang 10.0.1.10010046
 -- Check for working C compiler: /Library/Developer/CommandLineTools/usr/bin/cc
 -- Check for working C compiler: /Library/Developer/CommandLineTools/usr/bin/cc -- works
@@ -8,4 +8,4 @@
 -- Detecting C compile features - done
 -- Configuring done
 -- Generating done
--- Build files have been written to: /Users/oberdyshev/ush/cmake-build-debug
+-- Build files have been written to: /Users/oberdyshev/ush-master/cmake-build-debug

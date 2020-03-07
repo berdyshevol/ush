@@ -2,7 +2,6 @@
 // Created by Oleg Berdyshev on 1/29/20.
 //
 
-#include "ush.h"
 #include "evaluator.h"
 
 // epansions
@@ -68,10 +67,12 @@ t_exp mx_rest_exps(t_exp seq, char *op_name) {
 // TODO: что это? (define (application? exp) (pair? exp))
 
 t_exp mx_command(t_exp exp) {
-    //return mx_left_exp(exp);
-    //char *car = mx_left_exp(exp, " ");
-    //return car;
-    t_exp first_word = mx_first_word(exp);
+    t_exp first_word;
+    char *s = strdup(exp);
+
+    mx_trimleft(&s);
+    first_word = mx_first_word(s);
+    mx_strdel(&s);
     return first_word;
 }
 
@@ -80,10 +81,11 @@ bool mx_is_no_operands(t_exp ops) {
 }
 
 t_exp mx_operands(t_exp exp) {
-//    char *cdr = mx_right_exp(exp, " ");
-//    return cdr;
-    //t_exp rest_words = mx_rest_words(exp);
-    t_exp operands = strdup(exp); // операторы включают в себя название команды
+    char *s = strdup(exp);
+
+    mx_trimleft(&s);
+    t_exp operands = strdup(s); // операторы включают в себя название команды
+    mx_strdel(&s);
     return operands;
 }
 
@@ -549,22 +551,27 @@ mx_simple_command(t_exp expression, t_global_environment *gv, int *pipe_fd,
     cnf->pipe_fd = pipe_fd;
     cnf->new_proc = new_proc;
     gv->cnf = cnf;
+
+    result = mx_new_evalresult();
     // mx_alias_expansion(&exp, gv);
     mx_parameter_expansion(&exp, gv);
-    //mx_command_substitution(&exp, gv, new_proc);
-    mx_file_expansion(&exp);
-    if (!mx_extract_redirections(&exp, &redirections)) {
-        result = mx_new_evalresult();
-        result->status = false;
-    }
-    else {
-        command = mx_command(exp);
-        //eval_operator = mx_eval_word(operator, gv);
-        operands = mx_operands(exp);
-        mx_list_of_values(&list_of_arguments, operands, gv);
-        // apply
-        gv->cnf->redirections = redirections;
-        result = mx_apply(command, list_of_arguments, gv);
+    mx_command_substitution(&exp, result, gv);
+    if (result->status == true) {
+        mx_file_expansion(&exp);
+        if (!mx_extract_redirections(&exp, &redirections)) {
+            result->status = false;
+        } else {
+            t_eval_result apply_result = NULL;
+            command = mx_command(exp);
+            operands = mx_operands(exp);
+            mx_list_of_values(&list_of_arguments, operands, gv);
+            // apply
+            gv->cnf->redirections = redirections;
+            apply_result = mx_apply(command, list_of_arguments, gv);
+            result->status = apply_result->status;
+            result->exit_no = apply_result->exit_no;
+            mx_delete_evalresult(&apply_result);
+        }
     }
     mx_strdel(&exp);
     mx_delete_redirect(&redirections);

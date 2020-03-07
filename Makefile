@@ -17,6 +17,9 @@ mx_builtin_echo.c \
 mx_builtin_echo2.c \
 mx_builtin_env.c \
 mx_builtin_export.c \
+mx_builtin_fg.c \
+mx_builtin_fg2.c \
+mx_builtin_jobs.c \
 mx_builtin_pwd.c \
 mx_builtin_which.c \
 mx_builtins.c \
@@ -27,6 +30,7 @@ mx_env_new_delete.c \
 mx_env_set_var.c \
 mx_environ_copy.c \
 mx_eval.c \
+mx_eval_command_substitution.c \
 mx_eval_file_expansion.c \
 mx_eval_parameter_expansion.c \
 mx_eval_redirections.c \
@@ -48,6 +52,7 @@ mx_new_delete_config.c \
 mx_new_evalresult.c \
 mx_parse_words_sequence.c \
 mx_parser_assignment.c \
+mx_parser_find_command_substitution.c \
 mx_parser_find_file_expansion.c \
 mx_parser_find_param.c \
 mx_parser_firstword.c \
@@ -67,9 +72,6 @@ mx_print_prompt.c \
 mx_read_input.c \
 mx_sort_arr.c \
 mx_strjoin_with_space.c \
-mx_builtin_fg.c \
-mx_builtin_fg2.c \
-mx_builtin_jobs.c \
 
 OBJ = $(SRC:.c=.o)
 

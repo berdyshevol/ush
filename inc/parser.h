@@ -113,14 +113,21 @@ void mx_parse_words_sequence(char *exp, char **f_wordchain, char **splitter, cha
 char *mx_first_word(char *exp);
 bool mx_is_last_word(char *exp);
 char *mx_rest_words(char *exp);
+void mx_trimleft(char **str);
+
 
 // parameter
 bool mx_find_param(char *exp, int *start, int *end, char **name);
 
+// command substitution
+bool mx_find_command_substitution(char *exp, int *start, int *end, char **name);
+
 // file expansion
 bool mx_find_file_expansion(char *exp, int *start, int *end, char **name);
 
+// miscellaneous
 char *mx_strstr_esc(char *exp, char *substr);
+char *mx_strstr_esc_rev(char *exp, char *substr);
 int mx_count_esc(char *exp, int position);
 void mx_change_mode(e_mode *mode, char *exp, int pos);
 
