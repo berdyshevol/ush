@@ -2,7 +2,6 @@
 // Created by Oleg Berdyshev on 1/29/20.
 //
 
-#include "ush.h"
 #include "evaluator.h"
 
 // epansions
@@ -559,12 +558,16 @@ mx_simple_command(t_exp expression, t_global_environment *gv, int *pipe_fd,
         if (!mx_extract_redirections(&exp, &redirections)) {
             result->status = false;
         } else {
+            t_eval_result apply_result = NULL;
             command = mx_command(exp);
             operands = mx_operands(exp);
             mx_list_of_values(&list_of_arguments, operands, gv);
             // apply
             gv->cnf->redirections = redirections;
-            result = mx_apply(command, list_of_arguments, gv);
+            apply_result = mx_apply(command, list_of_arguments, gv);
+            result->status = apply_result->status;
+            result->exit_no = apply_result->exit_no;
+            mx_delete_evalresult(&apply_result);
         }
     }
     mx_strdel(&exp);

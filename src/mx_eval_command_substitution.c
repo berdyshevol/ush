@@ -2,10 +2,6 @@
 // Created by Олег on 3/6/20.
 //
 
-//
-// Created by Oleg Berdyshev on 3/5/20.
-//
-
 #include "ush.h"
 #include "evaluator.h"
 
