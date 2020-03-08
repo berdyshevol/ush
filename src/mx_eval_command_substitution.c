@@ -4,22 +4,6 @@
 
 #include "evaluator.h"
 
-void mx_LOG(char *str) {
-    static int count = 0;
-    char *count_str = mx_itoa(count);
-    int fd = open("log.txt", O_CREAT | O_WRONLY |O_APPEND, 0666);
-    write(fd, count_str, strlen(count_str));
-    write(fd, "\n", 1);
-    if (str == NULL)
-        write(fd, "(NULL)", strlen("(NULL)"));
-    else
-        write(fd, str, strlen(str));
-    write(fd, "\n", 1);
-    mx_strdel(&count_str);
-    count++;
-    close(fd);
-}
-
 char *mx_readpipe(int fd) {
     int size = 1024;
     char buf[size];
@@ -74,20 +58,12 @@ void mx_command_substitution(t_exp *exp, t_eval_result result, t_global_environm
     char *value = NULL;
     bool find_result;
     find_result = mx_find_command_substitution(*exp, &start, &end, &name);
-    mx_LOG(name);
     while (find_result) {
         value = mx_get_command_substitution(name, result, gv);
-        mx_LOG(value);
         mx_insert(exp, start, end, value);
-        mx_LOG(*exp);
         mx_strdel(&value);
         mx_strdel(&name);
         find_result = mx_find_command_substitution(*exp, &start, &end, &name);
-        if (find_result)
-            mx_LOG("true");
-        else
-            mx_LOG("false");
-        mx_LOG(*exp);
     }
 }
 

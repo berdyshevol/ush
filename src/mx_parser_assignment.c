@@ -4,7 +4,6 @@
 
 #include "parser.h"
 
-// ----------- for mx_is_valid_parname
 bool mx_isalpha(char c) {
     return (c >= 'a' && c <= 'z') || (c >='A' && c <= 'Z');
 }
@@ -47,10 +46,8 @@ bool mx_is_valid_myparname(char *exp) {
 bool mx_has_assignment(char *exp) {
     char *p = NULL;
     char *parname = NULL;
-    //char *trim = NULL;
     bool res = false;
 
-    //trim = mx_trim(exp);
     p = strstr(exp, "=");
     if (p != NULL) {
         parname = strndup(exp, p - exp);
@@ -58,7 +55,6 @@ bool mx_has_assignment(char *exp) {
             res = true;
         free(parname);
     }
-    //free(trim);
     return res;
 }
 
@@ -77,7 +73,7 @@ bool mx_has_assignment(char *exp) {
 //    }
 //
 //    printf("\nSUCCESS\n----\n");
-//    system("leaks -q ush_metacicle_evaluator");
+//    system("leaks -q ush");
 //    return 0;
 //}
 

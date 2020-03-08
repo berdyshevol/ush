@@ -96,7 +96,7 @@ uninstall: clean
 	@rm -rf $(NAME)
 
 clean:
-	@cd libmx && make -f Makefile clean
+	@cd libmx && make -cmd_subs Makefile clean
 	@rm -rf $(OBJ)
 	@rm -rf ./obj
 

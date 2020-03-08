@@ -22,223 +22,223 @@ stdio.h
 malloc/malloc.h
 -
 
-/Users/oberdyshev/ush-master/Libmx/src/mx_atoi.c
+/Users/oleg/ush/Libmx/src/mx_atoi.c
 libmx.h
-/Users/oberdyshev/ush-master/Libmx/src/libmx.h
+/Users/oleg/ush/Libmx/src/libmx.h
 
-/Users/oberdyshev/ush-master/Libmx/src/mx_binary_search.c
+/Users/oleg/ush/Libmx/src/mx_binary_search.c
 libmx.h
-/Users/oberdyshev/ush-master/Libmx/src/libmx.h
+/Users/oleg/ush/Libmx/src/libmx.h
 
-/Users/oberdyshev/ush-master/Libmx/src/mx_bubble_sort.c
+/Users/oleg/ush/Libmx/src/mx_bubble_sort.c
 libmx.h
-/Users/oberdyshev/ush-master/Libmx/src/libmx.h
+/Users/oleg/ush/Libmx/src/libmx.h
 
-/Users/oberdyshev/ush-master/Libmx/src/mx_count_substr.c
+/Users/oleg/ush/Libmx/src/mx_count_substr.c
 libmx.h
-/Users/oberdyshev/ush-master/Libmx/src/libmx.h
+/Users/oleg/ush/Libmx/src/libmx.h
 
-/Users/oberdyshev/ush-master/Libmx/src/mx_count_words.c
+/Users/oleg/ush/Libmx/src/mx_count_words.c
 libmx.h
-/Users/oberdyshev/ush-master/Libmx/src/libmx.h
+/Users/oleg/ush/Libmx/src/libmx.h
 
-/Users/oberdyshev/ush-master/Libmx/src/mx_create_node.c
+/Users/oleg/ush/Libmx/src/mx_create_node.c
 libmx.h
-/Users/oberdyshev/ush-master/Libmx/src/libmx.h
+/Users/oleg/ush/Libmx/src/libmx.h
 
-/Users/oberdyshev/ush-master/Libmx/src/mx_del_extra_spaces.c
+/Users/oleg/ush/Libmx/src/mx_del_extra_spaces.c
 libmx.h
-/Users/oberdyshev/ush-master/Libmx/src/libmx.h
+/Users/oleg/ush/Libmx/src/libmx.h
 
-/Users/oberdyshev/ush-master/Libmx/src/mx_del_strarr.c
+/Users/oleg/ush/Libmx/src/mx_del_strarr.c
 libmx.h
-/Users/oberdyshev/ush-master/Libmx/src/libmx.h
+/Users/oleg/ush/Libmx/src/libmx.h
 
-/Users/oberdyshev/ush-master/Libmx/src/mx_file_to_str.c
+/Users/oleg/ush/Libmx/src/mx_file_to_str.c
 libmx.h
-/Users/oberdyshev/ush-master/Libmx/src/libmx.h
+/Users/oleg/ush/Libmx/src/libmx.h
 
-/Users/oberdyshev/ush-master/Libmx/src/mx_foreach.c
+/Users/oleg/ush/Libmx/src/mx_foreach.c
 
-/Users/oberdyshev/ush-master/Libmx/src/mx_get_char_index.c
+/Users/oleg/ush/Libmx/src/mx_get_char_index.c
 libmx.h
-/Users/oberdyshev/ush-master/Libmx/src/libmx.h
+/Users/oleg/ush/Libmx/src/libmx.h
 
-/Users/oberdyshev/ush-master/Libmx/src/mx_get_substr_index.c
+/Users/oleg/ush/Libmx/src/mx_get_substr_index.c
 libmx.h
-/Users/oberdyshev/ush-master/Libmx/src/libmx.h
+/Users/oleg/ush/Libmx/src/libmx.h
 
-/Users/oberdyshev/ush-master/Libmx/src/mx_hex_to_nbr.c
+/Users/oleg/ush/Libmx/src/mx_hex_to_nbr.c
 libmx.h
-/Users/oberdyshev/ush-master/Libmx/src/libmx.h
+/Users/oleg/ush/Libmx/src/libmx.h
 
-/Users/oberdyshev/ush-master/Libmx/src/mx_isdigit.c
+/Users/oleg/ush/Libmx/src/mx_isdigit.c
 libmx.h
-/Users/oberdyshev/ush-master/Libmx/src/libmx.h
+/Users/oleg/ush/Libmx/src/libmx.h
 
-/Users/oberdyshev/ush-master/Libmx/src/mx_isspace.c
+/Users/oleg/ush/Libmx/src/mx_isspace.c
 libmx.h
-/Users/oberdyshev/ush-master/Libmx/src/libmx.h
+/Users/oleg/ush/Libmx/src/libmx.h
 
-/Users/oberdyshev/ush-master/Libmx/src/mx_itoa.c
+/Users/oleg/ush/Libmx/src/mx_itoa.c
 libmx.h
-/Users/oberdyshev/ush-master/Libmx/src/libmx.h
+/Users/oleg/ush/Libmx/src/libmx.h
 
-/Users/oberdyshev/ush-master/Libmx/src/mx_list_size.c
+/Users/oleg/ush/Libmx/src/mx_list_size.c
 libmx.h
-/Users/oberdyshev/ush-master/Libmx/src/libmx.h
+/Users/oleg/ush/Libmx/src/libmx.h
 
-/Users/oberdyshev/ush-master/Libmx/src/mx_memccpy.c
+/Users/oleg/ush/Libmx/src/mx_memccpy.c
 libmx.h
-/Users/oberdyshev/ush-master/Libmx/src/libmx.h
+/Users/oleg/ush/Libmx/src/libmx.h
 
-/Users/oberdyshev/ush-master/Libmx/src/mx_memchr.c
+/Users/oleg/ush/Libmx/src/mx_memchr.c
 libmx.h
-/Users/oberdyshev/ush-master/Libmx/src/libmx.h
+/Users/oleg/ush/Libmx/src/libmx.h
 
-/Users/oberdyshev/ush-master/Libmx/src/mx_memcmp.c
+/Users/oleg/ush/Libmx/src/mx_memcmp.c
 libmx.h
-/Users/oberdyshev/ush-master/Libmx/src/libmx.h
+/Users/oleg/ush/Libmx/src/libmx.h
 
-/Users/oberdyshev/ush-master/Libmx/src/mx_memcpy.c
+/Users/oleg/ush/Libmx/src/mx_memcpy.c
 libmx.h
-/Users/oberdyshev/ush-master/Libmx/src/libmx.h
+/Users/oleg/ush/Libmx/src/libmx.h
 
-/Users/oberdyshev/ush-master/Libmx/src/mx_memmem.c
+/Users/oleg/ush/Libmx/src/mx_memmem.c
 libmx.h
-/Users/oberdyshev/ush-master/Libmx/src/libmx.h
+/Users/oleg/ush/Libmx/src/libmx.h
 
-/Users/oberdyshev/ush-master/Libmx/src/mx_memmove.c
+/Users/oleg/ush/Libmx/src/mx_memmove.c
 libmx.h
-/Users/oberdyshev/ush-master/Libmx/src/libmx.h
+/Users/oleg/ush/Libmx/src/libmx.h
 
-/Users/oberdyshev/ush-master/Libmx/src/mx_memrchr.c
+/Users/oleg/ush/Libmx/src/mx_memrchr.c
 libmx.h
-/Users/oberdyshev/ush-master/Libmx/src/libmx.h
+/Users/oleg/ush/Libmx/src/libmx.h
 
-/Users/oberdyshev/ush-master/Libmx/src/mx_memset.c
+/Users/oleg/ush/Libmx/src/mx_memset.c
 libmx.h
-/Users/oberdyshev/ush-master/Libmx/src/libmx.h
+/Users/oleg/ush/Libmx/src/libmx.h
 
-/Users/oberdyshev/ush-master/Libmx/src/mx_nbr_to_hex.c
+/Users/oleg/ush/Libmx/src/mx_nbr_to_hex.c
 libmx.h
-/Users/oberdyshev/ush-master/Libmx/src/libmx.h
+/Users/oleg/ush/Libmx/src/libmx.h
 
-/Users/oberdyshev/ush-master/Libmx/src/mx_pop_back.c
+/Users/oleg/ush/Libmx/src/mx_pop_back.c
 libmx.h
-/Users/oberdyshev/ush-master/Libmx/src/libmx.h
+/Users/oleg/ush/Libmx/src/libmx.h
 
-/Users/oberdyshev/ush-master/Libmx/src/mx_pop_front.c
+/Users/oleg/ush/Libmx/src/mx_pop_front.c
 libmx.h
-/Users/oberdyshev/ush-master/Libmx/src/libmx.h
+/Users/oleg/ush/Libmx/src/libmx.h
 
-/Users/oberdyshev/ush-master/Libmx/src/mx_pow.c
+/Users/oleg/ush/Libmx/src/mx_pow.c
 
-/Users/oberdyshev/ush-master/Libmx/src/mx_print_strarr.c
+/Users/oleg/ush/Libmx/src/mx_print_strarr.c
 libmx.h
-/Users/oberdyshev/ush-master/Libmx/src/libmx.h
+/Users/oleg/ush/Libmx/src/libmx.h
 
-/Users/oberdyshev/ush-master/Libmx/src/mx_print_unicode.c
+/Users/oleg/ush/Libmx/src/mx_print_unicode.c
 libmx.h
-/Users/oberdyshev/ush-master/Libmx/src/libmx.h
+/Users/oleg/ush/Libmx/src/libmx.h
 
-/Users/oberdyshev/ush-master/Libmx/src/mx_printchar.c
+/Users/oleg/ush/Libmx/src/mx_printchar.c
 libmx.h
-/Users/oberdyshev/ush-master/Libmx/src/libmx.h
+/Users/oleg/ush/Libmx/src/libmx.h
 
-/Users/oberdyshev/ush-master/Libmx/src/mx_printerr.c
+/Users/oleg/ush/Libmx/src/mx_printerr.c
 libmx.h
-/Users/oberdyshev/ush-master/Libmx/src/libmx.h
+/Users/oleg/ush/Libmx/src/libmx.h
 
-/Users/oberdyshev/ush-master/Libmx/src/mx_printint.c
+/Users/oleg/ush/Libmx/src/mx_printint.c
 libmx.h
-/Users/oberdyshev/ush-master/Libmx/src/libmx.h
+/Users/oleg/ush/Libmx/src/libmx.h
 
-/Users/oberdyshev/ush-master/Libmx/src/mx_printstr.c
+/Users/oleg/ush/Libmx/src/mx_printstr.c
 libmx.h
-/Users/oberdyshev/ush-master/Libmx/src/libmx.h
+/Users/oleg/ush/Libmx/src/libmx.h
 
-/Users/oberdyshev/ush-master/Libmx/src/mx_push_back.c
+/Users/oleg/ush/Libmx/src/mx_push_back.c
 libmx.h
-/Users/oberdyshev/ush-master/Libmx/src/libmx.h
+/Users/oleg/ush/Libmx/src/libmx.h
 
-/Users/oberdyshev/ush-master/Libmx/src/mx_push_front.c
+/Users/oleg/ush/Libmx/src/mx_push_front.c
 libmx.h
-/Users/oberdyshev/ush-master/Libmx/src/libmx.h
+/Users/oleg/ush/Libmx/src/libmx.h
 
-/Users/oberdyshev/ush-master/Libmx/src/mx_quicksort.c
+/Users/oleg/ush/Libmx/src/mx_quicksort.c
 libmx.h
-/Users/oberdyshev/ush-master/Libmx/src/libmx.h
+/Users/oleg/ush/Libmx/src/libmx.h
 
-/Users/oberdyshev/ush-master/Libmx/src/mx_read_line.c
+/Users/oleg/ush/Libmx/src/mx_read_line.c
 libmx.h
-/Users/oberdyshev/ush-master/Libmx/src/libmx.h
+/Users/oleg/ush/Libmx/src/libmx.h
 
-/Users/oberdyshev/ush-master/Libmx/src/mx_realloc.c
+/Users/oleg/ush/Libmx/src/mx_realloc.c
 libmx.h
-/Users/oberdyshev/ush-master/Libmx/src/libmx.h
+/Users/oleg/ush/Libmx/src/libmx.h
 
-/Users/oberdyshev/ush-master/Libmx/src/mx_replace_substr.c
+/Users/oleg/ush/Libmx/src/mx_replace_substr.c
 libmx.h
-/Users/oberdyshev/ush-master/Libmx/src/libmx.h
+/Users/oleg/ush/Libmx/src/libmx.h
 
-/Users/oberdyshev/ush-master/Libmx/src/mx_sort_list.c
+/Users/oleg/ush/Libmx/src/mx_sort_list.c
 libmx.h
-/Users/oberdyshev/ush-master/Libmx/src/libmx.h
+/Users/oleg/ush/Libmx/src/libmx.h
 
-/Users/oberdyshev/ush-master/Libmx/src/mx_sqrt.c
+/Users/oleg/ush/Libmx/src/mx_sqrt.c
 
-/Users/oberdyshev/ush-master/Libmx/src/mx_str_reverse.c
+/Users/oleg/ush/Libmx/src/mx_str_reverse.c
 libmx.h
-/Users/oberdyshev/ush-master/Libmx/src/libmx.h
+/Users/oleg/ush/Libmx/src/libmx.h
 
-/Users/oberdyshev/ush-master/Libmx/src/mx_strcat.c
+/Users/oleg/ush/Libmx/src/mx_strcat.c
 libmx.h
-/Users/oberdyshev/ush-master/Libmx/src/libmx.h
+/Users/oleg/ush/Libmx/src/libmx.h
 
-/Users/oberdyshev/ush-master/Libmx/src/mx_strcmp.c
+/Users/oleg/ush/Libmx/src/mx_strcmp.c
 
-/Users/oberdyshev/ush-master/Libmx/src/mx_strcpy.c
+/Users/oleg/ush/Libmx/src/mx_strcpy.c
 libmx.h
-/Users/oberdyshev/ush-master/Libmx/src/libmx.h
+/Users/oleg/ush/Libmx/src/libmx.h
 
-/Users/oberdyshev/ush-master/Libmx/src/mx_strdel.c
+/Users/oleg/ush/Libmx/src/mx_strdel.c
 libmx.h
-/Users/oberdyshev/ush-master/Libmx/src/libmx.h
+/Users/oleg/ush/Libmx/src/libmx.h
 
-/Users/oberdyshev/ush-master/Libmx/src/mx_strdup.c
+/Users/oleg/ush/Libmx/src/mx_strdup.c
 libmx.h
-/Users/oberdyshev/ush-master/Libmx/src/libmx.h
+/Users/oleg/ush/Libmx/src/libmx.h
 
-/Users/oberdyshev/ush-master/Libmx/src/mx_strjoin.c
+/Users/oleg/ush/Libmx/src/mx_strjoin.c
 libmx.h
-/Users/oberdyshev/ush-master/Libmx/src/libmx.h
+/Users/oleg/ush/Libmx/src/libmx.h
 
-/Users/oberdyshev/ush-master/Libmx/src/mx_strlen.c
+/Users/oleg/ush/Libmx/src/mx_strlen.c
 
-/Users/oberdyshev/ush-master/Libmx/src/mx_strncmp.c
+/Users/oleg/ush/Libmx/src/mx_strncmp.c
 
-/Users/oberdyshev/ush-master/Libmx/src/mx_strncpy.c
+/Users/oleg/ush/Libmx/src/mx_strncpy.c
 
-/Users/oberdyshev/ush-master/Libmx/src/mx_strndup.c
+/Users/oleg/ush/Libmx/src/mx_strndup.c
 libmx.h
-/Users/oberdyshev/ush-master/Libmx/src/libmx.h
+/Users/oleg/ush/Libmx/src/libmx.h
 
-/Users/oberdyshev/ush-master/Libmx/src/mx_strnew.c
+/Users/oleg/ush/Libmx/src/mx_strnew.c
 libmx.h
-/Users/oberdyshev/ush-master/Libmx/src/libmx.h
+/Users/oleg/ush/Libmx/src/libmx.h
 
-/Users/oberdyshev/ush-master/Libmx/src/mx_strsplit.c
+/Users/oleg/ush/Libmx/src/mx_strsplit.c
 libmx.h
-/Users/oberdyshev/ush-master/Libmx/src/libmx.h
+/Users/oleg/ush/Libmx/src/libmx.h
 
-/Users/oberdyshev/ush-master/Libmx/src/mx_strstr.c
+/Users/oleg/ush/Libmx/src/mx_strstr.c
 libmx.h
-/Users/oberdyshev/ush-master/Libmx/src/libmx.h
+/Users/oleg/ush/Libmx/src/libmx.h
 
-/Users/oberdyshev/ush-master/Libmx/src/mx_strtrim.c
+/Users/oleg/ush/Libmx/src/mx_strtrim.c
 libmx.h
-/Users/oberdyshev/ush-master/Libmx/src/libmx.h
+/Users/oleg/ush/Libmx/src/libmx.h
 
-/Users/oberdyshev/ush-master/Libmx/src/mx_swap_char.c
+/Users/oleg/ush/Libmx/src/mx_swap_char.c
 

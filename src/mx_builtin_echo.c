@@ -9,7 +9,7 @@ static char *replace_escapes(char *str) {
     mx_get_str_spase("\\r", '\r', &tmp);
     mx_get_str_spase("\\b", '\b', &tmp);
     mx_get_str_spase("\\a", '\a', &tmp);
-    mx_get_str_spase("\\f", '\f', &tmp);
+    mx_get_str_spase("\\cmd_subs", '\f', &tmp);
     mx_get_str_spase("\\e", '\033', &tmp);
     mx_get_str_spase("\\t", '\t', &tmp);
     mx_more_escapes(&tmp);

@@ -132,7 +132,15 @@ p.h
 i.h
 ../inc/i.h
 
-/Users/oberdyshev/ush-master/src/mx_driver_loop.c
+/Users/oleg/ush/src/main.c
 ush.h
-/Users/oberdyshev/ush-master/src/ush.h
+/Users/oleg/ush/src/ush.h
+
+/Users/oleg/ush/src/mx_eval_command_substitution.c
+evaluator.h
+/Users/oleg/ush/src/evaluator.h
+
+/Users/oleg/ush/src/mx_parser_find_command_substitution.c
+parser.h
+/Users/oleg/ush/src/parser.h
 

@@ -11,14 +11,12 @@ static void _extract_rest_wordchains(char **str, char **r_wordchains);
 // ----    API Functions
 void mx_parse_words_sequence(char *exp, char **f_wordchain, char **splitter, char **r_wordchains) {
     char *str = NULL;
-
     *f_wordchain = NULL;
     *splitter = NULL;
     *r_wordchains = NULL;
+
     if (exp == NULL)
         return ;
-//    if (!mx_is_closed_expression(exp))     // TODO: we do not need it
-//        return ;
     str = strdup(exp);
     _extract_first_wordchain(&str, f_wordchain);
     _extract_splitter(&str, splitter);
@@ -67,7 +65,6 @@ static void _extract_first_wordchain(char **str, char **f_wordchain) {
             )
             break ;
     }
-
     //изменить стр и вернуть первый вордчеин
     if (i != 0) {
         *f_wordchain = strndup(*str, i);
