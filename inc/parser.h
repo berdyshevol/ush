@@ -73,6 +73,17 @@ typedef struct {
 } t_bind_operatorid_name_type;
 
 
+typedef enum {
+    return_true,
+    break_loop,
+    continue_loop
+} e_return;
+
+typedef struct {
+    int start;
+    int end;
+    char *name;
+} t_args;
 
 char mx_whitespace(int i);
 char mx_slash_plus_symbol(int i);
@@ -126,6 +137,10 @@ bool mx_find_command_substitution(char *exp, int *start, int *end, char **name);
 bool mx_find_file_expansion(char *exp, int *start, int *end, char **name);
 
 // miscellaneous
+void mx_reset(int *a, int *b, char **s);
+void mx_set(t_args *args, int *start, int *end, char **name);
+t_args *args_new(void);
+void args_delete(t_args **args);
 char *mx_strstr_esc(char *exp, char *substr);
 char *mx_strstr_esc_rev(char *exp, char *substr);
 int mx_count_esc(char *exp, int position);
