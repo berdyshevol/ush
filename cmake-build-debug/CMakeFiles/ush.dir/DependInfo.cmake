@@ -48,7 +48,6 @@ set(CMAKE_DEPENDS_CHECK_C
   "/Users/oleg/ush/src/mx_parser_find_command_substitution.c" "/Users/oleg/ush/cmake-build-debug/CMakeFiles/ush.dir/src/mx_parser_find_command_substitution.c.o"
   "/Users/oleg/ush/src/mx_parser_find_file_expansion.c" "/Users/oleg/ush/cmake-build-debug/CMakeFiles/ush.dir/src/mx_parser_find_file_expansion.c.o"
   "/Users/oleg/ush/src/mx_parser_find_param.c" "/Users/oleg/ush/cmake-build-debug/CMakeFiles/ush.dir/src/mx_parser_find_param.c.o"
-  "/Users/oleg/ush/src/mx_parser_firstword.c" "/Users/oleg/ush/cmake-build-debug/CMakeFiles/ush.dir/src/mx_parser_firstword.c.o"
   "/Users/oleg/ush/src/mx_parser_get_binary_opid.c" "/Users/oleg/ush/cmake-build-debug/CMakeFiles/ush.dir/src/mx_parser_get_binary_opid.c.o"
   "/Users/oleg/ush/src/mx_parser_get_op_id.c" "/Users/oleg/ush/cmake-build-debug/CMakeFiles/ush.dir/src/mx_parser_get_op_id.c.o"
   "/Users/oleg/ush/src/mx_parser_get_op_name.c" "/Users/oleg/ush/cmake-build-debug/CMakeFiles/ush.dir/src/mx_parser_get_op_name.c.o"

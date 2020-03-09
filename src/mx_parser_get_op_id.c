@@ -14,24 +14,24 @@
  *      no_operator
  *      unclosed_expression
  */
-e_operator_id mx_get_word_id(char *exp) {
-    e_operator_id res;
-
-    res = mx_get_unary_opid(exp);
-    // check if it is a string
-    if (res == no_operator) {
-        char *s1 = mx_trim(exp);
-        char *s2 = mx_left_exp(s1, " ");
-        if (s2 != NULL) {
-            if (strcmp(s1, s2) == 0) {
-                res = string;
-            }
-            free(s2);
-        }
-        free(s1);
-    }
-    return res;
-}
+//e_operator_id mx_get_word_id(char *exp) {
+//    e_operator_id res;
+//
+//    res = mx_get_unary_opid(exp);
+//    // check if it is a string
+//    if (res == no_operator) {
+//        char *s1 = mx_trim(exp);
+//        char *s2 = mx_left_exp(s1, " ");
+//        if (s2 != NULL) {
+//            if (strcmp(s1, s2) == 0) {
+//                res = string;
+//            }
+//            free(s2);
+//        }
+//        free(s1);
+//    }
+//    return res;
+//}
 
 //e_operator_id mx_get_op_id(char *exp) {
 //    e_operator_id res;

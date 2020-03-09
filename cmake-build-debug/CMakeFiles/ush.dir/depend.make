@@ -344,10 +344,6 @@ CMakeFiles/ush.dir/src/mx_parser_find_param.c.o: ../Libmx/inc/libmx.h
 CMakeFiles/ush.dir/src/mx_parser_find_param.c.o: ../inc/parser.h
 CMakeFiles/ush.dir/src/mx_parser_find_param.c.o: ../src/mx_parser_find_param.c
 
-CMakeFiles/ush.dir/src/mx_parser_firstword.c.o: ../Libmx/inc/libmx.h
-CMakeFiles/ush.dir/src/mx_parser_firstword.c.o: ../inc/parser.h
-CMakeFiles/ush.dir/src/mx_parser_firstword.c.o: ../src/mx_parser_firstword.c
-
 CMakeFiles/ush.dir/src/mx_parser_get_binary_opid.c.o: ../Libmx/inc/libmx.h
 CMakeFiles/ush.dir/src/mx_parser_get_binary_opid.c.o: ../inc/parser.h
 CMakeFiles/ush.dir/src/mx_parser_get_binary_opid.c.o: ../src/mx_parser_get_binary_opid.c

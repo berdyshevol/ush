@@ -94,12 +94,12 @@ bool mx_can_trim(int i, char *s);
 //e_operator_id mx_get_op_id(char *exp); deprecated function
 e_operator_id mx_get_binary_opid(char *exp);
 e_operator_id mx_get_unary_opid(char *exp);
-e_operator_id mx_get_word_id(char *exp);
+//e_operator_id mx_get_word_id(char *exp);
 
 bool mx_has_assignment(char *exp);
 bool mx_is_valid_parname(char *exp);
 bool mx_isalpha(char c);
-bool mx_is_valid_pathname(char *exp);
+//bool mx_is_valid_pathname(char *exp);
 char *mx_extract_unary_operand(char *exp);
 //bool mx_has_open_closing_exp(char *exp, char *open, char *closing);
 char *mx_get_name_by_id(e_operator_id operator_name);
@@ -107,8 +107,8 @@ char *mx_get_op_name(char *exp);
 e_exp_type mx_get_expressiontype_by_id(e_operator_id operator_name);
 bool mx_has_expression_operator(char *exp, char *operator);
 bool mx_is_closed_expression(char *s);
-int mx_is_opening(int i, char *s, int count_slash);
-int mx_is_closing(int i, char *s, int count_slash);
+//int mx_is_opening(int i, char *s, int count_slash);
+//int mx_is_closing(int i, char *s, int count_slash);
 void mx_get_first_word(char *exp, char **first_word, char **rest_exp);
 bool mx_is_single_char(char c);
 char *mx_smart_find(char *exp, char *op);
@@ -142,7 +142,7 @@ void mx_set(t_args *args, int *start, int *end, char **name);
 t_args *args_new(void);
 void args_delete(t_args **args);
 char *mx_strstr_esc(char *exp, char *substr);
-char *mx_strstr_esc_rev(char *exp, char *substr);
+//char *mx_strstr_esc_rev(char *exp, char *substr);
 int mx_count_esc(char *exp, int position);
 void mx_change_mode(e_mode *mode, char *exp, int pos);
 

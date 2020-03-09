@@ -56,15 +56,15 @@ char *mx_extract_unary_operand(char *exp) {
     return res;
 }
 
-bool mx_is_valid_pathname(char *exp) {
-    if (exp != NULL)
-        return false;
-
-    if (exp[0] == '/')
-        return true;
-    else
-        return false;
-}
+//bool mx_is_valid_pathname(char *exp) {
+//    if (exp != NULL)
+//        return false;
+//
+//    if (exp[0] == '/')
+//        return true;
+//    else
+//        return false;
+//}
 
 static bool mx_has_open_closing_exp(char *exp, char *open_exp, char *closing_exp) {
     char *trimmed = NULL;

@@ -55,7 +55,6 @@ mx_parser_assignment.c \
 mx_parser_find_command_substitution.c \
 mx_parser_find_file_expansion.c \
 mx_parser_find_param.c \
-mx_parser_firstword.c \
 mx_parser_get_binary_opid.c \
 mx_parser_get_op_id.c \
 mx_parser_get_op_name.c \
@@ -103,4 +102,4 @@ clean:
 reinstall: uninstall install
 
 cl:
-	@rm *.c *.h *.o
+	@rm -rf *.c *.h *.o *.gch ./obj
