@@ -629,10 +629,11 @@ mx_eval(t_exp exp, t_global_environment *gv, int *pipe_fd, bool *new_proc) { // 
             result = mx_simple_command(exp, gv, pipe_fd, new_proc);
             break;
         default:
-            result = mx_new_evalresult();
-            result->text = NULL;
-            result->status = false; // ошибка
-            mx_print_oddnumberofquotes();
+//            result = mx_new_evalresult();
+//            result->text = NULL;
+//            result->status = false; // ошибка
+//            mx_print_oddnumberofquotes();
+            result = mx_simple_command(exp, gv, pipe_fd, new_proc);
     }
     return result;
 }

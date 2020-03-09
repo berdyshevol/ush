@@ -5,25 +5,14 @@
 #include "parser.h"
 
 
-typedef enum {
-    return_true,
-    break_loop,
-    continue_loop
-} e_return;
 
-typedef struct {
-    int start;
-    int end;
-    char *name;
-} t_args;
-
-static void _reset(int *a, int *b, char **s) {
+void mx_reset(int *a, int *b, char **s) {
     *a = 0;
     *b = 0;
     *s = NULL;
 }
 
-static void _set(t_args *args, int *start, int *end, char **name) {
+void mx_set(t_args *args, int *start, int *end, char **name) {
     *start = args->start;
     *end = args->end;
     *name = args->name;
@@ -112,7 +101,7 @@ bool mx_find_command_substitution(char *exp, int *start, int *end, char **name) 
             case continue_loop:
                 continue;
             case return_true:
-                _set(args, start, end, name);
+                mx_set(args, start, end, name);
                 args_delete(&args);
                 return true;
             case break_loop:
@@ -120,7 +109,7 @@ bool mx_find_command_substitution(char *exp, int *start, int *end, char **name) 
         }
     }
     args_delete(&args);
-    _reset(start, end, name);
+    mx_reset(start, end, name);
     return false;
 }
 
