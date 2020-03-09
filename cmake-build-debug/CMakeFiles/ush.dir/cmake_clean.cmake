@@ -43,7 +43,6 @@ file(REMOVE_RECURSE
   "CMakeFiles/ush.dir/src/mx_parser_find_command_substitution.c.o"
   "CMakeFiles/ush.dir/src/mx_parser_find_file_expansion.c.o"
   "CMakeFiles/ush.dir/src/mx_parser_find_param.c.o"
-  "CMakeFiles/ush.dir/src/mx_parser_firstword.c.o"
   "CMakeFiles/ush.dir/src/mx_parser_get_binary_opid.c.o"
   "CMakeFiles/ush.dir/src/mx_parser_get_op_id.c.o"
   "CMakeFiles/ush.dir/src/mx_parser_get_op_name.c.o"

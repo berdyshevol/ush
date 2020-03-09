@@ -439,9 +439,6 @@
 		<Unit filename="/Users/oleg/ush/src/mx_parser_find_param.c">
 			<Option target="ush"/>
 		</Unit>
-		<Unit filename="/Users/oleg/ush/src/mx_parser_firstword.c">
-			<Option target="ush"/>
-		</Unit>
 		<Unit filename="/Users/oleg/ush/src/mx_parser_get_binary_opid.c">
 			<Option target="ush"/>
 		</Unit>

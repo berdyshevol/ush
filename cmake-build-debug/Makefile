@@ -2917,33 +2917,6 @@ src/mx_parser_find_param.c.s:
 	$(MAKE) -f CMakeFiles/ush.dir/build.make CMakeFiles/ush.dir/src/mx_parser_find_param.c.s
 .PHONY : src/mx_parser_find_param.c.s
 
-src/mx_parser_firstword.o: src/mx_parser_firstword.c.o
-
-.PHONY : src/mx_parser_firstword.o
-
-# target to build an object file
-src/mx_parser_firstword.c.o:
-	$(MAKE) -f CMakeFiles/ush.dir/build.make CMakeFiles/ush.dir/src/mx_parser_firstword.c.o
-.PHONY : src/mx_parser_firstword.c.o
-
-src/mx_parser_firstword.i: src/mx_parser_firstword.c.i
-
-.PHONY : src/mx_parser_firstword.i
-
-# target to preprocess a source file
-src/mx_parser_firstword.c.i:
-	$(MAKE) -f CMakeFiles/ush.dir/build.make CMakeFiles/ush.dir/src/mx_parser_firstword.c.i
-.PHONY : src/mx_parser_firstword.c.i
-
-src/mx_parser_firstword.s: src/mx_parser_firstword.c.s
-
-.PHONY : src/mx_parser_firstword.s
-
-# target to generate assembly for a file
-src/mx_parser_firstword.c.s:
-	$(MAKE) -f CMakeFiles/ush.dir/build.make CMakeFiles/ush.dir/src/mx_parser_firstword.c.s
-.PHONY : src/mx_parser_firstword.c.s
-
 src/mx_parser_get_binary_opid.o: src/mx_parser_get_binary_opid.c.o
 
 .PHONY : src/mx_parser_get_binary_opid.o
@@ -3722,9 +3695,6 @@ help:
 	@echo "... src/mx_parser_find_param.o"
 	@echo "... src/mx_parser_find_param.i"
 	@echo "... src/mx_parser_find_param.s"
-	@echo "... src/mx_parser_firstword.o"
-	@echo "... src/mx_parser_firstword.i"
-	@echo "... src/mx_parser_firstword.s"
 	@echo "... src/mx_parser_get_binary_opid.o"
 	@echo "... src/mx_parser_get_binary_opid.i"
 	@echo "... src/mx_parser_get_binary_opid.s"

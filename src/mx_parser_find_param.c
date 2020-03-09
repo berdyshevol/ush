@@ -83,28 +83,28 @@ bool mx_find_param(char *exp, int *start, int *end, char **name) {
 }
 
 ////test mx_find_param
-#include <assert.h>
-int main(void) {
-    char *exp[] =      {"'$name'$name", "\"$name\"'$name",
-                        "012$_a67-80", "0123${12}000", "0\\$ab$ab-",
-                        "01\\$ab$12$ab-", "00\\$ab$12${a} ", NULL};
-    int test_start[] = {7,              1,
-                        3,              4,              5, 9,  9};
-    int test_end[] =   {11,             5,
-                        7,              8,              7, 11, 12};
-    int start;
-    int end;
-    char *name;
-
-    for (int i = 0; exp[i]; i++) {
-        mx_find_param(exp[i], &start, &end, &name);
-        printf("%d) %s\t%d\t%d\n", i + 1, exp[i], start, end);
-        assert(start == test_start[i]);
-        assert(end == test_end[i]);
-        free(name);
-    }
-
-    printf("\nSUCCESS\n----\n");
-    system("leaks -q ush");
-    return 0;
-}
+//#include <assert.h>
+//int main(void) {
+//    char *exp[] =      {"'$name'$name", "\"$name\"'$name",
+//                        "012$_a67-80", "0123${12}000", "0\\$ab$ab-",
+//                        "01\\$ab$12$ab-", "00\\$ab$12${a} ", NULL};
+//    int test_start[] = {7,              1,
+//                        3,              4,              5, 9,  9};
+//    int test_end[] =   {11,             5,
+//                        7,              8,              7, 11, 12};
+//    int start;
+//    int end;
+//    char *name;
+//
+//    for (int i = 0; exp[i]; i++) {
+//        mx_find_param(exp[i], &start, &end, &name);
+//        printf("%d) %s\t%d\t%d\n", i + 1, exp[i], start, end);
+//        assert(start == test_start[i]);
+//        assert(end == test_end[i]);
+//        free(name);
+//    }
+//
+//    printf("\nSUCCESS\n----\n");
+//    system("leaks -q ush");
+//    return 0;
+//}

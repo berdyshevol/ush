@@ -1,6 +1,46 @@
 #include "parser.h"
 
-int mx_is_opening(int i, char *s, int count_slash) {
+static void helper1(int id, bool *flag, int *index);
+static void helper2(int id, bool *flag, int *index);
+static int mx_is_closing(int i, char *s, int count_slash);
+static int mx_is_opening(int i, char *s, int count_slash);
+
+bool mx_is_closed_expression(char *s) {
+    int count_slash = 0;
+    bool flag = true;
+    int index = -1;
+
+    for (int i = 0; s[i]; i++) {
+        if (s[i] == '\\')
+            count_slash++;
+        else {
+            if (flag) {
+                helper1(mx_is_opening(i, s, count_slash), &flag, &index);
+            }
+            else {
+                helper2(mx_is_closing(i, s, count_slash), &flag, &index);
+            }
+            count_slash = 0;
+        }
+    }
+    return flag;
+}
+
+static void helper1(int id, bool *flag, int *index) {
+    if (id > -1) {
+        *flag = false;
+        *index = id;
+    }
+}
+
+static void helper2(int id, bool *flag, int *index) {
+    if (id > -1 && id == *index) {
+        *flag = true;
+        *index = -1;
+    }
+}
+
+static int mx_is_opening(int i, char *s, int count_slash) {
     char *opening_chars[] = {"\"", "\'", "$(", "${", "`", "(", NULL};
     int length[] = {1, 1, 2, 2, 1, 1};
     int len = 6;
@@ -12,7 +52,7 @@ int mx_is_opening(int i, char *s, int count_slash) {
     return -1;
 }
 
-int mx_is_closing(int i, char *s, int count_slash) {
+static int mx_is_closing(int i, char *s, int count_slash) {
     char *closing_chars[] = {"\"", "\'", ")", "}", "`", ")", NULL};
     int length[] = {1, 1, 1, 1, 1, 1};
     int len = 6;
@@ -23,39 +63,6 @@ int mx_is_closing(int i, char *s, int count_slash) {
                 return j;
     return -1;
 
-}
-
-bool mx_is_closed_expression(char *s) {
-    int len = strlen(s);
-    int count_slash = 0;
-    bool flag = true;
-    int index = -1;
-
-    for (int i = 0; i < len; i++) {
-        if (s[i] == '\\')
-            count_slash++;
-        else {
-            if (flag) {
-                int id = mx_is_opening(i, s, count_slash);
-                if (id > -1) {
-                    flag = false;
-                    index = id;
-                }
-            }
-            else {
-                int id = mx_is_closing(i, s, count_slash);
-                if (id > -1 && id == index) {
-                    flag = true;
-                    index = -1;
-                }
-            }
-            count_slash = 0;
-        }
-    }
-//    if (!flag) {
-//        mx_printstr("Odd number of quotes.\n");
-//    }
-    return flag;
 }
 
 //#include <assert.h>
@@ -69,6 +76,7 @@ bool mx_is_closed_expression(char *s) {
 //                  " ${hello}", "${hello",   "  $(hello)",  "$(hello",
 //                  "  $hello",  "  hello ",  " `hello` ",   " hello` ",
 //                  "  ~",       " ~name"  ,
+//                  " $(hello)", " $(hello ",
 //                  NULL};
 //    bool test[] = {true, true, false, true,
 //                   true, false, true, false,
@@ -76,6 +84,7 @@ bool mx_is_closed_expression(char *s) {
 //                   true, false, true,  false,
 //                   true, true, true,  false,
 //                   true, true,
+//                   true, false,
 //                     NULL};
 //    for (int i = 0; s[i]; i++) {
 //         bool res = mx_is_closed_expression(s[i]);
@@ -83,6 +92,6 @@ bool mx_is_closed_expression(char *s) {
 //         assert(res == test[i]);
 //    }
 //    printf("\nSUCCESS\n----\n");
-//    system("leaks -q ush_metacicle_evaluator");
+//    system("leaks -q ush");
 //    return 0;
 //}
