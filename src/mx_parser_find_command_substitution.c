@@ -76,7 +76,7 @@ e_return cmd_subs(char *exp, int i, e_mode mode, t_args *args) {
         return continue_loop;
 }
 
-t_args *args_new(void) {
+t_args *mx_args_new(void) {
     t_args *args = malloc(sizeof (t_args));
     args->name = NULL;
     args->start = 0;
@@ -84,7 +84,7 @@ t_args *args_new(void) {
     return args;
 }
 
-void args_delete(t_args **args) {
+void mx_args_delete(t_args **args) {
     free(*args);
     *args = NULL;
 }
@@ -94,7 +94,7 @@ void args_delete(t_args **args) {
 // Но не парсит $( $( ) )
 bool mx_find_command_substitution(char *exp, int *start, int *end, char **name) {
     e_mode mode = unquote;
-    t_args *args = args_new();
+    t_args *args = mx_args_new();
     for (unsigned long i = 0; i < strlen(exp); i++) {
         mx_change_mode(&mode, exp, i);
         switch (cmd_subs(exp, i, mode, args)) {
@@ -102,13 +102,13 @@ bool mx_find_command_substitution(char *exp, int *start, int *end, char **name) 
                 continue;
             case return_true:
                 mx_set(args, start, end, name);
-                args_delete(&args);
+                mx_args_delete(&args);
                 return true;
             case break_loop:
                 break;
         }
     }
-    args_delete(&args);
+    mx_args_delete(&args);
     mx_reset(start, end, name);
     return false;
 }

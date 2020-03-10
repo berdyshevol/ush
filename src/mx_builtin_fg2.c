@@ -24,6 +24,8 @@ void mx_continue_process(int *st, t_stoped *ps, t_global_environment *g) {
 }
 
 void mx_add_process_list(t_global_environment *gv, pid_t pid) {
+    if (gv == NULL || gv->jobs_list == NULL) // I added !!!!!!!
+        return;
     t_stoped *tmp = gv->jobs_list;
 
     while (tmp->next != NULL) {

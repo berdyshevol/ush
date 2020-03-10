@@ -44,7 +44,8 @@ void mx_smart_wait(int pid, t_eval_result result, t_global_environment *gv) {
     waitpid (pid, &status, WUNTRACED);
     if (MX_WIFSTOPPED(status)) {
         mx_add_process_list(gv, pid);
-        gv->count_jobs++;
+        if (gv != NULL)  //  I added !!!!!!!
+            gv->count_jobs++;
     }
     char *itoa = mx_itoa(mx_wexitstatud(status));
     mx_env_set_var("?", itoa, &(gv->vars));
