@@ -1,4 +1,0 @@
-/Users/psymonov/ucode/ush-work-3.0/cmake-build-debug/CMakeFiles/ush.dir
-/Users/psymonov/ucode/ush-work-3.0/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/Users/psymonov/ucode/ush-work-3.0/cmake-build-debug/CMakeFiles/edit_cache.dir
-/Users/psymonov/ucode/ush-work-3.0/cmake-build-debug/CMakeFiles/mx.dir
