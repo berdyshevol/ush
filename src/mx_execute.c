@@ -92,8 +92,7 @@ bool try_builtin(char *cmd, t_eval_result result, t_global_environment *gv) {
         return false;
 }
 
-t_eval_result
-mx_execute(char *command, t_global_environment *gv) {
+t_eval_result mx_execute(char *command, t_global_environment *gv) {
     t_eval_result result = mx_new_evalresult();
 
     if (try_builtin(command, result, gv)) {
