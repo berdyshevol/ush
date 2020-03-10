@@ -34,19 +34,6 @@ int mx_fd_is_valid(int fd) {
     return fcntl(fd, F_GETFD) != -1 || errno != EBADF;
 }
 
-//void mx_reset_pipefd(int *pipe_fd) {
-//    if (pipe_fd == NULL)
-//        return;
-//    if (pipe_fd[2] != 0) {
-//        dup2(pipe_fd[2], 0);
-//        mx_smart_close_fd(&pipe_fd[2], 0);
-//    }
-//    if (pipe_fd[3] != 1) {
-//        dup2(pipe_fd[3], 1);
-//        mx_smart_close_fd(&pipe_fd[3], 1);
-//    }
-//}
-
 bool mx_has_pipe(int *pipe_fd) {
     bool res = false;
     if (pipe_fd == NULL)
@@ -56,18 +43,6 @@ bool mx_has_pipe(int *pipe_fd) {
     }
     return res;
 }
-
-//bool  mx_apply_pipe(int *pipe_fd) {
-//    bool res = false;
-//    if (pipe_fd == NULL)
-//        return res;
-//    if (pipe_fd[1] != 0 || pipe_fd[1] != 1) {
-//        dup2(pipe_fd[0], pipe_fd[1]);
-//        close(pipe_fd[0]);
-//        res = true;
-//    }
-//    return res;
-//}
 
 //// test void mx_pipe_fd_delete(int **pipe_fd) {
 //#include <assert.h>
