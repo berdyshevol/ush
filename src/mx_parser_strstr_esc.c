@@ -3,7 +3,12 @@
 //
 #include "parser.h"
 
-// считает количество слешей слева от posision
+// ----    API Functions
+/**
+ * @param exp - expression
+ * @param position - position in the expression
+ * @return the number of escapes starting from position-1 and go to left
+ */
 int mx_count_esc(char *exp, int position) {
     int count = 0;
     for (int i = position - 1; i >= 0; i--) {
@@ -16,10 +21,15 @@ int mx_count_esc(char *exp, int position) {
 }
 
 // найти подстроку если она не экранируется слешами
+/**
+ * @param exp
+ * @param substr
+ * @return the pointer to the beginning of substring (substr)
+ * in a string (exp) which is not escaped by a slashes
+ */
 char *mx_strstr_esc(char *exp, char *substr) {
     int len  = strlen(exp);
     char *p = NULL;
-    int count = 0;
 
     for (int i = 0; i < len; i++) {
         p = strstr(exp + i, substr);
@@ -27,50 +37,10 @@ char *mx_strstr_esc(char *exp, char *substr) {
             if (mx_count_esc(exp, p - exp) % 2 == 0)
                 return p;
         }
-        count = 0;
     }
     return NULL;
 }
 
-//// найти подстроку если она не экранируется слешами from right
-//char *mx_strstr_esc_rev(char *exp, char *substr) {
-//    int len  = strlen(exp);
-//    char *p = NULL;
-//    int count = 0;
-//
-//    for (int i = len - 1; i >= 0; i--) {
-//        p = strstr(exp + i, substr);
-//        if (p) {
-//            if (mx_count_esc(exp, p - exp) % 2 == 0)
-//                return p;
-//        }
-//        count = 0;
-//    }
-//    return NULL;
-//}
-
-// меняет режим в зависимотси от экранирования и ' "
-void mx_change_mode(e_mode *mode, char *exp, int pos) {
-    switch (*mode) {
-        case unquote:
-            if (exp[pos] == '"')
-                if (mx_count_esc(exp, pos) % 2 == 0)
-                    *mode = dquote;
-            if (exp[pos] == '\'')
-                if (mx_count_esc(exp, pos) % 2 == 0)
-                    *mode = quote;
-            break;
-        case dquote:
-            if (exp[pos] == '"')
-                if (mx_count_esc(exp, pos) % 2 == 0)
-                    *mode = unquote;
-            break;
-        case quote:
-            if (exp[pos] == '\'')
-                *mode = unquote;
-            break;
-    }
-}
 
 ////mx_strstr_esc
 //#include <assert.h>

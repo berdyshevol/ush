@@ -1,28 +1,15 @@
 #include "parser.h"
 
-// should go with is_spacial_symbol
-char mx_whitespace(int i) {
-    char spacial_symbol[] = " \n\t"; // trim all these chars without
-    if (i >= 0 && i < (int)strlen(spacial_symbol))
-        return spacial_symbol[i];
-    else
-        return '\0';
-}
+static char _whitespace(int i);
 
-//// slash
-//// should go with can_skip
-//char mx_slash_plus_symbol(int i) {
-//    char *slash_plus_symbol = " "; // skip triming "\ "
-//    if (i >= 0 && i < strlen(slash_plus_symbol))
-//        return slash_plus_symbol[i];
-//    else
-//        return '\0';
-//}
+// ----    API Functions
 
-/**
- * из строки exp берет  левое выражение от оператора op
- * учитывает замыкающие конструкции '..' ".." (..) {..} `..`
- */
+ /**
+  * @param exp - expression
+  * @param delim - delimiter
+  * @return - the malloced expression to the LEFT from delimiter in exp
+  * Delimiter cannot be inside '..' ".." $(..) ${..} `..`
+  */
 char *mx_left_exp(char *exp, char *delim) {
     char *car;
     char *rs;
@@ -39,10 +26,11 @@ char *mx_left_exp(char *exp, char *delim) {
 }
 
 /**
- * из строки exp берет правое выражение от оператора op
- * учитывает замыкающие конструкции '..' ".." (..) {..} `..`
- */
-
+  * @param exp - expression
+  * @param delim - delimiter
+  * @return - the malloced expression to the RIGHT from delimiter in exp
+  * Delimiter cannot be inside '..' ".." $(..) ${..} `..`
+  */
 char *mx_right_exp(char *exp, char *delim) {
     char *cdr;
     char *ls;
@@ -58,32 +46,63 @@ char *mx_right_exp(char *exp, char *delim) {
     return cdr;
 }
 
-
 /**
- * trim string
+ * @param str. Trims all whitespaces from left.
+ * Argument is mutable! Make sure to have parameter that can be free()
  */
-char *mx_trim(char *s) {
-    int left;
-    int right;
+void mx_trimleft(char **str) {
+    int i;
+    e_mode mode = unquote;
+    char *newstr = NULL;
 
-    //what can trim going from left
-    left = 0;
-    while (mx_can_trim(left, s))
-        left++;
-    //what can trim going from right
-    right = strlen(s) - 1;
-    while (mx_can_trim(right, s))
-        right--;
-    return mx_strndup(&s[left], right - left +1);
+    if (str == NULL || *str == NULL)
+        return;
+
+    for (i = 0; (*str)[i] != '\0'; i++) {
+        mx_change_mode(&mode, *str, i);
+        if (mode == unquote
+            && mx_is_whitespace((*str)[i]))
+            continue;
+        else
+            break;
+    }
+    newstr = strndup(*str + i, strlen(*str) - i);
+    mx_strdel(str);
+    *str = newstr;
 }
 
 bool mx_is_whitespace(char c) {
-    //int len = strlen(spacial_symbol);
-    for (int i = 0; mx_whitespace(i) != '\0'; i++)
-        if (c == mx_whitespace(i))
+    for (int i = 0; _whitespace(i) != '\0'; i++)
+        if (c == _whitespace(i))
             return true;
     return false;
 }
+
+// ----- Static Functions
+static char _whitespace(int i) {
+    char spacial_symbol[] = " \n\t"; // trim all these chars without
+    if (i >= 0 && i < (int)strlen(spacial_symbol))
+        return spacial_symbol[i];
+    else
+        return '\0';
+}
+///**
+// * trim string
+// */
+//char *mx_trim(char *s) {
+//    int left;
+//    int right;
+//
+//    //what can trim going from left
+//    left = 0;
+//    while (mx_can_trim(left, s))
+//        left++;
+//    //what can trim going from right
+//    right = strlen(s) - 1;
+//    while (mx_can_trim(right, s))
+//        right--;
+//    return mx_strndup(&s[left], right - left +1);
+//}
 
 //bool mx_can_skip(char c) {
 //    //int len = strlen(slash_plus_symbol);
@@ -95,12 +114,12 @@ bool mx_is_whitespace(char c) {
 
 
 
-bool mx_can_trim(int i, char *s) {
-    if (mx_is_whitespace(s[i])) {
-            return true;
-    }
-    return false;    
-}
+//bool mx_can_trim(int i, char *s) {
+//    if (mx_is_whitespace(s[i])) {
+//            return true;
+//    }
+//    return false;
+//}
 
 //#include <assert.h>
 //#include <stdio.h>

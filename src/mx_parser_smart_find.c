@@ -1,37 +1,20 @@
 #include "parser.h"
 
-bool is_ampersand_pipe(char *exp, char *p, char *op) {
-    // проверить, что это точно & а не && или >&
-    if (strcmp(op, "&") == 0) // if op == &
-        if (*(p + 1) == '&'
-            || (p != exp && *(p - 1) == '&')
-            || (p != exp && *(p - 1) == '>')) {
-            //s += s - p;
-            return true;
-        }
-    // проверить, что это точно | а не || или |&
-//            if (strcmp(mx_get_name_by_id(pipe_operator), op) == 0) // if op == |
-    if (strcmp(op, "|") == 0) // if op == |
-        if (*(p + 1) == '|'
-            || (p != exp && *(p - 1) == '|')
-            || *(p + 1) == '&') {
-            //s += s - p;
-            return true;
-        }
-    return false;
-}
+static bool is_ampersand_pipe(char *exp, char *p, char *op);
+
+// ----    API Functions
 
 /**
- * находит первое вхождение оператора op в выражении exp, 
- * но так, чтобы слева было замкнутое выражение
+ * Finds the first substring so that the left expression is closed.
+ * Search is from left to right
  */
-char *mx_smart_find(char *exp, char *op) {
+char *mx_smart_find(char *exp, char *sbstr) {
     char *p = NULL;
     char *s = exp;
     for (; s != '\0'; s = exp + (p - exp + 1)) {
-        p = strstr(s, op);
+        p = strstr(s, sbstr);
         if (p) {
-            if (is_ampersand_pipe(exp, p, op))
+            if (is_ampersand_pipe(exp, p, sbstr))
                 continue;
             char *tmp = mx_strndup((const char *) exp, p - exp);
             if (mx_is_closed_expression(tmp)) {
@@ -44,6 +27,27 @@ char *mx_smart_find(char *exp, char *op) {
             break;
     }
     return NULL;
+}
+
+// ---------    Static Functions
+static bool is_ampersand_pipe(char *exp, char *p, char *op) {
+    // make sure it is merely & and not && or >&
+    if (strcmp(op, "&") == 0) // if op == &
+        if (*(p + 1) == '&'
+            || (p != exp && *(p - 1) == '&')
+            || (p != exp && *(p - 1) == '>')) {
+            //s += s - p;
+            return true;
+        }
+    // make sure it is merely | and not || or |&
+    if (strcmp(op, "|") == 0) // if op == |
+        if (*(p + 1) == '|'
+            || (p != exp && *(p - 1) == '|')
+            || *(p + 1) == '&') {
+            //s += s - p;
+            return true;
+        }
+    return false;
 }
 
 //#include <assert.h>

@@ -17,5 +17,5 @@ static void free_jobs_list(t_global_environment *gv) {
 
 void mx_free_all(t_global_environment *gv) {
     free_jobs_list(gv);
-    free(gv);
+    mx_delete_global_env(&gv);
 }

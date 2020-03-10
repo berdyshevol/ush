@@ -24,33 +24,7 @@ void mx_parse_words_sequence(char *exp, char **f_wordchain, char **splitter, cha
     mx_strdel(&str);
 }
 
-char *mx_first_word(char *exp) {
-    char *fwc = NULL; // first word-chain
-    char *spl = NULL; // splitter of whitespaces
-    char *rwc = NULL; // rest word-chains
-
-    mx_parse_words_sequence(exp, &fwc, &spl, &rwc);
-    free(spl);
-    free(rwc);
-    return fwc;
-}
-
-bool mx_is_last_word(char *exp) {
-    return exp == NULL;
-}
-
-char *mx_rest_words(char *exp) {
-    char *fwc = NULL; // first word-chain
-    char *spl = NULL; // splitter of whitespaces
-    char *rwc = NULL; // rest word-chains
-
-    mx_parse_words_sequence(exp, &fwc, &spl, &rwc);
-    mx_strdel(&spl);
-    mx_strdel(&fwc);
-    return rwc;
-}
-
-// ----- statics
+// ----- Static Functions
 static void _extract_first_wordchain(char **str, char **f_wordchain) {
     int i; // for loop iterator
     char *temp = NULL;
@@ -73,59 +47,6 @@ static void _extract_first_wordchain(char **str, char **f_wordchain) {
         free(temp);
     }
 }
-
-void mx_trimleft(char **str) {
-    int i;
-    e_mode mode = unquote;
-    char *newstr = NULL;
-
-    if (str == NULL || *str == NULL)
-        return;
-
-    for (i = 0; (*str)[i] != '\0'; i++) {
-        mx_change_mode(&mode, *str, i);
-        if (mode == unquote
-            && mx_is_whitespace((*str)[i]))
-            continue;
-        else
-            break;
-    }
-    newstr = strndup(*str + i, strlen(*str) - i);
-    mx_strdel(str);
-    *str = newstr;
-}
-//static void _extract_first_wordchain(char **str, char **f_wordchain) {
-//    int count_slashes = 0;
-//    int i; // for loop iterator
-//    char *temp = NULL;
-//    *f_wordchain = NULL;
-//
-//    //идти пока не встретим неэкраннированный whitespace и выражение слева замкнутое
-//    for (i = 0; (*str)[i] != '\0'; i++) {
-//        if ((*str)[i] == '\\')
-//            count_slashes++;
-//        else if (mx_is_whitespace((*str)[i])) {
-//            if (count_slashes % 2 == 0) { // whitespace case
-//                // break if expression is closed
-//                char *extract = strndup(*str, i);
-//                if (mx_is_closed_expression(extract)) {
-//                    free(extract);
-//                    break;
-//                }
-//                else
-//                    free(extract);
-//            }
-//            count_slashes = 0;
-//        }
-//    }
-//    //изменить стр и вернуть первый вордчеин
-//    if (i != 0) {
-//        *f_wordchain = strndup(*str, i);
-//        temp = *str;
-//        *str = strndup(*str + i, strlen(*str) - i);
-//        free(temp);
-//    }
-//}
 
 static void _extract_splitter(char **str, char **splitter) {
     int i;

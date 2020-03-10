@@ -3,7 +3,7 @@
 //
 #include "ush.h"
 
-// ---------------------- API
+// ----    API Function
 
 int *mx_pipe_fd_new() {
     int *pipe_fd = malloc(3 * sizeof (int));

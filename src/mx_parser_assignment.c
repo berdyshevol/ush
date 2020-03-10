@@ -4,36 +4,23 @@
 
 #include "parser.h"
 
+static bool _is_valid_myparname(char *exp);
+static bool _is_single_char(char c);
+
+// ----    API Functions
 bool mx_isalpha(char c) {
     return (c >= 'a' && c <= 'z') || (c >='A' && c <= 'Z');
-}
-
-bool mx_is_single_char(char c) {
-    return c == '*' || c == '@' || c == '#' || c == '?'
-           || c == '-' || c == '$' || c == '!';
 }
 
 bool mx_is_valid_parname(char *exp) {
     if (exp == NULL)
         return false;
-    if (mx_is_single_char(exp[0])) {
+    if (_is_single_char(exp[0])) {
         if (exp[1] == '\0')
             return true;
         else
             return false;
     }
-    if (!(exp[0] == '_' || mx_isalpha(exp[0])))
-        return false;
-    for (int i = 1; exp[i]; i++) {
-        if (!(exp[i] == '_' || mx_isalpha(exp[i]) || mx_isdigit(exp[i])))
-            return false;
-    }
-    return true;
-}
-
-bool mx_is_valid_myparname(char *exp) {
-    if (exp == NULL)
-        return false;
     if (!(exp[0] == '_' || mx_isalpha(exp[0])))
         return false;
     for (int i = 1; exp[i]; i++) {
@@ -51,11 +38,29 @@ bool mx_has_assignment(char *exp) {
     p = strstr(exp, "=");
     if (p != NULL) {
         parname = strndup(exp, p - exp);
-        if (mx_is_valid_myparname(parname))
+        if (_is_valid_myparname(parname))
             res = true;
         free(parname);
     }
     return res;
+}
+
+// ---------    Static Functions
+static bool _is_valid_myparname(char *exp) {
+    if (exp == NULL)
+        return false;
+    if (!(exp[0] == '_' || mx_isalpha(exp[0])))
+        return false;
+    for (int i = 1; exp[i]; i++) {
+        if (!(exp[i] == '_' || mx_isalpha(exp[i]) || mx_isdigit(exp[i])))
+            return false;
+    }
+    return true;
+}
+
+static bool _is_single_char(char c) {
+    return c == '*' || c == '@' || c == '#' || c == '?'
+           || c == '-' || c == '$' || c == '!';
 }
 
 //// test valid name

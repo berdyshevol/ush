@@ -4,62 +4,17 @@
 
 #include "evaluator.h"
 
-char *mx_readpipe(int fd) {
-    int size = 1024;
-    char buf[size];
-    int res;
-    if ((res = read(fd, buf, size)) > 0) {
-        return strndup(buf, res-1); // to delete last char which is \n
-    }
-    else return NULL;
-}
+static char *_readpipe(int fd);
+static void _lunch_cmdsubst(t_exp exp, int *fd, t_global_environment *gv);
+static char *_waitread_cmdsubs(int pid, int *fd,
+                               t_eval_result result, t_global_environment *gv );
+static char *mx_get_command_substitution(char *exp, t_eval_result result,
+                                         t_global_environment *gv);
 
-void mx_lunch_cmdsubst(t_exp exp, int *fd, t_global_environment *gv) {
-    if (fd[1] != 1) {
-        dup2(fd[1], 1);
-        close(fd[1]);
-    }
-    close(fd[0]);
-    int exit_no;
-    t_eval_result child_res = mx_eval(exp, gv, NULL, NULL);
-    exit_no = child_res->exit_no;
-    mx_delete_evalresult(&child_res);
-    exit(exit_no);
-}
+// ----    API Function
 
-char *mx_waitread_cmdsubs(int pid, int *fd, t_eval_result result, t_global_environment *gv ) {
-    char * res = NULL;
-
-    mx_smart_wait(pid, result, gv);
-    if (result->status) {
-        res = mx_readpipe(fd[0]);
-    }
-    mx_smart_close_fd(&fd[0], 0);
-    mx_smart_close_fd(&fd[1], 1);
-    return res;
-}
-
-char *mx_get_command_substitution(char *exp, t_eval_result result, t_global_environment *gv) {
-    char *res = NULL;
-    int fd[2];
-    int pid = -1;
-
-    pipe(fd);
-    switch ((pid = fork())) {
-        case -1:
-            result->status = false;
-            break;
-        case 0:
-            mx_lunch_cmdsubst(exp, fd, gv);
-            break;
-        default:
-            res = mx_waitread_cmdsubs(pid, fd, result, gv);
-            break;
-    }
-    return res;
-}
-
-void mx_command_substitution(t_exp *exp, t_eval_result result, t_global_environment *gv) {
+void mx_command_substitution(t_exp *exp, t_eval_result result,
+                             t_global_environment *gv) {
     t_args *args = mx_args_new();
     char *value = NULL;
     bool find_result;
@@ -73,6 +28,65 @@ void mx_command_substitution(t_exp *exp, t_eval_result result, t_global_environm
     }
     mx_args_delete(&args);
 }
+
+// ----- Static Functions
+static char *mx_get_command_substitution(char *exp, t_eval_result result,
+                                         t_global_environment *gv) {
+    char *res = NULL;
+    int fd[2];
+    int pid = -1;
+
+    pipe(fd);
+    switch ((pid = fork())) {
+        case -1:
+            result->status = false;
+            break;
+        case 0:
+            _lunch_cmdsubst(exp, fd, gv);
+            break;
+        default:
+            res = _waitread_cmdsubs(pid, fd, result, gv);
+            break;
+    }
+    return res;
+}
+
+static char *_readpipe(int fd) {
+    int size = 1024;
+    char buf[size];
+    int res;
+    if ((res = read(fd, buf, size)) > 0) {
+        return strndup(buf, res-1); // to delete last char which is \n
+    }
+    else return NULL;
+}
+
+static void _lunch_cmdsubst(t_exp exp, int *fd, t_global_environment *gv) {
+    if (fd[1] != 1) {
+        dup2(fd[1], 1);
+        close(fd[1]);
+    }
+    close(fd[0]);
+    int exit_no;
+    t_eval_result child_res = mx_eval(exp, gv, NULL, NULL);
+    exit_no = child_res->exit_no;
+    mx_delete_evalresult(&child_res);
+    exit(exit_no);
+}
+
+static char *_waitread_cmdsubs(int pid, int *fd,
+                               t_eval_result result, t_global_environment *gv) {
+    char * res = NULL;
+
+    mx_smart_wait(pid, result, gv);
+    if (result->status) {
+        res = _readpipe(fd[0]);
+    }
+    mx_smart_close_fd(&fd[0], 0);
+    mx_smart_close_fd(&fd[1], 1);
+    return res;
+}
+
 
 //void mx_command_substitution(t_exp *exp, t_eval_result result, t_global_environment *gv) {
 //    int start = 0;

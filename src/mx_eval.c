@@ -123,27 +123,27 @@ t_exp mx_rest_operands(t_exp ops) {
 //}
 
 // Expansions
-t_eval_result mx_lookup_variable_value(t_exp exp, t_global_environment *gv) {
-    t_eval_result result = mx_new_evalresult();
-    char *name = mx_extract_unary_operand(exp);
-    char *env_var_value = NULL;
-    char *local_var_value = NULL;
-    char *value = NULL;
-
-    env_var_value = getenv(name);
-    if (env_var_value == NULL) {
-        local_var_value = mx_env_get_value(name, gv->vars);
-        if (local_var_value != NULL)
-            value = local_var_value;
-    }
-    else
-        value = strdup(env_var_value);
-
-    result->text = value;
-
-    mx_strdel(&name);
-    return result;
-}
+//t_eval_result mx_lookup_variable_value(t_exp exp, t_global_environment *gv) {
+//    t_eval_result result = mx_new_evalresult();
+//    char *name = mx_extract_unary_operand(exp);
+//    char *env_var_value = NULL;
+//    char *local_var_value = NULL;
+//    char *value = NULL;
+//
+//    env_var_value = getenv(name);
+//    if (env_var_value == NULL) {
+//        local_var_value = mx_env_get_value(name, gv->vars);
+//        if (local_var_value != NULL)
+//            value = local_var_value;
+//    }
+//    else
+//        value = strdup(env_var_value);
+//
+//    result->text = value;
+//
+//    mx_strdel(&name);
+//    return result;
+//}
 
 // t_eval_result mx_file_extension(t_exp exp, t_global_environment *gv) {
 //     char *operand = mx_extract_unary_operand(exp);
@@ -155,13 +155,13 @@ t_eval_result mx_lookup_variable_value(t_exp exp, t_global_environment *gv) {
 //     return result;
 // }
 
-t_eval_result  mx_eval_command_substitution(t_exp exp, t_global_environment *gv) {
-    char *seq = mx_extract_unary_operand(exp);
-    // TODO: где-то здесь нужно запусть новый процесс и отловить его результат
-    t_eval_result result = mx_eval(seq, gv, NULL, NULL);
-    mx_strdel(&seq);
-    return result;
-}
+//t_eval_result  mx_eval_command_substitution(t_exp exp, t_global_environment *gv) {
+//    char *seq = mx_extract_unary_operand(exp);
+//    // TODO: где-то здесь нужно запусть новый процесс и отловить его результат
+//    t_eval_result result = mx_eval(seq, gv, NULL, NULL);
+//    mx_strdel(&seq);
+//    return result;
+//}
 
 // eval_assignment
 t_exp mx_assignment_variable(t_exp exp) {

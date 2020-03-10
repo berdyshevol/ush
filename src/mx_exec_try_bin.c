@@ -1,45 +1,9 @@
 #include "ush.h"
 
-int mx_wexitstatud(int x) {
-    return x >> 8;
-}
+static int mx_wexitstatud(int x);
+static void exec_child(char *cmd, t_global_environment *gv);
 
-void mx_print_nocmd(char *cmd) {
-    mx_printerr("ush: ");
-    if (strlen(cmd) < 257) {
-        mx_printerr("command not found: ");
-        mx_printerr(cmd);
-        mx_printerr("\n");
-    }
-    else {
-        mx_printerr("file name too long: ");
-        mx_printerr(cmd);
-        mx_printerr("\n");
-    }
-    exit(127);
-}
-
-static void exec_child(char *cmd, t_global_environment *gv) {
-//    extern char **environ;
-
-    if (isatty(STDIN_FILENO)){
-        setegid(getpid());
-        setpgid(getpid(), 0);
-        tcsetpgrp(STDIN_FILENO, getpgrp());
-        tcsetpgrp(STDOUT_FILENO, getpgrp());
-    }
-    if (mx_apply_redirect(gv->cnf->redirections)) {
-        if (execvp(cmd, gv->cnf->agv) <  0) {
-            mx_print_nocmd(cmd);
-        }
-        mx_reset_redirections(gv->cnf->redirections);
-    }
-    else if (execvp(cmd, gv->cnf->agv) < 0) {
-        mx_print_nocmd(cmd);
-    }
-    exit(0);    
-}
-
+// ----    API Function
 void mx_smart_wait(int pid, t_eval_result result, t_global_environment *gv) {
     int status;
 
@@ -86,3 +50,30 @@ bool mx_try_bin(char *cmd, t_eval_result result, t_global_environment *gv) {
     }
     return true;
 }
+
+// ----- Static Functions
+static void exec_child(char *cmd, t_global_environment *gv) {
+//    extern char **environ;
+
+    if (isatty(STDIN_FILENO)){
+        setegid(getpid());
+        setpgid(getpid(), 0);
+        tcsetpgrp(STDIN_FILENO, getpgrp());
+        tcsetpgrp(STDOUT_FILENO, getpgrp());
+    }
+    if (mx_apply_redirect(gv->cnf->redirections)) {
+        if (execvp(cmd, gv->cnf->agv) <  0) {
+            mx_print_nocmd(cmd);
+        }
+        mx_reset_redirections(gv->cnf->redirections);
+    }
+    else if (execvp(cmd, gv->cnf->agv) < 0) {
+        mx_print_nocmd(cmd);
+    }
+    exit(0);    
+}
+
+static int mx_wexitstatud(int x) {
+    return x >> 8;
+}
+

@@ -85,38 +85,27 @@ typedef struct {
     char *name;
 } t_args;
 
-char mx_whitespace(int i);
-char mx_slash_plus_symbol(int i);
 bool mx_is_whitespace(char c);
-bool mx_can_skip(char c);
-bool mx_can_trim(int i, char *s);
 
-//e_operator_id mx_get_op_id(char *exp); deprecated function
+// parse binary operators
 e_operator_id mx_get_binary_opid(char *exp);
-e_operator_id mx_get_unary_opid(char *exp);
-//e_operator_id mx_get_word_id(char *exp);
-
-bool mx_has_assignment(char *exp);
-bool mx_is_valid_parname(char *exp);
-bool mx_isalpha(char c);
-//bool mx_is_valid_pathname(char *exp);
-char *mx_extract_unary_operand(char *exp);
-//bool mx_has_open_closing_exp(char *exp, char *open, char *closing);
 char *mx_get_name_by_id(e_operator_id operator_name);
 char *mx_get_op_name(char *exp);
 e_exp_type mx_get_expressiontype_by_id(e_operator_id operator_name);
+
+// parameter assignment
+bool mx_has_assignment(char *exp);
+bool mx_is_valid_parname(char *exp);
+bool mx_isalpha(char c);
+
 bool mx_has_expression_operator(char *exp, char *operator);
 bool mx_is_closed_expression(char *s);
-//int mx_is_opening(int i, char *s, int count_slash);
-//int mx_is_closing(int i, char *s, int count_slash);
-void mx_get_first_word(char *exp, char **first_word, char **rest_exp);
-bool mx_is_single_char(char c);
-char *mx_smart_find(char *exp, char *op);
+
+char *mx_smart_find(char *exp, char *sbstr);
 void mx_split_two_str(char *exp, char *operator,
                       char **left_string, char **right_string);
 char *mx_strjoin_with_space(char *s1, char *s2);
 char *mx_left_exp(char *exp, char *delim);
-char *mx_trim(char *s);
 char *mx_right_exp(char *exp, char *delim);
 
 // word chain sequence
@@ -124,14 +113,17 @@ void mx_parse_words_sequence(char *exp, char **f_wordchain, char **splitter, cha
 char *mx_first_word(char *exp);
 bool mx_is_last_word(char *exp);
 char *mx_rest_words(char *exp);
+
+
 void mx_trimleft(char **str);
 
-
-// parameter
+// parameter substitution
 bool mx_find_param(char *exp, int *start, int *end, char **name);
 
 // command substitution
 bool mx_find_command_substitution(char *exp, int *start, int *end, char **name);
+e_return mx__cmdsubs_type_one(char *exp, int i, t_args *args);
+e_return mx__cmdsubs_type_two(char *exp, int i, t_args *args);
 
 // file expansion
 bool mx_find_file_expansion(char *exp, int *start, int *end, char **name);
@@ -142,7 +134,6 @@ void mx_set(t_args *args, int *start, int *end, char **name);
 t_args *mx_args_new(void);
 void mx_args_delete(t_args **args);
 char *mx_strstr_esc(char *exp, char *substr);
-//char *mx_strstr_esc_rev(char *exp, char *substr);
 int mx_count_esc(char *exp, int position);
 void mx_change_mode(e_mode *mode, char *exp, int pos);
 

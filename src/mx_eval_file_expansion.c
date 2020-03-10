@@ -4,7 +4,29 @@
 
 #include "evaluator.h"
 
-char *mx_get_file_substitiution(char *name) {
+static char *_get_file_substitiution(char *name);
+
+// ----    API Function
+
+void mx_file_expansion(t_exp *exp) {
+    int start = 0;
+    int end = 0;
+    char *name = NULL;
+    char *value = NULL;
+    bool find_result;
+
+    find_result = mx_find_file_expansion(*exp, &start, &end, &name);
+    while (find_result) {
+        value = _get_file_substitiution(name);
+        mx_insert(exp, start, end, value);
+        mx_strdel(&value);
+        mx_strdel(&name);
+        find_result = mx_find_param(*exp, &start, &end, &name);
+    }
+}
+
+// ----- Static Functions
+static char *_get_file_substitiution(char *name) {
     char *value = NULL;
     char *tmp = NULL;
     if (strcmp(name, "~-") == 0) {
@@ -21,23 +43,6 @@ char *mx_get_file_substitiution(char *name) {
         //free(tmp);
     }
     return value;
-}
-
-void mx_file_expansion(t_exp *exp) {
-    int start = 0;
-    int end = 0;
-    char *name = NULL;
-    char *value = NULL;
-    bool find_result;
-
-    find_result = mx_find_file_expansion(*exp, &start, &end, &name);
-    while (find_result) {
-        value = mx_get_file_substitiution(name);
-        mx_insert(exp, start, end, value);
-        mx_strdel(&value);
-        mx_strdel(&name);
-        find_result = mx_find_param(*exp, &start, &end, &name);
-    }
 }
 
 //////test mx_parameter_expansion

@@ -1,5 +1,7 @@
 #include "parser.h"
 
+// ----    API Function
+
 void mx_split_two_str(char *exp, char *operator,
                       char **left_string, char **right_string) {
     char *left_substr = NULL;

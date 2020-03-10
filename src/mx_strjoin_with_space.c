@@ -4,9 +4,10 @@
 
 #include "libmx.h"
 #include <string.h>
+
 static bool is_empty(char *s);
 
-
+// ----    API Function
 char *mx_strjoin_with_space(char *s1, char *s2) {
     if (is_empty(s1) && is_empty(s2))
         return NULL;
@@ -22,6 +23,7 @@ char *mx_strjoin_with_space(char *s1, char *s2) {
     return res;
 }
 
+// ----- Static Functions
 static bool is_empty(char *s) {
     if (s == NULL)
         return true;

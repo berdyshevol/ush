@@ -5,6 +5,19 @@ static void helper2(int id, bool *flag, int *index);
 static int mx_is_closing(int i, char *s, int count_slash);
 static int mx_is_opening(int i, char *s, int count_slash);
 
+// ----    API Functions
+
+/**
+ *
+ * @param s - incoming expression
+ * @return true if expression is closed, otherwise fasle.
+ * The closed expressions are:
+ *     1) "  "
+ *     2) '  '
+ *     3) `  `
+ *     4) ${  }
+ *     5  $(  )
+ */
 bool mx_is_closed_expression(char *s) {
     int count_slash = 0;
     bool flag = true;
@@ -26,6 +39,7 @@ bool mx_is_closed_expression(char *s) {
     return flag;
 }
 
+// ---------    Static Functions
 static void helper1(int id, bool *flag, int *index) {
     if (id > -1) {
         *flag = false;

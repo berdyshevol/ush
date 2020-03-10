@@ -1,9 +1,9 @@
 #include "parser.h"
 
-static char *opening_chars_unary_op[] = {"'", "\"", "${", "$(", "$", "`", "~",  NULL};
-static char *closing_chars_unary_op[] = {"'", "\"", "}",  ")",  "",  "`",  "", NULL};
-
-static bool mx_has_open_closing_exp(char *exp, char *open_exp, char *closing_exp);
+//static char *opening_chars_unary_op[] = {"'", "\"", "${", "$(", "$", "`", "~",  NULL};
+//static char *closing_chars_unary_op[] = {"'", "\"", "}",  ")",  "",  "`",  "", NULL};
+//
+//static bool mx_has_open_closing_exp(char *exp, char *open_exp, char *closing_exp);
     
 /**
  * выражение => номер оператора (унарного)
@@ -16,45 +16,45 @@ static bool mx_has_open_closing_exp(char *exp, char *open_exp, char *closing_exp
  * 5.   `..`
  * 6.   ~
  */
-e_operator_id mx_get_unary_opid(char *exp) {
-    char *trimmed;
-    e_operator_id res = no_operator;
+//e_operator_id mx_get_unary_opid(char *exp) {
+//    char *trimmed;
+//    e_operator_id res = no_operator;
+//
+//    if (!mx_is_closed_expression(exp))
+//        return unclosed_expression;
+//
+//    trimmed = mx_trim(exp);
+//    for (int i = 0; opening_chars_unary_op[i]; i++) {
+//        if (mx_has_open_closing_exp(trimmed,
+//                                    opening_chars_unary_op[i],
+//                                    closing_chars_unary_op[i])) {
+//            res = all_binary_operators + i + 1;
+//            // if (res == tilda) {
+//            //     if (!mx_is_valid_pathname(trimmed + 1))
+//            //         res = no_operator;
+//            // }
+//            break;
+//        }
+//    }
+//    free(trimmed);
+//    return res;
+//}
 
-    if (!mx_is_closed_expression(exp))
-        return unclosed_expression;
-    
-    trimmed = mx_trim(exp);
-    for (int i = 0; opening_chars_unary_op[i]; i++) {
-        if (mx_has_open_closing_exp(trimmed,
-                                    opening_chars_unary_op[i], 
-                                    closing_chars_unary_op[i])) {
-            res = all_binary_operators + i + 1;
-            // if (res == tilda) {
-            //     if (!mx_is_valid_pathname(trimmed + 1))
-            //         res = no_operator;
-            // }
-            break;
-        }
-    }
-    free(trimmed);
-    return res;
-}
-
-char *mx_extract_unary_operand(char *exp) {
-    e_operator_id opid = mx_get_unary_opid(exp);
-    if (opid == no_operator || opid == unclosed_expression)
-        return NULL;
-
-    char *trimmed = mx_trim(exp);
-    char *res = NULL;
-    int left_len = strlen(opening_chars_unary_op[opid - all_binary_operators - 1]);
-    int right_len = strlen(closing_chars_unary_op[opid - all_binary_operators - 1]);
-    int len = strlen(trimmed);
-
-    res = mx_strndup(trimmed + left_len, len - left_len - right_len);
-    free(trimmed);
-    return res;
-}
+//char *mx_extract_unary_operand(char *exp) {
+//    e_operator_id opid = mx_get_unary_opid(exp);
+//    if (opid == no_operator || opid == unclosed_expression)
+//        return NULL;
+//
+//    char *trimmed = mx_trim(exp);
+//    char *res = NULL;
+//    int left_len = strlen(opening_chars_unary_op[opid - all_binary_operators - 1]);
+//    int right_len = strlen(closing_chars_unary_op[opid - all_binary_operators - 1]);
+//    int len = strlen(trimmed);
+//
+//    res = mx_strndup(trimmed + left_len, len - left_len - right_len);
+//    free(trimmed);
+//    return res;
+//}
 
 //bool mx_is_valid_pathname(char *exp) {
 //    if (exp != NULL)
@@ -66,26 +66,26 @@ char *mx_extract_unary_operand(char *exp) {
 //        return false;
 //}
 
-static bool mx_has_open_closing_exp(char *exp, char *open_exp, char *closing_exp) {
-    char *trimmed = NULL;
-    char *start_str = NULL;
-    char *end_str = NULL;
-    bool res = false;
-    int len = 0;
-
-    trimmed = mx_trim(exp);
-    start_str = mx_strndup(trimmed, strlen(open_exp));
-    if (strcmp(start_str, open_exp) == 0) {
-        len = strlen(closing_exp);
-        end_str = mx_strndup(trimmed + (strlen(trimmed) - len), len);
-        if (strcmp(end_str, closing_exp) == 0)
-            res = true;
-        free(end_str);
-    }
-    free(start_str);
-    free(trimmed);
-    return res;
-}
+//static bool mx_has_open_closing_exp(char *exp, char *open_exp, char *closing_exp) {
+//    char *trimmed = NULL;
+//    char *start_str = NULL;
+//    char *end_str = NULL;
+//    bool res = false;
+//    int len = 0;
+//
+//    trimmed = mx_trim(exp);
+//    start_str = mx_strndup(trimmed, strlen(open_exp));
+//    if (strcmp(start_str, open_exp) == 0) {
+//        len = strlen(closing_exp);
+//        end_str = mx_strndup(trimmed + (strlen(trimmed) - len), len);
+//        if (strcmp(end_str, closing_exp) == 0)
+//            res = true;
+//        free(end_str);
+//    }
+//    free(start_str);
+//    free(trimmed);
+//    return res;
+//}
 //
 // #include <assert.h>
 // int main(void) {

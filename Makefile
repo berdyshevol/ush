@@ -34,7 +34,11 @@ SRC =   main.c \
 		mx_eval_command_substitution.c \
 		mx_eval_file_expansion.c \
 		mx_eval_parameter_expansion.c \
-		mx_eval_redirections.c \
+		mx_eval_redirections1.c \
+		mx_eval_redirections2.c \
+		mx_eval_redirections3.c \
+		mx_eval_redirections4.c \
+		mx_eval_redirections5.c \
 		mx_exec_apply_pipe.c \
 		mx_exec_try_bin.c \
 		mx_execute.c \
@@ -51,13 +55,16 @@ SRC =   main.c \
 		mx_liststr_push_front.c \
 		mx_new_delete_config.c \
 		mx_new_evalresult.c \
-		mx_parse_words_sequence.c \
+		mx_parse_words_sequence1.c \
+		mx_parse_words_sequence2.c \
 		mx_parser_assignment.c \
-		mx_parser_find_command_substitution.c \
+		mx_parser_change_mode.c \
+		mx_parser_find_command_substitution1.c \
+		mx_parser_find_command_substitution2.c \
+		mx_parser_find_command_substitution3.c \
 		mx_parser_find_file_expansion.c \
 		mx_parser_find_param.c \
 		mx_parser_get_binary_opid.c \
-		mx_parser_get_op_id.c \
 		mx_parser_get_op_name.c \
 		mx_parser_get_operator_info_byid.c \
 		mx_parser_get_unary_opid.c \
@@ -67,7 +74,6 @@ SRC =   main.c \
 		mx_parser_split_two_str.c \
 		mx_parser_strstr_esc.c \
 		mx_parser_trim.c \
-		mx_parser_wordchain.c \
 		mx_print_prompt.c \
 		mx_print_error_messages.c \
 		mx_read_input.c \

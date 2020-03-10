@@ -4,7 +4,6 @@
 #include "parser.h"
 
 char *mx_get_op_name(char *exp) {
-    //return mx_get_name_by_id(mx_get_op_id(exp));
     return mx_get_name_by_id(mx_get_binary_opid(exp));
 }
 //

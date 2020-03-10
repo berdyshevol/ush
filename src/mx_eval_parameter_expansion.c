@@ -3,6 +3,31 @@
 //
 #include "evaluator.h"
 
+static char *_get_value(char *varname, t_global_environment *gv);
+
+// ----    API Function
+
+/**
+ * Finds and substitutes all parameters
+ * @param exp - mutable
+ */
+void mx_parameter_expansion(t_exp *exp, t_global_environment *gv) {
+    int start = 0;
+    int end = 0;
+    char *name = NULL;
+    char *value = NULL;
+    bool find_result;
+
+    find_result = mx_find_param(*exp, &start, &end, &name);
+    while (find_result) {
+        value = _get_value(name, gv);
+        mx_insert(exp, start, end, value);
+        mx_strdel(&value);
+        mx_strdel(&name);
+        find_result = mx_find_param(*exp, &start, &end, &name);
+    }
+}
+
 void mx_insert(char **exp, int start, int end, char *word) {
     char *first = mx_strndup(*exp, start);
     char *last = mx_strndup(*exp + end + 1, mx_strlen(*exp) - end - 1);
@@ -16,7 +41,9 @@ void mx_insert(char **exp, int start, int end, char *word) {
     *exp = s2;
 }
 
-char *mx_get_value(char *varname, t_global_environment *gv) {
+// ----- Static Functions
+
+static char *_get_value(char *varname, t_global_environment *gv) {
     char *env_var_value = NULL;
     char *local_var_value = NULL;
     char *value = NULL;
@@ -32,23 +59,6 @@ char *mx_get_value(char *varname, t_global_environment *gv) {
     else
         value = strdup(env_var_value);
     return value;
-}
-
-void mx_parameter_expansion(t_exp *exp, t_global_environment *gv) {
-    int start = 0;
-    int end = 0;
-    char *name = NULL;
-    char *value = NULL;
-    bool find_result;
-
-    find_result = mx_find_param(*exp, &start, &end, &name);
-    while (find_result) {
-        value = mx_get_value(name, gv);
-        mx_insert(exp, start, end, value);
-        mx_strdel(&value);
-        mx_strdel(&name);
-        find_result = mx_find_param(*exp, &start, &end, &name);
-    }
 }
 
 //////test mx_parameter_expansion

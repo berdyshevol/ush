@@ -4,62 +4,16 @@
 
 #include "parser.h"
 
-e_return param_expans_typeone(char *exp, char *find_begin, t_args *args) {
-    if (find_begin[1] == '{') {
-        args->start = find_begin - exp;
-        char *find_end = mx_strstr_esc(find_begin, "}");
-        if (find_end == NULL) {
-            //*end = strlen(exp) - 1;
-            mx_print_oddnumberofquotes();
-            return break_loop;
-        }
-        else {
-            args->end = find_end - exp;
-            args->name = strndup(exp + args->start + 2, args->end  - args->start - 2);
-            return return_true;
-        }
-    }
-    return continue_loop;
-}
+static e_return param_expans_typeone(char *exp,
+        char *find_begin, t_args *args);
+static e_return param_expans_typeotwo(char *exp,
+        char *find_begin, t_args *args);
+static e_return param_expans_helper(char *exp,
+        char *find_begin, t_args *args);
+static e_return param_expans(char *exp, int i,
+        e_mode mode, t_args *args);
 
-e_return param_expans_typeotwo(char *exp, char *find_begin, t_args *args) {
-    args->start = find_begin - exp;
-    int i = 1;
-    char *temp = strndup(find_begin + 1, i);
-    while (mx_is_valid_parname(temp) && find_begin[i]) {
-        free(temp);
-        i++;
-        temp = strndup(find_begin + 1, i);
-    }
-    free(temp);
-    if (args->start != find_begin - exp + i - 1) {
-        args->end = find_begin - exp + i - 1;
-        args->name = strndup(exp + args->start + 1, args->end - args->start);
-        return return_true;
-    }
-    return continue_loop;
-}
-
-e_return param_expans_helper(char *exp, char *find_begin, t_args *args) {
-    if (mx_count_esc(exp, find_begin - exp) % 2 != 0)
-        return continue_loop;
-    e_return res = param_expans_typeone(exp, find_begin, args);
-    if (res != continue_loop)
-        return res;
-
-    return param_expans_typeotwo(exp, find_begin, args);
-}
-
-e_return param_expans(char *exp, int i, e_mode mode, t_args *args) {
-    char *find_begin;
-    if (exp[i] == '$' && mode != quote) {
-        find_begin = &exp[i];
-        return param_expans_helper(exp, find_begin, args);
-    }
-    else
-        return continue_loop;
-}
-
+// ----    API Functions
 bool mx_find_param(char *exp, int *start, int *end, char **name) {
     e_mode mode = unquote;
 
@@ -80,6 +34,66 @@ bool mx_find_param(char *exp, int *start, int *end, char **name) {
     mx_args_delete(&args);
     mx_reset(start, end, name);
     return false;
+}
+
+// ---------    Static Functions
+static e_return param_expans_typeone(char *exp,
+                                     char *find_begin, t_args *args) {
+    if (find_begin[1] == '{') {
+        args->start = find_begin - exp;
+        char *find_end = mx_strstr_esc(find_begin, "}");
+        if (find_end == NULL) {
+            //*end = strlen(exp) - 1;
+            mx_print_oddnumberofquotes();
+            return break_loop;
+        }
+        else {
+            args->end = find_end - exp;
+            args->name = strndup(exp + args->start + 2, args->end  - args->start - 2);
+            return return_true;
+        }
+    }
+    return continue_loop;
+}
+
+static e_return param_expans_typeotwo(char *exp,
+                                      char *find_begin, t_args *args) {
+    args->start = find_begin - exp;
+    int i = 1;
+    char *temp = strndup(find_begin + 1, i);
+    while (mx_is_valid_parname(temp) && find_begin[i]) {
+        free(temp);
+        i++;
+        temp = strndup(find_begin + 1, i);
+    }
+    free(temp);
+    if (args->start != find_begin - exp + i - 1) {
+        args->end = find_begin - exp + i - 1;
+        args->name = strndup(exp + args->start + 1, args->end - args->start);
+        return return_true;
+    }
+    return continue_loop;
+}
+
+static e_return param_expans_helper(char *exp,
+                                    char *find_begin, t_args *args) {
+    if (mx_count_esc(exp, find_begin - exp) % 2 != 0)
+        return continue_loop;
+    e_return res = param_expans_typeone(exp, find_begin, args);
+    if (res != continue_loop)
+        return res;
+
+    return param_expans_typeotwo(exp, find_begin, args);
+}
+
+static e_return param_expans(char *exp, int i, e_mode mode, t_args *args) {
+    char *find_begin;
+    if (exp[i] == '$' && mode != quote) {
+        find_begin = &exp[i];
+        return param_expans_helper(exp, find_begin, args);
+    }
+    else
+        return continue_loop;
 }
 
 ////test mx_find_param
