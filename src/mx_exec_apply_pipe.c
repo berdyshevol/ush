@@ -14,31 +14,8 @@ int *mx_pipe_fd_new() {
     return pipe_fd;
 }
 
-// free and close
-//void mx_pipe_fd_delete(int **pipe_fd) {
-//    if (pipe_fd != NULL && *pipe_fd != NULL) {
-//        if (mx_fd_is_valid((*pipe_fd)[0]))
-//            mx_smart_close_fd(&(*pipe_fd)[0], 0);
-//        if (mx_fd_is_valid((*pipe_fd)[1]))
-//            mx_smart_close_fd(&(*pipe_fd)[1], 1);
-//        if (mx_fd_is_valid((*pipe_fd)[2]))
-//            mx_smart_close_fd(&(*pipe_fd)[2], 0);
-//        if (mx_fd_is_valid((*pipe_fd)[3]))
-//            mx_smart_close_fd(&(*pipe_fd)[3], 1);
-//        free(*pipe_fd);
-//        *pipe_fd = NULL;
-//    }
-//}
 void mx_pipe_fd_delete(int **pipe_fd) {
     if (pipe_fd != NULL && *pipe_fd != NULL) {
-//        if (mx_fd_is_valid((*pipe_fd)[0]))
-//            mx_smart_close_fd(&(*pipe_fd)[0], 0);
-//        if (mx_fd_is_valid((*pipe_fd)[1]))
-//            mx_smart_close_fd(&(*pipe_fd)[1], 1);
-//        if (mx_fd_is_valid((*pipe_fd)[2]))
-//            mx_smart_close_fd(&(*pipe_fd)[2], 0);
-//        if (mx_fd_is_valid((*pipe_fd)[3]))
-//            mx_smart_close_fd(&(*pipe_fd)[3], 1);
         free(*pipe_fd);
         *pipe_fd = NULL;
     }
@@ -57,30 +34,17 @@ int mx_fd_is_valid(int fd) {
     return fcntl(fd, F_GETFD) != -1 || errno != EBADF;
 }
 
-void mx_reset_pipefd(int *pipe_fd) {
-    if (pipe_fd == NULL)
-        return;
-    if (pipe_fd[2] != 0) {
-        dup2(pipe_fd[2], 0);
-        mx_smart_close_fd(&pipe_fd[2], 0);
-    }
-    if (pipe_fd[3] != 1) {
-        dup2(pipe_fd[3], 1);
-        mx_smart_close_fd(&pipe_fd[3], 1);
-    }
-}
-
-//bool mx_has_pipe(int *pipe_fd) {
-//    bool res = false;
+//void mx_reset_pipefd(int *pipe_fd) {
 //    if (pipe_fd == NULL)
-//        return res;
-//    if (pipe_fd[0] != 0) {
-//        res = true;
+//        return;
+//    if (pipe_fd[2] != 0) {
+//        dup2(pipe_fd[2], 0);
+//        mx_smart_close_fd(&pipe_fd[2], 0);
 //    }
-//    if (pipe_fd[1] != 1) {
-//        res = true;
+//    if (pipe_fd[3] != 1) {
+//        dup2(pipe_fd[3], 1);
+//        mx_smart_close_fd(&pipe_fd[3], 1);
 //    }
-//    return res;
 //}
 
 bool mx_has_pipe(int *pipe_fd) {
@@ -97,31 +61,13 @@ bool mx_has_pipe(int *pipe_fd) {
 //    bool res = false;
 //    if (pipe_fd == NULL)
 //        return res;
-//    if (pipe_fd[0] != 0) {
-//        pipe_fd[2] = dup(pipe_fd[0]);
-//        dup2(pipe_fd[0], 0);
+//    if (pipe_fd[1] != 0 || pipe_fd[1] != 1) {
+//        dup2(pipe_fd[0], pipe_fd[1]);
 //        close(pipe_fd[0]);
-//        res = true;
-//    }
-//    if (pipe_fd[1] != 1) {
-//        pipe_fd[3] = dup(pipe_fd[1]);
-//        dup2(pipe_fd[1], 1);  // !!!!!!!!!!!!!!!!
-//        close(pipe_fd[1]);
 //        res = true;
 //    }
 //    return res;
 //}
-bool  mx_apply_pipe(int *pipe_fd) {
-    bool res = false;
-    if (pipe_fd == NULL)
-        return res;
-    if (pipe_fd[1] != 0 || pipe_fd[1] != 1) {
-        dup2(pipe_fd[0], pipe_fd[1]);
-        close(pipe_fd[0]);
-        res = true;
-    }
-    return res;
-}
 
 //// test void mx_pipe_fd_delete(int **pipe_fd) {
 //#include <assert.h>
@@ -152,4 +98,4 @@ bool  mx_apply_pipe(int *pipe_fd) {
 //    system("leaks -q ush");
 //    return 0;
 //}
-
+//

@@ -1,26 +1,29 @@
 #include "ush.h"
 
-static t_pair_cmd_name builtin[] = {
-        {"export", mx_builtin_export},
-        {"unset", mx_builtin_unset},
-        {"exit", mx_builtin_exit},
-        {"env", mx_builtin_env},
-        {"cd", mx_builtin_cd},
-        {"pwd", mx_builtin_pwd},
-        {"which", mx_builtin_which},
-        {"echo", mx_builtin_echo},
-        {"fg", mx_builtin_fg},
-        {"jobs", mx_jobs},
-        {"yes", mx_yes},
-        {"true", mx_true},
-        {"false", mx_false},
-        {NULL, NULL}
-};
+static t_pair_cmd_name builtin(int i) {
+    t_pair_cmd_name builtin[] = {
+            {"export", mx_builtin_export},
+            {"unset", mx_builtin_unset},
+            {"exit", mx_builtin_exit},
+            {"env", mx_builtin_env},
+            {"cd", mx_builtin_cd},
+            {"pwd", mx_builtin_pwd},
+            {"which", mx_builtin_which},
+            {"echo", mx_builtin_echo},
+            {"fg", mx_builtin_fg},
+            {"jobs", mx_jobs},
+            {"yes", mx_yes},
+            {"true", mx_true},
+            {"false", mx_false},
+            {NULL, NULL}
+    };
+    return builtin[i];
+}
 
 static int _find_builtin(char *cmd) {
     int i = 0;
-    while (builtin[i].name) {
-        if (strcmp(cmd, builtin[i].name) == 0) {
+    while (builtin(i).name) {
+        if (strcmp(cmd, builtin(i).name) == 0) {
             return i;
         }
         i++;
@@ -36,24 +39,14 @@ void mx_execute_builtin_innewproc(int id, t_eval_result result, t_global_environ
             perror ("fork");
             break;
         case 0:
-            if (mx_has_pipe(gv->cnf->pipe_fd)) {
-                if (gv->cnf->pipe_fd[1] != 1) {
-                    dup2(gv->cnf->pipe_fd[1], 1);
-                    close(gv->cnf->pipe_fd[1]);
-                }
-                close(gv->cnf->pipe_fd[0]);
-            }
+            if (mx_has_pipe(gv->cnf->pipe_fd))
+                mx_apply_pipe_to_proc(1, 0, gv);
             mx_run_builtin(id, result, gv);
             exit(result->exit_no);
             break;
         default:
-            if (mx_has_pipe(gv->cnf->pipe_fd)) {
-                if (gv->cnf->pipe_fd[0] != 0) {
-                    dup2(gv->cnf->pipe_fd[0], 0);
-                    close(gv->cnf->pipe_fd[0]);
-                }
-                close(gv->cnf->pipe_fd[1]);
-            }
+            if (mx_has_pipe(gv->cnf->pipe_fd))
+                mx_apply_pipe_to_proc(0, 1, gv);
             mx_smart_wait(pid, result, gv);
             break;
     }
@@ -61,14 +54,13 @@ void mx_execute_builtin_innewproc(int id, t_eval_result result, t_global_environ
 
 void mx_run_builtin(int id, t_eval_result result, t_global_environment *gv) {
     int exit_status;
-//    t_redirect *redir = gv->cnf->redirections;
 
     if (mx_apply_redirect(gv->cnf->redirections)) {
-        exit_status = builtin[id].cmd(gv);
+        exit_status = builtin(id).cmd(gv);
         mx_reset_redirections(gv->cnf->redirections);
     }
     else
-        exit_status = builtin[id].cmd(gv);
+        exit_status = builtin(id).cmd(gv);
 
     char *itoa = mx_itoa(exit_status);
     mx_env_set_var("?", itoa, &(gv->vars));
@@ -100,8 +92,7 @@ bool try_builtin(char *cmd, t_eval_result result, t_global_environment *gv) {
         return false;
 }
 
-t_eval_result
-mx_execute(char *command, t_global_environment *gv) {
+t_eval_result mx_execute(char *command, t_global_environment *gv) {
     t_eval_result result = mx_new_evalresult();
 
     if (try_builtin(command, result, gv)) {

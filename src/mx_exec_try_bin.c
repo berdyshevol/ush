@@ -5,7 +5,7 @@ int mx_wexitstatud(int x) {
 }
 
 void mx_print_nocmd(char *cmd) {
-    mx_printerr("ush ");
+    mx_printerr("ush: ");
     if (strlen(cmd) < 257) {
         mx_printerr("command not found: ");
         mx_printerr(cmd);
@@ -20,6 +20,8 @@ void mx_print_nocmd(char *cmd) {
 }
 
 static void exec_child(char *cmd, t_global_environment *gv) {
+//    extern char **environ;
+
     if (isatty(STDIN_FILENO)){
         setegid(getpid());
         setpgid(getpid(), 0);
@@ -56,6 +58,14 @@ void mx_smart_wait(int pid, t_eval_result result, t_global_environment *gv) {
     mx_strdel(&itoa);
 }
 
+void mx_apply_pipe_to_proc(int fd_out, int fd_in, t_global_environment *gv) {
+    if (gv->cnf->pipe_fd[fd_out] != fd_out) {
+        dup2(gv->cnf->pipe_fd[fd_out], fd_out);
+        close(gv->cnf->pipe_fd[fd_out]);
+    }
+    close(gv->cnf->pipe_fd[fd_in]);
+}
+
 bool mx_try_bin(char *cmd, t_eval_result result, t_global_environment *gv) {
     int pid;
 
@@ -64,23 +74,13 @@ bool mx_try_bin(char *cmd, t_eval_result result, t_global_environment *gv) {
             perror ("fork");
             break;
         case 0:
-            if (mx_has_pipe(gv->cnf->pipe_fd)) {
-                if (gv->cnf->pipe_fd[1] != 1) {
-                    dup2(gv->cnf->pipe_fd[1], 1);
-                    close(gv->cnf->pipe_fd[1]);
-                }
-                close(gv->cnf->pipe_fd[0]);
-            }
+            if (mx_has_pipe(gv->cnf->pipe_fd))
+                mx_apply_pipe_to_proc(1, 0, gv);
             exec_child(cmd, gv);
             break;
         default:
-            if (mx_has_pipe(gv->cnf->pipe_fd)) {
-                if (gv->cnf->pipe_fd[0] != 0) {
-                    dup2(gv->cnf->pipe_fd[0], 0);
-                    close(gv->cnf->pipe_fd[0]);
-                }
-                close(gv->cnf->pipe_fd[1]);
-            }
+            if (mx_has_pipe(gv->cnf->pipe_fd))
+                mx_apply_pipe_to_proc(0, 1, gv);
             mx_smart_wait(pid, result, gv);
             break;
     }
