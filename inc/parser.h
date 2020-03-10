@@ -139,8 +139,8 @@ bool mx_find_file_expansion(char *exp, int *start, int *end, char **name);
 // miscellaneous
 void mx_reset(int *a, int *b, char **s);
 void mx_set(t_args *args, int *start, int *end, char **name);
-t_args *args_new(void);
-void args_delete(t_args **args);
+t_args *mx_args_new(void);
+void mx_args_delete(t_args **args);
 char *mx_strstr_esc(char *exp, char *substr);
 //char *mx_strstr_esc_rev(char *exp, char *substr);
 int mx_count_esc(char *exp, int position);

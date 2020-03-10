@@ -132,19 +132,9 @@ p.h
 i.h
 ../inc/i.h
 
-/Users/oleg/ush/src/main.c
-ush.h
-/Users/oleg/ush/src/ush.h
-
-/Users/oleg/ush/src/mx_parser_split_two_str.c
-parser.h
-/Users/oleg/ush/src/parser.h
+/Users/oleg/ush/src/mx_eval_command_substitution.c
+evaluator.h
+/Users/oleg/ush/src/evaluator.h
 assert.h
 -
-stdio.h
--
-
-/Users/oleg/ush/src/mx_parser_wordchain.c
-parser.h
-/Users/oleg/ush/src/parser.h
 

@@ -63,7 +63,7 @@ e_return param_expans(char *exp, int i, e_mode mode, t_args *args) {
 bool mx_find_param(char *exp, int *start, int *end, char **name) {
     e_mode mode = unquote;
 
-    t_args *args = args_new();
+    t_args *args = mx_args_new();
     for (unsigned long i = 0; i < strlen(exp); i++) {
         mx_change_mode(&mode, exp, i);
         switch (param_expans(exp, i, mode, args)) {
@@ -71,13 +71,13 @@ bool mx_find_param(char *exp, int *start, int *end, char **name) {
                 continue;
             case return_true:
                 mx_set(args, start, end, name);
-                args_delete(&args);
+                mx_args_delete(&args);
                 return true;
             case break_loop:
                 break;
         }
     }
-    args_delete(&args);
+    mx_args_delete(&args);
     mx_reset(start, end, name);
     return false;
 }
