@@ -1,8 +1,0 @@
-/private/var/folders/zz/zyxvpxvq6csfxvn_n0003yyh000zqm/T/AppTranslocation/DD539C1A-97A8-4142-BEF9-2080014C2219/d/CLion.app/Contents/bin/cmake/mac/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /Users/oberdyshev/ush
-CMake Error at CMakeLists.txt:33 (target_link_libraries):
-  Cannot specify link libraries for target "ush" which is not built by this
-  project.
-
-
--- Configuring incomplete, errors occurred!
-See also "/Users/oberdyshev/ush/cmake-build-debug/CMakeFiles/CMakeOutput.log".
