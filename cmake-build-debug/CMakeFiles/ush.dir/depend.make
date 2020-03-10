@@ -41,6 +41,16 @@ CMakeFiles/ush.dir/src/mx_builtin_env.c.o: ../inc/parser.h
 CMakeFiles/ush.dir/src/mx_builtin_env.c.o: ../inc/ush.h
 CMakeFiles/ush.dir/src/mx_builtin_env.c.o: ../src/mx_builtin_env.c
 
+CMakeFiles/ush.dir/src/mx_builtin_exit.c.o: ../Libmx/inc/libmx.h
+CMakeFiles/ush.dir/src/mx_builtin_exit.c.o: ../inc/environment.h
+CMakeFiles/ush.dir/src/mx_builtin_exit.c.o: ../inc/evaluator.h
+CMakeFiles/ush.dir/src/mx_builtin_exit.c.o: ../inc/i.h
+CMakeFiles/ush.dir/src/mx_builtin_exit.c.o: ../inc/liststr.h
+CMakeFiles/ush.dir/src/mx_builtin_exit.c.o: ../inc/p.h
+CMakeFiles/ush.dir/src/mx_builtin_exit.c.o: ../inc/parser.h
+CMakeFiles/ush.dir/src/mx_builtin_exit.c.o: ../inc/ush.h
+CMakeFiles/ush.dir/src/mx_builtin_exit.c.o: ../src/mx_builtin_exit.c
+
 CMakeFiles/ush.dir/src/mx_builtin_export.c.o: ../Libmx/inc/libmx.h
 CMakeFiles/ush.dir/src/mx_builtin_export.c.o: ../inc/environment.h
 CMakeFiles/ush.dir/src/mx_builtin_export.c.o: ../inc/evaluator.h
@@ -153,6 +163,16 @@ CMakeFiles/ush.dir/src/mx_environ_copy.c.o: ../inc/parser.h
 CMakeFiles/ush.dir/src/mx_environ_copy.c.o: ../inc/ush.h
 CMakeFiles/ush.dir/src/mx_environ_copy.c.o: ../src/mx_environ_copy.c
 
+CMakeFiles/ush.dir/src/mx_environ_handler_env.c.o: ../Libmx/inc/libmx.h
+CMakeFiles/ush.dir/src/mx_environ_handler_env.c.o: ../inc/environment.h
+CMakeFiles/ush.dir/src/mx_environ_handler_env.c.o: ../inc/evaluator.h
+CMakeFiles/ush.dir/src/mx_environ_handler_env.c.o: ../inc/i.h
+CMakeFiles/ush.dir/src/mx_environ_handler_env.c.o: ../inc/liststr.h
+CMakeFiles/ush.dir/src/mx_environ_handler_env.c.o: ../inc/p.h
+CMakeFiles/ush.dir/src/mx_environ_handler_env.c.o: ../inc/parser.h
+CMakeFiles/ush.dir/src/mx_environ_handler_env.c.o: ../inc/ush.h
+CMakeFiles/ush.dir/src/mx_environ_handler_env.c.o: ../src/mx_environ_handler_env.c
+
 CMakeFiles/ush.dir/src/mx_eval.c.o: ../Libmx/inc/libmx.h
 CMakeFiles/ush.dir/src/mx_eval.c.o: ../inc/environment.h
 CMakeFiles/ush.dir/src/mx_eval.c.o: ../inc/evaluator.h
@@ -203,6 +223,16 @@ CMakeFiles/ush.dir/src/mx_exec_apply_pipe.c.o: ../inc/parser.h
 CMakeFiles/ush.dir/src/mx_exec_apply_pipe.c.o: ../inc/ush.h
 CMakeFiles/ush.dir/src/mx_exec_apply_pipe.c.o: ../src/mx_exec_apply_pipe.c
 
+CMakeFiles/ush.dir/src/mx_exec_env.c.o: ../Libmx/inc/libmx.h
+CMakeFiles/ush.dir/src/mx_exec_env.c.o: ../inc/environment.h
+CMakeFiles/ush.dir/src/mx_exec_env.c.o: ../inc/evaluator.h
+CMakeFiles/ush.dir/src/mx_exec_env.c.o: ../inc/i.h
+CMakeFiles/ush.dir/src/mx_exec_env.c.o: ../inc/liststr.h
+CMakeFiles/ush.dir/src/mx_exec_env.c.o: ../inc/p.h
+CMakeFiles/ush.dir/src/mx_exec_env.c.o: ../inc/parser.h
+CMakeFiles/ush.dir/src/mx_exec_env.c.o: ../inc/ush.h
+CMakeFiles/ush.dir/src/mx_exec_env.c.o: ../src/mx_exec_env.c
+
 CMakeFiles/ush.dir/src/mx_exec_try_bin.c.o: ../Libmx/inc/libmx.h
 CMakeFiles/ush.dir/src/mx_exec_try_bin.c.o: ../inc/environment.h
 CMakeFiles/ush.dir/src/mx_exec_try_bin.c.o: ../inc/evaluator.h
@@ -223,6 +253,46 @@ CMakeFiles/ush.dir/src/mx_execute.c.o: ../inc/parser.h
 CMakeFiles/ush.dir/src/mx_execute.c.o: ../inc/ush.h
 CMakeFiles/ush.dir/src/mx_execute.c.o: ../src/mx_execute.c
 
+CMakeFiles/ush.dir/src/mx_export_var_to_lists.c.o: ../Libmx/inc/libmx.h
+CMakeFiles/ush.dir/src/mx_export_var_to_lists.c.o: ../inc/environment.h
+CMakeFiles/ush.dir/src/mx_export_var_to_lists.c.o: ../inc/evaluator.h
+CMakeFiles/ush.dir/src/mx_export_var_to_lists.c.o: ../inc/i.h
+CMakeFiles/ush.dir/src/mx_export_var_to_lists.c.o: ../inc/liststr.h
+CMakeFiles/ush.dir/src/mx_export_var_to_lists.c.o: ../inc/p.h
+CMakeFiles/ush.dir/src/mx_export_var_to_lists.c.o: ../inc/parser.h
+CMakeFiles/ush.dir/src/mx_export_var_to_lists.c.o: ../inc/ush.h
+CMakeFiles/ush.dir/src/mx_export_var_to_lists.c.o: ../src/mx_export_var_to_lists.c
+
+CMakeFiles/ush.dir/src/mx_flags_handler_cd.c.o: ../Libmx/inc/libmx.h
+CMakeFiles/ush.dir/src/mx_flags_handler_cd.c.o: ../inc/environment.h
+CMakeFiles/ush.dir/src/mx_flags_handler_cd.c.o: ../inc/evaluator.h
+CMakeFiles/ush.dir/src/mx_flags_handler_cd.c.o: ../inc/i.h
+CMakeFiles/ush.dir/src/mx_flags_handler_cd.c.o: ../inc/liststr.h
+CMakeFiles/ush.dir/src/mx_flags_handler_cd.c.o: ../inc/p.h
+CMakeFiles/ush.dir/src/mx_flags_handler_cd.c.o: ../inc/parser.h
+CMakeFiles/ush.dir/src/mx_flags_handler_cd.c.o: ../inc/ush.h
+CMakeFiles/ush.dir/src/mx_flags_handler_cd.c.o: ../src/mx_flags_handler_cd.c
+
+CMakeFiles/ush.dir/src/mx_flags_handler_env.c.o: ../Libmx/inc/libmx.h
+CMakeFiles/ush.dir/src/mx_flags_handler_env.c.o: ../inc/environment.h
+CMakeFiles/ush.dir/src/mx_flags_handler_env.c.o: ../inc/evaluator.h
+CMakeFiles/ush.dir/src/mx_flags_handler_env.c.o: ../inc/i.h
+CMakeFiles/ush.dir/src/mx_flags_handler_env.c.o: ../inc/liststr.h
+CMakeFiles/ush.dir/src/mx_flags_handler_env.c.o: ../inc/p.h
+CMakeFiles/ush.dir/src/mx_flags_handler_env.c.o: ../inc/parser.h
+CMakeFiles/ush.dir/src/mx_flags_handler_env.c.o: ../inc/ush.h
+CMakeFiles/ush.dir/src/mx_flags_handler_env.c.o: ../src/mx_flags_handler_env.c
+
+CMakeFiles/ush.dir/src/mx_flags_map.c.o: ../Libmx/inc/libmx.h
+CMakeFiles/ush.dir/src/mx_flags_map.c.o: ../inc/environment.h
+CMakeFiles/ush.dir/src/mx_flags_map.c.o: ../inc/evaluator.h
+CMakeFiles/ush.dir/src/mx_flags_map.c.o: ../inc/i.h
+CMakeFiles/ush.dir/src/mx_flags_map.c.o: ../inc/liststr.h
+CMakeFiles/ush.dir/src/mx_flags_map.c.o: ../inc/p.h
+CMakeFiles/ush.dir/src/mx_flags_map.c.o: ../inc/parser.h
+CMakeFiles/ush.dir/src/mx_flags_map.c.o: ../inc/ush.h
+CMakeFiles/ush.dir/src/mx_flags_map.c.o: ../src/mx_flags_map.c
+
 CMakeFiles/ush.dir/src/mx_free_all.c.o: ../Libmx/inc/libmx.h
 CMakeFiles/ush.dir/src/mx_free_all.c.o: ../inc/environment.h
 CMakeFiles/ush.dir/src/mx_free_all.c.o: ../inc/evaluator.h
@@ -232,6 +302,16 @@ CMakeFiles/ush.dir/src/mx_free_all.c.o: ../inc/p.h
 CMakeFiles/ush.dir/src/mx_free_all.c.o: ../inc/parser.h
 CMakeFiles/ush.dir/src/mx_free_all.c.o: ../inc/ush.h
 CMakeFiles/ush.dir/src/mx_free_all.c.o: ../src/mx_free_all.c
+
+CMakeFiles/ush.dir/src/mx_get_var_part.c.o: ../Libmx/inc/libmx.h
+CMakeFiles/ush.dir/src/mx_get_var_part.c.o: ../inc/environment.h
+CMakeFiles/ush.dir/src/mx_get_var_part.c.o: ../inc/evaluator.h
+CMakeFiles/ush.dir/src/mx_get_var_part.c.o: ../inc/i.h
+CMakeFiles/ush.dir/src/mx_get_var_part.c.o: ../inc/liststr.h
+CMakeFiles/ush.dir/src/mx_get_var_part.c.o: ../inc/p.h
+CMakeFiles/ush.dir/src/mx_get_var_part.c.o: ../inc/parser.h
+CMakeFiles/ush.dir/src/mx_get_var_part.c.o: ../inc/ush.h
+CMakeFiles/ush.dir/src/mx_get_var_part.c.o: ../src/mx_get_var_part.c
 
 CMakeFiles/ush.dir/src/mx_global_env_new_delete.c.o: ../Libmx/inc/libmx.h
 CMakeFiles/ush.dir/src/mx_global_env_new_delete.c.o: ../inc/environment.h
@@ -283,6 +363,16 @@ CMakeFiles/ush.dir/src/mx_liststr_push_back.c.o: ../src/mx_liststr_push_back.c
 
 CMakeFiles/ush.dir/src/mx_liststr_push_front.c.o: ../inc/liststr.h
 CMakeFiles/ush.dir/src/mx_liststr_push_front.c.o: ../src/mx_liststr_push_front.c
+
+CMakeFiles/ush.dir/src/mx_match_search.c.o: ../Libmx/inc/libmx.h
+CMakeFiles/ush.dir/src/mx_match_search.c.o: ../inc/environment.h
+CMakeFiles/ush.dir/src/mx_match_search.c.o: ../inc/evaluator.h
+CMakeFiles/ush.dir/src/mx_match_search.c.o: ../inc/i.h
+CMakeFiles/ush.dir/src/mx_match_search.c.o: ../inc/liststr.h
+CMakeFiles/ush.dir/src/mx_match_search.c.o: ../inc/p.h
+CMakeFiles/ush.dir/src/mx_match_search.c.o: ../inc/parser.h
+CMakeFiles/ush.dir/src/mx_match_search.c.o: ../inc/ush.h
+CMakeFiles/ush.dir/src/mx_match_search.c.o: ../src/mx_match_search.c
 
 CMakeFiles/ush.dir/src/mx_new_delete_config.c.o: ../Libmx/inc/libmx.h
 CMakeFiles/ush.dir/src/mx_new_delete_config.c.o: ../inc/environment.h
@@ -371,6 +461,16 @@ CMakeFiles/ush.dir/src/mx_parser_trim.c.o: ../src/mx_parser_trim.c
 CMakeFiles/ush.dir/src/mx_parser_wordchain.c.o: ../Libmx/inc/libmx.h
 CMakeFiles/ush.dir/src/mx_parser_wordchain.c.o: ../inc/parser.h
 CMakeFiles/ush.dir/src/mx_parser_wordchain.c.o: ../src/mx_parser_wordchain.c
+
+CMakeFiles/ush.dir/src/mx_path_cancat.c.o: ../Libmx/inc/libmx.h
+CMakeFiles/ush.dir/src/mx_path_cancat.c.o: ../inc/environment.h
+CMakeFiles/ush.dir/src/mx_path_cancat.c.o: ../inc/evaluator.h
+CMakeFiles/ush.dir/src/mx_path_cancat.c.o: ../inc/i.h
+CMakeFiles/ush.dir/src/mx_path_cancat.c.o: ../inc/liststr.h
+CMakeFiles/ush.dir/src/mx_path_cancat.c.o: ../inc/p.h
+CMakeFiles/ush.dir/src/mx_path_cancat.c.o: ../inc/parser.h
+CMakeFiles/ush.dir/src/mx_path_cancat.c.o: ../inc/ush.h
+CMakeFiles/ush.dir/src/mx_path_cancat.c.o: ../src/mx_path_cancat.c
 
 CMakeFiles/ush.dir/src/mx_print_prompt.c.o: ../Libmx/inc/libmx.h
 CMakeFiles/ush.dir/src/mx_print_prompt.c.o: ../inc/environment.h

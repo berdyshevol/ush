@@ -12,7 +12,7 @@ static void copying(char **copy, char **environ) {
     }
 }
 
-char **mx_environ_copy() {
+char **mx_environ_copy(void) {
     extern char **environ;
     char **env_copy = NULL;
     int len;

@@ -7,7 +7,7 @@
 static int flags_finding(char *str, bool **is_flag, int i) {
     if (str[1] == '-' && str[2] == '\0')
         return i + 1;
-    else {
+    else
         for (int j = 1; str[j]; j++) {
             if (str[j] == 'a')
                 (*is_flag)[WH_a] = true;
@@ -18,7 +18,6 @@ static int flags_finding(char *str, bool **is_flag, int i) {
                 return -1;
             }
         }
-    }
     return 0;
 }
 
@@ -40,8 +39,7 @@ static int flags_handler_which(char **argv, bool **is_flag) {
     return res;
 }
 
-static void access_finding(char *str, char *tok,
-                            bool *flags, int *flag) {
+static void access_finding(char *str, char *tok, bool *flags, int *flag) {
     while (tok) {
         int len = strlen(tok) + 2 + strlen(str);
         char *file = malloc(len);
@@ -72,10 +70,9 @@ static int which_checking(t_global_environment *gv, bool *flags, int index) {
         char *tok = strtok(path, ":");
 
         access_finding(gv->cnf->agv[i], tok, flags, &flag);
-        if(!flag) {
-            if (!(flags[WH_s])) {
+        if (!flag) {
+            if (!(flags[WH_s]))
                 fprintf(stderr, "%s not found\n", gv->cnf->agv[i]);
-            }
             status = EXIT_FAILURE;
         }
         free(path);

@@ -22,3 +22,24 @@ static t_environment *mx_env_lookup_key(char *key, t_environment *env) {
     }
     return NULL;
 }
+
+void mx_env_del_var(char *key, t_environment **env) {
+    t_environment *temp = *env;
+    t_environment *prev = NULL;
+
+    if (temp != NULL && strcmp(key, temp->key) == 0) {
+        *env = temp->next;
+        free(temp);
+        return;
+    }
+    while (temp != NULL &&  strcmp(key, temp->key) != 0) {
+        prev = temp;
+        temp = temp->next;
+    }
+    if (temp == NULL)
+        return;
+    prev->next = temp->next;
+    free(temp->key);
+    free(temp->value);
+    free(temp);
+}
