@@ -27,7 +27,7 @@ static int get_flags(char **argv) {
         }
         else {
             fprintf(stderr, "pwd: too many arguments\n");
-            return -1 ;
+            return -1;
         }
     }
     return physical;
@@ -37,10 +37,15 @@ int mx_builtin_pwd(t_global_environment *gv) {
     int physical;
 
     if ((physical = get_flags(gv->cnf->agv)) != -1) {
-        if (physical)
-            puts(getwd(NULL));
+        if (physical) {
+            char *path = getwd(NULL);
+            
+            puts(path);
+            mx_strdel(&path);
+        }
         else
             puts(gv->pwd);
-    }
+    } else
+        return EXIT_FAILURE;
     return EXIT_SUCCESS;
 }

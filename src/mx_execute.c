@@ -14,6 +14,7 @@ static t_pair_cmd_name builtin[] = {
         {"yes", mx_yes},
         {"true", mx_true},
         {"false", mx_false},
+        {"set", mx_builtin_set},
         {NULL, NULL}
 };
 

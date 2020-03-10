@@ -5,7 +5,7 @@ int mx_wexitstatud(int x) {
 }
 
 void mx_print_nocmd(char *cmd) {
-    mx_printerr("ush ");
+    mx_printerr("ush: ");
     if (strlen(cmd) < 257) {
         mx_printerr("command not found: ");
         mx_printerr(cmd);

@@ -22,15 +22,14 @@
 #define MX_MOVE_CURSOR_LEFT "\033[1C"
 #define MX_MOVE_CURSOR_RIGHT "\033[1D"
 
-#define MX_W_INT(w) (*(int *)&(w))
+#define MX_W_INT(w) (*(int *) & (w))
 #define MX_WSTOPSIG(m) (MX_W_INT(m) >> 8)
 #define MX_WSTATUS(m) (MX_W_INT(m) & 0177)
 #define MX_WIFSTOPPED(m) (MX_WSTATUS(m) == _WSTOPPED && MX_WSTOPSIG(m) != 0x13)
-#define MX_WAIT_TO_INT(m) (*(int *) & (m))
-#define MX_WEXITSTATUS(x) ((MX_WAIT_TO_INT(x) >> 8) & 0x000000ff)
+#define MX_WEXITSTATUS(x) ((MX_W_INT(x) >> 8) & 0x000000ff)
 
-// #define MX_WST(x)           (x & 0177)
-// #define MX_WIFEXIT(x)       (MX_WST(x) == 0)
+#define MX_WST(w)           (_W_INT(w) & 0177)
+#define MX_WIFEXIT(w)       (MX_WST(w) == 0)
 // #define MX_WIFSIG(x)        (MX_WST(x) != _WSTOPPED && MX_WST(x) != 0)
 // #define MX_WTERMSIG(x)      (MX_WST(x))
 // #define MX_EXSTATUS(x)      ((MX_W_INT(x) >> 8) & 0x000000ff)
