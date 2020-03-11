@@ -1,6 +1,16 @@
 #include "parser.h"
 
-static bool cmdsubs_typetwo_helper(char *exp, char *find_begin, t_args *args);
+static bool cmdsubs_typetwo_helper(char *exp, char *find_begin, t_args *args) {
+    args->start = find_begin - exp;
+    char *find_end = mx_strstr_esc(find_begin + 1, "`");
+    if (find_end == NULL) {
+        mx_print_oddnumberofquotes();
+        return false;
+    }
+    args->end = find_end - exp;
+    args->name = strndup(exp + args->start + 1, args->end - args->start - 1);
+    return true;
+}
 
 // Do not use this function alone
 e_return mx__cmdsubs_type_two(char *exp, int i, t_args *args) {
@@ -13,15 +23,5 @@ e_return mx__cmdsubs_type_two(char *exp, int i, t_args *args) {
         return break_loop;
 }
 
-static bool cmdsubs_typetwo_helper(char *exp, char *find_begin, t_args *args) {
-    args->start = find_begin - exp;
-    char *find_end = mx_strstr_esc(find_begin + 1, "`");
-    if (find_end == NULL) {
-        mx_print_oddnumberofquotes();
-        return false;
-    }
-    args->end = find_end - exp;
-    args->name = strndup(exp + args->start + 1, args->end - args->start - 1);
-    return true;
-}
+
 

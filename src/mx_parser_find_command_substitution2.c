@@ -4,8 +4,32 @@
 
 #include "parser.h"
 
-static bool cmdsubs_typeone_helper(char *exp, char *find_begin, t_args *args);
-static e_return cmd_subs(char *exp, int i, e_mode mode, t_args *args);
+// ---------    Static Functions
+static bool cmdsubs_typeone_helper(char *exp, char *find_begin, t_args *args) {
+    args->start = find_begin - exp;
+    char *find_end = mx_strstr_esc(find_begin, ")");
+    if (find_end == NULL) {
+        mx_print_oddnumberofquotes();
+        return false;
+    }
+    args->end = find_end - exp;
+    args->name = strndup(exp + args->start + 2, args->end - args->start - 2);
+    return true;
+}
+
+
+
+static e_return cmd_subs(char *exp, int i, e_mode mode, t_args *args) {
+    if (exp[i] == '$' && mode != quote) {
+        return mx__cmdsubs_type_one(exp, i, args);
+    }
+    else if (exp[i] == '`' && mode != quote) {
+        return mx__cmdsubs_type_two(exp, i, args);
+    }
+    else
+        return continue_loop;
+}
+
 
 // ----    API Functions
 
@@ -49,31 +73,6 @@ e_return mx__cmdsubs_type_one(char *exp, int i, t_args *args) {
     return continue_loop;
 }
 
-// ---------    Static Functions
-static bool cmdsubs_typeone_helper(char *exp, char *find_begin, t_args *args) {
-    args->start = find_begin - exp;
-    char *find_end = mx_strstr_esc(find_begin, ")");
-    if (find_end == NULL) {
-        mx_print_oddnumberofquotes();
-        return false;
-    }
-    args->end = find_end - exp;
-    args->name = strndup(exp + args->start + 2, args->end - args->start - 2);
-    return true;
-}
-
-
-
-static e_return cmd_subs(char *exp, int i, e_mode mode, t_args *args) {
-    if (exp[i] == '$' && mode != quote) {
-        return mx__cmdsubs_type_one(exp, i, args);
-    }
-    else if (exp[i] == '`' && mode != quote) {
-        return mx__cmdsubs_type_two(exp, i, args);
-    }
-    else
-        return continue_loop;
-}
 
 
 ////test mx_find_param

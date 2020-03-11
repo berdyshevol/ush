@@ -3,7 +3,25 @@
 //
 #include "evaluator.h"
 
-static char *_get_value(char *varname, t_global_environment *gv);
+// ----- Static Functions
+static char *_get_value(char *varname, t_global_environment *gv) {
+    char *env_var_value = NULL;
+    char *local_var_value = NULL;
+    char *value = NULL;
+
+    if (varname == NULL)
+        return NULL;
+    env_var_value = getenv(varname);
+    if (env_var_value == NULL) {
+        local_var_value = mx_env_get_value(varname, gv->vars);
+        if (local_var_value != NULL)
+            value = local_var_value;
+    }
+    else
+        value = strdup(env_var_value);
+    return value;
+}
+
 
 // ----    API Function
 
@@ -41,25 +59,6 @@ void mx_insert(char **exp, int start, int end, char *word) {
     *exp = s2;
 }
 
-// ----- Static Functions
-
-static char *_get_value(char *varname, t_global_environment *gv) {
-    char *env_var_value = NULL;
-    char *local_var_value = NULL;
-    char *value = NULL;
-
-    if (varname == NULL)
-        return NULL;
-    env_var_value = getenv(varname);
-    if (env_var_value == NULL) {
-        local_var_value = mx_env_get_value(varname, gv->vars);
-        if (local_var_value != NULL)
-            value = local_var_value;
-    }
-    else
-        value = strdup(env_var_value);
-    return value;
-}
 
 //////test mx_parameter_expansion
 //#include <assert.h>

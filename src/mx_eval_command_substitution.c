@@ -4,59 +4,13 @@
 
 #include "evaluator.h"
 
-static char *_readpipe(int fd);
-static void _lunch_cmdsubst(t_exp exp, int *fd, t_global_environment *gv);
-static char *_waitread_cmdsubs(int pid, int *fd,
-                               t_eval_result result, t_global_environment *gv );
-static char *mx_get_command_substitution(char *exp, t_eval_result result,
-                                         t_global_environment *gv);
-
-// ----    API Function
-
-void mx_command_substitution(t_exp *exp, t_eval_result result,
-                             t_global_environment *gv) {
-    t_args *args = mx_args_new();
-    char *value = NULL;
-    bool find_result;
-    find_result = mx_find_command_substitution(*exp, &(args->start), &(args->end), &(args->name));
-    while (find_result) {
-        value = mx_get_command_substitution(args->name, result, gv);
-        mx_insert(exp, args->start, args->end, value);
-        mx_strdel(&value);
-        mx_strdel(&(args->name));
-        find_result = mx_find_command_substitution(*exp, &(args->start), &(args->end), &(args->name));
-    }
-    mx_args_delete(&args);
-}
-
 // ----- Static Functions
-static char *mx_get_command_substitution(char *exp, t_eval_result result,
-                                         t_global_environment *gv) {
-    char *res = NULL;
-    int fd[2];
-    int pid = -1;
-
-    pipe(fd);
-    switch ((pid = fork())) {
-        case -1:
-            result->status = false;
-            break;
-        case 0:
-            _lunch_cmdsubst(exp, fd, gv);
-            break;
-        default:
-            res = _waitread_cmdsubs(pid, fd, result, gv);
-            break;
-    }
-    return res;
-}
-
 static char *_readpipe(int fd) {
     int size = 1024;
     char buf[size];
     int res;
     if ((res = read(fd, buf, size)) > 0) {
-        char *p = strstr(buf, "[0;47;30m%");
+        char *p = strstr(buf, "[0;47;30m%");// case: echo -n ...
         if (p != NULL)
             *(p-1) = '\0';
         return strndup(buf, res-1); // to delete last char which is \n
@@ -89,6 +43,47 @@ static char *_waitread_cmdsubs(int pid, int *fd,
     mx_smart_close_fd(&fd[1], 1);
     return res;
 }
+
+static char *mx_get_command_substitution(char *exp, t_eval_result result,
+                                         t_global_environment *gv) {
+    char *res = NULL;
+    int fd[2];
+    int pid = -1;
+
+    pipe(fd);
+    switch ((pid = fork())) {
+        case -1:
+            result->status = false;
+            break;
+        case 0:
+            _lunch_cmdsubst(exp, fd, gv);
+            break;
+        default:
+            res = _waitread_cmdsubs(pid, fd, result, gv);
+            break;
+    }
+    return res;
+}
+
+// ----    API Function
+
+void mx_command_substitution(t_exp *exp, t_eval_result result,
+                             t_global_environment *gv) {
+    t_args *args = mx_args_new();
+    char *value = NULL;
+    bool find_result;
+    find_result = mx_find_command_substitution(*exp, &(args->start), &(args->end), &(args->name));
+    while (find_result) {
+        value = mx_get_command_substitution(args->name, result, gv);
+        mx_insert(exp, args->start, args->end, value);
+        mx_strdel(&value);
+        mx_strdel(&(args->name));
+        find_result = mx_find_command_substitution(*exp, &(args->start), &(args->end), &(args->name));
+    }
+    mx_args_delete(&args);
+}
+
+
 
 //////test mx_parameter_expansion
 //#include <assert.h>

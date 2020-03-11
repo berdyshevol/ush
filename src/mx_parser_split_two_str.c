@@ -23,12 +23,6 @@ void mx_split_two_str(char *exp, char *operator,
     *left_string = left_substr;
     mx_trimleft(&right_substr);
     *right_string = right_substr;
-//    mx_trimleft(&left_substr); //    *left_string = mx_trim(left_substr);
-//    *left_string = strdup(left_substr);
-//    mx_trimleft(&right_substr); //    *right_string = mx_trim(right_substr);
-//    *right_string = strdup(right_substr);
-//    mx_strdel(&left_substr);
-//    mx_strdel(&right_substr);
 }
 
 // #include <assert.h>

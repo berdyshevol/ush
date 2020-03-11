@@ -1,34 +1,5 @@
 #include "parser.h"
 
-static bool is_ampersand_pipe(char *exp, char *p, char *op);
-
-// ----    API Functions
-
-/**
- * Finds the first substring so that the left expression is closed.
- * Search is from left to right
- */
-char *mx_smart_find(char *exp, char *sbstr) {
-    char *p = NULL;
-    char *s = exp;
-    for (; s != '\0'; s = exp + (p - exp + 1)) {
-        p = strstr(s, sbstr);
-        if (p) {
-            if (is_ampersand_pipe(exp, p, sbstr))
-                continue;
-            char *tmp = mx_strndup((const char *) exp, p - exp);
-            if (mx_is_closed_expression(tmp)) {
-                free(tmp);
-                return p;
-            }
-            free(tmp);
-        }
-        else
-            break;
-    }
-    return NULL;
-}
-
 // ---------    Static Functions
 static bool is_ampersand_pipe(char *exp, char *p, char *op) {
     // make sure it is merely & and not && or >&
@@ -49,6 +20,34 @@ static bool is_ampersand_pipe(char *exp, char *p, char *op) {
         }
     return false;
 }
+// ----    API Functions
+
+/**
+ * Finds the first substring so that the left expression is closed.
+ * Search is from left to right
+ */
+char *mx_smart_find(char *exp, char *sbstr) {
+    char *p = NULL;
+    char *s = exp;
+    if (sbstr != NULL)
+        for (; s != '\0'; s = exp + (p - exp + 1)) {
+            p = strstr(s, sbstr);
+            if (p) {
+                if (is_ampersand_pipe(exp, p, sbstr))
+                    continue;
+                char *tmp = mx_strndup((const char *) exp, p - exp);
+                if (mx_is_closed_expression(tmp)) {
+                    free(tmp);
+                    return p;
+                }
+                free(tmp);
+            }
+            else
+                break;
+        }
+    return NULL;
+}
+
 
 //#include <assert.h>
 //#include <stdio.h>

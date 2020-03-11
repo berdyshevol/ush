@@ -40,7 +40,7 @@ void mx_apply_error(t_redirect *redir, bool *res) {
 //// ----- Static Functions
 //
 //// apply_redirect
-//void apply_output_noappend(t_redirect *redir, bool *res) {
+//void _apply_output_noappend(t_redirect *redir, bool *res) {
 //    if ((redir->output_fd = open(redir->output,
 //                                 O_WRONLY|O_CREAT|O_TRUNC, 0666)) < 0) {
 //        perror(redir->output);
@@ -54,7 +54,7 @@ void mx_apply_error(t_redirect *redir, bool *res) {
 //    }
 //}
 //
-//void apply_output_append(t_redirect *redir, bool *res) {
+//void _apply_output_append(t_redirect *redir, bool *res) {
 //    if ((redir->output_fd = open(redir->output,
 //                                 O_WRONLY|O_CREAT| O_APPEND, 0666)) < 0) {
 //        perror(redir->output);
@@ -70,10 +70,10 @@ void mx_apply_error(t_redirect *redir, bool *res) {
 //
 //void _apply_output(t_redirect *redir, bool *res) {
 //    if (!redir->output_append) {
-//        apply_output_noappend(redir, res);
+//        _apply_output_noappend(redir, res);
 //    }
 //    else {
-//        apply_output_append(redir, res);
+//        _apply_output_append(redir, res);
 //    }
 //}
 //

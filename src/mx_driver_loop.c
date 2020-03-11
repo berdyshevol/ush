@@ -32,22 +32,13 @@ void mx_driver_loop(t_global_environment *gv) {
     int fd = -1;
 
     while(status) {
-        // reading
         if (isatty(0))
             read_from_stdin(gv);
         else {
             read_from_pipe(gv);
             status = 0;
         }
-
-        // evaluation
         fd = dup(0);
-        //----------------
-//        char *str = strdup("echo \"$(echo \"Ave, Caesar\"), $(echo \"morituri te salutant\"\\!)\"");
-////        char *str = strdup("echo \"Ave, Caesar, $(echo \"morituri te salutant\"\\!)\"");
-//        result = mx_eval(str, gv, NULL, NULL);
-//        mx_strdel(&str);
-        //--------------------
         result = mx_eval(gv->str, gv, NULL, NULL);
         if (!isatty(0) && fd != -1 && fd != 0) {
             dup2(fd, 0);
@@ -57,4 +48,4 @@ void mx_driver_loop(t_global_environment *gv) {
         mx_delete_evalresult(&result);
     }
 }
-        //system("leaks -q ush");
+

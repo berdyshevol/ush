@@ -4,38 +4,6 @@
 
 #include "evaluator.h"
 
-static void _prepare_command_arguments_apply(t_exp exp,
-                                             t_global_environment *gv,
-                                             t_eval_result result);
-static t_exp _operands(t_exp exp);
-static t_exp _command(t_exp exp);
-static t_config *_init_cnf(t_global_environment *gv,
-                           int *pipe_fd, bool *new_proc);
-
-// ----    API Function
-t_eval_result mx_simple_command(t_exp expression, t_global_environment *gv,
-                                int *pipe_fd, bool *new_proc) {
-    t_redirect *redirections = NULL;
-    t_exp exp = strdup(expression);
-    t_config *cnf = _init_cnf(gv, pipe_fd, new_proc);
-    t_eval_result result = mx_new_evalresult();
-    mx_parameter_expansion(&exp, gv);
-    mx_command_substitution(&exp, result, gv);
-    if (result->status == true) {
-        mx_file_expansion(&exp);
-        if (!mx_extract_redirections(&exp, &redirections))
-            result->status = false;
-        else {
-            gv->cnf->redirections = redirections;
-            _prepare_command_arguments_apply(exp, gv, result);
-        }
-    }
-    mx_strdel(&exp);
-    mx_delete_redirect(&redirections);
-    mx_delete_config(&cnf);
-    return result;
-}
-
 // ----- Static Functions
 static t_exp _command(t_exp exp) {
     t_exp first_word;
@@ -85,3 +53,29 @@ static t_config *_init_cnf(t_global_environment *gv,
     gv->cnf = cnf;
     return cnf;
 }
+
+// ----    API Function
+t_eval_result mx_simple_command(t_exp expression, t_global_environment *gv,
+                                int *pipe_fd, bool *new_proc) {
+    t_redirect *redirections = NULL;
+    t_exp exp = strdup(expression);
+    t_config *cnf = _init_cnf(gv, pipe_fd, new_proc);
+    t_eval_result result = mx_new_evalresult();
+    mx_parameter_expansion(&exp, gv);
+    mx_command_substitution(&exp, result, gv);
+    if (result->status == true) {
+        mx_file_expansion(&exp);
+        if (!mx_extract_redirections(&exp, &redirections))
+            result->status = false;
+        else {
+            gv->cnf->redirections = redirections;
+            _prepare_command_arguments_apply(exp, gv, result);
+        }
+    }
+    mx_strdel(&exp);
+    mx_delete_redirect(&redirections);
+    mx_delete_config(&cnf);
+    return result;
+}
+
+

@@ -1,43 +1,36 @@
 #include "parser.h"
 
-static t_bind_operatorid_name_type bind[] = {
-        {semicolon,            ";",                  list},
-        {ampersand,            "&",                  list},
-        {and_and,              "&&",                 sublist},
-        {or_or,                "||",                 sublist},
-        {pipe_operator,        "|",                  pipeline},
-        {pipe_ampersand,       "|&",                 pipeline},
+static t_bind_operatorid_name_type bind(int i) {
+    static t_bind_operatorid_name_type bind[] = {
+            {semicolon,            ";",  list},
+//            {ampersand,            "&",  simple_command},
+            {and_and,              "&&", sublist},
+            {or_or,                "||", sublist},
+            {pipe_operator,        "|",  pipeline},
+            {pipe_ampersand,       "|&", pipeline},
 
-        {all_binary_operators, NULL,                 all_binary_type},
+            {all_binary_operators, NULL, all_binary_type},
 
-        {quote_op,             "quote_op",              quoted_string},
-        {doublequote,          "doublequote",        double_quoted_string},
-        {dollar_curly_bracket, "dollar_curly_bracket",
-                                                     variable_substitution},
-        {dollar_parathesese,   "dollar_parathesese", command_substitution},
-        {dollar_name,          "dollar_name",        variable_substitution},
-        {backquote,            "cmd_sumbstitution",
-                                                     command_substitution},
-        {tilda,                "tilda",              file_extension},
-        {no_operator, NULL,                          simple_command},
-        {parameter_assignment, "=",                  variable_assignment},
-        {string,               "string",             self_evaluating},
-        {unclosed_expression,  "",                   unclosed_exp_type},
-        {operator_id_count,    "",                   expression_type_count}
-};
+            {no_operator,          NULL, simple_command},
+            {parameter_assignment, "=",  variable_assignment},
+            {unclosed_expression,  "",   unclosed_exp_type},
+            {operator_id_count,    "",   expression_type_count}
+    };
+    return bind[i];
+}
 
 char *mx_get_name_by_id(e_operator_id operator_name) {
-    for (int i = 0; bind[i].expression_type != expression_type_count; i++) {
+    for (int i = 0; bind(i).expression_type != expression_type_count; i++) {
         if (i == (int)operator_name)
-            return bind[i].name;
+            return bind(i).name;
     }
     return NULL;
 }
 
 e_exp_type mx_get_expressiontype_by_id(e_operator_id operator_id) {
-    for (int i = 0; bind[i].expression_type != expression_type_count; i++) {
+    for (int i = 0; bind(i).expression_type != expression_type_count; i++) {
         if (i == (int)operator_id)
-            return (e_exp_type) bind[i].expression_type;
+            return (e_exp_type) bind(i).expression_type;
     }
     return expression_type_count;
 }

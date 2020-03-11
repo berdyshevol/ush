@@ -6,22 +6,14 @@
 
 typedef enum {
     semicolon,                //    ;
-    ampersand,                //    &
+//    ampersand,                //    &
     and_and,                  //    &&
     or_or,                    //    ||
     pipe_operator,            //    |
     pipe_ampersand,           //    |&
     all_binary_operators,
-    quote_op,                    //    '..'
-    doublequote,              //    ".."  
-    dollar_curly_bracket,     //    ${..}
-    dollar_parathesese,       //    $(..)
-    dollar_name,              //    $name
-    backquote,                // ` .. `
-    tilda,                    //    ~
     no_operator,
     parameter_assignment,     //    =
-    string,
     unclosed_expression,
     operator_id_count
 } e_operator_id;
@@ -31,19 +23,7 @@ typedef enum {
     sublist,
     pipeline,
     simple_command,
-    command_name,
-    command_args,
-    redirections,
-    word,
     variable_assignment,
-    function_definition,
-    file_extension,
-    command_substitution,
-    variable_substitution,
-    alias,
-    double_quoted_string,
-    quoted_string,
-    self_evaluating,
     all_binary_type,
     unclosed_exp_type,
     expression_type_count
@@ -98,7 +78,8 @@ char *mx_left_exp(char *exp, char *delim);
 char *mx_right_exp(char *exp, char *delim);
 
 // word chain sequence
-void mx_parse_words_sequence(char *exp, char **f_wordchain, char **splitter, char **r_wordchains);
+void mx_parse_words_sequence(char *exp, char **f_wordchain,
+                             char **splitter, char **r_wordchains);
 char *mx_first_word(char *exp);
 bool mx_is_last_word(char *exp);
 char *mx_rest_words(char *exp);
@@ -110,7 +91,8 @@ void mx_trimleft(char **str);
 bool mx_find_param(char *exp, int *start, int *end, char **name);
 
 // command substitution
-bool mx_find_command_substitution(char *exp, int *start, int *end, char **name);
+bool mx_find_command_substitution(char *exp, int *start,
+                                  int *end, char **name);
 e_return mx__cmdsubs_type_one(char *exp, int i, t_args *args);
 e_return mx__cmdsubs_type_two(char *exp, int i, t_args *args);
 

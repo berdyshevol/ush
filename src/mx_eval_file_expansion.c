@@ -4,6 +4,25 @@
 
 #include "evaluator.h"
 
+// ----- Static Functions
+static char *_get_file_substitiution(char *name) {
+    char *value = NULL;
+    char *tmp = NULL;
+    if (strcmp(name, "~-") == 0) {
+        tmp = getenv("OLDPWD");
+    }
+    else if (strcmp(name, "~+") == 0) {
+        tmp = getenv("PWD");
+    }
+    else if (strcmp(name, "~") == 0) {
+        tmp = getenv("HOME");
+    }
+    if (tmp != NULL) {
+        value = strdup(tmp);
+    }
+    return value;
+}
+
 static char *_get_file_substitiution(char *name);
 
 // ----    API Function
@@ -23,26 +42,6 @@ void mx_file_expansion(t_exp *exp) {
         mx_strdel(&name);
         find_result = mx_find_param(*exp, &start, &end, &name);
     }
-}
-
-// ----- Static Functions
-static char *_get_file_substitiution(char *name) {
-    char *value = NULL;
-    char *tmp = NULL;
-    if (strcmp(name, "~-") == 0) {
-        tmp = getenv("OLDPWD");
-    }
-    else if (strcmp(name, "~+") == 0) {
-        tmp = getenv("PWD");
-    }
-    else if (strcmp(name, "~") == 0) {
-        tmp = getenv("HOME");
-    }
-    if (tmp != NULL) {
-        value = strdup(tmp);
-        //free(tmp);
-    }
-    return value;
 }
 
 //////test mx_parameter_expansion

@@ -4,45 +4,75 @@
 
 #include "parser.h"
 
-bool mx_find_file_expansion(char *exp, int *start, int *end, char **name) {
-    *start = 0;
-    *end = 0;
-    *name = NULL;
-    e_mode mode = unquote;
+static bool _is_tilda_minus(char *exp, int i, t_args *args) {
+    // check if this is ~-
+    if (i != mx_strlen(exp) && exp[i + 1] == '-') {
+        args->start = i;
+        args->end = i + 1;
+        args->name = strdup("~-");
+        return true;
+    }
+    else
+        return false;
+}
 
-    for (unsigned long i = 0; i < strlen(exp); i++) {
-        mx_change_mode(&mode, exp, i);
-        if (exp[i] == '~' && mode == unquote) {
-            // check if this is the beginning of the word
-            if (i == 0 || mx_is_whitespace(exp[i - 1])) {
-                // check if this is ~-
-                if (i != strlen(exp) && exp[i + 1] == '-') {
-                    *start = i;
-                    *end = i + 1;
-                    *name = strdup("~-");
-                    return true;
-                }
-                // check if this is ~+
-                else if (i != strlen(exp) && exp[i + 1] == '+') {
-                        *start = i;
-                        *end = i + 1;
-                        *name = strdup("~+");
-                        return true;
-                }
-                //this is mere ~
-                else {
-                    *start = i;
-                    *end = i;
-                    *name = strdup("~");
-                    return true;
-                }
+static bool _is_tilda_plus(char *exp, int i, t_args *args) {
+    if (i != mx_strlen(exp) && exp[i + 1] == '+') {
+        args->start = i;
+        args->end = i + 1;
+        args->name = strdup("~+");
+        return true;
+    }
+    else
+        return false;
+}
+
+static void _is_tilda(int i, t_args *args) {
+    args->start = i;
+    args->end = i;
+    args->name = strdup("~");
+}
+
+static bool _is_file_expansion(char *exp, e_mode mode, int i, t_args *args) {
+    if (exp[i] == '~' && mode == unquote) {
+        // check if this is the beginning of the word
+        if (i == 0 || mx_is_whitespace(exp[i - 1])) {
+            if (_is_tilda_minus(exp, i, args)) {
+                return true;
+            }
+            else if (_is_tilda_plus(exp, i, args)){
+                return true;
+            }
+            else {
+                _is_tilda(i, args);
+                return true;
             }
         }
     }
     return false;
 }
 
-////test mx_find_param
+bool mx_find_file_expansion(char *exp, int *start, int *end, char **name) {
+    e_mode mode = unquote;
+    t_args *args = mx_args_new();
+    bool result = false;
+
+    for (unsigned long i = 0; i < strlen(exp); i++) {
+        mx_change_mode(&mode, exp, i);
+        if (_is_file_expansion(exp, mode, i, args)) {
+            result = true;
+            break;
+        }
+    }
+    if (result)
+        mx_set(args, start, end, name);
+    else
+        mx_reset(start, end, name);
+    mx_args_delete(&args);
+    return result;
+}
+
+//////test mx_find_param
 //#include <assert.h>
 //int main(void) {
 //    char *exp[] =      {"echo ~",   "echo ~+",  "echo ~-",

@@ -75,7 +75,6 @@ SRC =   main.c \
 		mx_parser_get_binary_opid.c \
 		mx_parser_get_op_name.c \
 		mx_parser_get_operator_info_byid.c \
-		mx_parser_get_unary_opid.c \
 		mx_parser_has_expression_operator.c \
 		mx_parser_is_closed_expression.c \
 		mx_parser_smart_find.c \

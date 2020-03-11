@@ -4,38 +4,6 @@
 
 #include "parser.h"
 
-static e_return param_expans_typeone(char *exp,
-        char *find_begin, t_args *args);
-static e_return param_expans_typeotwo(char *exp,
-        char *find_begin, t_args *args);
-static e_return param_expans_helper(char *exp,
-        char *find_begin, t_args *args);
-static e_return param_expans(char *exp, int i,
-        e_mode mode, t_args *args);
-
-// ----    API Functions
-bool mx_find_param(char *exp, int *start, int *end, char **name) {
-    e_mode mode = unquote;
-
-    t_args *args = mx_args_new();
-    for (unsigned long i = 0; i < strlen(exp); i++) {
-        mx_change_mode(&mode, exp, i);
-        switch (param_expans(exp, i, mode, args)) {
-            case continue_loop:
-                continue;
-            case return_true:
-                mx_set(args, start, end, name);
-                mx_args_delete(&args);
-                return true;
-            case break_loop:
-                break;
-        }
-    }
-    mx_args_delete(&args);
-    mx_reset(start, end, name);
-    return false;
-}
-
 // ---------    Static Functions
 static e_return param_expans_typeone(char *exp,
                                      char *find_begin, t_args *args) {
@@ -94,6 +62,29 @@ static e_return param_expans(char *exp, int i, e_mode mode, t_args *args) {
     }
     else
         return continue_loop;
+}
+
+// ----    API Functions
+bool mx_find_param(char *exp, int *start, int *end, char **name) {
+    e_mode mode = unquote;
+
+    t_args *args = mx_args_new();
+    for (unsigned long i = 0; i < strlen(exp); i++) {
+        mx_change_mode(&mode, exp, i);
+        switch (param_expans(exp, i, mode, args)) {
+            case continue_loop:
+                continue;
+            case return_true:
+                mx_set(args, start, end, name);
+                mx_args_delete(&args);
+                return true;
+            case break_loop:
+                break;
+        }
+    }
+    mx_args_delete(&args);
+    mx_reset(start, end, name);
+    return false;
 }
 
 ////test mx_find_param

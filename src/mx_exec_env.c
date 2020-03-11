@@ -1,29 +1,5 @@
 #include "ush.h"
 
-static bool dir_or_not(char *path);
-static char *file_name_finding(char *path, char *name);
-static void process_errors_env(char **arr);
-static void inside_the_process(char **arr, char *name, char *path);
-
-// ----    API Function
-int mx_exec_env(char **arr, char *path) {
-    char *file_name = file_name_finding(path, *arr);
-    pid_t pid = fork();
-    int status = 0;
-
-    if (pid == -1)
-        perror("fork");
-    else if (pid == 0)
-        inside_the_process(arr, file_name, path);
-    else {
-        wait(&status);
-        if (MX_WIFEXIT(status))
-            status = MX_WEXITSTATUS(status);
-    }
-    mx_strdel(&file_name);
-    return status;
-}
-
 // ----- Static Functions
 static bool dir_or_not(char *path) {
     DIR* dir = opendir(path);
@@ -77,4 +53,24 @@ static void inside_the_process(char **arr, char *name, char *path) {
     if (res == -1)
         process_errors_env(arr);
 }
+
+// ----    API Function
+int mx_exec_env(char **arr, char *path) {
+    char *file_name = file_name_finding(path, *arr);
+    pid_t pid = fork();
+    int status = 0;
+
+    if (pid == -1)
+        perror("fork");
+    else if (pid == 0)
+        inside_the_process(arr, file_name, path);
+    else {
+        wait(&status);
+        if (MX_WIFEXIT(status))
+            status = MX_WEXITSTATUS(status);
+    }
+    mx_strdel(&file_name);
+    return status;
+}
+
 

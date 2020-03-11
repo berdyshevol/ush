@@ -1,6 +1,13 @@
 #include "parser.h"
 
-static char _whitespace(int i);
+// ----- Static Functions
+static char _whitespace(int i) {
+    char spacial_symbol[] = " \n\t"; // trim all these chars without
+    if (i >= 0 && i < (int)strlen(spacial_symbol))
+        return spacial_symbol[i];
+    else
+        return '\0';
+}
 
 // ----    API Functions
 
@@ -78,14 +85,7 @@ bool mx_is_whitespace(char c) {
     return false;
 }
 
-// ----- Static Functions
-static char _whitespace(int i) {
-    char spacial_symbol[] = " \n\t"; // trim all these chars without
-    if (i >= 0 && i < (int)strlen(spacial_symbol))
-        return spacial_symbol[i];
-    else
-        return '\0';
-}
+
 ///**
 // * trim string
 // */

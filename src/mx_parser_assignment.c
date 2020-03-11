@@ -4,8 +4,23 @@
 
 #include "parser.h"
 
-static bool _is_valid_myparname(char *exp);
-static bool _is_single_char(char c);
+// ---------    Static Functions
+static bool _is_valid_myparname(char *exp) {
+    if (exp == NULL)
+        return false;
+    if (!(exp[0] == '_' || mx_isalpha(exp[0])))
+        return false;
+    for (int i = 1; exp[i]; i++) {
+        if (!(exp[i] == '_' || mx_isalpha(exp[i]) || mx_isdigit(exp[i])))
+            return false;
+    }
+    return true;
+}
+
+static bool _is_single_char(char c) {
+    return c == '*' || c == '@' || c == '#' || c == '?'
+           || c == '-' || c == '$' || c == '!';
+}
 
 // ----    API Functions
 bool mx_isalpha(char c) {
@@ -45,23 +60,7 @@ bool mx_has_assignment(char *exp) {
     return res;
 }
 
-// ---------    Static Functions
-static bool _is_valid_myparname(char *exp) {
-    if (exp == NULL)
-        return false;
-    if (!(exp[0] == '_' || mx_isalpha(exp[0])))
-        return false;
-    for (int i = 1; exp[i]; i++) {
-        if (!(exp[i] == '_' || mx_isalpha(exp[i]) || mx_isdigit(exp[i])))
-            return false;
-    }
-    return true;
-}
 
-static bool _is_single_char(char c) {
-    return c == '*' || c == '@' || c == '#' || c == '?'
-           || c == '-' || c == '$' || c == '!';
-}
 
 //// test valid name
 //#include <assert.h>

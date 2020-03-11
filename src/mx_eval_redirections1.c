@@ -3,8 +3,28 @@
 //
 
 #include "evaluator.h"
-static t_redirect *_malloc_new_redirect();
-static void _error_handle(t_redirect **redirect);
+
+// ----    Static Function
+// for mx_new_redirect
+static t_redirect *_malloc_new_redirect() {
+    t_redirect *redirect = malloc(sizeof (t_redirect));
+    redirect->error = NULL;
+    redirect->input = NULL;
+    redirect->output = NULL;
+    redirect->input_fd = 0;
+    redirect->prev_input_fd = 0;
+    redirect->output_fd = 1;
+    redirect->prev_output_fd = 1;
+    redirect->error_fd = 2;
+    redirect->prev_error_fd = 2;
+    return redirect;
+}
+// for mx_new_redirect
+static void _error_handle(t_redirect **redirect) {
+    mx_print_error_nearnewline();
+    mx_delete_redirect(redirect);
+}
+
 
 // ----    API Function
 
@@ -49,26 +69,6 @@ t_redirect *mx_new_redirect(char **exp, bool *error) {
     }
     *error = er;
     return redirect;
-}
-
-// for mx_new_redirect
-static t_redirect *_malloc_new_redirect() {
-    t_redirect *redirect = malloc(sizeof (t_redirect));
-    redirect->error = NULL;
-    redirect->input = NULL;
-    redirect->output = NULL;
-    redirect->input_fd = 0;
-    redirect->prev_input_fd = 0;
-    redirect->output_fd = 1;
-    redirect->prev_output_fd = 1;
-    redirect->error_fd = 2;
-    redirect->prev_error_fd = 2;
-    return redirect;
-}
-// for mx_new_redirect
-static void _error_handle(t_redirect **redirect) {
-    mx_print_error_nearnewline();
-    mx_delete_redirect(redirect);
 }
 
 

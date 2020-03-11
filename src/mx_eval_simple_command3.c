@@ -4,42 +4,6 @@
 
 #include "evaluator.h"
 
-static void _remove_esc(t_exp exp, e_mode mode, int i, int *j, char *new_exp);
-static void _remove_dquote(t_exp exp, e_mode *mode,
-                           int i, int *j, char *new_exp);
-static void _remove_quote(t_exp exp, e_mode *mode,
-                          int i, int *j, char *new_exp);
-static void _handle_oddnumberofqoutes(t_eval_result result);
-
-
-// ----    API Function
-//remove \ ' " from unquoted string
-t_eval_result mx_eval_remove_escquotedquote(t_exp exp) {
-    t_eval_result result = mx_new_evalresult();
-    t_exp new_exp = mx_strnew(strlen(exp));
-    int j = 0;
-    e_mode mode = unquote;
-
-    for (int i = 0; exp[i]; i++) {
-        if (exp[i] == '\\')
-            _remove_esc(exp, mode, i, &j, new_exp);
-        else if (exp[i] == '\"')
-            _remove_dquote(exp, &mode, i, &j, new_exp);
-        else if (exp[i] == '\'')
-            _remove_quote(exp, &mode, i, &j, new_exp);
-        else
-            mx_copy(exp[i], new_exp, &j);
-    }
-    if (mode != unquote) {
-        _handle_oddnumberofqoutes(result);
-        mx_strdel(&new_exp);
-    }
-    else
-        result->text = new_exp;
-    return result;
-}
-
-
 // ----- Static Functions
 
 static void _remove_esc(t_exp exp, e_mode mode, int i, int *j, char *new_exp) {
@@ -50,8 +14,8 @@ static void _remove_esc(t_exp exp, e_mode mode, int i, int *j, char *new_exp) {
     else if (mode == dquote) {
         if (mx_count_esc(exp, i) % 2 == 0
             && (exp[i + 1] != '\"'
-            && exp[i + 1] != '\''
-            && exp[i + 1] != '!'
+                && exp[i + 1] != '\''
+                && exp[i + 1] != '!'
             ))
             mx_copy('\\', new_exp, j);
     }
@@ -97,6 +61,37 @@ static void _handle_oddnumberofqoutes(t_eval_result result) {
     result->text = NULL;
     mx_print_oddnumberofquotes();
 }
+
+
+// ----    API Function
+//remove \ ' " from unquoted string
+t_eval_result mx_eval_remove_escquotedquote(t_exp exp) {
+    t_eval_result result = mx_new_evalresult();
+    t_exp new_exp = mx_strnew(strlen(exp));
+    int j = 0;
+    e_mode mode = unquote;
+
+    for (int i = 0; exp[i]; i++) {
+        if (exp[i] == '\\')
+            _remove_esc(exp, mode, i, &j, new_exp);
+        else if (exp[i] == '\"')
+            _remove_dquote(exp, &mode, i, &j, new_exp);
+        else if (exp[i] == '\'')
+            _remove_quote(exp, &mode, i, &j, new_exp);
+        else
+            mx_copy(exp[i], new_exp, &j);
+    }
+    if (mode != unquote) {
+        _handle_oddnumberofqoutes(result);
+        mx_strdel(&new_exp);
+    }
+    else
+        result->text = new_exp;
+    return result;
+}
+
+
+
 
 //////test eval_remove_escquotedquote
 //#include <assert.h>

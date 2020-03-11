@@ -4,8 +4,27 @@
 
 #include "evaluator.h"
 
+// ----- Static Functions
 static void _extract_error_helper(char *delim, char **exp,
-                                  t_redirect **redirect, bool *er);
+                                  t_redirect **redirect, bool *er) {
+    char *right_exp;
+    char *left_exp;
+    char *after_redirect;
+    char *input;
+    char *tmp;
+
+    left_exp = mx_left_exp(*exp, delim);
+    right_exp = mx_right_exp(*exp, delim);
+    input = mx_first_word(right_exp);
+    after_redirect = mx_rest_words(right_exp);
+    *er = mx_extract_helper(input, &((*redirect)->error), NULL, er);
+    if (*er) {
+        tmp = mx_strjoin_with_space(left_exp, after_redirect);
+        mx_strdel(exp);
+        *exp = tmp;
+    }
+    mx_delete_arlere(&after_redirect, &left_exp, &right_exp);
+}
 
 // ----    API Function
 /**
@@ -48,30 +67,10 @@ void mx_delete_arlere(char **after_redirect,
     mx_strdel(right_exp);
 }
 
-// ----- Static Functions
-static void _extract_error_helper(char *delim, char **exp,
-                                  t_redirect **redirect, bool *er) {
-    char *right_exp;
-    char *left_exp;
-    char *after_redirect;
-    char *input;
-    char *tmp;
 
-    left_exp = mx_left_exp(*exp, delim);
-    right_exp = mx_right_exp(*exp, delim);
-    input = mx_first_word(right_exp);
-    after_redirect = mx_rest_words(right_exp);
-    *er = mx_extract_helper(input, &((*redirect)->error), NULL, er);
-    if (*er) {
-        tmp = mx_strjoin_with_space(left_exp, after_redirect);
-        mx_strdel(exp);
-        *exp = tmp;
-    }
-    mx_delete_arlere(&after_redirect, &left_exp, &right_exp);
-}
 //
 //
-//void apply_output_append(t_redirect *redir, bool *res) {
+//void _apply_output_append(t_redirect *redir, bool *res) {
 //    if ((redir->output_fd = open(redir->output,
 //                                 O_WRONLY|O_CREAT| O_APPEND, 0666)) < 0) {
 //        perror(redir->output);
@@ -87,10 +86,10 @@ static void _extract_error_helper(char *delim, char **exp,
 //
 //void _apply_output(t_redirect *redir, bool *res) {
 //    if (!redir->output_append) {
-//        apply_output_noappend(redir, res);
+//        _apply_output_noappend(redir, res);
 //    }
 //    else {
-//        apply_output_append(redir, res);
+//        _apply_output_append(redir, res);
 //    }
 //}
 //
@@ -144,7 +143,7 @@ static void _extract_error_helper(char *delim, char **exp,
 //
 //
 //
-//void mx_extract_input_helper(char *delim, bool append, char **exp,
+//void _extract_input_helper(char *delim, bool append, char **exp,
 //                            t_redirect **redirect, bool *er) {
 //    char *right_exp;
 //    char *left_exp;
@@ -166,7 +165,7 @@ static void _extract_error_helper(char *delim, char **exp,
 //    mx_delete_arlere(&after_redirect, &left_exp, &right_exp);
 //}
 //
-//void mx_extract_output_helper(char *delim, bool append, char **exp, t_redirect **redirect,
+//void _extract_output_helper(char *delim, bool append, char **exp, t_redirect **redirect,
 //        bool *er) {
 //    char *right_exp;
 //    char *left_exp;
@@ -196,7 +195,7 @@ static void _extract_error_helper(char *delim, char **exp,
 //
 //    }
 //    else if (strstr(*exp, "<") != NULL) {         // есть ли <
-//        mx_extract_input_helper("<", false, exp, redirect, er);
+//        _extract_input_helper("<", false, exp, redirect, er);
 //    }
 //    else {
 //        (*redirect)->input = NULL;
@@ -208,10 +207,10 @@ static void _extract_error_helper(char *delim, char **exp,
 ////   >   >>
 //void mx_extract_output(char **exp, t_redirect **redirect, bool *er) {
 //    if (strstr(*exp, ">>") != NULL) {         // есть ли <<
-//        mx_extract_output_helper(">>", true, exp, redirect, er);
+//        _extract_output_helper(">>", true, exp, redirect, er);
 //    }
 //    else if (strstr(*exp, ">") != NULL) {         // есть ли <
-//        mx_extract_output_helper(">", false, exp, redirect, er);
+//        _extract_output_helper(">", false, exp, redirect, er);
 //    }
 //    else {
 //        (*redirect)->output = NULL;

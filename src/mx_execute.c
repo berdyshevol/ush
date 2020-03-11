@@ -1,8 +1,47 @@
 #include "ush.h"
 
-static t_pair_cmd_name builtin(int i);
+// ----- Static Functions
+static t_pair_cmd_name builtin(int i) {
+    t_pair_cmd_name builtin[] = {
+            {"export", mx_builtin_export},
+            {"unset", mx_builtin_unset},
+            {"exit", mx_builtin_exit},
+            {"env", mx_builtin_env},
+            {"cd", mx_builtin_cd},
+            {"pwd", mx_builtin_pwd},
+            {"which", mx_builtin_which},
+            {"echo", mx_builtin_echo},
+            {"fg", mx_builtin_fg},
+            {"jobs", mx_jobs},
+            {"yes", mx_yes},
+            {"true", mx_true},
+            {"false", mx_false},
+            {NULL, NULL}
+    };
+    return builtin[i];
+}
+
 static void _execute_builtin_innewproc(int id, t_eval_result result,
-                                       t_global_environment *gv);
+                                       t_global_environment *gv) {
+    int pid;
+
+    switch (pid = fork()) {
+        case -1:
+            perror ("fork");
+            break;
+        case 0:
+            if (mx_has_pipe(gv->cnf->pipe_fd))
+                mx_apply_pipe_to_proc(1, 0, gv);
+            mx_run_builtin(id, result, gv);
+            exit(result->exit_no);
+            break;
+        default:
+            if (mx_has_pipe(gv->cnf->pipe_fd))
+                mx_apply_pipe_to_proc(0, 1, gv);
+            mx_smart_wait(pid, result, gv);
+            break;
+    }
+}
 
 // ----    API Function
 void mx_run_builtin(int id, t_eval_result result, t_global_environment *gv) {
@@ -66,48 +105,7 @@ int mx_find_builtin(char *cmd) {
     return -1;
 }
 
-// ----- Static Functions
-static t_pair_cmd_name builtin(int i) {
-    t_pair_cmd_name builtin[] = {
-            {"export", mx_builtin_export},
-            {"unset", mx_builtin_unset},
-            {"exit", mx_builtin_exit},
-            {"env", mx_builtin_env},
-            {"cd", mx_builtin_cd},
-            {"pwd", mx_builtin_pwd},
-            {"which", mx_builtin_which},
-            {"echo", mx_builtin_echo},
-            {"fg", mx_builtin_fg},
-            {"jobs", mx_jobs},
-            {"yes", mx_yes},
-            {"true", mx_true},
-            {"false", mx_false},
-            {NULL, NULL}
-    };
-    return builtin[i];
-}
 
-static void _execute_builtin_innewproc(int id, t_eval_result result,
-                                       t_global_environment *gv) {
-    int pid;
-
-    switch (pid = fork()) {
-        case -1:
-            perror ("fork");
-            break;
-        case 0:
-            if (mx_has_pipe(gv->cnf->pipe_fd))
-                mx_apply_pipe_to_proc(1, 0, gv);
-            mx_run_builtin(id, result, gv);
-            exit(result->exit_no);
-            break;
-        default:
-            if (mx_has_pipe(gv->cnf->pipe_fd))
-                mx_apply_pipe_to_proc(0, 1, gv);
-            mx_smart_wait(pid, result, gv);
-            break;
-    }
-}
 
 // //
 // int main(void) {

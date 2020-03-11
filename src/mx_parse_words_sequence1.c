@@ -4,26 +4,6 @@
 
 #include "parser.h"
 
-static void _extract_first_wordchain(char **str, char **f_wordchain);
-static void _extract_splitter(char **str, char **splitter);
-static void _extract_rest_wordchains(char **str, char **r_wordchains);
-
-// ----    API Functions
-void mx_parse_words_sequence(char *exp, char **f_wordchain, char **splitter, char **r_wordchains) {
-    char *str = NULL;
-    *f_wordchain = NULL;
-    *splitter = NULL;
-    *r_wordchains = NULL;
-
-    if (exp == NULL)
-        return ;
-    str = strdup(exp);
-    _extract_first_wordchain(&str, f_wordchain);
-    _extract_splitter(&str, splitter);
-    _extract_rest_wordchains(&str, r_wordchains);
-    mx_strdel(&str);
-}
-
 // ----- Static Functions
 static void _extract_first_wordchain(char **str, char **f_wordchain) {
     int i; // for loop iterator
@@ -36,7 +16,7 @@ static void _extract_first_wordchain(char **str, char **f_wordchain) {
         if (mode == unquote
             && mx_is_whitespace((*str)[i])
             && mx_count_esc(*str, i) % 2 == 0
-            )
+                )
             break ;
     }
     //изменить стр и вернуть первый вордчеин
@@ -72,6 +52,22 @@ static void _extract_rest_wordchains(char **str, char **r_wordchains) {
         *r_wordchains = strdup(*str);
 }
 
+// ----    API Functions
+void mx_parse_words_sequence(char *exp, char **f_wordchain,
+                             char **splitter, char **r_wordchains) {
+    char *str = NULL;
+    *f_wordchain = NULL;
+    *splitter = NULL;
+    *r_wordchains = NULL;
+
+    if (exp == NULL)
+        return ;
+    str = strdup(exp);
+    _extract_first_wordchain(&str, f_wordchain);
+    _extract_splitter(&str, splitter);
+    _extract_rest_wordchains(&str, r_wordchains);
+    mx_strdel(&str);
+}
 
 //
 //
