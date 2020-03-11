@@ -92,14 +92,14 @@ static char *_get_value(char *varname, t_global_environment *gv) {
 //}
 
 
-//// test mx_insert
+////// test mx_insert
 //#include <assert.h>
 //#include <string.h>
 //int main(void) {
-//    char *arr[] =  {"$()asdf", "as$()df", "asdf$()", NULL};
-//    int start[] =  { 0,         2,         4};
-//    int end[] =    { 2,         4,         6};
-//    char *test[] = {"wordasdf", "asworddf", "asdfword", NULL};
+//    char *arr[] =  {"012$()345", "$()01", "0123$()", NULL};
+//    int start[] =  { 3,         0,         4};
+//    int end[] =    { 5,         2,         6};
+//    char *test[] = {"012word345", "word01", "0123word", NULL};
 //
 //    for (int i = 0; arr[i]; i++) {
 //        char *exp = mx_strdup(arr[i]);
@@ -108,6 +108,6 @@ static char *_get_value(char *varname, t_global_environment *gv) {
 //        assert(strcmp(exp, test[i]) == 0);
 //        free(exp);
 //    }
-//    system("leaks -q a.out");
+//    system("leaks -q ush");
 //    return 0;
 //}

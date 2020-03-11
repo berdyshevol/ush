@@ -90,6 +90,8 @@ int mx_builtin_which(t_global_environment *gv) {
         free(flags);
         return EXIT_FAILURE;
     }
+    if (mx_find_builtin(gv->cnf->agv[index]) != -1)
+        printf("%s: shell built-in command\n", gv->cnf->agv[index]);
     status = which_checking(gv, flags, index);
     free(flags);
     return status;

@@ -105,8 +105,6 @@ void mx_print_prompt(void);
 bool mx_cmp_name(void *data1, void *data2);
 void mx_sort_arr(char **arr, bool (*cmp)(void *, void*));
 
-// TODO: эти все функции лежат в mx_builtins.c. их позже можно разбить на
-//  разные файлы
 int mx_builtin_export(t_global_environment *gv);
 int mx_builtin_unset(t_global_environment *gv);
 int mx_builtin_fg(t_global_environment *gv);
@@ -129,6 +127,7 @@ bool mx_try_bin(char *cmd, t_eval_result result, t_global_environment *gv);
 void mx_smart_wait(int pid, t_eval_result result, t_global_environment *gv);
 bool try_builtin(char *cmd, t_eval_result result, t_global_environment *gv);
 void mx_run_builtin(int id, t_eval_result result, t_global_environment *gv);
+int mx_find_builtin(char *cmd);
 
 
 // pipe

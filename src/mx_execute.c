@@ -1,7 +1,6 @@
 #include "ush.h"
 
 static t_pair_cmd_name builtin(int i);
-static int _find_builtin(char *cmd);
 static void _execute_builtin_innewproc(int id, t_eval_result result,
                                        t_global_environment *gv);
 
@@ -24,7 +23,7 @@ void mx_run_builtin(int id, t_eval_result result, t_global_environment *gv) {
 }
 
 bool try_builtin(char *cmd, t_eval_result result, t_global_environment *gv) {
-    int id = _find_builtin(cmd);
+    int id = mx_find_builtin(cmd);
 
     if (id >= 0) {
         if (gv->cnf->new_proc != NULL && *(gv->cnf->new_proc) == true) {
@@ -55,6 +54,18 @@ t_eval_result mx_execute(char *command, t_global_environment *gv) {
     }
     return result;
 }
+
+int mx_find_builtin(char *cmd) {
+    int i = 0;
+    while (builtin(i).name) {
+        if (strcmp(cmd, builtin(i).name) == 0) {
+            return i;
+        }
+        i++;
+    }
+    return -1;
+}
+
 // ----- Static Functions
 static t_pair_cmd_name builtin(int i) {
     t_pair_cmd_name builtin[] = {
@@ -74,17 +85,6 @@ static t_pair_cmd_name builtin(int i) {
             {NULL, NULL}
     };
     return builtin[i];
-}
-
-static int _find_builtin(char *cmd) {
-    int i = 0;
-    while (builtin(i).name) {
-        if (strcmp(cmd, builtin(i).name) == 0) {
-            return i;
-        }
-        i++;
-    }
-    return -1;
 }
 
 static void _execute_builtin_innewproc(int id, t_eval_result result,

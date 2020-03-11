@@ -1,0 +1,17 @@
+exp=echo "12$(echo -n "hi")34"
+value=hi
+new exp=echo "12hi34"exp=echo "$(echo -n "Hi"), $(echo -n "Ivan")"
+value=Hi
+new exp=echo "Hi, $(echo -n "Ivan")"exp=echo "Hi, $(echo -n "Ivan")"
+value=Ivan
+new exp=echo "Hi, Ivan"exp=echo "12$(echo hi)34 56$(echo hi)78"
+value=hi
+new exp=echo "12hi34 56$(echo hi)78"exp=echo "12hi34 56$(echo hi)78"
+value=hi
+new exp=echo "12hi34 56hi78"exp=echo "12$(echo hi)34 56$(echo hi)78\!"
+value=hi
+new exp=echo "12hi34 56$(echo hi)78\!"exp=echo "12hi34 56$(echo hi)78\!"
+value=hi
+new exp=echo "12hi34 56hi78\!"exp=echo "12$(echo -n "hi")34\!"
+value=hi
+new exp=echo "12hi34\!"

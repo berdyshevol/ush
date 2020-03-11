@@ -49,7 +49,10 @@ static void _remove_esc(t_exp exp, e_mode mode, int i, int *j, char *new_exp) {
     }
     else if (mode == dquote) {
         if (mx_count_esc(exp, i) % 2 == 0
-            && (exp[i + 1] != '\"' && exp[i + 1] != '\'') )
+            && (exp[i + 1] != '\"'
+            && exp[i + 1] != '\''
+            && exp[i + 1] != '!'
+            ))
             mx_copy('\\', new_exp, j);
     }
     else

@@ -56,6 +56,9 @@ static char *_readpipe(int fd) {
     char buf[size];
     int res;
     if ((res = read(fd, buf, size)) > 0) {
+        char *p = strstr(buf, "[0;47;30m%");
+        if (p != NULL)
+            *(p-1) = '\0';
         return strndup(buf, res-1); // to delete last char which is \n
     }
     else return NULL;
@@ -86,23 +89,6 @@ static char *_waitread_cmdsubs(int pid, int *fd,
     mx_smart_close_fd(&fd[1], 1);
     return res;
 }
-
-
-//void mx_command_substitution(t_exp *exp, t_eval_result result, t_global_environment *gv) {
-//    int start = 0;
-//    int end = 0;
-//    char *name = NULL;
-//    char *value = NULL;
-//    bool find_result;
-//    find_result = mx_find_command_substitution(*exp, &start, &end, &name);
-//    while (find_result) {
-//        value = mx_get_command_substitution(name, result, gv);
-//        mx_insert(exp, start, end, value);
-//        mx_strdel(&value);
-//        mx_strdel(&name);
-//        find_result = mx_find_command_substitution(*exp, &start, &end, &name);
-//    }
-//}
 
 //////test mx_parameter_expansion
 //#include <assert.h>

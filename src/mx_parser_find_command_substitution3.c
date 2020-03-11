@@ -1,7 +1,3 @@
-//
-// Created by Олег on 3/6/20.
-//
-
 #include "parser.h"
 
 static bool cmdsubs_typetwo_helper(char *exp, char *find_begin, t_args *args);
