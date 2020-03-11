@@ -132,8 +132,6 @@ void mx_run_builtin(int id, t_eval_result result, t_global_environment *gv);
 
 
 // pipe
-int *mx_pipe_fd_new();
-void mx_pipe_fd_delete(int **pipe_fd);
 void mx_smart_close_fd(int *fd, int std);
 int mx_fd_is_valid(int fd);
 void mx_apply_pipe_to_proc(int fd_out, int fd_in, t_global_environment *gv);

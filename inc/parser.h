@@ -1,7 +1,6 @@
 #ifndef PARSER_H
 #define PARSER_H
 
-//#include "ush.h"
 #include "libmx.h"
 #include <string.h>
 
@@ -13,8 +12,6 @@ typedef enum {
     pipe_operator,            //    |
     pipe_ampersand,           //    |&
     all_binary_operators,
-
-
     quote_op,                    //    '..'
     doublequote,              //    ".."  
     dollar_curly_bracket,     //    ${..}
@@ -28,14 +25,6 @@ typedef enum {
     unclosed_expression,
     operator_id_count
 } e_operator_id;
-
-typedef enum {
-    string_type,
-    esc_type,
-    file_expansion_type,
-    dquote_type,
-    unclosed_expression_type
-} e_word_type;
 
 typedef enum {
     list,

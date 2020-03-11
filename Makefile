@@ -31,14 +31,22 @@ SRC =   main.c \
 		mx_env_set_var.c \
 		mx_environ_copy.c \
 		mx_eval.c \
+		mx_eval_assignment.c \
 		mx_eval_command_substitution.c \
 		mx_eval_file_expansion.c \
+		mx_eval_logics.c \
 		mx_eval_parameter_expansion.c \
 		mx_eval_redirections1.c \
 		mx_eval_redirections2.c \
 		mx_eval_redirections3.c \
 		mx_eval_redirections4.c \
 		mx_eval_redirections5.c \
+		mx_eval_sequence.c \
+		mx_eval_sequence_pipeline.c \
+		mx_eval_simple_command1.c \
+		mx_eval_simple_command2.c \
+		mx_eval_simple_command3.c \
+		mx_eval_simple_command4.c \
 		mx_exec_apply_pipe.c \
 		mx_exec_try_bin.c \
 		mx_execute.c \

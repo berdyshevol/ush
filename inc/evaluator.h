@@ -14,73 +14,36 @@ typedef char* t_exp;
 
 typedef t_liststr t_list_of_values; // TODO: or char*
 
-typedef enum {
-    less,          //    <
-    less_less,     //    <<
-    more,          //    >
-    more_more,     //    >>
-    two_more,      //    2>
-    less_more      //    <>
-} e_redirection_chars;
-
-
-// parsing
-e_exp_type mx_parse(t_exp exp);
-
-// words
-t_eval_result mx_self_evaluating (t_exp exp, t_global_environment *env);
-t_eval_result mx_text_of_quotation(t_exp exp, t_global_environment *gv);
-
-// Expansions
-t_eval_result mx_lookup_variable_value(t_exp exp, t_global_environment *gv);
-t_eval_result  mx_eval_command_substitution(t_exp exp, t_global_environment *gv);
-t_eval_result mx_file_extension(t_exp exp, t_global_environment *gv);
-
-// Begin packages a sequence of expressions into a single expression.
-t_exp mx_first_exp(t_exp seq, char *delim);
-
-bool mx_is_last_exp(t_exp seq, char *delim);
-t_exp mx_rest_exps(t_exp seq, char *delim);
-
 // eval_assignment
 t_eval_result mx_eval_assignment(t_exp exp, t_global_environment *gv);
-t_exp mx_assignment_variable(t_exp exp);
-t_exp mx_assignment_value(t_exp exp);
-t_exp mx_words_after_assignment(t_exp exp);
 void mx_parameter_expansion(t_exp *exp, t_global_environment *gv);
 void mx_insert(char **exp, int start, int end, char *word);
 
-// A procedure application is simple-command
-t_exp mx_command(t_exp exp);
-t_exp mx_operands(t_exp exp);
+// Logic
+t_eval_result mx_eval_logic(t_exp exp, t_global_environment *gv);
 
-// Conditionals && ||. zsh calls it sublist
-t_exp mx_if_predicate(t_exp exp);
-t_exp mx_if_consequent(t_exp exp);
-t_exp mx_if_alternative(t_exp exp);
-bool mx_result_of_if_predicate(t_exp exp, t_global_environment *gv);
-
-// Conditionals
-t_eval_result mx_eval_if(t_exp exp, t_global_environment *gv);
+// For evaluating sequence of expressions
+t_exp mx_first_exp(t_exp seq, char *delim);
+bool mx_is_last_exp(t_exp seq, char *delim);
+t_exp mx_rest_exps(t_exp seq, char *delim);
 
 // Sequences
-t_eval_result
-mx_eval_sequence(t_exp exps, t_global_environment *gv);
-t_eval_result
-mx_eval_seq_pipeline(t_exp exps, t_global_environment *gv, int *pipe_fd);
+t_eval_result mx_eval_sequence(t_exp exps, t_global_environment *gv);
+t_eval_result mx_eval_seq_pipeline(t_exp exps,
+                                   t_global_environment *gv, int *pipe_fd);
 
 //Procedure arguments
 void mx_list_of_values(t_list_of_values **list,
                        t_exp exps, t_global_environment *gv);
+t_eval_result mx_eval_remove_escquotedquote(t_exp exp);
+void mx_copy(char c, char *newexp, int *index);
 
 // for eval
-t_eval_result
-mx_simple_command(t_exp expression, t_global_environment *gv, int *pipe_fd,
-                  bool *new_proc);
-t_eval_result
-mx_eval(t_exp exp, t_global_environment *gv, int *pipe_fd, bool *new_proc);
-
-        t_eval_result mx_new_evalresult(void);
+t_eval_result mx_simple_command(t_exp expression, t_global_environment *gv,
+            int *pipe_fd, bool *new_proc);
+t_eval_result mx_eval(t_exp exp, t_global_environment *gv,
+                      int *pipe_fd, bool *new_proc);
+t_eval_result mx_new_evalresult(void);
 void mx_delete_evalresult(t_eval_result *eval_result);
 
 // apply

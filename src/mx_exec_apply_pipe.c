@@ -5,22 +5,6 @@
 
 // ----    API Function
 
-int *mx_pipe_fd_new() {
-    int *pipe_fd = malloc(3 * sizeof (int));
-    pipe_fd[0] = -1;
-    pipe_fd[1] = -1;
-    pipe_fd[2] = -1;
-//    pipe_fd[3] = 1;
-    return pipe_fd;
-}
-
-void mx_pipe_fd_delete(int **pipe_fd) {
-    if (pipe_fd != NULL && *pipe_fd != NULL) {
-        free(*pipe_fd);
-        *pipe_fd = NULL;
-    }
-}
-
 void mx_smart_close_fd(int *fd, int std) {
     if (*fd != std) {
         close(*fd);
