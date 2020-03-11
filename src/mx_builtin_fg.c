@@ -28,12 +28,19 @@ static bool check_str(char *src, char *str) {
     bool res;
     char *s1 = NULL;
     char *s2 = NULL;
+    char *s3 = NULL;
 
     if (src == NULL || src[0] == '\0')
         return false;
     s1 = mx_first_word(src);
     s2 = mx_first_word(str);
-    res = (strcmp(s1, s2) == 0);
+    if (strlen(s2) < strlen(s1)) {
+        s3 = strndup(s1, strlen(s2));
+        res = (strcmp(s3, s2) == 0);
+        mx_strdel(&s3);
+    }
+    else
+        res = (strcmp(s1, s2) == 0);
     mx_strdel(&s2);
     mx_strdel(&s1);
     return res;
