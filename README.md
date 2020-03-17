@@ -1,2 +1,2 @@
 # ush
-shell
+MacOS Shell in C
