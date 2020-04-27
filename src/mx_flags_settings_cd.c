@@ -19,6 +19,8 @@ static int open_or_not_catalog(char *dir, bool old) {
 }
 
 static void set_pwd_oldpwd(t_global_environment *gv, char *dir) {
+    if (dir[strlen(dir) - 1] == '/' && strlen(dir) - 1 != 0)
+        dir[strlen(dir) - 1] = '\0';
     mx_strdel(&gv->oldpwd);
     gv->oldpwd = mx_strdup(gv->pwd);
     setenv("OLDPWD", gv->pwd, 1);

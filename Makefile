@@ -1,8 +1,15 @@
 NAME = ush
 
-NLIB = Libmx/libmx.a
+NLIB = libmx
+PLIB = Libmx/$(NLIB).a
 
-HDR = environment.h \
+SRCD = src
+INCD = inc
+OBJD = obj
+
+LBMXINC = $(NLIB).h
+
+INC = environment.h \
       evaluator.h \
       i.h \
       liststr.h \
@@ -99,31 +106,29 @@ SRC =   main.c \
 
 OBJ = $(SRC:.c=.o)
 
+SRCS = $(addprefix $(SRCD)/, $(SRC))
+INCS = $(addprefix $(INCD)/, $(INC))
+LBMXP = Libmx/inc/$(NLIB).h
+
 CFLAG = -std=c11 -Wall -Wextra -Wpedantic -Werror -Wunused-parameter
-#CFLAG = -std=c11 -Wunused-parameter -Wsign-compare -Wunused-function -Wunused-variable
 
 all: install clean
 
 install:
-	@cd libmx && make -f Makefile install
-	@cp $(addprefix src/, $(SRC)) $(addprefix inc/, $(HDR)) Libmx/inc/libmx.h .
-	@clang $(CFLAG) -c $(SRC) -I $(HDR)
-	@mkdir obj
-	@clang $(CFLAG) $(OBJ) $(NLIB) -o $(NAME)
-	@mv $(OBJ) ./obj
-	@rm -rf libmx.h $(SRC) $(HDR)
-	@rm *.gch
+	@make -sC $(NLIB) install
+	@cp $(SRCS) $(INCS) $(LBMXP) .
+	@clang $(CFLAG) -c $(SRC) -I $(INC)
+	@mkdir $(OBJD)
+	@clang $(CFLAG) $(OBJ) $(PLIB) -o $(NAME)
+	@mv $(OBJ) $(OBJD)
+	@rm -rf $(LBMXINC) $(SRC) $(INC) *.gch
 
 uninstall: clean
-	@cd libmx && make -f Makefile uninstall
+	@make -sC $(NLIB) $@
 	@rm -rf $(NAME)
 
 clean:
-	@cd libmx && make -f Makefile clean
-	@rm -rf $(OBJ)
-	@rm -rf ./obj
+	@make -sC $(NLIB) $@
+	@rm -rf $(OBJ) $(OBJD)
 
 reinstall: uninstall install
-
-cl:
-	@rm -rf *.c *.h *.o *.gch ./obj

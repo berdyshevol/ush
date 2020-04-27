@@ -1,7 +1,7 @@
 #include "ush.h"
 
 int mx_builtin_exit(t_global_environment *gv) {
-    system("leaks -q ush");
+    // system("leaks -q ush");
     if (gv->cnf->agv[1] == NULL)
         exit(0);
     if (gv->cnf->agvsize > 2) {
