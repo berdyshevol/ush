@@ -33,6 +33,24 @@ static int get_flags(char **argv) {
     return physical;
 }
 
+void mx_pwd_check(t_global_environment *gv) {
+    char link_read[PATH_MAX + 1];
+    char *where_we = getwd(NULL);
+
+    if (realpath(getenv("PWD"), link_read) == NULL 
+        || strcmp(realpath(getenv("PWD"), link_read), where_we) != 0) {
+            gv->pwd = mx_strdup(where_we);
+            gv->oldpwd = mx_strdup(where_we);
+            setenv("PWD", where_we, 1);
+            setenv("OLDPWD", where_we, 1);
+        }
+    else {
+        gv->pwd = mx_strdup(getenv("PWD"));
+        gv->oldpwd = mx_strdup(getenv("OLDPWD"));
+    }
+    mx_strdel(&where_we);
+}
+
 int mx_builtin_pwd(t_global_environment *gv) {
     int physical;
 

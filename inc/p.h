@@ -64,6 +64,7 @@ char *mx_get_env_value(char *var);
 bool *mx_flags_map(int flags_num);
 int mx_exec_env(char **arr, char *path);
 bool mx_cmp_name(void *data1, void *data2);
+void mx_pwd_check(t_global_environment *gv);
 int mx_match_search(char *str, char *regex);
 char *mx_path_cancat(char **arr, char *str);
 int mx_print_error_env(char ch, int err, char *str);

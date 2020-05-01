@@ -51,8 +51,7 @@ void initialize_variables_ivan(t_global_environment *gv) {
 
 t_global_environment *mx_new_global_env(void) {
     t_global_environment *gv = malloc(sizeof(t_global_environment));
-    
-    gv->shellName = "brothers' shell"; // DELETE
+    char *new_shlvl = mx_itoa(mx_atoi(getenv("SHLVL")) + 1);
     
     gv->prompt = "\x1b[1K\r\x1b[2Ku$h> ";
     gv->vars = mx_env_new();
@@ -60,9 +59,10 @@ t_global_environment *mx_new_global_env(void) {
     gv->functions = mx_env_new();
     gv->alias = mx_env_new();
     gv->cnf = NULL;
-    gv->pwd = mx_strdup(getenv("PWD"));
-    gv->oldpwd = mx_strdup(getenv("OLDPWD"));
+    setenv("SHLVL", new_shlvl, 1);
+    mx_pwd_check(gv);
     initialize_variables_ivan(gv);
+    mx_strdel(&new_shlvl);
     return gv;
 }
 
