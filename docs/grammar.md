@@ -22,7 +22,7 @@ For the basis of our shell grammar the following article is taken:
 \* operators `;` `&&` `||` `|` can be surrounded by whitespaces 
 
 #### simple-command _(one of):_
-    word-sequence
+    string
     parameter-assignment
 
 #### parameter-assignment _(one of):_
@@ -33,28 +33,29 @@ For the basis of our shell grammar the following article is taken:
      one of: *  @  #  ? -  $ !
      (_|a-z|A-Z)(_|a-z|A-Z|0-9){1,}
 
-#### word-sequence _(one of):_
-    word<whitespaces>word_sequence
-    word
+#### string _(one of):_
+    plain-string[string]
+    quoted-string[string]
+    double-quoted-string[string]
+    parameter-reference[string]
+    command-substitution[string]
+    file-expansion[string]
+    redirection-operator[string]
     
+#### plain-string _(one of):_
+     word whitespaces string
+     word
 \* _the first word is a command which can be alias, 
 or if it starts with \ it is not alias. Command is either external or builtin command._
+
 #### whitespaces _(one of):_
     whitespace whitespaces
     whitespace
 
 #### whitespace _(one of):_
     one of: <space> <tab> <newline>
-    
-#### word _(one of):_
-    plain-string[word]
-    quoted-string[word]
-    parameter-reference[word]
-    command-substitution[word]
-    file-expansion
-    redirection-operator
 
-#### plain_string _(one of):_
+#### word _(one of):_
     series all chars except for whitespace, ", ', `, (, ), {, {
     escape_sequence[plain_string]
 
@@ -64,13 +65,8 @@ or if it starts with \ it is not alias. Command is either external or builtin co
 #### quoted_string:
 	'string'
 
-#### dquoted_string
+#### double-quoted-string:
 	"string"
-
-#### string _(one of):_
-	plain-string[whitespaces string]
-	parameter-reference[string]
-	command-substitution[string]
 
 #### parameter-reference _(one of):_
     $parameter-name
