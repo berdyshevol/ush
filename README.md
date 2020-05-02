@@ -1,3 +1,3 @@
 # ush
-**MacOS Shell in C
+*MacOS Shell in C
 
