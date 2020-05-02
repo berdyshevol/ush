@@ -48,10 +48,10 @@ Parsing and execution of the input line is done by implementation of [meta-circu
 The shell’s grammar is based on zsh grammar http://zsh.sourceforge.net/Doc/Release/Shell-Grammar.html
 
 #### 3.2 Operator precedence
-1. ;
-2. ||  &&
-3. |
-4. =,   >,    >>,   <, ~
+1. `;`
+2. `||`  `&&`
+3. `|`
+4. `=` `>` `>>` `<` `~`
 
 #### 3.3 Grammar
 Details of grammar are [here](/docs/grammar.md)

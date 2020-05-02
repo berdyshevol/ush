@@ -1,5 +1,5 @@
 # SHELL GRAMMAR
-For the bases of our shell grammar the following article is taken:
+For the basis of our shell grammar the following article is taken:
 [zsh grammar shell](http://zsh.sourceforge.net/Doc/Release/Shell-Grammar.html)
 
 ## Grammar
@@ -29,15 +29,11 @@ For the bases of our shell grammar the following article is taken:
     parameter-name=word <whitespaces> simple-command
     parameter-name=word
 
-#### parameter_reference _(one of):_
-    $parameter-name
-    ${parameter-name}
-
-#### parameter_name _(one of):_
+#### parameter-name _(one of):_
      one of: *  @  #  ? -  $ !
      (_|a-z|A-Z)(_|a-z|A-Z|0-9){1,}
 
-#### word_sequence _(one of):_
+#### word-sequence _(one of):_
     word<whitespaces>word_sequence
     word
     
@@ -51,12 +47,12 @@ or if it starts with \ it is not alias. Command is either external or builtin co
     one of: <space> <tab> <newline>
     
 #### word _(one of):_
-    plain_string[word]
-    quoted_string[word]
-    parameter_reference[word]
-    command_substitution[word]
-    file_expansion
-    redirection_operator
+    plain-string[word]
+    quoted-string[word]
+    parameter-reference[word]
+    command-substitution[word]
+    file-expansion
+    redirection-operator
 
 #### plain_string _(one of):_
     series all chars except for whitespace, ", ', `, (, ), {, {
@@ -72,11 +68,15 @@ or if it starts with \ it is not alias. Command is either external or builtin co
 	"string"
 
 #### string _(one of):_
-	plain_string[whitespaces string]
-	parameter_reference[string]
-	command_substitution[string]
+	plain-string[whitespaces string]
+	parameter-reference[string]
+	command-substitution[string]
 
-#### command_substitution _(one of):_
+#### parameter-reference _(one of):_
+    $parameter-name
+    ${parameter-name}
+
+#### command-substitution _(one of):_
     $(list)
     `list`
 
@@ -86,7 +86,9 @@ or if it starts with \ it is not alias. Command is either external or builtin co
     ~+file-path
 
 #### redirection_operator _(one of):_
-	>, 2>
-	>>, 2>>
-	<
+	> file-name
+	2> file-name
+	>> file-name
+	2>> file-name
+	< file-name
 \* _we did not implemented_ `<<`
