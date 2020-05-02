@@ -26,8 +26,9 @@ For the basis of our shell grammar the following article is taken:
     parameter-assignment
 
 #### parameter-assignment _(one of):_
-    parameter-name=word <whitespaces> simple-command
-    parameter-name=word
+    parameter-name=word [<whitespaces> simple-command]
+    parameter-name="string" [<whitespaces> simple-command]
+    parameter-name='string' [<whitespaces> simple-command]
 
 #### parameter-name _(one of):_
      one of: *  @  #  ? -  $ !
@@ -39,11 +40,11 @@ For the basis of our shell grammar the following article is taken:
     double-quoted-string[string]
     parameter-reference[string]
     command-substitution[string]
-    file-expansion[string]
+    file-expansion
     redirection-operator[string]
     
 #### plain-string _(one of):_
-     word whitespaces string
+     word whitespaces plain-string
      word
 \* _the first word is a command which can be alias, 
 or if it starts with \ it is not alias. Command is either external or builtin command._
