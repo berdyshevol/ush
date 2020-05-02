@@ -1,5 +1,6 @@
 # Unix shell in C (MacOs)
-Shell in C close to zsh. 
+Shell an educational project based on curriculum of [ucode.world](https://ucode.world/en/). 
+It is written in C for MacOs.
 
 ## This shell implements:
 1. execution of external commands (bin files) 
@@ -20,7 +21,7 @@ Bin files are executed in a separate process.
     `ls -la`
     `/bin/ls -l`
 
-## 2. Builtins implemented in the shell:
+### 2. Builtins implemented in the shell:
 1. Echo
 _e.g._ `echo "CBL World"`
     `echo CBL World`
@@ -44,19 +45,19 @@ _e.g._ `echo "CBL World"`
 ### 3. Meta-circular interpreter
 Parsing and execution of the input line is done by implementation of [meta-circular interpreter](https://en.wikipedia.org/wiki/Meta-circular_evaluator) described in the book _Structure and Interpretation of Computer Programs_.
 
-#### 3.1 Shell Grammar
+### 4. Shell Grammar
 The shell’s grammar is based on zsh grammar http://zsh.sourceforge.net/Doc/Release/Shell-Grammar.html
 
-#### 3.2 Operator precedence
+#### 4.1 Operator precedence
 1. `;`
 2. `||`  `&&`
 3. `|`
 4. `=` `>` `>>` `<` `~`
 
-#### 3.3 Grammar
+#### 4.2 Grammar
 Details of grammar are [here](/docs/grammar.md)
 
-#### 3.4 Order of expansion performance
+#### 4.3 Order of expansion performance
 The following types of expansions are performed in the indicated order in five steps:
 
 1. Alias Expansion
@@ -65,7 +66,9 @@ The following types of expansions are performed in the indicated order in five s
 4. Command Substitution
 5. Arithmetic Expansion
 6. Brace Expansion
-7. These five are performed in left-to-right fashion. On each argument, any of the five steps that are needed are performed one after the other. Hence, for example, all the parts of parameter expansion are completed before command substitution is started. After these expansions, all unquoted occurrences of the characters ‘\’,‘’’ and ‘"’ are removed.
+7. These five are performed in left-to-right fashion. On each argument, any of the five steps that are needed are performed one after the other. 
+__Hence, for example, all the parts of parameter expansion are completed before command substitution is started.
+After these expansions, all unquoted occurrences of the characters ‘\’,‘’’ and ‘"’ are removed.__
 8. Filename Expansion
 
 
