@@ -46,7 +46,6 @@ _e.g._ `echo "CBL World"`
 Parsing and execution of the input line is done by implementation of [meta-circular interpreter](https://en.wikipedia.org/wiki/Meta-circular_evaluator) described in the book _Structure and Interpretation of Computer Programs_.
 
 ### 4. Shell Grammar
-The shell’s grammar is based on zsh grammar http://zsh.sourceforge.net/Doc/Release/Shell-Grammar.html
 
 #### 4.1 Operator precedence
 1. `;`
