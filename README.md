@@ -59,15 +59,12 @@ Details of grammar are [here](/docs/grammar.md)
 #### 4.3 Order of expansion performance
 The following types of expansions are performed in the indicated order in five steps:
 
-1. Alias Expansion
-2. Process Substitution
+1. Alias Expansion (_not implemented_)
 3. Parameter Expansion (only $name and ${name})
 4. Command Substitution
-5. Arithmetic Expansion
-6. Brace Expansion
-7. These five are performed in left-to-right fashion. On each argument, any of the five steps that are needed are performed one after the other. 
-__Hence, for example, all the parts of parameter expansion are completed before command substitution is started.
-After these expansions, all unquoted occurrences of the characters ‘\’,‘’’ and ‘"’ are removed.__
+7. These  are performed in left-to-right fashion. On each argument, any of the five steps that are needed are performed one after the other. 
+_Hence, for example, all the parts of parameter expansion are completed before command substitution is started.
+After these expansions, all unquoted occurrences of the characters ‘\’,‘’’ and ‘"’ are removed._
 8. Filename Expansion
 
 
