@@ -69,7 +69,7 @@ The following types of expansions are performed in the indicated order in five s
 4. Command Substitution
 7. These  are performed in left-to-right fashion. On each argument, any of the five steps that are needed are performed one after the other. 
 _Hence, for example, all the parts of parameter expansion are completed before command substitution is started.
-After these expansions, all unquoted occurrences of the characters ‘\’,‘’’ and ‘"’ are removed._
+After these expansions, all unquoted occurrences of the characters `\` `’` and `"` are removed._
 8. Filename Expansion
 
 
