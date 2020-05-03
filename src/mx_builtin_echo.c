@@ -51,7 +51,7 @@ static void print_newline(bool no_new_line, bool only_sound) {
     if (no_new_line) {
         if (only_sound)
             return;
-        else
+        else if (isatty(1))
             printf("\x1b[0;47;30m%%\x1b[0m\n");
     }
     else
