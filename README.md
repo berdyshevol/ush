@@ -43,7 +43,7 @@ _e.g._ `echo "CBL World"`
 15. which
 
 ### 3. Meta-circular interpreter
-Parsing and execution of the input line is done by implementation of [meta-circular interpreter](https://en.wikipedia.org/wiki/Meta-circular_evaluator) described in the book _Structure and Interpretation of Computer Programs_.
+Parsing and execution of the input line is done by implementation of meta-circular interpreter described in the book _Structure and Interpretation of Computer Programs_.
 
 ### 4. Shell Grammar
 
