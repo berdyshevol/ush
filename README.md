@@ -63,7 +63,12 @@ Details of grammar are [here](/docs/grammar.md)
    5.3. `` `...` `` ` ${...}`
    
    5.4. `~`
-9. `>` `>>` `<` 
+6. Redirections
+   6.1. `>`
+
+   6.2. `>>`
+
+   6.3. `<` 
 
 #### 4.3 Order of expansion performance
 The following types of expansions are performed in the indicated order in five steps:
