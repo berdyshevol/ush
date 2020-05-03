@@ -57,8 +57,11 @@ Details of grammar are [here](/docs/grammar.md)
 4. `=`
 5. Expansions _(see below)_ 
    5.1. ` "..." `  ` '...'  `
+   
    5.2. `$...` `$(...)`
+   
    5.3. `` `...` `` ` ${...}`
+   
    5.4. `~`
 9. `>` `>>` `<` 
 
