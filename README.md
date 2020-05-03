@@ -55,7 +55,7 @@ Details of grammar are [here](/docs/grammar.md)
 2. `||`  `&&`
 3. `|`
 4. `=`
-5. Expansions _(see below)_ 
+5. Expansions _(see below)_  
    5.1. ` "..." `  ` '...'  `  
    5.2. `$...` `$(...)`  
    5.3. `` `...` `` ` ${...}`  
