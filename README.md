@@ -53,7 +53,7 @@ Parsing and execution of the input line is done by implementation of [meta-circu
 3. `|`
 4. `=`
 5. `$...` `$(...)`
-6. ` \`...\` ` ` ${...}`
+6. ``...`` ` ${...}`
 7. ` "..." `  ` '...'  `
 8. `>` `>>` `<` `~`
 
