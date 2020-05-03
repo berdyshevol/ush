@@ -51,7 +51,11 @@ Parsing and execution of the input line is done by implementation of [meta-circu
 1. `;`
 2. `||`  `&&`
 3. `|`
-4. `=` `>` `>>` `<` `~`
+4. `=`
+5. `$...` `$(...)`
+6. ` \` ...\` ` ${...}`
+7. ` \"...\" `  ` \'...\'  `
+8. `>` `>>` `<` `~`
 
 #### 4.2 Grammar
 Details of grammar are [here](/docs/grammar.md)
