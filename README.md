@@ -3,8 +3,8 @@ An educational project based on the curriculum of [ucode.world](https://ucode.wo
 It is written in C for MacOs.
 
 ## This shell implements:
-1. execution of external commands (bin files) 
-2. execution of builtins
+1. execution of external commands (bin files), 
+2. execution of builtins,
 3. meta-circular interpreter,
 4. interpretation of complex grammar of input line including command separator ( ; ), logic operators ( && || ), pipeline ( | ), command substitution, redirections,
 5. expansions of tilda (~),
@@ -47,7 +47,10 @@ Parsing and execution of the input line is done by implementation of [meta-circu
 
 ### 4. Shell Grammar
 
-#### 4.1 Operator precedence
+#### 4.1 Grammar
+Details of grammar are [here](/docs/grammar.md)
+
+#### 4.2 Operator precedence
 1. `;`
 2. `||`  `&&`
 3. `|`
@@ -57,9 +60,6 @@ Parsing and execution of the input line is done by implementation of [meta-circu
 7. `` `...` `` ` ${...}`
 8. `~`
 9. `>` `>>` `<` 
-
-#### 4.2 Grammar
-Details of grammar are [here](/docs/grammar.md)
 
 #### 4.3 Order of expansion performance
 The following types of expansions are performed in the indicated order in five steps:
