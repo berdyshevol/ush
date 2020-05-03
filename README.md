@@ -64,6 +64,7 @@ Details of grammar are [here](/docs/grammar.md)
    
    5.4. `~`
 6. Redirections
+
    6.1. `>`
 
    6.2. `>>`
