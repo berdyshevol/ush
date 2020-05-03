@@ -82,7 +82,7 @@ or if it starts with \ it is not alias. Command is either external or builtin co
     ~-file-path
     ~+file-path
 
-#### redirection_operator _(one of):_
+#### redirection-operator _(one of):_
 	> file-name
 	2> file-name
 	>> file-name
