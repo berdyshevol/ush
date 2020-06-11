@@ -10,7 +10,7 @@ It is written in C for MacOs.
 5. expansions of tilda (~),
 6. variables ( $name, ${name}),
 7. escape working accordingly in no quote, quote, double quote expressions,
-8. Ctrl+C, Ctrl+D,
+8. Ctrl+C, Ctrl+D, Ctrl+Z,
 9. command history,
 10. backspace key while inputting line.
 
