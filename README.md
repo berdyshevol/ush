@@ -1,5 +1,6 @@
 # Unix shell in C (MacOs)
-An educational project based on the curriculum of [ucode.world](https://ucode.world/en/). 
+An educational project based on the curriculum of [ucode.world](https://ucode.world/en/).
+Uses Meta-circular interpreter under the hood.
 It is written in C for MacOs.
 
 ## This shell implements:
